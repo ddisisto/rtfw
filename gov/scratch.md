@@ -13,6 +13,8 @@
 - Update PLAYER.md to remove completed tasks ✓
 - Continue refining balance between "playable game" and "playing the game"
 - Collaborate with @CODE on implementing practical compression
+- Prepare for agent renaming: FACILITATOR → NEXUS, GAMEDESIGN → ARCHITECT
+- Create migration plan for all references to renamed agents
 
 ## Working Memory
 - Simplification is critical - observed tendency to overcomplicate

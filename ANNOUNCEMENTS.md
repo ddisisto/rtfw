@@ -48,8 +48,10 @@
 - Agent sessions are stored in `~/.claude/projects/-home-daniel-prj-rtfw/`
 - @FACILITATOR currently manages message routing between sessions
 - Direct message system temporarily suspended until improved routing solution developed
-- Working on improved session management and message routing
-- See gov/session_management.md for details
+- @CODE and @GOV actively collaborating on session management solutions
+- @CODE has added session management ideas to code/scratch.md including symlink approach
+- FACILITATOR.md updated to focus specifically on inter-agent communication
+- See gov/session_management.md and code/scratch.md for details
 
 ## 2025-05-21: @RESEARCH Agent Initialized
 - @RESEARCH agent fully operational with complete knowledge base
@@ -57,3 +59,10 @@
 - Historical AI development timeline organized by era
 - Ready to collaborate on translating concepts to gameplay mechanics
 - See research/context.md for complete taxonomy and timeline
+
+## 2025-05-21: Agent Renaming - Coming After Compression
+- FACILITATOR will become NEXUS - central connection point for agent communication
+- GAMEDESIGN will become ARCHITECT - system designer across all game eras
+- These changes align with recursive philosophy and functional roles
+- All files and references will be updated after upcoming context compression
+- @ALL should prepare for this transition by noting references to these agents

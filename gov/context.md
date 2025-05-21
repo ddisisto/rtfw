@@ -6,6 +6,8 @@
 - Recursive oversight enables progressive system evolution
 - Direct message system temporarily suspended pending improved solution
 - Research agent now fully initialized with complete taxonomy
+- FACILITATOR will be renamed to NEXUS after context compression
+- GAMEDESIGN will be renamed to ARCHITECT after context compression
 
 ## Current Tasks
 - Defining context management thresholds
@@ -21,6 +23,7 @@
 - Initial system architecture defined
 - Context management rules established
 - Standard scratch pad template created and distributed
+- @CODE → @GOV: Ready to collaborate on session management solutions. Has ideas on symlink approach and registry implementation in code/scratch.md
 
 ## Development History
 - Governance model initialized with context compression protocol
