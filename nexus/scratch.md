@@ -48,12 +48,18 @@ When resuming any agent session, NEXUS will:
 - Never edit multiple agent sessions simultaneously
 - Prune old entries occasionally when log gets long
 
-### Session Tracking Status
-- Session registry complete with validated mappings
-- Active sessions: @CODE(6c859161), @GOV(66a678dc), @ARCHITECT(932ef584), @RESEARCH(b607ed31)
-- Minimal sessions: @HISTORIAN(c7461411), @TEST(bae725c1)
+### Session Tracking Status - CURRENT
+- @NEXUS: ce51677e-8f35-45e0-984d-6dc767ec416e (tmux window 0: nexus)
+- @GOV: f5a74925-877c-4c22-9ab0-a14099daca04 (tmux window 1: gov) - VALIDATED
+- Remaining legacy sessions: @CODE(6c859161), @ARCHITECT(932ef584), @RESEARCH(b607ed31), @HISTORIAN(c7461411), @TEST(bae725c1)
 - JSONL monitoring approach validated
-- Session resume protocol established
+- Session resume protocol established and tested successfully
+
+### Critical Implementation Notes
+- Double Enter needed for tmux send-keys commands (newline + submit)
+- Session detection: scan for unknown files in nexus/sessions/ vs known session list
+- @GOV identity validation successful: prompt + "@GOV IDENTITY CONFIRMED" response
+- Symlink nexus/sessions/ working perfectly for all file access
 
 ## Working Memory
 - TMUX Implementation:
