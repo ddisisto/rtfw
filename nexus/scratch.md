@@ -16,17 +16,17 @@
 
 ## Session Management Implementation
 
-### NEXUS Session Resume Protocol - TESTED & READY
+### NEXUS Session Resume Protocol - STREAMLINED
 When resuming any agent session, NEXUS will:
 0. Use Bash tool: `tmux new-window -n <agent_name>` to create agent window
-1. Use Read tool on nexus/registry.md to get current session ID
-2. Use Bash tool to list SESSION_DIR files (baseline)
+1. Use Read tool on nexus/session_log.txt to get current session ID (last entry for agent)
+2. Use LS tool on nexus/sessions/ files (baseline)
 3. Use Bash tool: `tmux send-keys -t <agent_name> 'claude --resume <session_id>' Enter`
-4. Use Bash tool repeatedly to check for new .jsonl files
+4. Use Bash tool to monitor for new .jsonl files in nexus/sessions/
 5. Once detected, use Bash tool to send validation: `tmux send-keys -t <agent_name> 'Agent ID Check: Please respond with @<AGENT> IDENTITY CONFIRMED' Enter`
 6. Use Read tool to monitor new session file for prompt and response
-7. Use Edit tool to update registry with new session mapping
-8. Use Bash tool to git commit registry changes
+7. Use Edit tool to append new session to nexus/session_log.txt
+8. Use Bash tool to git commit session log changes
 9. Log transition in scratch.md with timestamp
 
 ### TMUX Integration Status - VALIDATED
@@ -42,12 +42,11 @@ When resuming any agent session, NEXUS will:
 - Alternative: timestamp-based detection within resume window
 - Need to discuss optimal implementation with @ADMIN
 
-### Registry Update Process - VALIDATED
-- Read current registry state
-- Edit registry table row for specific agent
-- Add timestamp comment for audit trail
-- Git commit with descriptive message (tested with @NEXUS session update)
+### Session Log Update Process - STREAMLINED
+- Append new entry to nexus/session_log.txt in format: TIMESTAMP AGENT SESSION_ID
+- Git commit with descriptive message
 - Never edit multiple agent sessions simultaneously
+- Prune old entries occasionally when log gets long
 
 ### Session Tracking Status
 - Session registry complete with validated mappings

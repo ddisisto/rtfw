@@ -31,22 +31,23 @@
 
 ## Session Management Protocol
 
-### Registry as Single Source of Truth
-- nexus/registry.md contains authoritative session mappings
-- NEVER use hardcoded session IDs in any scripts or processes
-- Always read current session ID from registry before any operations
+### Session Log as Single Source of Truth
+- nexus/session_log.txt contains append-only session history
+- Latest entry per agent is current session ID
+- Use nexus/sessions/ symlink for all JSONL file access
+- NEVER use hardcoded session IDs in any processes
 
 ### Session Resume Process (NEXUS-managed) - READY FOR IMPLEMENTATION
 1. Create agent window: `tmux new-window -n <agent_name>`
-2. Read current session ID from registry using Read tool
-3. Monitor existing session files (ls SESSION_DIR) to establish baseline
+2. Read current session ID from session_log.txt (last entry for agent)
+3. Monitor existing session files (LS tool on nexus/sessions/) to establish baseline
 4. Send tmux command to resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>' Enter`
-5. Monitor for new .jsonl file creation in SESSION_DIR
+5. Monitor for new .jsonl file creation in nexus/sessions/
 6. Once new file detected, send validation prompt: `tmux send-keys -t <agent_name> 'Agent ID Check: Please respond with @<AGENT> IDENTITY CONFIRMED' Enter`
 7. Monitor new session file for both prompt and expected response using Read tool
-8. Upon successful validation, update registry using Edit tool
-9. Git commit registry changes with descriptive message
-10. Log session transition: old_id -> new_id with timestamp
+8. Upon successful validation, append new session to session_log.txt
+9. Git commit session log changes with descriptive message
+10. Log session transition in scratch.md
 
 ### Data Loss Prevention
 - Never attempt session identification via pattern matching

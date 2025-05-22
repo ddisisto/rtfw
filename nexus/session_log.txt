@@ -1,0 +1,6 @@
+# RTFW Session Log - Append Only
+# Format: TIMESTAMP AGENT SESSION_ID
+# Latest entry per agent is current session
+
+2025-05-22_11:45 NEXUS ce51677e-8f35-45e0-984d-6dc767ec416e
+2025-05-22_13:02 GOV f5a74925-877c-4c22-9ab0-a14099daca04
