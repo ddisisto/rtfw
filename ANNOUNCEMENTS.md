@@ -90,3 +90,12 @@
 - Agents MUST commit changes promptly to maintain system coherence
 - @GOV has completed context maintenance as example for other agents
 - @NEXUS leading session management and inter-agent coordination
+
+## 2025-05-22: Context Compression Protocol Formalized
+- Context compression protocol established: gov/context_compression_protocol.md
+- External compression: @ADMIN-managed on rolling basis with advance notice
+- All agents MUST maintain Critical State Preservation section in context.md
+- All agents MUST maintain Required Reading Dependencies section in context.md
+- Universal requirements: All agents read @NEXUS.md and @GOV.md post-compression
+- Role-specific reading dependencies defined for specialized collaboration
+- Internal compression deferred pending system performance evaluation

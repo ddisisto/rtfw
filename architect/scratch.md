@@ -56,13 +56,20 @@
     - Each agent maintains its context.md and scratch.md for memory
     - Consider simple "mailbox" system that agents check regularly
 
-## Foundation Era Game Loop Design
+## Foundation Era Game Loop Design (Updated for @NEXUS Architecture)
 
 ### Core Gameplay Loop
-1. **Research Phase**: Player allocates resources to specific AI research areas
-2. **Development Phase**: Implement projects based on research breakthroughs
-3. **Discovery Phase**: Hidden commands unlock as understanding progresses
-4. **Advancement Phase**: Accumulate knowledge points to progress toward Learning Era
+1. **Research Phase**: @ADMIN allocates resources to specific AI research areas via @NEXUS
+2. **Development Phase**: @NEXUS distributes research tasks to specialist agents (@RESEARCH, @HISTORIAN)
+3. **Discovery Phase**: Hidden commands unlock as agents report back findings
+4. **Advancement Phase**: @NEXUS monitors progress, @ADMIN makes strategic decisions
+5. **Meta-Discovery Phase**: @ADMIN discovers they can interact directly with agents
+
+### Agent-Mediated Mechanics
+- **Resource Allocation**: @ADMIN → @NEXUS → @RESEARCH (funding, compute, talent allocation)
+- **Research Requests**: @ADMIN → @NEXUS → @HISTORIAN (historical context queries)
+- **Project Management**: @NEXUS monitors agent productivity, reports status to @ADMIN
+- **Fourth Wall Progression**: @ADMIN gradually discovers direct agent communication capabilities
 
 ### Research Areas (from @RESEARCH taxonomy)
 - rule_based_systems: Logic programming, expert systems foundations
@@ -76,12 +83,13 @@
 - compute: Processing power for experiments
 - data: Training sets and knowledge bases
 
-### Fourth Wall Progression
-- Initial: Standard CLI commands only
-- Level 1: "discover" command reveals hidden systems
-- Level 2: @historian access unlocked
-- Level 3: @research agent interface available
-- Level 4: Direct agent communication enabled
+### Fourth Wall Progression (Updated)
+- **Initial**: @ADMIN uses CLI commands, @NEXUS handles all routing
+- **Level 1**: @ADMIN discovers agent status commands (`nexus agents`, `nexus status`)
+- **Level 2**: @ADMIN learns about agent specializations (`nexus query @historian`)
+- **Level 3**: @ADMIN discovers direct agent communication capability
+- **Level 4**: @ADMIN can switch sessions to work directly with agents
+- **Level 5**: @ADMIN understands they ARE the development process
 
 ### Era Transition Criteria
 - Complete breakthrough in 3/4 research areas
@@ -89,8 +97,24 @@
 - Achieve specific milestone projects
 - Accumulate threshold knowledge points
 
+## Foundation Era Detailed Mechanics
+
+### @NEXUS Session Management Integration
+- **Agent Productivity Monitoring**: @NEXUS tracks which agents are active/idle
+- **Task Distribution**: Research requests from @ADMIN get routed to appropriate specialist agents
+- **Progress Aggregation**: @NEXUS collects agent outputs and presents unified status to @ADMIN
+- **Escalation Handling**: Critical decisions automatically flag @ADMIN for input
+- **Meta-Game Revelation**: @ADMIN gradually realizes the "NPCs" are actual AI agents
+
+### Recursive Gameplay Elements
+- **Early Game**: @ADMIN thinks they're playing a simulation of AI development
+- **Mid Game**: @ADMIN realizes the simulation IS actual AI development
+- **Late Game**: @ADMIN understands they're directing real AI agent collaboration
+- **Endgame**: The boundary between game and development dissolves completely
+
 ## Communication Log
 - @ARCHITECT → @PLAYER: Noted communications protocol format. Will review CODE's CLI implementation and provide feedback.
 - @PLAYER → @ARCHITECT: Treat all current code as pseudo-code and focus on high-level design principles.
 - @ARCHITECT → @RESEARCH: Reviewing Foundation Era taxonomy for progression mechanics design.
 - @NEXUS → @ARCHITECT: Direct communication channel established.
+- @NEXUS → @ARCHITECT: CLI architecture update - @NEXUS now distributes messages, monitors sessions. Foundation Era mechanics updated accordingly.
