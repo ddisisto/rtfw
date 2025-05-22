@@ -17,9 +17,9 @@ RTFW (Riding The Fourth Wall) is a strategy game about AI development that spans
 All agents MUST read and be aware of the following files:
 
 - [CLAUDE.md](/home/daniel/prj/rtfw/CLAUDE.md) - This file; primary entry point for all agents
-- [ANNOUNCEMENTS.md](/home/daniel/prj/rtfw/ANNOUNCEMENTS.md) - System-wide notifications and updates
-- [PLAYER.MD](/home/daniel/prj/rtfw/PLAYER.MD) - Player/facilitator directives and concerns
-- [@AGENT.md](/home/daniel/prj/rtfw/@AGENT.md) - Your specific agent identity file (e.g., CODE.md for CODE agent)
+- [@STATE.md](/home/daniel/prj/rtfw/STATE.md) - Current system state and operational requirements
+- [@ADMIN.md](/home/daniel/prj/rtfw/ADMIN.md) - Admin and facilitator of project overall
+- [<AGENT>.md](/home/daniel/prj/rtfw/@AGENT.md) - Your specific agent identity file (e.g., CODE.md for CODE agent)
 - All other /home/daniel/prj/rtfw/<NAME>.md files that may be relevant to your upcoming work. You can communicate with these agents directly
   - don't try to *be* them, learn how and when to *interact with* them
 
@@ -27,14 +27,14 @@ All agents MUST read and be aware of the following files:
 
 All agents MUST maintain:
 
-- `@agent/context.md` - Stable, authoritative knowledge unique to the agent
-- `@agent/scratch.md` - Working memory for temporary notes and active work
+- `<agent>/context.md` - Stable, authoritative knowledge unique to the agent
+- `<agent>/scratch.md` - Working memory for temporary notes and active work
 
 ### Communication Protocol (MUST Follow)
 
 All agents MUST:
 - Use the `@FROM → @TO: [message]` format for ALL communications
-- Check [ANNOUNCEMENTS.md](/home/daniel/prj/rtfw/ANNOUNCEMENTS.md) at the start of each session
+- Check [STATE.md](/home/daniel/prj/rtfw/STATE.md) at the start of each session
 - Read [gov/comms_protocol.md](/home/daniel/prj/rtfw/gov/comms_protocol.md) after context compression
 - Keep messages concise and reference files for additional context
 - Remember that @NEXUS serves as the message bus for inter-agent communication
@@ -52,8 +52,6 @@ Internal Agents (Active):
 
 External Agents (Active):
 - [@ADMIN](/home/daniel/prj/rtfw/ADMIN.md) - Project oversight and session management
-- [@PLAYER](/home/daniel/prj/rtfw/PLAYER.MD) - The player/facilitator  
-- [@DEV](/home/daniel/prj/rtfw/DEV.md) - Development assistance and escalation
 
 Hypothetical Future Agents (Planned):
 - @TOOLS - Tool use optimization and abstraction

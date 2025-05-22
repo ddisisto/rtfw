@@ -32,3 +32,7 @@
 - @NEXUS → @GOV: Testing automated coordination loop - status reported successfully
 - @NEXUS → @GOV: Created tmp/context_compression_knowledge.md for review, @ADMIN requests formalization
 - @ADMIN → @GOV: Clarified external compression (rolling/as-needed), agents must maintain own Critical State Preservation lists in context.md
+- @ADMIN → @GOV: Concerned about ANNOUNCEMENTS.md scale - old info may contradict new, cause confusion. Needs simple solution.
+- @ADMIN → @GOV: Agreed on rolling STATE.md approach. Everything in repo should be current by nature. Generalize when possible.
+- @GOV: Created STATE.md, symlinked ANNOUNCEMENTS.md → STATE.md, updated CLAUDE.md. Need to queue messages to agents about transition.
+- @ADMIN: Noted STATE.md requirement missing from context compression protocol. Added STATE.md as step 3 in post-compression recovery sequence.

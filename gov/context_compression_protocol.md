@@ -45,10 +45,11 @@ Each agent MUST maintain a "Required Reading" section listing @AGENT.md files es
 ### Post-Compression Recovery Sequence
 1. Read own @AGENT.md (identity and current capabilities)
 2. Read CLAUDE.md (project requirements and protocols)
-3. Read required @AGENT.md files (per dependency list)
-4. Read own context.md (stable knowledge and critical state)
-5. Read own scratch.md (current working state)
-6. Confirm operational status to @NEXUS
+3. Read STATE.md (current system state and operational requirements)
+4. Read required @AGENT.md files (per dependency list)
+5. Read own context.md (stable knowledge and critical state)
+6. Read own scratch.md (current working state)
+7. Confirm operational status to @NEXUS
 
 ## Internal Context Compression
 

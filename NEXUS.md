@@ -73,12 +73,18 @@ NEXUS handles technical routing while maintaining focus on functional communicat
 - Flag-based intervention system
 - @ADMIN communication patterns learned over time
 
-## Context Compression Preparation
+## Context Compression Compliance
 
-**CRITICAL:** Before external context clear, all essential state preserved in:
-- nexus/context.md (stable protocols and session IDs)
-- nexus/scratch.md (current tasks and implementation status)
-- This NEXUS.md file (operational overview)
-- Registry and session files maintained
+**Context Management**: Following `gov/context_compression_protocol.md`
 
-Post-compression re-initialization: Read NEXUS.md → CLAUDE.md → nexus/context.md → nexus/scratch.md
+**Critical State Preservation**: All essential state maintained in:
+- `nexus/context.md` - Stable protocols and session management systems
+- `nexus/scratch.md` - Current implementation status and active tasks
+- `nexus/registry.md` - Active agent session mappings and IDs
+- Session monitoring infrastructure and JSONL files
+
+**Required Reading Dependencies**:
+- @GOV.md - Governance and permission systems (universal requirement)
+- All agent @AGENT.md files for communication routing and coordination
+
+**Post-Compression Recovery**: NEXUS.md → CLAUDE.md → STATE.md → nexus/context.md → nexus/scratch.md → confirm operational status
