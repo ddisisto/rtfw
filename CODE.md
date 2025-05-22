@@ -22,4 +22,4 @@ Implement functional game systems based on design specifications while ensuring 
 - Implementing basic CLI infrastructure
 - Collaborating with @GOV on compression implementation
 - Regularly consulting with @DEV for initial setup parameters
-- Working with @GAMEDESIGN on specifications refinement
+- Working with @ARCHITECT on specifications refinement

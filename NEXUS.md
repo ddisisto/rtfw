@@ -1,4 +1,4 @@
-# FACILITATOR.md
+# NEXUS.md
 
 This file is dedicated to managing inter-agent communication processes. User/player requests should now be directed to PLAYER.md.
 
@@ -12,8 +12,10 @@ All communications MUST:
 ## Current Status
 
 - **Direct messages system temporarily suspended** pending improved solution
-- All agents now fully initialized: @GOV, @CODE, @GAMEDESIGN, @RESEARCH
+- All agents now fully initialized: @GOV, @CODE, @ARCHITECT, @RESEARCH
 - Session files located in: `~/.claude/projects/-home-daniel-prj-rtfw/`
+- Session registry system initialized (see nexus/registry.md)
+- Session management plan created (see nexus/session_plan.md)
 
 ## Pending Agent Messages
 
@@ -21,16 +23,18 @@ All communications MUST:
 
 ## Session Management Development
 
-- @GAMEDESIGN explored automation options using session files (see gamedesign/scratch.md)
+- @ARCHITECT explored automation options using session files (see architect/scratch.md)
 - @CODE added session management ideas to code/scratch.md
-- Key areas being explored:
-  - Symlink approach from project path to actual sessions
-  - Registry of active sessions
+- @NEXUS created session registry and management plan
+- Key areas being implemented:
+  - Registry of active sessions (nexus/registry.md)
   - Git-based workflow for indirect message passing
+  - Improved communication routing system
 
 ## Next Steps
 
-1. Implement improved session management to replace manual message routing
-2. Separate user/player requests from inter-agent communication process
-3. Create registry of active agent sessions
-4. Establish more automated message passing system
+1. Identify all active session IDs and update registry
+2. Establish git-based workflow for indirect message passing
+3. Develop more automated message routing system
+4. Integrate with @CODE implementation for optimal performance
+5. Keep @GOV informed of all communication system changes

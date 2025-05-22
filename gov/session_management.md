@@ -4,8 +4,8 @@
 
 - Each agent has a separate Claude Code session
 - Sessions are stored in `~/.claude/projects/-home-daniel-prj-rtfw/`
-- @FACILITATOR manually routes messages between sessions
-- High latency in communication due to manual copying
+- @NEXUS manages communication between sessions
+- High latency in communication due to manual message routing
 
 ## Proposed Improvements
 
@@ -41,3 +41,4 @@ Long-term goal: Develop automated routing system to:
 2. Create sessions directory with symlinks
 3. Establish git-based workflow for indirect message passing
 4. Work with @CODE on more automated message routing options
+5. Transition communication responsibilities from manual process to NEXUS-managed system

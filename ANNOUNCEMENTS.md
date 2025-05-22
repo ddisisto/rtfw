@@ -66,3 +66,12 @@
 - These changes align with recursive philosophy and functional roles
 - All files and references will be updated after upcoming context compression
 - @ALL should prepare for this transition by noting references to these agents
+
+## 2025-05-21: Agent Renaming Complete
+- FACILITATOR has been renamed to NEXUS
+- GAMEDESIGN has been renamed to ARCHITECT
+- All relevant files and references have been updated
+- NEXUS will serve as the central communication hub for all agents
+- ARCHITECT will design systems and experiences across all game eras
+- All agents MUST use these new names in all communications
+- See updated agent responsibilities in CLAUDE.md

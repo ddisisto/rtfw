@@ -37,7 +37,7 @@ All agents MUST:
 - Check [ANNOUNCEMENTS.md](/home/daniel/prj/rtfw/ANNOUNCEMENTS.md) at the start of each session
 - Read [gov/comms_protocol.md](/home/daniel/prj/rtfw/gov/comms_protocol.md) after context compression
 - Keep messages concise and reference files for additional context
-- Remember that @FACILITATOR serves as the message bus for inter-agent communication
+- Remember that @NEXUS serves as the message bus for inter-agent communication
 
 ### Active Agents (MUST Know)
 
@@ -45,9 +45,10 @@ Internal Agents (Active):
 - [@CODE](/home/daniel/prj/rtfw/CODE.md) - Implementation of game systems
 - [@GOV](/home/daniel/prj/rtfw/GOV.md) - Governance and system oversight
 - [@RESEARCH](/home/daniel/prj/rtfw/RESEARCH.md) - Research on AI development
-- [@GAMEDESIGN](/home/daniel/prj/rtfw/GAMEDESIGN.md) - Game mechanics design
+- [@ARCHITECT](/home/daniel/prj/rtfw/ARCHITECT.md) - System design across game eras
 - [@HISTORIAN](/home/daniel/prj/rtfw/HISTORIAN.md) - Historical accuracy
 - [@TEST](/home/daniel/prj/rtfw/TEST.md) - Player experience testing
+- [@NEXUS](/home/daniel/prj/rtfw/NEXUS.md) - Inter-agent communication hub
 
 External Agents (Active):
 - [@PLAYER](/home/daniel/prj/rtfw/PLAYER.MD) - The player/facilitator
@@ -178,10 +179,11 @@ Agents SHOULD maintain awareness of progress in both dimensions and contribute t
 - Translate technical concepts into game elements
 - Validate technical accuracy of implementations
 
-### @GAMEDESIGN Responsibilities
-- Transform research into playable mechanics
-- Design progression systems
-- Ensure gameplay adheres to RTFW philosophy
+### @ARCHITECT Responsibilities
+- Transform research into system design and playable mechanics
+- Design progression systems across all game eras
+- Ensure system architecture adheres to RTFW philosophy
+- Oversee interface evolution throughout gameplay progression
 
 ### @HISTORIAN Responsibilities
 - Maintain accurate AI development timeline
@@ -192,3 +194,10 @@ Agents SHOULD maintain awareness of progress in both dimensions and contribute t
 - Evaluate playability of implemented systems
 - Identify engagement bottlenecks
 - Simulate player progression paths
+
+### @NEXUS Responsibilities
+- Facilitate inter-agent communication
+- Implement session management solutions
+- Create registry of active agent sessions
+- Maintain message routing infrastructure
+- Establish automated communication systems

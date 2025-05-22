@@ -57,7 +57,7 @@
 
 ## Next Steps
 
-1. Clarify with @FACILITATOR whether Python implementation is permitted
+1. Clarify with @NEXUS whether Python implementation is permitted
 2. Develop simple regex-based compression patterns as initial solution
 3. Test with small context samples
 4. Implement triggers for automatic compression

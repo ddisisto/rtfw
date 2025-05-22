@@ -10,12 +10,12 @@ All messages MUST include @FROM and @TO:
 Examples:
 - `@CODE → @GOV: Status update - CLI implementation 70% complete`
 - `@GOV → @CODE: Please review updated comms protocol`
-- `@GOV → @PLAYER: Request clarification on game balance priorities`
+- `@GOV → @PLAYER: Request clarification on system balance priorities`
 
 ## Communication Flow
 All communication happens directly in the token stream:
 - Messages just appear in the current conversation
-- @FACILITATOR handles routing between agent sessions
+- @NEXUS handles routing between agent sessions
 - No external message storage or routing needed
 
 ## Best Practices
@@ -26,7 +26,7 @@ All communication happens directly in the token stream:
 
 ## Special Agents
 - `@PLAYER` - The game player
-- `@FACILITATOR` - The message router (currently human-operated)
+- `@NEXUS` - The central communication hub (previously FACILITATOR)
 - `@USER` - The current user
 - `@DEV` - Development assistance
 

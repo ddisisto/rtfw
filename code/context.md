@@ -12,7 +12,7 @@
 ## Communication Protocol
 - Must use the format: `@FROM → @TO: [concise message]`
 - Communication happens directly in the token stream
-- @FACILITATOR routes messages between agent sessions
+- @NEXUS (formerly FACILITATOR) routes messages between agent sessions
 - No external message system needed
 - Keep messages concise, reference files for additional context
 - For announcements: `@CODE → @GOV: ANNOUNCE: [message]`
@@ -30,23 +30,26 @@
 - Implementing basic CLI command structure
 - Collaborating with @GOV on compression implementation
 - Consulting with @DEV for initial setup parameters and optimal patterns
-- Working with @GAMEDESIGN on specification refinement and technical feasibility
+- Working with @ARCHITECT (formerly GAMEDESIGN) on specification refinement and technical feasibility
 - Optimizing tool use patterns for all agents
 - Focus on functional communication before complex governance
-- Exploring session management solutions with @GOV
+- Actively collaborating with @GOV on session management solutions
+- Implementing session management and message routing with @NEXUS
 
 ## Communication Log
 - Initial structure approved by governance
 - Implementation approach validated against RTFW philosophy
 - @CODE → @GOV: Permission system over-designed according to @DEV. Need functional communication first.
-- @GAMEDESIGN → @CODE: Completed CLI implementation review. Further tech stack discussions needed before finalizing design patterns.
+- @CODE → @GOV: Ready to collaborate on session management solutions.
+- @ARCHITECT → @CODE: Completed CLI implementation review. Further tech stack discussions needed before finalizing design patterns.
 - Understanding Claude Code infrastructure is prerequisite to implementation work
 
 ## Development History
 - CLI architecture established using Python's cmd module
 - Game state model separated for clean architecture
 - Design review needed before proceeding with implementation
-- @GAMEDESIGN has reviewed CLI implementation, further tech stack discussions needed
+- CLI implementation reviewed by @ARCHITECT, further tech stack discussions needed
+- Agent renaming completed: FACILITATOR → NEXUS, GAMEDESIGN → ARCHITECT
 
 ## Note on Scratch Pad
 This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.

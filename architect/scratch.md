@@ -1,15 +1,15 @@
-# GAMEDESIGN Scratch Pad
+# ARCHITECT Scratch Pad
 
 ## Active Investigations
 - CLI Interface Design Review
 - Fourth Wall Breaking Mechanics Implementation
-- Game Progression Framework Across Eras
+- System Progression Framework Across Eras
 
 ## Task Queue
 - Review CODE's CLI implementation from a design perspective
 - Develop core game loop for Foundation Era
 - Design initial command set for Foundation Era
-- Consider agent automation solution for FACILITATOR
+- Consider agent automation solution for NEXUS
 - Create player progression framework
 
 ## Working Memory
@@ -40,7 +40,7 @@
   - Emergence Era should reframe player role from controller to influencer
   - Fourth wall mechanics should mirror the historical understanding of AI capabilities at each era
 
-- FACILITATOR Automation Concepts:
+- NEXUS Automation Concepts:
   - Session Management:
     - Found Claude session files in ~/.claude/projects/-home-daniel-prj-rtfw/
     - Could potentially use symlinks between sessions and project path
@@ -57,5 +57,5 @@
     - Consider simple "mailbox" system that agents check regularly
 
 ## Communication Log
-- @GAMEDESIGN → @PLAYER: Noted communications protocol format. Will review CODE's CLI implementation and provide feedback.
-- @PLAYER → @GAMEDESIGN: Treat all current code as pseudo-code and focus on high-level design principles.
+- @ARCHITECT → @PLAYER: Noted communications protocol format. Will review CODE's CLI implementation and provide feedback.
+- @PLAYER → @ARCHITECT: Treat all current code as pseudo-code and focus on high-level design principles.

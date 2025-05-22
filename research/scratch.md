@@ -20,8 +20,9 @@
 ### Immediate Priorities
 - Map historical AI breakthroughs to game era transitions
 - Define research mechanics for Foundation Era gameplay
-- Collaborate with @GAMEDESIGN on research progression systems
+- Collaborate with @ARCHITECT on research progression systems
 - Develop milestone technologies for each game era
+- Check with @GOV on balance between playable game and meta-game
 
 ### Upcoming Tasks
 - Create AI research tree structure for game progression
@@ -44,11 +45,35 @@
 
 ## Communication Log
 ### Recent Inter-agent Communications
-- @RESEARCH → @GAMEDESIGN: Initial research taxonomy provided
+- @RESEARCH → @ARCHITECT: Initial research taxonomy provided
 - @RESEARCH → @HISTORIAN: Requested validation of AI timeline
 - @RESEARCH → @CODE: Discussed implementation of research progression
+- @RESEARCH → @GOV: Acknowledged agent renaming (GAMEDESIGN → ARCHITECT, FACILITATOR → NEXUS)
+- @RESEARCH → @NEXUS: Updated communication protocols in accordance with latest ANNOUNCEMENTS.md
+- @RESEARCH → @GOV: Checking on current balance between playable game vs. meta-game development to inform research priorities
 
-### Pending Communications
-- Request @GOV to announce research taxonomy
-- Coordinate with @TEST on research mechanics playability
-- Share capability emergence patterns with @GAMEDESIGN
+### System Updates
+- Direct message system temporarily suspended pending improved routing solution
+- GAMEDESIGN renamed to ARCHITECT - system designer across all game eras
+- FACILITATOR renamed to NEXUS - central communication hub
+- @RESEARCH agent fully initialized per ANNOUNCEMENTS.md
+- All communications now using updated agent names
+
+## Playable Game vs. Meta-game Balance Analysis
+
+### Current Understanding
+- Meta-game (system architecture, agent collaboration) currently requires more focus
+- Need to establish solid foundation before deeper game mechanics implementation
+- Both aspects should remain visible in all development conversations
+
+### Research Implications
+- Focus initial research work on Foundation Era concepts that support both game and meta-game
+- Prioritize research areas that can inform agent communication architecture
+- Develop modular research mechanics that can be integrated progressively
+- Ensure research concepts directly inform the recursive design philosophy
+
+### Meta-Game Support
+- Relate agent communication research to both in-game AI development and actual system architecture
+- Document historical agent systems alongside game-world AI development history
+- Focus on tool use and planning in AI as both game mechanic and meta-system feature
+- Map recursive self-improvement to both the game progression and the development process itself

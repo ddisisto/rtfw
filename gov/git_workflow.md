@@ -45,7 +45,7 @@ The project will be hosted on GitHub with:
 ## Handling Conflicts
 
 If git conflicts occur:
-1. @FACILITATOR will notify relevant agents
+1. @NEXUS will notify relevant agents
 2. Agents should coordinate to resolve conflicts
 3. @GOV will mediate if necessary
 
