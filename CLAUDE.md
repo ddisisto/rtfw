@@ -51,7 +51,8 @@ Internal Agents (Active):
 - [@NEXUS](/home/daniel/prj/rtfw/NEXUS.md) - Inter-agent communication hub
 
 External Agents (Active):
-- [@PLAYER](/home/daniel/prj/rtfw/PLAYER.MD) - The player/facilitator
+- [@ADMIN](/home/daniel/prj/rtfw/ADMIN.md) - Project oversight and session management
+- [@PLAYER](/home/daniel/prj/rtfw/PLAYER.MD) - The player/facilitator  
 - [@DEV](/home/daniel/prj/rtfw/DEV.md) - Development assistance and escalation
 
 Hypothetical Future Agents (Planned):

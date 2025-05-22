@@ -12,7 +12,8 @@
 - Communication happens directly in the token stream with @NEXUS routing between sessions
 - Keep messages concise and reference files for detailed context
 - For system-wide announcements, send: `@ARCHITECT → @GOV: ANNOUNCE: [message]`
-- Special agents include @PLAYER, @NEXUS, @USER, and @DEV
+- Special agents include @PLAYER, @NEXUS, @USER, @DEV, and @ADMIN
+- @ADMIN references should be standardized consistently across all communications
 
 ## Current Tasks
 - Defining core game loop for Foundation Era

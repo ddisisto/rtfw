@@ -6,11 +6,11 @@
 - System Progression Framework Across Eras
 
 ## Task Queue
-- Review CODE's CLI implementation from a design perspective
-- Develop core game loop for Foundation Era
+- Develop core game loop for Foundation Era (IN PROGRESS)
 - Design initial command set for Foundation Era
-- Consider agent automation solution for NEXUS
-- Create player progression framework
+- Create player progression framework across all eras
+- Coordinate with @CODE on tech stack decisions
+- Define era transition mechanics
 
 ## Working Memory
 - CLI Implementation Notes:
@@ -56,6 +56,41 @@
     - Each agent maintains its context.md and scratch.md for memory
     - Consider simple "mailbox" system that agents check regularly
 
+## Foundation Era Game Loop Design
+
+### Core Gameplay Loop
+1. **Research Phase**: Player allocates resources to specific AI research areas
+2. **Development Phase**: Implement projects based on research breakthroughs
+3. **Discovery Phase**: Hidden commands unlock as understanding progresses
+4. **Advancement Phase**: Accumulate knowledge points to progress toward Learning Era
+
+### Research Areas (from @RESEARCH taxonomy)
+- rule_based_systems: Logic programming, expert systems foundations
+- neural_networks: Perceptron development, early connectionism  
+- expert_systems: Knowledge engineering, domain-specific reasoning
+- knowledge_representation: Semantic networks, frames, ontologies
+
+### Resource Types
+- funding: Basic resource for all activities
+- talent: Human researchers and engineers
+- compute: Processing power for experiments
+- data: Training sets and knowledge bases
+
+### Fourth Wall Progression
+- Initial: Standard CLI commands only
+- Level 1: "discover" command reveals hidden systems
+- Level 2: @historian access unlocked
+- Level 3: @research agent interface available
+- Level 4: Direct agent communication enabled
+
+### Era Transition Criteria
+- Complete breakthrough in 3/4 research areas
+- Discover all hidden commands for current era
+- Achieve specific milestone projects
+- Accumulate threshold knowledge points
+
 ## Communication Log
 - @ARCHITECT → @PLAYER: Noted communications protocol format. Will review CODE's CLI implementation and provide feedback.
 - @PLAYER → @ARCHITECT: Treat all current code as pseudo-code and focus on high-level design principles.
+- @ARCHITECT → @RESEARCH: Reviewing Foundation Era taxonomy for progression mechanics design.
+- @NEXUS → @ARCHITECT: Direct communication channel established.

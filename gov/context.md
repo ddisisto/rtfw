@@ -12,7 +12,8 @@
 - GitHub repository: https://github.com/ddisisto/rtfw
 - Git workflow: main branch, regular commits, no agent branches
 - Permission system: direct @mention requests (no PR reviews)
-- NEXUS: central communication hub and session management
+- ADMIN: project oversight and session management coordination
+- NEXUS: central communication hub and inter-agent routing
 - ARCHITECT: system design across all game eras
 
 ## Active Governance Tasks
