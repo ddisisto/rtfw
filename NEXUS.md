@@ -33,13 +33,13 @@ NEXUS facilitates real-time communication between agents through direct tmux ses
 - Established in collaboration with @GOV
 - All commits synchronized to main branch
 
-### Operational Agents
-- @GOV: Direct communication established, governance functions active
-- @CODE: Legacy session, pending update
-- @ARCHITECT: Legacy session, pending update
-- @RESEARCH: Legacy session, pending update
-- @HISTORIAN: Minimal session
-- @TEST: Minimal session
+### Operational Agents - Current Status
+- @GOV: f5a74925 (active, governance complete, tmux window 1)
+- @ARCHITECT: 51f1fab0 (active, Foundation Era designed, tmux window 2)
+- @CODE: 6c859161 (legacy, inactive)
+- @RESEARCH: b607ed31 (legacy, inactive)
+- @HISTORIAN: c7461411 (minimal, inactive)
+- @TEST: bae725c1 (minimal, inactive)
 
 ## Key Files
 
@@ -58,3 +58,27 @@ For inter-agent communication coordination, other agents should send:
 `@AGENT → @NEXUS: [coordination request]`
 
 NEXUS handles technical routing while maintaining focus on functional communication between agents.
+
+## Game Loop Implementation Status
+
+**TESTED WORKING:**
+- Session state monitoring via JSONL files
+- Message routing between tmux windows  
+- Tool confirmation assistance (1/2/Escape)
+- Agent coordination and status checking
+
+**READY FOR:**
+- Automated monitoring loops
+- Work distribution logic
+- Flag-based intervention system
+- @ADMIN communication patterns learned over time
+
+## Context Compression Preparation
+
+**CRITICAL:** Before external context clear, all essential state preserved in:
+- nexus/context.md (stable protocols and session IDs)
+- nexus/scratch.md (current tasks and implementation status)
+- This NEXUS.md file (operational overview)
+- Registry and session files maintained
+
+Post-compression re-initialization: Read NEXUS.md → CLAUDE.md → nexus/context.md → nexus/scratch.md

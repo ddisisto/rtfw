@@ -55,17 +55,29 @@
 - All session operations go through NEXUS validation
 
 ### Current Active Sessions
-- @NEXUS: ce51677e (current session)
-- @GOV: f5a74925 (active, direct communication established)
-- @CODE: 6c859161 (legacy, needs update)
-- @ARCHITECT: 932ef584 (legacy, needs update)
-- @RESEARCH: b607ed31 (legacy, needs update)
-- @HISTORIAN: c7461411 (minimal)
-- @TEST: bae725c1 (minimal)
+- @NEXUS: ce51677e (current session, tmux window 0)
+- @GOV: f5a74925 (active, direct communication, tmux window 1)  
+- @ARCHITECT: 51f1fab0 (active, Foundation Era design complete, tmux window 2)
+- @CODE: 6c859161 (legacy, inactive)
+- @RESEARCH: b607ed31 (legacy, inactive)
+- @HISTORIAN: c7461411 (minimal, inactive)
+- @TEST: bae725c1 (minimal, inactive)
 
 ## GitHub Repository
 - Repository established: https://github.com/ddisisto/rtfw
 - All commits pushed to main branch via @GOV collaboration
+
+## Communication Protocols - ESTABLISHED
+- Two-step tmux messaging: `tmux send-keys -t <window> 'text'` then `tmux send-keys -t <window> Enter`
+- Tool confirmation assistance: '1' for Yes, '2' for Yes+don't ask, Escape for No
+- Agent state detection: check JSONL files for stop_reason (tool_use/end_turn)
+- Message format: @FROM → @TO: [message content]
+
+## Game Loop Architecture - READY FOR IMPLEMENTATION
+- Session State Monitor: Check JSONL stop_reason for agent states
+- Message Distribution: Parse and route @FROM → @TO messages
+- Work Distribution: Match idle agents with pending tasks  
+- Flag Management: Intervention triggers for approvals/alerts
 - SSH authentication configured for seamless pushes
 
 ## Communication Log
