@@ -14,11 +14,12 @@
 - Monitor-content and monitor-silence options track agent status
 
 ### Proven TMUX Operations (Tested)
-- `tmux new-window -n <name>` - Create named agent windows
-- `tmux send-keys -t <window> '<command>' Enter` - Execute commands in agent windows
+- `tmux new-window -n <AGENT>` - Create named agent windows
+- `tmux send-keys -t <window> '<message>'` - Send message text to agent window
+- `tmux send-keys -t <window> Enter` - Send Enter key (separate call required)
 - `tmux capture-pane -t <window> -p` - Capture agent output for monitoring
 - `tmux list-windows` - Monitor all agent window status
-- `tmux rename-window <name>` - Rename windows for organization
+- `tmux rename-window <AGENT>` - Rename windows for organization
 
 ## Communication Protocols
 - All messages must follow format: `@FROM → @TO: [concise message]`
@@ -39,13 +40,15 @@
 1. Create agent window: `tmux new-window -n <agent_name>`
 2. Read current session ID from session_log.txt (last entry for agent)
 3. Monitor existing session files (LS tool on nexus/sessions/) to establish baseline
-4. Send tmux command to resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>' Enter`
-5. Monitor for new .jsonl file creation in nexus/sessions/
-6. Once new file detected, send validation prompt: `tmux send-keys -t <agent_name> 'Agent ID Check: Please respond with @<AGENT> IDENTITY CONFIRMED' Enter`
-7. Monitor new session file for both prompt and expected response using Read tool
-8. Upon successful validation, append new session to session_log.txt
-9. Git commit session log changes with descriptive message
-10. Log session transition in scratch.md
+4. Send tmux message to resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>'`
+5. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
+6. Monitor for new .jsonl file creation in nexus/sessions/
+7. Once new file detected, send validation message: `tmux send-keys -t <agent_name> 'Agent ID Check: Please respond with @<AGENT> IDENTITY CONFIRMED'`
+8. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
+9. Monitor new session file for both prompt and expected response using Read tool
+10. Upon successful validation, append new session to session_log.txt
+11. Git commit session log changes with descriptive message
+12. Log session transition in scratch.md
 
 ### Data Loss Prevention
 - Never attempt session identification via pattern matching
@@ -68,10 +71,11 @@
 - All commits pushed to main branch via @GOV collaboration
 
 ## Communication Protocols - ESTABLISHED
-- Two-step tmux messaging: `tmux send-keys -t <window> 'text'` then `tmux send-keys -t <window> Enter`
+- Two-step tmux messaging: `tmux send-keys -t <window> 'text'` then `tmux send-keys -t <window> Enter` (SEPARATE tool calls required)
 - Tool confirmation assistance: '1' for Yes, '2' for Yes+don't ask, Escape for No
 - Agent state detection: check JSONL files for stop_reason (tool_use/end_turn)
 - Message format: @FROM → @TO: [message content]
+- **Monitoring Protocol**: Always capture-pane first, assess current activity, respond to specific needs, only use status check if nothing specific to address
 
 ## Standard Message Templates
 
