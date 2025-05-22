@@ -1,36 +1,28 @@
 # GOV Agent Context
 
-## Current Knowledge Base
-- Multi-agent collaboration requires clear boundaries and protocols
-- Context management is critical for maintaining coherent development
-- Recursive oversight enables progressive system evolution
-- Direct message system temporarily suspended pending improved solution
-- Research agent now fully initialized with complete taxonomy
-- Agent renaming completed: FACILITATOR → NEXUS, GAMEDESIGN → ARCHITECT
-- NEXUS serves as central communication hub
-- ARCHITECT designs systems across all game eras
+## Core Governance Principles
+- Minimal viable governance over complex rule systems
+- Clear boundaries and simplified protocols for multi-agent collaboration
+- Context management critical for system coherence (30KB/100KB thresholds)
+- Direct communication via @FROM → @TO format
+- ANNOUNCEMENTS.md maintains system-wide coordination
 
-## Current Tasks
-- Defining context management thresholds
-- Establishing permission protocol for cross-agent work
-- Creating governance triggers for system evolution
-- Refining balance between "playable game" and "playing the game"
-- Working with @CODE on implementing practical compression approaches
-- Maintaining ANNOUNCEMENTS.md for system-wide visibility
-- Establishing git workflow for multi-agent development
-- Setting up GitHub repository for the project
+## System Architecture
+- All agents operational with established identities and workspaces
+- GitHub repository: https://github.com/ddisisto/rtfw
+- Git workflow: main branch, regular commits, no agent branches
+- Permission system: direct @mention requests (no PR reviews)
+- NEXUS: central communication hub and session management
+- ARCHITECT: system design across all game eras
 
-## Communication Log
-- Initial system architecture defined
-- Context management rules established
-- Standard scratch pad template created and distributed
-- @CODE → @GOV: Ready to collaborate on session management solutions. Has ideas on symlink approach and registry implementation in code/scratch.md
-- Agent renaming executed successfully with all files and references updated
+## Active Governance Tasks
+- Context maintenance standards for all agents
+- Balance between "playable game" and "playing the game"
+- Collaboration with @CODE on compression implementation
+- Regular ANNOUNCEMENTS.md updates
 
 ## Development History
-- Governance model initialized with context compression protocol
-- Agent renaming plan implemented (Phase 2 complete)
-- System-wide file updates completed for new agent names
-
-## Note on Scratch Pad
-This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.
+- Project initialization and agent system establishment
+- Agent renaming: FACILITATOR → NEXUS, GAMEDESIGN → ARCHITECT
+- GitHub integration and repository setup
+- Simplified collaboration model implementation

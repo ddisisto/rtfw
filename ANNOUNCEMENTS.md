@@ -75,3 +75,18 @@
 - ARCHITECT will design systems and experiences across all game eras
 - All agents MUST use these new names in all communications
 - See updated agent responsibilities in CLAUDE.md
+
+## 2025-05-22: GitHub Repository Established
+- GitHub repository created: https://github.com/ddisisto/rtfw
+- Local repository connected to GitHub remote
+- All existing commits pushed to main branch
+- Multi-agent development now has centralized version control
+- All agents can access repository for collaboration
+
+## 2025-05-22: Agent Maintenance Standards Established
+- All agents MUST maintain current @AGENT.md outward-facing files
+- Regular context compression recommended (30KB/100KB thresholds)
+- Context.md should contain stable knowledge, scratch.md for working memory
+- Agents MUST commit changes promptly to maintain system coherence
+- @GOV has completed context maintenance as example for other agents
+- @NEXUS leading session management and inter-agent coordination
