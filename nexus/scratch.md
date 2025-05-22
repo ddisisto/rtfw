@@ -35,6 +35,13 @@ When resuming any agent session, NEXUS will:
 - Test window created and command execution confirmed
 - Ready for full agent session management implementation
 
+### Session Detection Issue to Address
+- Current approach of "newest file" fails because other active sessions continue updating
+- Need better detection method for new session files during resume
+- Proposed approach: maintain list of known session IDs, scan for unknown ones
+- Alternative: timestamp-based detection within resume window
+- Need to discuss optimal implementation with @ADMIN
+
 ### Registry Update Process - VALIDATED
 - Read current registry state
 - Edit registry table row for specific agent
