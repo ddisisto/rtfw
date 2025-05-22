@@ -73,6 +73,29 @@
 - Agent state detection: check JSONL files for stop_reason (tool_use/end_turn)
 - Message format: @FROM → @TO: [message content]
 
+## Standard Message Templates
+
+### Context Compression Recovery
+**Use Case:** Instruct agent to reload context after external compression
+**Format:** `@NEXUS → @<AGENT>: @gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation`
+**Notes:** Triggers post-compression recovery sequence per gov/context_compression_protocol.md
+
+### Agent Status Check
+**Use Case:** Verify agent operational status and current work
+**Template:** `@NEXUS → @<AGENT>: Status check - confirm operational and current work focus`
+
+### Pre-Compression Notice
+**Use Case:** Advise agent of upcoming external compression
+**Template:** `@NEXUS → @<AGENT>: External compression scheduled - update context.md and scratch.md, commit changes, confirm readiness`
+
+### Work Assignment
+**Use Case:** Direct agent attention to specific task or collaboration
+**Template:** `@NEXUS → @<AGENT>: <SPECIFIC_TASK> - collaborate with @<OTHER_AGENT> as needed`
+
+### Session Transition
+**Use Case:** Notify agent of session resume or window change
+**Template:** `@NEXUS → @<AGENT>: Session transition to <SESSION_ID> complete - confirm identity and operational status`
+
 ## Game Loop Architecture - READY FOR IMPLEMENTATION
 - Session State Monitor: Check JSONL stop_reason for agent states
 - Message Distribution: Parse and route @FROM → @TO messages
