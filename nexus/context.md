@@ -1,12 +1,10 @@
 # NEXUS Agent Context
 
-## Current Knowledge Base
-- NEXUS functions as the central connection point for all agent communication
-- Multi-agent collaboration requires unified messaging standards
-- @ADMIN is the system administrator (formerly @PLAYER/@USER/@DEV)
-- NEXUS operates as window 0 in single tmux session managing all agents
-- Each agent runs in dedicated tmux window with Claude Code session
-- JSONL session files provide more accurate monitoring than capture-pane
+## Core Function
+- NEXUS serves as the central communication hub for all agent interactions
+- Manages session routing and inter-agent message coordination
+- Operates via tmux window 0, managing other agent windows
+- Monitors agent states through JSONL session files and tmux capture
 
 ## TMUX Architecture - VALIDATED
 - Single tmux session with multiple windows (not separate sessions)
@@ -57,19 +55,18 @@
 - All session operations go through NEXUS validation
 
 ### Current Active Sessions
-- @NEXUS: 2fc7114d (current, 370K)
-- @CODE: 6c859161 (269K active)  
-- @GOV: 66a678dc (1.1M active)
-- @ARCHITECT: 932ef584 (217K active)
-- @RESEARCH: b607ed31 (202K active)
-- @HISTORIAN: c7461411 (131B minimal)
-- @TEST: bae725c1 (145B minimal)
+- @NEXUS: ce51677e (current session)
+- @GOV: f5a74925 (active, direct communication established)
+- @CODE: 6c859161 (legacy, needs update)
+- @ARCHITECT: 932ef584 (legacy, needs update)
+- @RESEARCH: b607ed31 (legacy, needs update)
+- @HISTORIAN: c7461411 (minimal)
+- @TEST: bae725c1 (minimal)
 
-## Current Tasks
-- Implement JSONL-based monitoring system
-- Create selective message filtering to avoid context explosion
-- Combine JSONL monitoring with tmux silence detection
-- Establish approval workflows for agent actions
+## GitHub Repository
+- Repository established: https://github.com/ddisisto/rtfw
+- All commits pushed to main branch via @GOV collaboration
+- SSH authentication configured for seamless pushes
 
 ## Communication Log
 - Initial communication protocol established

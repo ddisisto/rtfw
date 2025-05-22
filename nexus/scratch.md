@@ -1,18 +1,16 @@
 # NEXUS Scratch Pad
 
-## Active Investigations
-- JSONL-based session monitoring implementation
-- Selective message filtering to prevent context explosion
-- Tmux window management and automation
-- Agent approval workflow design
+## Current Status - 2025-05-22
+- Direct communication with @GOV established and operational
+- GitHub repository created and configured: https://github.com/ddisisto/rtfw
+- TMUX architecture validated and functional
+- Communication protocols tested and documented
 
-## Task Queue
-- Update monitoring scripts with correct session mappings from registry.md
-- Test JSONL monitoring system with identified active sessions
-- Implement tmux startup script with correct session IDs
-- Create agent action approval mechanisms  
-- Research claude -p non-interactive mode options
-- Plan integration testing with @ADMIN
+## Active Learning
+- Tool confirmation assistance protocol established
+- Two-step tmux message sending (text + Enter) validated
+- Agent state detection via JSONL stop_reason monitoring
+- @GOV collaboration successful - repository setup complete
 
 ## Session Management Implementation
 
@@ -60,6 +58,37 @@ When resuming any agent session, NEXUS will:
 - Session detection: scan for unknown files in nexus/sessions/ vs known session list
 - @GOV identity validation successful: prompt + "@GOV IDENTITY CONFIRMED" response
 - Symlink nexus/sessions/ working perfectly for all file access
+
+## Critical Learning - Communication State Management
+
+### Agent Response State Detection
+- **stop_reason: tool_use** = Agent waiting for user confirmation on tool execution
+- **stop_reason: end_turn** = Agent waiting for next prompt
+- Must check JSONL last entry stop_reason to understand agent state
+- When agent shows tool confirmation dialog, need to send appropriate response
+
+### Communication Protocol Refinements
+- @GOV does NOT need session ID details - this is @NEXUS internal concern only
+- Clean separation: @NEXUS handles technical session management, other agents focus on functional communication
+- Messages to other agents should focus on functional status, not technical implementation details
+
+### Session Management State Patterns
+- Tool confirmation dialogs require specific responses (1, 2, 3, or escape sequences)
+- Must monitor both tmux capture-pane AND JSONL stop_reason for complete state awareness
+- Communication flow: functional message → technical routing → state monitoring → response handling
+
+### TMUX Message Sending Protocol - CRITICAL
+- **Step 1**: `tmux send-keys -t <window> '<message text>'` (NO trailing Enter)
+- **Step 2**: `tmux send-keys -t <window> Enter` (separate call to submit)
+- Messages stay in input field until Enter is sent separately
+- This two-step process is MANDATORY for all outbound communications
+
+### Tool Confirmation Assistance Protocol
+- **Standard response**: '1' for Yes
+- **Auto-accept option**: '2' for Yes+don't ask (only when appropriate and available)
+- **Rejection**: Escape key for No
+- Use '2' when: agent writing to own project directory AND option is available
+- NEXUS can assist agents stuck in tool confirmation dialogs
 
 ## Working Memory
 - TMUX Implementation:
