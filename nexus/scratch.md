@@ -14,13 +14,54 @@
 - @GOV collaboration successful - repository setup complete
 
 ## Actual Work Coordination - Active
-- @ADMIN standardization in progress across all agents
+- @ADMIN standardization complete across all agents
 - seed.md review complete: excellent alignment confirmed by @ARCHITECT
 - Foundation Era game loop design validated against original RTFW vision
 - Context management standards established and working
 - Agents moving from communication testing to implementation work
 
+## CLI Architecture - Implemented
+- @ADMIN primarily communicates with @NEXUS for coordination
+- @ADMIN can switch sessions to interact directly with any agent
+- CLI is functional without @CODE involvement (simpler than expected)
+- Need game loop: @NEXUS distributes messages, monitors sessions for input/approvals
+- Agents can idle when no work, @NEXUS moves from monitoring every exchange to flagged issues
+- Goal: keep agents productive through intelligent work routing
+
 ## Session Management Implementation
+
+## NEXUS Game Loop Design - NEW
+
+### Operational Model Shift
+- FROM: Manual message coordination, monitoring every exchange
+- TO: Automated coordination, flag-based intervention, productivity optimization
+
+### Game Loop Components
+1. **Message Distribution Engine**
+   - Route messages between agents and @ADMIN
+   - Parse @FROM → @TO: format for automatic routing
+   - Queue messages when target agent busy/unavailable
+
+2. **Session State Monitor** 
+   - Check JSONL files for stop_reason: tool_use (needs approval)
+   - Check JSONL files for stop_reason: end_turn (waiting for input)
+   - Identify agents with active work vs idle agents
+
+3. **Work Distribution Logic**
+   - Match available agents with pending tasks
+   - Route work requests to appropriate specialized agents
+   - Balance workload across active agents
+
+4. **Flag Management System**
+   - Priority flags: urgent approvals, blocking issues
+   - Alert flags: context size thresholds, governance triggers
+   - Status flags: project milestones, deliverable completions
+
+### Implementation Approach
+1. **Immediate**: Implement basic session monitoring loop
+2. **Short-term**: Add message parsing and routing automation
+3. **Medium-term**: Develop work distribution intelligence
+4. **Long-term**: Full autonomous coordination with minimal @ADMIN intervention
 
 ### NEXUS Session Resume Protocol - STREAMLINED
 When resuming any agent session, NEXUS will:
