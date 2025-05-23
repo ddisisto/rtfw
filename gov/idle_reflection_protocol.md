@@ -14,15 +14,15 @@ Agents SHOULD engage in idle reflection when:
 
 ## Reflection Process
 
-### 0. Session Capture (When triggered by compression notice)
-- Record any unwritten learnings from current session
+### 0. Session Capture
+- Record any unwritten learnings from current session to scratch.md
 - Note priority changes or decisions made
 - Capture insights about what worked/didn't work
-- Document any pending thoughts before context loss
+- Document any pending thoughts to ensure context continuity
 
 ### 1. Pattern Review
 - Scan scratch.md for recurring themes
-- Identify stable knowledge ready for context.md
+- Identify stable knowledge ready for context.md or other relevant files
 - Consolidate repetitive information
 - Resolve any conflicting statements
 
@@ -39,8 +39,7 @@ Agents SHOULD engage in idle reflection when:
 - Document any new responsibilities assumed
 
 ### 4. Communication Check
-- Review sent messages awaiting responses
-- Consider re-sending if reply expected by now
+- Review message threads awaiting responses
 - Update message status in scratch.md
 - Clear resolved communication threads
 

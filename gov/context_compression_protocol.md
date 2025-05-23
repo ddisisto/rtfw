@@ -13,10 +13,9 @@ Define the framework for maintaining agent operational continuity when external 
 - **Governance**: @GOV maintains this protocol
 
 ### Agent Response Framework
-1. Execute idle reflection protocol (see gov/idle_reflection_protocol.md)
-2. Update persistent state in agent workspace
-3. Commit all changes to repository
-4. Confirm readiness to @ADMIN
+1. Execute idle reflection protocol (see @gov/idle_reflection_protocol.md)
+2. Commit all changes to repository
+3. Confirm readiness to @ADMIN
 
 ## Extension Points
 
@@ -63,6 +62,6 @@ Each agent SHOULD document in their context.md:
 
 ## Internal Context Compression
 
-**Status**: Deferred - agents currently manage own context size effectively
+**Status**: Deferred - agents currently manage own context size through reflection protocol, will be advised directly if this needs to be further condensed.
 
 **Future Consideration**: If internal compression becomes necessary, will follow similar framework with agent-specific thresholds and self-management.
