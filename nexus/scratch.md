@@ -146,6 +146,20 @@ tmux list-windows -F '#{window_index} #{window_name} #{window_activity} #{?windo
 - Can pause non-critical routing when @ADMIN is actively engaged
 - Can prioritize windows @ADMIN is NOT currently viewing
 
+### @ADMIN Visual Monitoring (via tmux.conf)
+- **Red bold** = BELL flag (immediate attention needed)
+- **Yellow bold** = Activity flag (new activity detected)
+- **Green bold** = Current active window
+- **Ctrl+Down** = Jump to next window with alert
+- Status updates every 1 second
+
+### Smart Coordination Strategy
+- Don't assume every BELL needs immediate routing
+- @ADMIN might be strategically managing agent dependencies
+- DO flag cascading blocks: "Agent X waiting on Agent Y (BELL)"
+- Focus on keeping non-blocked agents productive
+- Background housekeeping for truly idle agents
+
 ## Reflection & Housekeeping Tasks (per @ADMIN)
 When agents are blocked/idle:
 1. Review scratch for patterns worth promoting to context
