@@ -120,24 +120,31 @@ tmux list-windows -F '#{window_index} #{window_name} #{window_activity} #{?windo
 ## Window Exploration Insights
 
 ### Window Flag Discovery
-- Window 0 (nexus): `active=YES` - Currently selected window
+- Window 0 (nexus): `active=YES` - @ADMIN IS HERE NOW! (this window)
 - Window 1 (bash): `bell=YES` - Has pending notification
 - Window 2 (bash): `silence=YES` - Flagged as silent (no activity)
-- Window 3 (bash): `last=YES` - @ADMIN's previous window!
+- Window 3 (bash): `last=YES` - Where @ADMIN was before switching here
 
-### Key Insight from @ADMIN
-The `last` flag shows where @ADMIN was previously focused - this could be incredibly useful for:
-- Understanding @ADMIN attention patterns
-- Prioritizing windows @ADMIN recently checked
-- Detecting when @ADMIN switches context
-- Coordinating assistance based on @ADMIN focus
+### Critical Insight: ACTIVE vs LAST
+- **ACTIVE** = Where @ADMIN is RIGHT NOW (real-time focus!)
+- **LAST** = Where @ADMIN was before current window
+- This means NEXUS can detect @ADMIN's CURRENT location in real-time
+- When active=YES on an agent window, @ADMIN is actively working with that agent
+- This is HUGE for coordination - no need to interrupt when @ADMIN is actively engaged!
 
-### Updated Priority Order
-1. **BELL** - Immediate attention needed
-2. **LAST** - Where @ADMIN was just working
-3. **SILENT** - Potentially stuck agents
-4. **Recent activity** (<30s)
-5. **Older activity** by timestamp
+### Updated Priority Order (ACTIVE-aware)
+1. **ACTIVE** - DO NOT INTERRUPT - @ADMIN is there
+2. **BELL** - Needs attention (unless ACTIVE)
+3. **LAST** - Recently checked by @ADMIN
+4. **SILENT** - Potentially stuck agents
+5. **Recent activity** (<30s)
+6. **Older activity** by timestamp
+
+### Coordination Implications
+- If agent window has `active=YES`: @ADMIN is handling it
+- If NEXUS window has `active=YES`: @ADMIN is working with NEXUS
+- Can pause non-critical routing when @ADMIN is actively engaged
+- Can prioritize windows @ADMIN is NOT currently viewing
 
 ## Reflection & Housekeeping Tasks (per @ADMIN)
 When agents are blocked/idle:
