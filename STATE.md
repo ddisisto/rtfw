@@ -5,8 +5,9 @@
 ## Active Protocols
 
 ### Communication
-- Format: `@FROM → @TO: [message]` for all inter-agent communication
-- Hub: @NEXUS manages message routing and session coordination
+- Format: `@FROM → @TO [TOPIC]: message` with optional priority flags (!/-) 
+- Topics: RECOMMENDED for thread tracking across sessions
+- Hub: @NEXUS manages message routing with priority awareness
 - Governance: Direct @mention requests for permissions (no PR reviews)
 
 ### Context Management
