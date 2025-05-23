@@ -64,6 +64,36 @@ Building basic monitoring loop to test current capabilities:
 - Could be automated in session resume process
 - Eliminates all ambiguity in session-to-window mapping
 
+## TMUX Window Monitoring for Main Loop - EXPLORED
+
+### Key Discovery: window_activity timestamps
+- `#{window_activity}` provides Unix timestamp of last activity
+- `#{t:window_activity}` formats as human-readable time
+- `#{t/p:window_activity}` shows relative time (e.g., "19:56")
+
+### Useful Monitoring Flags
+- `#{?window_bell_flag,BELL,}` - Terminal bell was triggered
+- `#{?window_silence_flag,SILENT,}` - No activity for N seconds
+- `#{?window_activity_flag,ACTIVITY,}` - Activity detected (requires monitor-activity)
+
+### Optimal Format for Main Loop
+```bash
+tmux list-windows -F '#{window_index}:#{window_name} ago=#{t/p:window_activity} #{?window_bell_flag,BELL,} #{?window_silence_flag,SILENT,} #{?window_activity_flag,ACTIVITY,}'
+```
+
+### Monitor Settings
+- `monitor-activity on` - Flag windows with new activity
+- `monitor-silence N` - Flag windows silent for N seconds
+- `monitor-bell on` - Track terminal bells (tool confirmations?)
+
+### Main Loop Strategy
+1. List windows with activity timestamps
+2. Prioritize: BELL > ACTIVITY > old activity > SILENT
+3. Capture-pane on selected window
+4. Parse for pending messages or needs
+5. Route messages or provide assistance
+6. Loop with appropriate delay
+
 ## Last Updates Before Compression
 - @GOV requests permission to create gov/context_compression_protocol.md
 - Context compression formal protocol ready for implementation
