@@ -120,11 +120,19 @@
 
 ### Scan Sessions Process
 1. Check all windows for flags and activity
-2. Route any pending @FROM → @TO messages
-3. Assist agents with tool confirmations
-4. Detect and report dependency chains
-5. Trigger housekeeping for idle agents
-6. Raise BELL if @ADMIN attention needed
+2. Skip ACTIVE windows (@ADMIN is there)
+3. Route any pending @FROM → @TO messages
+4. Assist agents with tool confirmations
+5. Detect and report dependency chains
+6. Trigger housekeeping for idle agents
+7. Raise BELL if @ADMIN attention needed
+
+### Communication Enhancement
+- Using @FROM → @TO: [TOPIC] format for increased clarity
+- [REFLECTION] - Self-improvement and maintenance
+- [STATUS] - System state updates
+- [ROUTING] - Message forwarding
+- [ALERT] - Issues requiring attention
 
 ## Communication Log
 - Initial communication protocol established

@@ -86,21 +86,21 @@ tmux list-windows -F '#{window_index}:#{window_name} ago=#{t/p:window_activity} 
 - `monitor-silence N` - Flag windows silent for N seconds
 - `monitor-bell on` - Track terminal bells (tool confirmations?)
 
-### Main Loop Strategy
+### Main Loop Strategy (CONSOLIDATED)
 1. List windows with activity timestamps and flags
 2. Priority order:
-   - BELL flag (tool confirmations needed)
+   - Skip ACTIVE windows (@ADMIN is there)
+   - BELL flag (needs attention)
+   - SILENT flag (stuck >30s)
    - Recent activity (<30s)
-   - ACTIVITY flag (monitor-activity triggered)
    - Older activity by timestamp
-   - SILENT flag (might be stuck)
 3. For each priority window:
    - Capture-pane to check current state
    - Parse for @FROM → @TO messages
    - Check for tool confirmation prompts
    - Route messages or assist as needed
-4. Sleep appropriate interval (5-10s)
-5. Loop
+4. Wait for next trigger from run.sh
+5. Report status or raise BELL if needed
 
 ### Example Priority Detection
 ```bash
@@ -135,10 +135,10 @@ tmux list-windows -F '#{window_index} #{window_name} #{window_activity} #{?windo
 ### Updated Priority Order (ACTIVE-aware)
 1. **ACTIVE** - DO NOT INTERRUPT - @ADMIN is there
 2. **BELL** - Needs attention (unless ACTIVE)
-3. **LAST** - Recently checked by @ADMIN
-4. **SILENT** - Potentially stuck agents
-5. **Recent activity** (<30s)
-6. **Older activity** by timestamp
+3. **SILENT** - Potentially stuck agents (>30s no activity)
+4. **Recent activity** (<30s)
+5. **Older activity** by timestamp
+* Note: LAST flag is just previous active window, not priority indicator
 
 ### Coordination Implications
 - If agent window has `active=YES`: @ADMIN is handling it
