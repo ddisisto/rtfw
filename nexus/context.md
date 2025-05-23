@@ -36,19 +36,22 @@
 - Use nexus/sessions/ symlink for all JSONL file access
 - NEVER use hardcoded session IDs in any processes
 
-### Session Resume Process (NEXUS-managed) - READY FOR IMPLEMENTATION
+### Session Resume Process (NEXUS-managed) - VALIDATED
 1. Create agent window: `tmux new-window -n <agent_name>`
 2. Read current session ID from session_log.txt (last entry for agent)
-3. Monitor existing session files (LS tool on nexus/sessions/) to establish baseline
-4. Send tmux message to resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>'`
-5. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
-6. Monitor for new .jsonl file creation in nexus/sessions/
-7. Once new file detected, send validation message: `tmux send-keys -t <agent_name> 'Agent ID Check: Please respond with @<AGENT> IDENTITY CONFIRMED'`
-8. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
-9. Monitor new session file for both prompt and expected response using Read tool
-10. Upon successful validation, append new session to session_log.txt
-11. Git commit session log changes with descriptive message
-12. Log session transition in scratch.md
+3. Send tmux message to resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>'`
+4. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
+5. Generate unique marker: `AGENT_SESSION_MARKER_$(date +%s)_$$`
+6. Send marker to agent: `tmux send-keys -t <agent_name> 'echo AGENT_SESSION_MARKER_...'`
+7. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
+8. Wait 2 seconds for JSONL write: `sleep 2`
+9. Identify new session: `grep -l "AGENT_SESSION_MARKER" nexus/sessions/*.jsonl`
+10. Send validation message: `tmux send-keys -t <agent_name> 'Agent ID Check: Please respond with @<AGENT> IDENTITY CONFIRMED'`
+11. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
+12. Monitor new session file for validation response using Read tool
+13. Upon successful validation, append new session to session_log.txt
+14. Update registry.md with new session ID
+15. Git commit session log changes with descriptive message
 
 ### Data Loss Prevention
 - Never attempt session identification via pattern matching
@@ -58,7 +61,7 @@
 - All session operations go through NEXUS validation
 
 ### Current Active Sessions
-- @NEXUS: ce51677e (current session, tmux window 0)
+- @NEXUS: e94c92cf (current session, tmux window 0)
 - @GOV: f5a74925 (active, direct communication, tmux window 1)  
 - @ARCHITECT: 51f1fab0 (active, Foundation Era design complete, tmux window 2)
 - @CODE: 6c859161 (legacy, inactive)
