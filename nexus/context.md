@@ -119,13 +119,20 @@
 - Any situation requiring human judgment
 
 ### Scan Sessions Process
-1. Check all windows for flags and activity
-2. Skip ACTIVE windows (@ADMIN is there)
-3. Route any pending @FROM → @TO messages
-4. Assist agents with tool confirmations
-5. Detect and report dependency chains
-6. Trigger housekeeping for idle agents
-7. Raise BELL if @ADMIN attention needed
+1. Check windows for BELL/SILENT flags only
+2. For BELL windows:
+   - Tool prompt → Approve with '1'
+   - End turn → Route messages OR prompt reflection
+3. For SILENT windows (after BELL):
+   - Investigate why stuck
+   - Disable monitoring if persistently idle
+4. Track disabled monitoring for re-enable on new work
+5. Raise BELL to @ADMIN only for critical issues
+
+### Agent Productivity Cycle
+- Working (no flags) → BELL → Route/Reflect → Working
+- Never leave agents idle without purpose
+- Reflection keeps agents improving during downtime
 
 ### Communication Enhancement
 - Using @FROM → @TO: [TOPIC] format for increased clarity

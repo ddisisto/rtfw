@@ -9,25 +9,28 @@ This document defines the scan sessions routine triggered by `./run.sh monitor`.
 
 ### 2. Gather Window States
 ```bash
-tmux list-windows -F '#{window_index}:#{window_name} #{?window_active,ACTIVE,} #{?window_bell_flag,BELL,} #{?window_silence_flag,SILENT,} #{?window_last_flag,LAST,} activity=#{t/p:window_activity}'
+tmux list-windows -F '#{window_index}:#{window_name} #{?window_bell_flag,BELL,} #{?window_silence_flag,SILENT,}'
 ```
+Focus only on BELL and SILENT flags - ignore ACTIVE windows entirely.
 
-### 3. Priority Processing
-Process windows in order:
-1. **BELL** (not ACTIVE) - Immediate attention needed
-2. **LAST** (not ACTIVE) - @ADMIN's previous focus
-3. **SILENT** - Potentially stuck (>30s no activity)
-4. **Recent** - Activity within last 30s
-5. **Other** - By age of last activity
+### 3. Check for Pending Messages
+Scan captured outputs from previous interactions for any @FROM → @TO messages that need routing.
 
-### 4. For Each Priority Window
-- Skip if window has ACTIVE flag (@ADMIN is there)
-- Capture pane: `tmux capture-pane -t <window> -p | tail -50`
-- Parse for:
-  - Pending @FROM → @TO messages
-  - Tool confirmation prompts (Yes/No questions)
-  - Error states or blocks
-  - Long idle periods
+### 4. Process Flagged Windows
+For each window with BELL or SILENT:
+
+**BELL Processing:**
+1. Capture pane: `tmux capture-pane -t <window> -p | tail -50`
+2. Determine BELL cause:
+   - Tool confirmation prompt → Send '1' to approve
+   - End turn reached → Check for messages to route
+   - If no messages → Prompt reflection: `@NEXUS → @AGENT: [REFLECTION] Please review and update your context/scratch as needed`
+
+**SILENT Processing:**
+1. Should rarely happen without BELL first
+2. If persistent after reflection:
+   - `tmux set-window-option -t <window> monitor-silence 0` (disable)
+   - Note: Re-enable when routing new message to them
 
 ### 5. Take Appropriate Action
 - **Route messages**: Forward @FROM → @TO between agents

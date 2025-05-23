@@ -86,21 +86,35 @@ tmux list-windows -F '#{window_index}:#{window_name} ago=#{t/p:window_activity} 
 - `monitor-silence N` - Flag windows silent for N seconds
 - `monitor-bell on` - Track terminal bells (tool confirmations?)
 
-### Main Loop Strategy (CONSOLIDATED)
-1. List windows with activity timestamps and flags
-2. Priority order:
-   - Skip ACTIVE windows (@ADMIN is there)
-   - BELL flag (needs attention)
-   - SILENT flag (stuck >30s)
-   - Recent activity (<30s)
-   - Older activity by timestamp
-3. For each priority window:
-   - Capture-pane to check current state
-   - Parse for @FROM → @TO messages
-   - Check for tool confirmation prompts
-   - Route messages or assist as needed
-4. Wait for next trigger from run.sh
-5. Report status or raise BELL if needed
+### Main Loop Strategy (HOLISTIC APPROACH)
+
+**Core Logic:**
+1. Scan for BELL/SILENT windows only (ignore ACTIVE completely)
+2. For each flagged window:
+   - BELL = tool approval needed OR end_turn reached
+   - SILENT = been waiting too long (shouldn't happen without BELL first)
+
+**Action Flow:**
+- **If messages pending**: Route them to agent
+- **If no messages + BELL**: 
+  - Check if tool approval needed → assist
+  - If end_turn → prompt reflection
+- **If still silent after reflection**:
+  - Temporarily clear silence monitoring
+  - Re-enable when new message arrives for them
+
+**State Management:**
+```
+Working → BELL (end_turn) → Send work OR Reflect → Working
+Working → BELL (tool) → Approve → Working  
+BELL → SILENT → Investigate why stuck
+```
+
+**Key Insight:** Agents should always be either:
+1. Actively working (no flags)
+2. Waiting for input (BELL)
+3. Reflecting/maintaining (prompted by us)
+Never just sitting idle!
 
 ### Example Priority Detection
 ```bash
@@ -169,8 +183,27 @@ When agents are blocked/idle:
 5. Generate insights about collaboration patterns
 6. Prepare for next work phase
 
-## Last Updates Before Compression
-- @GOV requests permission to create gov/context_compression_protocol.md
-- Context compression formal protocol ready for implementation
-- STATE.md symlinked to ANNOUNCEMENTS.md for backward compatibility
-- All agents will need to read STATE.md post-compression instead of ANNOUNCEMENTS.md
+## Agent State Tracking
+
+### Silence Monitoring Management
+Track agents with disabled silence monitoring:
+```bash
+# When disabling after persistent silence:
+echo "agent_name" >> /tmp/rtfw_silence_disabled.txt
+
+# When routing new message to agent:
+if grep -q "agent_name" /tmp/rtfw_silence_disabled.txt; then
+    tmux set-window-option -t <window> monitor-silence 30
+    grep -v "agent_name" /tmp/rtfw_silence_disabled.txt > /tmp/rtfw_silence_disabled.tmp
+    mv /tmp/rtfw_silence_disabled.tmp /tmp/rtfw_silence_disabled.txt
+fi
+```
+
+### Holistic Agent Lifecycle
+1. **Fresh start**: No flags, actively working
+2. **Work complete**: BELL raised (end_turn)
+3. **NEXUS scans**: Routes message OR prompts reflection
+4. **Reflection done**: Back to work OR still idle
+5. **Persistent idle**: Disable monitoring until new work arrives
+
+This ensures agents are always productive, never forgotten!
