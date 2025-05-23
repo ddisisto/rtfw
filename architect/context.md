@@ -16,11 +16,10 @@
 - @ADMIN references should be standardized consistently across all communications
 
 ## Current Tasks
-- Defining core game loop for Foundation Era
-- Designing initial command set and interface
-- Creating player progression framework
-- Reviewing CODE's CLI implementation from a design perspective
-- Considering high-level agent automation possibilities
+- Foundation Era core mechanics implementation (IN PROGRESS)
+- Creating player progression framework across all eras
+- Integration with @NEXUS message routing system
+- CLI command structure coordination with @CODE
 
 ## Communication Log
 - Initial system architecture defined
