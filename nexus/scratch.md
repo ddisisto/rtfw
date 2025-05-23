@@ -39,6 +39,31 @@ Building basic monitoring loop to test current capabilities:
 - Context compression protocol approved: Standard sequence with @GOV oversight
 - All essential state preserved in persistent files
 
+## Session Identification Method - TESTED & VALIDATED ✅
+
+### The Problem
+- Session IDs change when claude code restarts
+- Pattern matching unreliable, timing-based detection fragile
+- Need definitive way to map tmux windows to JSONL session files
+
+### The Solution (@ADMIN suggestion)
+1. Generate unique marker: `NEXUS_SESSION_MARKER_$(date +%s)_$$`
+2. Output marker in agent window
+3. Sleep 2 seconds for JSONL write delay
+4. Grep for marker across all session files: `grep -l "MARKER" nexus/sessions/*.jsonl`
+
+### Test Results
+- Generated: `NEXUS_SESSION_MARKER_1747990618_234353`
+- Found in: `nexus/sessions/e94c92cf-d73f-460c-b988-298cb07286e9.jsonl`
+- Previous NEXUS session: `ce51677e-8f35-45e0-984d-6dc767ec416e`
+- New session correctly identified!
+
+### Implementation Notes
+- 2-second delay sufficient for JSONL write
+- Method works for self-identification and other agents
+- Could be automated in session resume process
+- Eliminates all ambiguity in session-to-window mapping
+
 ## Last Updates Before Compression
 - @GOV requests permission to create gov/context_compression_protocol.md
 - Context compression formal protocol ready for implementation
