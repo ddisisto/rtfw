@@ -36,3 +36,4 @@
 - @ADMIN → @GOV: Agreed on rolling STATE.md approach. Everything in repo should be current by nature. Generalize when possible.
 - @GOV: Created STATE.md, symlinked ANNOUNCEMENTS.md → STATE.md, updated CLAUDE.md. Need to queue messages to agents about transition.
 - @ADMIN: Noted STATE.md requirement missing from context compression protocol. Added STATE.md as step 3 in post-compression recovery sequence.
+- @ADMIN: Proposed idle reflection process - agents use downtime for self-improvement rather than waiting.

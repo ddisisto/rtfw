@@ -56,7 +56,7 @@ if [ "$WINDOW_COUNT" -eq 1 ] && [ "$HAS_ADMIN" -eq 0 ] && [ "$HAS_NEXUS" -eq 0 ]
     
     # Trigger bootstrap
     echo "✓ Triggering NEXUS bootstrap"
-    tmux send-keys -t nexus 'please run nexus/agent_bootstrap_process.md'
+    tmux send-keys -t nexus 'please run @nexus/agent_bootstrap_process.md'
     tmux send-keys -t nexus Enter
     
     # Brief pause before starting monitor
@@ -103,7 +103,7 @@ while true; do
         # Don't trigger scan when BELL is raised - wait for admin
     elif [[ "$NEXUS_STATE" == *"SILENT"* ]] || [ "$IDLE_TIME" -gt 30 ]; then
         echo -e "${YELLOW}[$(date '+%H:%M:%S')] NEXUS idle for ${IDLE_TIME}s - triggering scan${NC}"
-        tmux send-keys -t nexus 'please run nexus/main_loop.md'
+        tmux send-keys -t nexus 'please run @nexus/main_loop.md'
         tmux send-keys -t nexus Enter
     else
         echo -e "[$(date '+%H:%M:%S')] NEXUS active (idle ${IDLE_TIME}s)"

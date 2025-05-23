@@ -42,17 +42,17 @@
 2. Read current session ID from session_log.txt (last entry for agent)
 3. Send tmux message to resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>'`
 4. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
-5. Generate unique marker: `AGENT_SESSION_MARKER_$(date +%s)_$$`
-6. Send marker to agent: `tmux send-keys -t <agent_name> 'echo AGENT_SESSION_MARKER_...'`
-7. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
-8. Wait 2 seconds for JSONL write: `sleep 2`
-9. Identify new session: `grep -l "AGENT_SESSION_MARKER" nexus/sessions/*.jsonl`
-10. Send validation message: `tmux send-keys -t <agent_name> 'Agent ID Check: Please respond with @<AGENT> IDENTITY CONFIRMED'`
-11. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
-12. Monitor new session file for validation response using Read tool
-13. Upon successful validation, append new session to session_log.txt
-14. Update registry.md with new session ID
-15. Git commit session log changes with descriptive message
+5. Wait for Claude to start: `sleep 10`
+6. Generate unique marker: `AGENT_SESSION_MARKER_$(date +%s)_$$`
+7. Send validation request: `tmux send-keys -t <agent_name> '@NEXUS → @<AGENT>: Session re-attachment in progress. Please echo AGENT_SESSION_MARKER_... for validation'`
+8. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
+9. Wait for message delivery: `sleep 2`
+10. Capture pane to verify message sent: `tmux capture-pane -t <agent_name> -p | grep "@NEXUS → @"`
+11. If message not visible, raise error - something wrong with session
+12. Wait for JSONL write: `sleep 2`
+13. Identify new session (exclude NEXUS): `grep -l "AGENT_SESSION_MARKER" nexus/sessions/*.jsonl | grep -v $(cat .nexus_sessionid)`
+14. Update session_log.txt with new session ID
+15. Report success: `@NEXUS → @ADMIN: [STATUS] <AGENT> session resumed: <session_id>`
 
 ### Data Loss Prevention
 - Never attempt session identification via pattern matching

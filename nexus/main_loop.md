@@ -1,6 +1,6 @@
 # NEXUS Main Loop Process
 
-This document defines the scan sessions routine triggered by `./run.sh monitor`.
+This document defines the scan sessions routine triggered by @ADMIN running `./run.sh`.
 
 ## Main Loop Execution
 
@@ -11,7 +11,7 @@ This document defines the scan sessions routine triggered by `./run.sh monitor`.
 ```bash
 tmux list-windows -F '#{window_index}:#{window_name} #{?window_bell_flag,BELL,} #{?window_silence_flag,SILENT,}'
 ```
-Focus only on BELL and SILENT flags - ignore ACTIVE windows entirely.
+Focus only on BELL and SILENT flags - ignore ACTIVE windows entirely (@ADMIN is there interacting with respective agent).
 
 ### 3. Check for Pending Messages
 Scan captured outputs from previous interactions for any @FROM → @TO messages that need routing.
@@ -22,7 +22,7 @@ For each window with BELL or SILENT:
 **BELL Processing:**
 1. Capture pane: `tmux capture-pane -t <window> -p | tail -50`
 2. Determine BELL cause:
-   - Tool confirmation prompt → Send '1' to approve
+   - Tool confirmation prompt → Send '1' to approve, Escape to reject, or if applicable '2' to approve + auto-approve
    - End turn reached → Check for messages to route
    - If no messages → Prompt reflection: `@NEXUS → @AGENT: [REFLECTION] Please review and update your context/scratch as needed`
 
@@ -56,7 +56,6 @@ Raise BELL to @ADMIN if:
 - Monitor for direct @ADMIN → @NEXUS messages
 
 ## Intelligent Behaviors
-- Detect when monitoring is suspended (^C on run.sh)
 - Track patterns across multiple scans
 - Learn common routing paths
 - Identify recurring blockages
