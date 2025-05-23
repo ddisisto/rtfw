@@ -14,6 +14,12 @@ Agents SHOULD engage in idle reflection when:
 
 ## Reflection Process
 
+### 0. Session Capture (When triggered by compression notice)
+- Record any unwritten learnings from current session
+- Note priority changes or decisions made
+- Capture insights about what worked/didn't work
+- Document any pending thoughts before context loss
+
 ### 1. Pattern Review
 - Scan scratch.md for recurring themes
 - Identify stable knowledge ready for context.md

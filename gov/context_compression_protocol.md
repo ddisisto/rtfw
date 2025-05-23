@@ -13,10 +13,15 @@ This protocol ensures system resilience when external LLM session context compre
 - **Governance Role**: Protocol maintenance, not event management
 
 ### Agent Response to Compression Notice
-1. Update `@agent/context.md` with current critical state
-2. Update `@agent/scratch.md` with active work status
+1. Execute idle reflection protocol (see gov/idle_reflection_protocol.md)
+   - Capture session learnings and priority changes in scratch.md
+   - Consolidate and promote stable knowledge
+   - Resolve conflicts and clean workspace
+2. Update Critical State Preservation section in context.md
 3. Commit all changes to repository
 4. Confirm readiness to @ADMIN
+
+**Note**: The idle reflection protocol serves as pre-compression preparation, ensuring all current session knowledge is captured before context loss.
 
 ## Agent Self-Management Requirements
 
