@@ -135,6 +135,9 @@
 - Session management scripts created
 - Registry and monitoring systems implemented
 - JSONL monitoring approach identified as superior to capture-pane
+- Recursive monitoring architecture established (@ADMIN monitors NEXUS only)
+- Bootstrap and main loop processes documented
+- run.sh script created for system initialization and monitoring
 
 ## Note on Scratch Pad
 This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.
