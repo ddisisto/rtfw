@@ -87,12 +87,35 @@ tmux list-windows -F '#{window_index}:#{window_name} ago=#{t/p:window_activity} 
 - `monitor-bell on` - Track terminal bells (tool confirmations?)
 
 ### Main Loop Strategy
-1. List windows with activity timestamps
-2. Prioritize: BELL > ACTIVITY > old activity > SILENT
-3. Capture-pane on selected window
-4. Parse for pending messages or needs
-5. Route messages or provide assistance
-6. Loop with appropriate delay
+1. List windows with activity timestamps and flags
+2. Priority order:
+   - BELL flag (tool confirmations needed)
+   - Recent activity (<30s)
+   - ACTIVITY flag (monitor-activity triggered)
+   - Older activity by timestamp
+   - SILENT flag (might be stuck)
+3. For each priority window:
+   - Capture-pane to check current state
+   - Parse for @FROM → @TO messages
+   - Check for tool confirmation prompts
+   - Route messages or assist as needed
+4. Sleep appropriate interval (5-10s)
+5. Loop
+
+### Example Priority Detection
+```bash
+# Get windows sorted by priority
+tmux list-windows -F '#{window_index} #{window_name} #{window_activity} #{?window_bell_flag,1,0}#{?window_silence_flag,2,0}' | \
+  awk -v now=$(date +%s) '{
+    age = now - $3;
+    priority = $4;
+    if (priority == 1) pri = 0;        # BELL highest
+    else if (age < 30) pri = 1;         # Recent activity  
+    else if (priority == 0) pri = 2;    # Normal
+    else pri = 3;                       # Silent lowest
+    print pri, $0
+  }' | sort -n | cut -d' ' -f2-
+```
 
 ## Last Updates Before Compression
 - @GOV requests permission to create gov/context_compression_protocol.md
