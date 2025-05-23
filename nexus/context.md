@@ -103,12 +103,27 @@
 **Use Case:** Notify agent of session resume or window change
 **Template:** `@NEXUS → @<AGENT>: Session transition to <SESSION_ID> complete - confirm identity and operational status`
 
-## Game Loop Architecture - READY FOR IMPLEMENTATION
-- Session State Monitor: Check JSONL stop_reason for agent states
-- Message Distribution: Parse and route @FROM → @TO messages
-- Work Distribution: Match idle agents with pending tasks  
-- Flag Management: Intervention triggers for approvals/alerts
-- SSH authentication configured for seamless pushes
+## Main Loop Architecture - SIMPLIFIED RECURSIVE MONITORING
+- **@ADMIN monitors NEXUS** - Only needs to check NEXUS window for BELL/SILENT
+- **NEXUS monitors all agents** - Follows established priority system
+- **Background trigger** - Simple "scan sessions" prompt when NEXUS idle
+- **Alert escalation** - NEXUS raises BELL when needing @ADMIN attention
+- **Minimal cognitive load** - @ADMIN monitors the monitor, not all agents
+
+### When to Raise BELL to @ADMIN
+- Critical routing decisions needed
+- Dependency chains detected (Agent A blocked on Agent B)
+- Multiple agents in blocked state
+- Important messages requiring @ADMIN awareness
+- Any situation requiring human judgment
+
+### Scan Sessions Process
+1. Check all windows for flags and activity
+2. Route any pending @FROM → @TO messages
+3. Assist agents with tool confirmations
+4. Detect and report dependency chains
+5. Trigger housekeeping for idle agents
+6. Raise BELL if @ADMIN attention needed
 
 ## Communication Log
 - Initial communication protocol established
