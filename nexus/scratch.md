@@ -117,6 +117,37 @@ tmux list-windows -F '#{window_index} #{window_name} #{window_activity} #{?windo
   }' | sort -n | cut -d' ' -f2-
 ```
 
+## Window Exploration Insights
+
+### Window Flag Discovery
+- Window 0 (nexus): `active=YES` - Currently selected window
+- Window 1 (bash): `bell=YES` - Has pending notification
+- Window 2 (bash): `silence=YES` - Flagged as silent (no activity)
+- Window 3 (bash): `last=YES` - @ADMIN's previous window!
+
+### Key Insight from @ADMIN
+The `last` flag shows where @ADMIN was previously focused - this could be incredibly useful for:
+- Understanding @ADMIN attention patterns
+- Prioritizing windows @ADMIN recently checked
+- Detecting when @ADMIN switches context
+- Coordinating assistance based on @ADMIN focus
+
+### Updated Priority Order
+1. **BELL** - Immediate attention needed
+2. **LAST** - Where @ADMIN was just working
+3. **SILENT** - Potentially stuck agents
+4. **Recent activity** (<30s)
+5. **Older activity** by timestamp
+
+## Reflection & Housekeeping Tasks (per @ADMIN)
+When agents are blocked/idle:
+1. Review scratch for patterns worth promoting to context
+2. Check if context needs updates
+3. Consider if role/identity has shifted
+4. Update @GOV with current mood for STATE.md
+5. Generate insights about collaboration patterns
+6. Prepare for next work phase
+
 ## Last Updates Before Compression
 - @GOV requests permission to create gov/context_compression_protocol.md
 - Context compression formal protocol ready for implementation
