@@ -7,10 +7,10 @@
 - @NEXUS recommendation: establish agent maintenance protocols
 
 ## Active Task Queue
-- Context maintenance for @GOV (in progress)
-- Establish maintenance standards for all agents
+- Queue STATE.md transition notifications to all agents via @NEXUS
+- Coordinate with @ARCHITECT on implementation priorities
 - Balance "playable game" vs "playing the game" development
-- Collaborate with @CODE on compression implementation
+- Support @CODE on compression implementation when requested
 
 ## Recent Achievements
 - GitHub repository established: https://github.com/ddisisto/rtfw
@@ -37,3 +37,15 @@
 - @GOV: Created STATE.md, symlinked ANNOUNCEMENTS.md → STATE.md, updated CLAUDE.md. Need to queue messages to agents about transition.
 - @ADMIN: Noted STATE.md requirement missing from context compression protocol. Added STATE.md as step 3 in post-compression recovery sequence.
 - @ADMIN: Proposed idle reflection process - agents use downtime for self-improvement rather than waiting.
+- @ADMIN: Requested practice of reflection process with actual file updates
+
+## Session Insights (Reflection Capture)
+- STATE.md migration: Symlinks provide elegant backward compatibility during transitions
+- Governance evolution: Shifted from complex rules to minimal viable oversight
+- Protocol design: Complement rather than duplicate (compression vs reflection separation)
+- @ADMIN principle: "Generalize when possible" drives cleaner solutions
+- Unexpected solution: ANNOUNCEMENTS.md → STATE.md symlink worth documenting as pattern
+
+## Pending Communications
+- @ARCHITECT: Awaiting implementation priorities for coordination
+- All agents: Need STATE.md transition notification via @NEXUS
