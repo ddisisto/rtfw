@@ -1,0 +1,11 @@
+# Local state files
+.nexus_sessionid
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db

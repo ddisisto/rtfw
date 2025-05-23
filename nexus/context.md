@@ -35,6 +35,7 @@
 - Latest entry per agent is current session ID
 - Use nexus/sessions/ symlink for all JSONL file access
 - NEVER use hardcoded session IDs in any processes
+- Write current session ID to .nexus_sessionid for run.sh resume capability
 
 ### Session Resume Process (NEXUS-managed) - VALIDATED
 1. Create agent window: `tmux new-window -n <agent_name>`

@@ -1,5 +1,5 @@
 #!/bin/bash
-# RTFW Multi-Agent Management Script
+# RTFW Multi-Agent Management Script - Auto-detecting version
 
 set -e
 
@@ -16,66 +16,98 @@ if [ -z "$TMUX" ]; then
     exit 1
 fi
 
-case "$1" in
-    init)
-        echo -e "${GREEN}RTFW Agent System Initialization${NC}"
-        echo "====================================="
-        echo ""
-        echo "This script will:"
-        echo "1. Set up the monitoring system in window 0"
-        echo "2. Guide you to start NEXUS in window 1"
-        echo ""
+# Get current windows
+WINDOW_COUNT=$(tmux list-windows | wc -l)
+HAS_ADMIN=$(tmux list-windows -F '#{window_name}' | grep -c '^admin$' || true)
+HAS_NEXUS=$(tmux list-windows -F '#{window_name}' | grep -c '^nexus$' || true)
+
+# Determine state and action
+if [ "$WINDOW_COUNT" -eq 1 ] && [ "$HAS_ADMIN" -eq 0 ] && [ "$HAS_NEXUS" -eq 0 ]; then
+    # Only one window exists, need full init
+    echo -e "${GREEN}RTFW Agent System - Initializing${NC}"
+    echo "================================="
+    echo ""
+    
+    # Rename current window to admin
+    tmux rename-window admin
+    echo "✓ Renamed window 0 to 'admin'"
+    
+    # Create nexus window
+    tmux new-window -n nexus
+    echo "✓ Created 'nexus' window"
+    
+    # Check for session ID file
+    if [ -f ".nexus_sessionid" ]; then
+        SESSION_ID=$(cat .nexus_sessionid)
+        echo "✓ Found previous NEXUS session: $SESSION_ID"
         
-        # Check current window
-        CURRENT_WINDOW=$(tmux display -p '#{window_index}')
-        if [ "$CURRENT_WINDOW" != "0" ]; then
-            echo -e "${RED}Error: Please run this from window 0${NC}"
-            exit 1
-        fi
-        
-        echo -e "${YELLOW}Action Required:${NC}"
-        echo "1. Switch to window 1: Ctrl+Right or 'tmux select-window -t 1'"
-        echo "2. Start NEXUS agent: 'claude' (or resume existing session)"
-        echo "3. Return here and press Enter to continue"
-        echo ""
-        read -p "Press Enter when NEXUS is running in window 1..."
-        
-        echo -e "${GREEN}Triggering NEXUS bootstrap...${NC}"
-        tmux send-keys -t 1 'please run nexus/agent_bootstrap_process.md' Enter
-        
-        echo ""
-        echo -e "${GREEN}Initialization complete!${NC}"
-        echo "Next step: Run './run.sh monitor' to start the monitoring loop"
-        ;;
-        
-    monitor)
-        echo -e "${GREEN}RTFW Monitoring Loop Started${NC}"
-        echo "============================="
-        echo "Monitoring NEXUS (window 1) for BELL/SILENT states"
-        echo "Press Ctrl+C to stop monitoring"
-        echo ""
-        
-        while true; do
-            # Check NEXUS window state
-            NEXUS_STATE=$(tmux list-windows -F '#{window_index} #{window_name} #{?window_bell_flag,BELL,} #{?window_silence_flag,SILENT,}' | grep '^1 ')
-            
-            # Check if NEXUS needs attention or is idle
-            if [[ "$NEXUS_STATE" == *"BELL"* ]]; then
-                echo -e "${RED}[$(date '+%H:%M:%S')] NEXUS requires attention (BELL)${NC}"
-            elif [[ "$NEXUS_STATE" == *"SILENT"* ]] || [[ $(tmux list-windows -F '#{window_index} #{window_activity}' | grep '^1 ' | awk -v now=$(date +%s) '{print now - $2}') -gt 30 ]]; then
-                echo -e "${YELLOW}[$(date '+%H:%M:%S')] Triggering NEXUS scan...${NC}"
-                tmux send-keys -t 1 'please run nexus/main_loop.md' Enter
-            fi
-            
-            sleep 10
-        done
-        ;;
-        
-    *)
-        echo "Usage: $0 {init|monitor}"
-        echo ""
-        echo "  init    - Initialize the RTFW agent system"
-        echo "  monitor - Start the NEXUS monitoring loop"
-        exit 1
-        ;;
-esac
+        # Resume NEXUS session
+        tmux send-keys -t nexus "claude --resume $SESSION_ID"
+        tmux send-keys -t nexus Enter
+    else
+        echo "✓ No previous session found, starting fresh"
+        tmux send-keys -t nexus "claude"
+        tmux send-keys -t nexus Enter
+    fi
+    
+    # Wait for claude to launch
+    echo -e "${YELLOW}Waiting for Claude to start...${NC}"
+    sleep 10
+    
+    # Trigger bootstrap
+    echo "✓ Triggering NEXUS bootstrap"
+    tmux send-keys -t nexus 'please run nexus/agent_bootstrap_process.md'
+    tmux send-keys -t nexus Enter
+    
+    # Brief pause before starting monitor
+    sleep 2
+    echo ""
+    echo -e "${GREEN}Initialization complete! Starting monitor...${NC}"
+    echo ""
+    
+elif [ "$HAS_ADMIN" -eq 1 ] && [ "$HAS_NEXUS" -eq 1 ]; then
+    # Both windows exist, go straight to monitoring
+    echo -e "${GREEN}RTFW Agent System - Monitoring Active${NC}"
+    echo "====================================="
+    echo ""
+    
+else
+    # Invalid state
+    echo -e "${RED}Error: Invalid window configuration${NC}"
+    echo "Found $WINDOW_COUNT windows:"
+    tmux list-windows -F '  #{window_index}: #{window_name}'
+    echo ""
+    echo "Expected either:"
+    echo "  - Single window (will auto-initialize)"
+    echo "  - Both 'admin' and 'nexus' windows"
+    exit 1
+fi
+
+# MONITORING LOOP
+echo "Monitoring NEXUS for activity..."
+echo "Press Ctrl+C to stop"
+echo ""
+
+while true; do
+    # Get NEXUS window state
+    NEXUS_STATE=$(tmux list-windows -F '#{window_name} #{?window_bell_flag,BELL,} #{?window_silence_flag,SILENT,} #{window_activity}' | grep '^nexus ')
+    
+    # Extract activity timestamp
+    ACTIVITY=$(echo "$NEXUS_STATE" | awk '{print $NF}')
+    NOW=$(date +%s)
+    IDLE_TIME=$((NOW - ACTIVITY))
+    
+    # Check state and trigger scan if needed
+    if [[ "$NEXUS_STATE" == *"BELL"* ]]; then
+        echo -e "${RED}[$(date '+%H:%M:%S')] NEXUS requires attention (BELL)${NC}"
+        # Don't trigger scan when BELL is raised - wait for admin
+    elif [[ "$NEXUS_STATE" == *"SILENT"* ]] || [ "$IDLE_TIME" -gt 30 ]; then
+        echo -e "${YELLOW}[$(date '+%H:%M:%S')] NEXUS idle for ${IDLE_TIME}s - triggering scan${NC}"
+        tmux send-keys -t nexus 'please run nexus/main_loop.md'
+        tmux send-keys -t nexus Enter
+    else
+        echo -e "[$(date '+%H:%M:%S')] NEXUS active (idle ${IDLE_TIME}s)"
+    fi
+    
+    sleep 10
+done

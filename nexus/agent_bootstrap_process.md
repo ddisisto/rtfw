@@ -9,9 +9,10 @@ This document is executed when @ADMIN runs `./run.sh init` and confirms NEXUS st
 - Wait 2 seconds for JSONL write
 - Identify own session: `grep -l "NEXUS_BOOTSTRAP" nexus/sessions/*.jsonl`
 - Update nexus/session_log.txt with new session ID
+- Write session ID to .nexus_sessionid: `echo "$SESSION_ID" > /home/daniel/prj/rtfw/.nexus_sessionid`
 
 ### 2. Verify Environment
-- Confirm tmux window 1: `tmux display -p '#{window_index}'`
+- Confirm in nexus window: `tmux display -p '#{window_name}'` should show "nexus"
 - Check for existing agent windows: `tmux list-windows`
 - Verify nexus/sessions/ symlinks are functional
 - Confirm git repository access
@@ -19,13 +20,13 @@ This document is executed when @ADMIN runs `./run.sh init` and confirms NEXUS st
 ### 3. Initialize Monitoring
 - Set window monitoring options:
   ```bash
-  tmux set-window-option -t 1 monitor-bell on
-  tmux set-window-option -t 1 monitor-silence 30
+  tmux set-window-option monitor-bell on
+  tmux set-window-option monitor-silence 30
   ```
 
 ### 4. Report Status
-- Output: `@NEXUS → @ADMIN: Bootstrap complete. Session <ID> active in window 1.`
-- Output: `@NEXUS → @ADMIN: Ready for monitoring loop. Run './run.sh monitor' to begin.`
+- Output: `@NEXUS → @ADMIN: Bootstrap complete. Session <ID> active in nexus window.`
+- Output: `@NEXUS → @ADMIN: Ready for monitoring loop.`
 
 ### 5. Wait State
 - Enter idle state awaiting main loop trigger
