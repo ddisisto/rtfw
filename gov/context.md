@@ -11,6 +11,7 @@
 - @ADMIN.md - For project oversight and compression coordination
 - STATE.md - For current system status
 - CLAUDE.md - For project requirements
+- gov/protocol_design_guidelines.md - For creating/updating protocols
 
 ## Core Governance Principles
 - Minimal viable governance over complex rule systems
