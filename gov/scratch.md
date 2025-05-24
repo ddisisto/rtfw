@@ -39,6 +39,13 @@
 - @ADMIN: Proposed idle reflection process - agents use downtime for self-improvement rather than waiting.
 - @ADMIN: Requested practice of reflection process with actual file updates
 
+## Lexicon Patterns (New Responsibility)
+- "Bootstrap Protocol": Agent initialization sequence
+- "Responsive governance": Diagnosis when symptoms appear
+- "Protocols as frameworks": Extensible rather than prescriptive
+- "Minimal viable governance": Just enough structure
+- "System learning": Decentralized knowledge accumulation
+
 ## Session Insights (Consolidation Capture)
 - STATE.md migration: Symlinks provide elegant backward compatibility during transitions
 - Governance evolution: Shifted from complex rules to minimal viable oversight
