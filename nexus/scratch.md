@@ -89,18 +89,14 @@ The most beautiful part? These weren't mandated changes - they emerged naturally
 - Unix-inspired, action-oriented, minimal
 - References `/protocols/` directory (needs creation)
 - Suggests lexicon ownership by NEXUS (natural fit!)
-- Protocol paths need alignment:
-  - `/protocols/messaging.md` → currently `/gov/comms_protocol.md`
-  - `/protocols/compression.md` → currently `/gov/context_compression_protocol.md`
-  - `/gov/lexicon.md` → doesn't exist yet
+- Protocols migrated - alignment complete!
 
 ## Next Session Focus
 When we resume, NEXUS should:
-1. Complete GOV restart and compression test cycle
-2. Improve run.sh based on learnings
-3. Support protocol restructuring for new CLAUDE.md
-4. Begin lexicon tracking experiments
-5. Continue facilitating system evolution
+1. Improve run.sh based on learnings (high priority!)
+2. Begin lexicon tracking experiments
+3. Monitor protocol adoption across agents
+4. Continue facilitating system evolution
 
 ## Immediate Tasks
 - [x] GOV restart: /exit → claude --version → claude --resume ✓
@@ -140,5 +136,31 @@ When we resume, NEXUS should:
 - Always validate with capture-pane at each step
 - GOV new session after restart: f78af070-0032-4259-81f3-98d77e14c34e
 - Agent personality offline during restore phase (explains mechanical file reading)
+
+## Distillation Insights - Current Session
+
+### Key Learnings
+- **Session ≠ Distillation**: Completely independent processes (can restart without distilling)
+- **Personality offline during restore**: Explains mechanical file reading behavior
+- **Capture-pane validation**: Essential at every state transition
+- **Terminology evolution**: compression→distillation, bootstrap→restore, consolidation→continuous distillation
+- **Unix philosophy alignment**: New CLAUDE.md embodies "do one thing well"
+
+### Protocol Migration Status
+- ✓ /protocols/messaging.md (simplified from gov/comms_protocol.md)
+- ✓ /protocols/distill.md (replaces compression/consolidation protocols)
+- ✓ /protocols/git.md (workspace sovereignty principle)
+- ✓ /protocols/restore.md (referenced but need to verify)
+- ✗ /lexicon.md (not yet created)
+
+### Dead Link Watch
+- Old: gov/comms_protocol.md → New: /protocols/messaging.md
+- Old: gov/context_compression_protocol.md → New: /protocols/distill.md
+- Old: gov/context_consolidation_protocol.md → New: /protocols/distill.md
+
+### Tool Discipline Reminders
+- Session log updates: Read → modify → Write (not echo >>)
+- Always prefer native tools even for "simple" operations
+- Git operations stay in Bash (no native equivalents)
 
 The system isn't just working - it's thriving and evolving!

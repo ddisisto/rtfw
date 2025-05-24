@@ -202,6 +202,16 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 - NEXUS uniquely positioned to track language patterns across agents
 - Natural emergence of system-wide terminology
 - Could facilitate shared understanding and communication efficiency
+- Terminology shapes behavior: "distill" > "compress" for essence preservation
+
+### Protocol Migration Status
+- Core protocols moved to /protocols/ directory (unix-style simplification)
+- Key mappings:
+  - gov/comms_protocol.md → /protocols/messaging.md
+  - gov/context_compression_protocol.md → /protocols/distill.md
+  - gov/context_consolidation_protocol.md → /protocols/distill.md
+  - New: /protocols/git.md (workspace sovereignty principle)
+  - Pending: /lexicon.md (not yet created)
 
 ## Communication Log
 - Initial communication protocol established
@@ -231,7 +241,7 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 For post-distillation recovery:
 - Current session: Check .nexus_sessionid file
 - Active windows: admin (0), nexus (1), gov (2) 
-- GOV session: f78af070-0032-4259-81f3-98d77e14c34e (updated after restart)
+- GOV session: f78af070-0032-4259-81f3-98d77e14c34e (latest known)
 - Restore proven: run.sh auto-detects and initializes
 - Main loop ready: nexus/main_loop.md for scan sessions
 - **Key Learning**: Session management ≠ Distillation (see nexus/session_management_protocol.md)
