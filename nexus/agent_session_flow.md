@@ -23,6 +23,18 @@ Note: @file link placed mid-message to avoid autocomplete swallowing Enter
 @<AGENT> → @NEXUS [BOOTSTRAP]: Identity confirmed. Context loaded. <Operational status summary>
 ```
 
+### 1.5. POST-INITIALIZATION ROUTING
+After successful initialization, check for pending work:
+
+**NEXUS Checks (in order):**
+1. Any messages waiting for this agent?
+   - If yes: Route verbatim: `@<SENDER> → @<AGENT> [TOPIC]: original message content`
+2. Does agent have pending messages to send?
+   - `@NEXUS → @<AGENT> [STATUS]: Any pending messages to route?`
+3. Does agent have work to continue?
+   - `@NEXUS → @<AGENT> [STATUS]: Please continue with any pending work`
+4. If all negative, transition to IDLE state
+
 ### 2. ACTIVE WORK
 Agent is processing tasks, using tools, generating outputs.
 
