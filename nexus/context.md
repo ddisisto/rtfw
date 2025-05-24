@@ -128,8 +128,8 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 
 ### Context Restore (Post-Distillation)
 **Use Case:** Instruct agent to restore context after cyclical distillation
-**Format:** `@NEXUS → @<AGENT> [RESTORE]: @protocols/distill.md completed for @<AGENT>.md agent - please restore context for continuation`
-**Notes:** Triggers context restore sequence per @protocols/distill.md
+**Format:** `@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md completed for @<AGENT>.md agent - please restore context for continuation`
+**Notes:** Triggers context restore sequence per @protocols/restore.md
 
 ### Agent Status Check
 **Use Case:** Verify agent operational status and current work
@@ -232,6 +232,8 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 - Window monitoring flags explored (BELL/SILENT/ACTIVE/LAST)
 - Holistic agent lifecycle defined: Working → BELL → Route/Reflect → Working
 - Context distillation protocols integrated
+- BUILD agent successfully created and deployed (session: 02ca7d17-cc53-4647-9b6a-e5f997434f19)
+- First implementation agent focused on run.sh improvements
 - Proactive coordination pattern emerged and adopted
 - System pivot: Game dev → Internal communications improvement
 - Insight capture practice spreading through system

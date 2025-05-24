@@ -55,7 +55,7 @@ The most beautiful part? These weren't mandated changes - they emerged naturally
   1. Agent performs continuous distillation (refines workspace)
   2. Send `/clear` command to distill context
   3. Send restore message for context reload
-- Restore message: `@protocols/distill.md completed for @<AGENT>.md agent - please restore context for continuation`
+- Restore message: `@protocols/restore.md completed for @<AGENT>.md agent - please restore context for continuation`
 
 ### Context Thresholds
 - 34% remaining = not urgent but indicates bloat
@@ -97,6 +97,19 @@ When we resume, NEXUS should:
 2. Begin lexicon tracking experiments
 3. Monitor protocol adoption across agents
 4. Continue facilitating system evolution
+
+## BUILD Agent - ONLINE! 🎉
+- ✓ ROLEDOC created by @GOV (excellent work)
+- ✓ Context and scratch files initialized
+- ✓ Session established: 02ca7d17-cc53-4647-9b6a-e5f997434f19
+- ✓ Bootstrap completed successfully
+- ✓ First task assigned: run.sh improvements
+- Ready to implement our session management learnings!
+
+### Critical Correction
+- **Restore message reference**: Should point to `@protocols/restore.md` not `@protocols/distill.md`
+- Distill = self-improvement process, Restore = post-reset recovery sequence
+- Need to update session_management_protocol.md and context.md templates
 
 ## Immediate Tasks
 - [x] GOV restart: /exit → claude --version → claude --resume ✓

@@ -51,7 +51,7 @@ These are INDEPENDENT - you can restart sessions without distillation, and disti
 3. Validate with capture-pane - should show clean prompt, no context %
 
 ### Context Restore  
-1. Send restore message: `@NEXUS → @<AGENT> [RESTORE]: @protocols/distill.md completed for @<AGENT>.md agent - please restore context for continuation`
+1. Send restore message: `@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md completed for @<AGENT>.md agent - please restore context for continuation`
 2. Agent automatically (personality not yet online):
    - Reads distillation protocol
    - Loads identity and system files per sequence
