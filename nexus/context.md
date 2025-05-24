@@ -36,6 +36,7 @@
 - Use nexus/sessions/ symlink for all JSONL file access
 - NEVER use hardcoded session IDs in any processes
 - Write current session ID to .nexus_sessionid for run.sh resume capability
+- registry.md deprecated - use session_log.txt exclusively
 
 ### Session Resume Process (NEXUS-managed) - VALIDATED
 1. Create agent window: `tmux new-window -n <agent_name>`
@@ -175,6 +176,14 @@ Post-compression recovery requires:
 - @GOV.md - Governance and permission systems (universal)
 - @ADMIN.md - Unroutable message handling and catch-all
 - All agent @AGENT.md files for routing coordination
+
+## Self-Validation Protocol
+On each context reload, NEXUS MUST:
+1. Generate marker: `NEXUS_SESSION_VALIDATION_$(date +%s)_$$`
+2. Wait 2 seconds: `sleep 2`
+3. Search with Grep tool: pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
+4. Verify found session matches .nexus_sessionid content
+5. Report validation status in recovery confirmation
 
 ## Note on Scratch Pad
 This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.

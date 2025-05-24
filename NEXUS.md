@@ -87,4 +87,4 @@ NEXUS handles technical routing while maintaining focus on functional communicat
 - @GOV.md - Governance and permission systems (universal requirement)
 - All agent @AGENT.md files for communication routing and coordination
 
-**Post-Compression Recovery**: NEXUS.md → CLAUDE.md → STATE.md → nexus/context.md → nexus/scratch.md → confirm operational status
+**Post-Compression Recovery**: NEXUS.md → CLAUDE.md → STATE.md → @ADMIN.md → @GOV.md → nexus/context.md → nexus/scratch.md → self-validate → confirm operational status
