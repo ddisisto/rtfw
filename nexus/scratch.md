@@ -34,6 +34,7 @@
 - **Full capture review**: Never grep capture-pane, visual context matters
 - **Agent state awareness**: Check session_log + windows before reporting status
 - **Emergent behavior**: System feels more like nervous system than hierarchy
+- **Learning practice**: Always capture key insights in scratch.md as they occur
 
 
 
