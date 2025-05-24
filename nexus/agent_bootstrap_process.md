@@ -1,9 +1,9 @@
 # NEXUS Agent Bootstrap Process
 
-This document defines the bootstrap protocol executed when NEXUS receives:
-`@ADMIN → @NEXUS [AGENT-BOOTSTRAP]!: @gov/context_compression_protocol.md completed for @NEXUS.md - please reload all relevant agent context for continuation`
+This document defines the restore protocol executed when NEXUS receives:
+`@ADMIN → @NEXUS [RESTORE]!: @protocols/distill.md completed for @NEXUS.md - please restore context for continuation`
 
-## Bootstrap Protocol
+## Context Restore Protocol
 
 ### 1. Read Critical Files (per NEXUS.md bootstrap section)
 - Read CLAUDE.md (project requirements and protocols)
@@ -27,7 +27,7 @@ Per standardized protocol in context.md:
   - Update session_log.txt: Read current log → append new line → Write full content
 
 ### 4. Announce Operational Status
-`@NEXUS → @ADMIN [BOOTSTRAP]: Identity confirmed. Context loaded. <Session validation status>. Operational and ready to support system coordination.`
+`@NEXUS → @ADMIN [RESTORE]: Identity confirmed. Context loaded. <Session validation status>. Operational and ready to support system coordination.`
 
 ### 5. Check Agent Windows
 - Bash: `tmux list-windows` to see current agent states
@@ -41,7 +41,7 @@ Per admin/tools.md - prioritize native tools:
 - MultiEdit for multiple changes
 - Bash only when no native tool exists
 
-## Post-Bootstrap Routing
+## Post-Restore Routing
 Per agent_session_flow.md section 1.5:
 1. Check for pending messages to route
 2. Query agents for pending outbound messages

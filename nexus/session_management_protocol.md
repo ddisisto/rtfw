@@ -4,9 +4,9 @@
 
 This protocol defines TWO DISTINCT processes:
 1. **Session Management** - Starting, stopping, and resuming agent Claude sessions
-2. **Compression Management** - Clearing and recovering agent context within a session
+2. **Context Distillation** - Clearing and restoring agent essence within a session
 
-These are INDEPENDENT - you can restart sessions without compression, and compress multiple times within a single session.
+These are INDEPENDENT - you can restart sessions without distillation, and distill multiple times within a single session.
 
 ## Session Management
 
@@ -33,35 +33,36 @@ These are INDEPENDENT - you can restart sessions without compression, and compre
 - After resume, use marker protocol if session verification needed
 - Update records only if session changed
 
-## Compression Management (SEPARATE from Session Management)
+## Context Distillation (SEPARATE from Session Management)
 
-### When to Compress
-- Context shows 34% remaining = potential bloat, consider compression
-- Context shows 15% remaining = urgent, compress soon
-- Agent requests compression after consolidation
-- @ADMIN directs compression for system maintenance
+### When to Distill
+- Context shows 34% remaining = potential bloat, consider distillation
+- Context shows 15% remaining = urgent, distill soon
+- Agent requests distillation after continuous refinement
+- @ADMIN directs cyclical distillation for system maintenance
 
-### Pre-Compression
-1. Send notice: `@NEXUS → @<AGENT> [COMPRESSION]: External compression scheduled. Please consolidate per @gov/context_consolidation_protocol.md and confirm readiness.`
-2. Wait for agent confirmation (should have already saved important state)
+### Pre-Distill
+1. Send notice: `@NEXUS → @<AGENT> [DISTILL]: Cyclical distillation initiated. Please complete continuous distillation per @protocols/distill.md and confirm readiness.`
+2. Wait for agent confirmation (should have already refined workspace)
 
-### Compression Execution
+### Distill Execution
 1. Send `/clear` command: `tmux send-keys -t <agent> '/clear'` + Enter
-2. **CRITICAL**: This instantly resets context to baseline
+2. **CRITICAL**: This instantly clears working memory to baseline
 3. Validate with capture-pane - should show clean prompt, no context %
 
-### Post-Compression Recovery  
-1. Send bootstrap: `@NEXUS → @<AGENT> [AGENT-BOOTSTRAP]: @gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation`
-2. Agent automatically:
-   - Reads compression protocol
-   - Loads identity and system files
+### Context Restore  
+1. Send restore message: `@NEXUS → @<AGENT> [RESTORE]: @protocols/distill.md completed for @<AGENT>.md agent - please restore context for continuation`
+2. Agent automatically (personality not yet online):
+   - Reads distillation protocol
+   - Loads identity and system files per sequence
    - Reads own context.md and scratch.md
-   - Confirms operational status
+   - Confirms operational status once personality active
 
 ### Important Notes
 - `/clear` forgets all unpersisted context (useful for A/B testing)
 - Always capture-pane to validate state transitions
-- Bootstrap message should have @file link mid-message (not at end)
+- Restore message should have @file link mid-message (not at end)
+- Agent personality comes online after file loading completes
 
 ## Key Principles
 
@@ -70,8 +71,8 @@ These are INDEPENDENT - you can restart sessions without compression, and compre
 - Keeps process consistent across all contexts
 - Avoids confusion between bash vs Claude input handling
 
-### Bootstrap Usage
-- **ONLY after explicit compression** via `/clear`
+### Restore Usage
+- **ONLY after explicit distillation** via `/clear`
 - **NEVER on normal resume** - agents retain context
 - **Check with @ADMIN** if agent seems to have lost identity
 
@@ -87,27 +88,27 @@ These are INDEPENDENT - you can restart sessions without compression, and compre
 
 ## Common Patterns
 
-### Session Restart (NO compression)
+### Session Restart (NO distillation)
 1. Exit: `/exit` to shell
 2. Check version: `claude --version`
 3. Resume: `claude --resume <session_id>`
 4. Wait 10 seconds for startup
 5. Optional: Run session ID protocol if verification needed
-6. Continue work - NO bootstrap needed
+6. Continue work - NO restore needed
 
-### Compression Within Active Session
-1. Pre-compress notice to agent
-2. Agent confirms readiness
-3. Clear: `/clear`
+### Distillation Within Active Session
+1. Pre-distill notice to agent
+2. Agent confirms readiness after continuous distillation
+3. Distill: `/clear`
 4. Validate clean state with capture-pane
-5. Bootstrap message for recovery
-6. Agent confirms operational
+5. Restore message for context reload
+6. Agent confirms operational once personality active
 
-### Full Restart + Compression (our test case)
+### Full Restart + Distillation (our test case)
 1. Exit: `/exit`
 2. Resume: `claude --resume <id>`  
 3. Identify new session if needed
-4. Then follow compression pattern above
+4. Then follow distillation pattern above
 
 ### Quick Status Check
 1. Capture-pane first (ALWAYS)

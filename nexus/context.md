@@ -65,8 +65,8 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 
 ### Session Management Protocols
 - **Full protocol**: See nexus/session_management_protocol.md
-- **Key distinction**: Session restart (resume) vs Compression (/clear) are SEPARATE
-- **Bootstrap**: Only after /clear, never after simple resume
+- **Key distinction**: Session restart (resume) vs Distillation (/clear) are SEPARATE
+- **Restore**: Only after /clear, never after simple resume
 
 ### Session Identification Protocol - STANDARDIZED
 
@@ -126,26 +126,26 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 
 ## Standard Message Templates
 
-### Context Compression Recovery
-**Use Case:** Instruct agent to reload context after external compression
-**Format:** `@NEXUS → @<AGENT>: @gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation`
-**Notes:** Triggers post-compression recovery sequence per gov/context_compression_protocol.md
+### Context Restore (Post-Distillation)
+**Use Case:** Instruct agent to restore context after cyclical distillation
+**Format:** `@NEXUS → @<AGENT> [RESTORE]: @protocols/distill.md completed for @<AGENT>.md agent - please restore context for continuation`
+**Notes:** Triggers context restore sequence per @protocols/distill.md
 
 ### Agent Status Check
 **Use Case:** Verify agent operational status and current work
-**Template:** `@NEXUS → @<AGENT>: Status check - confirm operational and current work focus`
+**Template:** `@NEXUS → @<AGENT> [STATUS]: Status check - confirm operational and current work focus`
 
-### Pre-Compression Notice
-**Use Case:** Advise agent of upcoming external compression
-**Template:** `@NEXUS → @<AGENT>: External compression scheduled - update context.md and scratch.md, commit changes, confirm readiness`
+### Pre-Distillation Notice
+**Use Case:** Advise agent of upcoming cyclical distillation
+**Template:** `@NEXUS → @<AGENT> [DISTILL]: Cyclical distillation initiated. Please complete continuous distillation per @protocols/distill.md and confirm readiness`
 
 ### Work Assignment
 **Use Case:** Direct agent attention to specific task or collaboration
 **Template:** `@NEXUS → @<AGENT>: <SPECIFIC_TASK> - collaborate with @<OTHER_AGENT> as needed`
 
 ### Reflection Prompt
-**Use Case:** Prompt idle agents to perform context consolidation
-**Template:** `@NEXUS → @<AGENT> [REFLECTION]: No active work detected. Please perform context consolidation per @gov/context_consolidation_protocol.md`
+**Use Case:** Prompt idle agents to perform continuous distillation
+**Template:** `@NEXUS → @<AGENT> [REFLECTION]: No active work detected. Please perform continuous distillation per @protocols/distill.md`
 
 ### Session Transition
 **Use Case:** Notify agent of session resume or window change
@@ -171,7 +171,8 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 - Using @FROM → @TO [TOPIC]: message format (topics recommended)
 - Priority flags: ! (urgent/blocked), - (low priority)
 - Standard topics:
-  - [COMPRESSION] - Context compression coordination
+  - [DISTILL] - Context distillation coordination
+  - [RESTORE] - Post-distillation context restoration
   - [STATUS] - System state updates  
   - [ROUTING] - Message forwarding
   - [REFLECTION] - Self-improvement tasks
@@ -220,23 +221,23 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 - Session identification via unique markers validated
 - Window monitoring flags explored (BELL/SILENT/ACTIVE/LAST)
 - Holistic agent lifecycle defined: Working → BELL → Route/Reflect → Working
-- Context compression protocols integrated
+- Context distillation protocols integrated
 - Proactive coordination pattern emerged and adopted
 - System pivot: Game dev → Internal communications improvement
 - Insight capture practice spreading through system
 - ROLEDOC refresh initiated for cleaner agent interfaces
 
 ## Critical State Preservation
-For post-compression recovery:
+For post-distillation recovery:
 - Current session: Check .nexus_sessionid file
 - Active windows: admin (0), nexus (1), gov (2) 
 - GOV session: f78af070-0032-4259-81f3-98d77e14c34e (updated after restart)
-- Bootstrap proven: run.sh auto-detects and initializes
+- Restore proven: run.sh auto-detects and initializes
 - Main loop ready: nexus/main_loop.md for scan sessions
-- **Key Learning**: Session management ≠ Compression (see nexus/session_management_protocol.md)
+- **Key Learning**: Session management ≠ Distillation (see nexus/session_management_protocol.md)
 
 ## Required Reading Dependencies
-Post-compression recovery requires:
+Post-distillation recovery requires:
 - @GOV.md - Governance and permission systems (universal)
 - @ADMIN.md - Unroutable message handling and catch-all
 - All agent @AGENT.md files for routing coordination

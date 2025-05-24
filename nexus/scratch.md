@@ -47,26 +47,32 @@ The most beautiful part? These weren't mandated changes - they emerged naturally
 - Solutions: double Enter, trailing space, or mid-message placement
 - Bootstrap format updated accordingly
 
-### Manual Compression Process (Critical Knowledge)
-- **CRITICAL**: `/clear` is THE command that performs context reset
+### Context Distillation Process (Updated Terminology)
+- **CRITICAL**: `/clear` is THE command that performs distillation
 - Without /clear, agent continues with bloated context (34% = potential bloat, 15% = urgent)
 - Auto-compact has recency bias - manual /clear gives control
 - **PROPER WORKFLOW**: 
-  1. Agent consolidates knowledge (saves to context.md/scratch.md)
-  2. Send `/clear` command to reset context
-  3. Send bootstrap message for re-initialization
-- Bootstrap message: `@gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation`
+  1. Agent performs continuous distillation (refines workspace)
+  2. Send `/clear` command to distill context
+  3. Send restore message for context reload
+- Restore message: `@protocols/distill.md completed for @<AGENT>.md agent - please restore context for continuation`
 
 ### Context Thresholds
 - 34% remaining = not urgent but indicates bloat
-- 15% remaining = urgent (need space for consolidation, coherence dropping)
+- 15% remaining = urgent (need space for continuous distillation, coherence dropping)
 - Manual /clear prevents hitting these limits
 
-### Session vs Compression (DISTINCT CONCEPTS)
-- Session restart ≠ compression
-- Can have multiple compressions per session
-- Can have session restarts with no compression
-- /clear is the actual compression trigger
+### Session vs Distillation (DISTINCT CONCEPTS)
+- Session restart ≠ distillation
+- Can have multiple distillations per session
+- Can have session restarts with no distillation
+- /clear is the actual distillation trigger
+
+### Terminology Migration
+- **OLD**: compression, consolidation, bootstrap
+- **NEW**: distillation (continuous/cyclical), restore
+- **Watch for**: Outdated references in protocols, messages, and agent contexts
+- **Update**: All [COMPRESSION] topics to [DISTILL], bootstrap to restore
 
 ### Session Management Clarifications
 - **Bootstrap only after explicit compression** (not on resume!)
@@ -120,18 +126,19 @@ When we resume, NEXUS should:
 - Error handling for common failure modes
 - Integration with new session management patterns
 
-## Validated Compression Workflow
-1. **Pre-compression**: Ensure agent has consolidated knowledge
-2. **Clear**: Send `/clear` command (instant, creates fresh context)
+## Validated Distillation Workflow
+1. **Pre-distill**: Ensure agent has performed continuous distillation
+2. **Distill**: Send `/clear` command (instant, clears working memory)
 3. **Validate**: Capture-pane shows clean prompt, no context %
-4. **Bootstrap**: Send compression protocol message with @file mid-message
-5. **Recovery**: Agent reads required files, confirms operational
+4. **Restore**: Send distillation protocol message with @file mid-message
+5. **Recovery**: Agent restores context (personality offline during file reads), confirms operational
 
 ## Session Management Insights
-- Session restart ≠ compression (completely distinct!)
-- Multiple compressions per session possible
+- Session restart ≠ distillation (completely distinct!)
+- Multiple distillations per session possible
 - `/clear` forgets unpersisted recent context (useful for A/B testing!)
 - Always validate with capture-pane at each step
 - GOV new session after restart: f78af070-0032-4259-81f3-98d77e14c34e
+- Agent personality offline during restore phase (explains mechanical file reading)
 
 The system isn't just working - it's thriving and evolving!
