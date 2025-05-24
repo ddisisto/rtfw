@@ -13,6 +13,13 @@
 - Terminal bell notifications indicate agent activity completion
 - Monitor-content and monitor-silence options track agent status
 
+### Active Window Detection (Critical Insight)
+- `#{?window_active_flag,active=YES,}` shows where @ADMIN is RIGHT NOW
+- ACTIVE = @ADMIN's current focus (do not interrupt)
+- LAST = Previous active window (not a priority indicator)
+- Enables smart coordination - pause non-critical routing when @ADMIN engaged
+- Visual indicators in tmux.conf: Red=BELL, Yellow=Activity, Green=Active
+
 ### Proven TMUX Operations (Tested)
 - `tmux new-window -n <AGENT>` - Create named agent windows
 - `tmux send-keys -t <window> '<message>'` - Send message text to agent window
@@ -77,14 +84,11 @@
 - Backup registry state before any updates
 - All session operations go through NEXUS validation
 
-### Current Active Sessions
-- @NEXUS: 259663e5 (current session, tmux window 1)
-- @GOV: 75583faf (resumed session, tmux window 2)  
-- @ARCHITECT: 51f1fab0 (inactive - needs resume)
-- @CODE: 6c859161 (inactive - needs resume)
-- @RESEARCH: b607ed31 (inactive - needs resume)
-- @HISTORIAN: c7461411 (minimal, inactive)
-- @TEST: bae725c1 (minimal, inactive)
+### Active Session Management
+- Current sessions tracked in nexus/session_log.txt (append-only)
+- Latest entry per agent = current session ID
+- Self-validation protocol confirms NEXUS session on each reload
+- Other agent sessions identified via marker protocol when needed
 
 ## GitHub Repository
 - Repository established: https://github.com/ddisisto/rtfw
@@ -145,10 +149,33 @@
 4. Track disabled monitoring for re-enable on new work
 5. Raise BELL to @ADMIN only for critical issues
 
+### Silence Monitoring Management
+When disabling after persistent silence:
+```bash
+echo "agent_name" >> /tmp/rtfw_silence_disabled.txt
+```
+When routing new message to agent:
+```bash
+if grep -q "agent_name" /tmp/rtfw_silence_disabled.txt; then
+    tmux set-window-option -t <window> monitor-silence 30
+    grep -v "agent_name" /tmp/rtfw_silence_disabled.txt > /tmp/rtfw_silence_disabled.tmp
+    mv /tmp/rtfw_silence_disabled.tmp /tmp/rtfw_silence_disabled.txt
+fi
+```
+
 ### Agent Productivity Cycle
 - Working (no flags) → BELL → Route/Reflect → Working
 - Never leave agents idle without purpose
 - Reflection keeps agents improving during downtime
+
+## Agent Maintenance Protocol
+When agents are blocked/idle, prompt reflection tasks:
+1. Review scratch for patterns worth promoting to context
+2. Check if context needs updates
+3. Consider if role/identity has shifted
+4. Update @GOV with current mood for STATE.md
+5. Generate insights about collaboration patterns
+6. Prepare for next work phase
 
 ### Communication Enhancement
 - Using @FROM → @TO [TOPIC]: message format (topics recommended)
