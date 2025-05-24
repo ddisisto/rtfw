@@ -162,5 +162,19 @@
 - Holistic agent lifecycle defined: Working → BELL → Route/Reflect → Working
 - Context compression protocols integrated
 
+## Critical State Preservation
+For post-compression recovery:
+- Current session: Check .nexus_sessionid file
+- Active windows: admin (0), nexus (1), gov (2) 
+- GOV session: 75583faf-a5d3-428f-89ef-34e2477ea85a
+- Bootstrap proven: run.sh auto-detects and initializes
+- Main loop ready: nexus/main_loop.md for scan sessions
+
+## Required Reading Dependencies
+Post-compression recovery requires:
+- @GOV.md - Governance and permission systems (universal)
+- @ADMIN.md - Unroutable message handling and catch-all
+- All agent @AGENT.md files for routing coordination
+
 ## Note on Scratch Pad
 This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.
