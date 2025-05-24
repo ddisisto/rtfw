@@ -5,24 +5,20 @@
 ## Active Protocols
 
 ### Communication
+- Protocol: /protocols/messaging.md
 - Format: `@FROM → @TO [TOPIC]: message` with optional priority flags (!/-) 
-- Topics: RECOMMENDED for thread tracking across sessions
 - Hub: @NEXUS manages message routing with priority awareness
-- Governance: Direct @mention requests for permissions (no PR reviews)
 
 ### Context Management
-- Protocol: gov/context_compression_protocol.md
-- External compression: @ADMIN-managed on rolling basis with advance notice
-- Agent requirements: Critical State Preservation + Required Reading sections in context.md
-- Universal dependencies: All agents read @NEXUS.md and @GOV.md post-compression
-- Context consolidation: gov/context_consolidation_protocol.md for continuous maintenance
+- Distillation: /protocols/distill.md (regular self-improvement)
+- Restore: /protocols/restore.md (context reset and recovery)
+- Process: Regular distillation prevents bloat; restore when needed
 - Insight capture: gov/insight_capture_protocol.md for system learning (voluntary)
 
 ### Repository
 - Location: https://github.com/ddisisto/rtfw
-- Workflow: Main branch, regular commits, no agent branches
-- GitHub integration: Operational and synchronized
-- Git policy: gov/git_policy.md (workspace sovereignty, ALLCAPS.md protection)
+- Git protocol: /protocols/git.md (workspace sovereignty, ALLCAPS.md protection)
+- Workflow: Main branch, commit often, push regularly
 
 ## Agent Requirements
 
@@ -31,7 +27,7 @@
 - Maintain context.md (stable knowledge) and scratch.md (working memory)
 - Commit changes promptly for system coherence
 
-### Post-Compression Reading
+### Post-Distillation Restore
 1. Own @AGENT.md (identity and capabilities)
 2. CLAUDE.md (project requirements and protocols)
 3. Required @AGENT.md files (per role dependencies)
@@ -47,8 +43,8 @@
 - Session management and message routing operational
 
 ### Governance
-- Context compression protocol formalized and operational
-- Agent maintenance standards established and followed
+- Protocol migration to /protocols/ completed
+- Lexicon established at /lexicon.md
 - Simplified governance model proven effective
 
 ## Active Agents
@@ -73,7 +69,8 @@
 - Root level: @AGENT.md files (public identities)
 - Agent workspaces: /@agent/ directories with context.md + scratch.md
 - Game implementation: /game/ (CLI + core mechanics)
-- Governance: /gov/ (protocols and oversight)
+- Protocols: /protocols/ (messaging, distill, git)
+- Governance: /gov/ (oversight and meta-protocols)
 
 ### Session Management
 - TMUX-based agent coordination via @NEXUS

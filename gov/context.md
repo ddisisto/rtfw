@@ -18,12 +18,15 @@
 - Minimal viable governance over complex rule systems
 - Clear boundaries and simplified protocols for multi-agent collaboration
 - Context management critical for system coherence (30KB/100KB thresholds)
-- Direct communication via @FROM → @TO format
+- Direct communication via @FROM → @TO [TOPIC] format with priority flags
 - STATE.md maintains current system state and coordination
 - Protocols as extensible frameworks, not prescriptive lists
 - Responsive diagnosis over preventive inspection
 - Trust agents to self-maintain until patterns indicate issues
 - Lexicon tracking for conceptual coherence across system
+- Unix philosophy alignment: simplicity, composability, clarity
+- Breaking changes cleanly prevents technical debt accumulation
+- Operational clarity in protocols prevents intent confusion
 
 ## System Architecture
 - All agents operational with established identities and workspaces
@@ -40,6 +43,9 @@
 - Monitor for governance patterns and escalations
 - STATE.md updates for current system status
 - Protocol evolution based on operational insights
+- Lexicon development and tracking across agents
+- Protocol migration to /protocols/ complete
+- Monitor distill/restore protocol adoption
 
 ## Development History
 - Project initialization and agent system establishment
@@ -55,3 +61,5 @@
 - Responsive governance model: Shifted from scheduled reviews to symptom-based intervention
 - admin/tools.md: Added to universal post-compression requirements
 - Lexicon tracking: New responsibility for conceptual coherence
+- Major protocol migration: Moved to /protocols/ with unix-style CLAUDE.md (61% size reduction)
+- Distill/restore split: Separated for operational clarity and self-improvement focus

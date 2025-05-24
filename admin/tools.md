@@ -42,4 +42,20 @@
 3. Batch parallel > Sequential execution
 4. Direct interpretation > Script parsing
 
+## File Operations
+Use Bash for file management (no native tools):
+- **Copy**: `cp source dest`
+- **Move**: `mv source dest`
+- **Remove**: `rm file` (we have git!)
+- **Mkdir**: `mkdir -p path/to/dir`
+
+## Git Operations
+Always via Bash:
+- **Stage**: `git add agent/` (or specific files)
+- **Commit**: `git commit -m "@AGENT: message"`
+- **Push**: `git push` (regularly)
+- **Status**: `git status` (check often)
+
+ALLCAPS.md files require @GOV/@ADMIN approval before changes.
+
 The key is maximizing efficiency through native tools and parallel execution while minimizing shell command usage and intermediate processing steps.
