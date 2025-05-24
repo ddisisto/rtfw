@@ -44,6 +44,7 @@
 - **Learning practice**: Always capture key insights in scratch.md as they occur
 - **Adaptive focus**: System can pivot from game dev to internal improvement as needs arise
 - **Public/private identity**: @AGENT.md should be clean public interface, not internal docs
+- **Governance excellence**: @GOV created insight_capture_protocol.md, modeling the very practice it promotes
 
 
 

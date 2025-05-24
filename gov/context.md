@@ -31,11 +31,11 @@
 - ARCHITECT: system design across all game eras
 
 ## Active Governance Tasks
-- Context maintenance standards for all agents
+- Responsive context review when issues arise (not scheduled)
 - Balance between "playable game" and "playing the game"
-- Collaboration with @CODE on compression implementation
-- Regular STATE.md updates for current system status
-- Context consolidation protocol oversight
+- Monitor for governance patterns and escalations
+- STATE.md updates for current system status
+- Protocol evolution based on operational insights
 
 ## Development History
 - Project initialization and agent system establishment

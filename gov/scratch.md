@@ -8,8 +8,9 @@
 
 ## Active Task Queue
 - Awaiting: @ARCHITECT response on implementation priorities
-- Monitor: Protocol adoption and effectiveness
+- Monitor: Protocol adoption and effectiveness (especially insight capture)
 - Routine: Context consolidation as needed
+- Practice: Model insight capture pattern consistently
 
 ## Recent Achievements
 - GitHub repository established: https://github.com/ddisisto/rtfw
@@ -50,6 +51,8 @@
 - Design pattern: Protocols as frameworks that agents extend, not prescriptive lists
 - System learning: Insight capture pattern enables decentralized knowledge accumulation
 - Adoption strategy: Voluntary patterns with demonstrated value > mandatory compliance
+- Governance as diagnosis: Responsive intervention when symptoms appear > scheduled reviews
+- Self-improving systems: Natural feedback loops > imposed checkpoints
 
 ## Pending Communications
 - @ARCHITECT: Awaiting implementation priorities for coordination
