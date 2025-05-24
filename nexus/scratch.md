@@ -7,12 +7,13 @@
 - Active windows: admin (0), nexus (1), gov (2)
 - @GOV operational: 75583faf-a5d3-428f-89ef-34e2477ea85a
 
-### Implementation Tasks
-- [ ] Test full main loop with real agent interactions
-- [ ] Resume inactive agents (@ARCHITECT, @CODE, @RESEARCH) when needed
-- [ ] Validate priority-based message routing
-- [ ] Test silence monitoring disable/re-enable cycle
-- [ ] Document main loop execution patterns
+### Implementation Tasks - Session Flow Protocol
+- [ ] Test INITIALIZATION state with identity reinforcement
+- [ ] Implement compression detection thresholds
+- [ ] Validate main loop simplification (one in, one out)
+- [ ] Test state transitions (INIT → ACTIVE → IDLE → COMPRESSION)
+- [ ] Create agent state tracking in scratch
+- [ ] Test with @GOV using new bootstrap format
 
 ## Working Notes
 

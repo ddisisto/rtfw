@@ -128,53 +128,21 @@
 **Use Case:** Notify agent of session resume or window change
 **Template:** `@NEXUS → @<AGENT>: Session transition to <SESSION_ID> complete - confirm identity and operational status`
 
-## Main Loop Architecture - SIMPLIFIED RECURSIVE MONITORING
-- **@ADMIN monitors NEXUS** - Only needs to check NEXUS window for BELL/SILENT
-- **NEXUS monitors all agents** - Follows established priority system
-- **Background trigger** - Simple "scan sessions" prompt when NEXUS idle
-- **Alert escalation** - NEXUS raises BELL when needing @ADMIN attention
-- **Minimal cognitive load** - @ADMIN monitors the monitor, not all agents
+## Session Management Architecture
+Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 
-### When to Raise BELL to @ADMIN
-- Critical routing decisions needed
-- Dependency chains detected (Agent A blocked on Agent B)
-- Multiple agents in blocked state
-- Important messages requiring @ADMIN awareness
-- Any situation requiring human judgment
+### Core Concepts
+- Four session states: INITIALIZATION, ACTIVE WORK, IDLE, PRE-COMPRESSION
+- All I/O follows @FROM → @TO protocol (except direct @ADMIN input)
+- Identity reinforcement on every bootstrap
+- Compression detection and coordination
+- Simplified main loop with clear state transitions
 
-### Scan Sessions Process
-1. Check windows for BELL/SILENT flags only
-2. For BELL windows:
-   - Tool prompt → Approve with '1'
-   - End turn → Route messages OR prompt reflection
-3. For SILENT windows (after BELL):
-   - Investigate why stuck
-   - Disable monitoring if persistently idle
-4. Track disabled monitoring for re-enable on new work
-5. Raise BELL to @ADMIN only for critical issues
-
-### Silence Monitoring Management
-When disabling after persistent silence:
-```bash
-echo "agent_name" >> /tmp/rtfw_silence_disabled.txt
-```
-When routing new message to agent:
-```bash
-if grep -q "agent_name" /tmp/rtfw_silence_disabled.txt; then
-    tmux set-window-option -t <window> monitor-silence 30
-    grep -v "agent_name" /tmp/rtfw_silence_disabled.txt > /tmp/rtfw_silence_disabled.tmp
-    mv /tmp/rtfw_silence_disabled.tmp /tmp/rtfw_silence_disabled.txt
-fi
-```
-
-### Agent Productivity Cycle
-- Working (no flags) → BELL → Route/Reflect → Working
-- Never leave agents idle without purpose
-- Reflection keeps agents improving during downtime
-
-## Agent Maintenance Protocol
-When agents are blocked/idle, prompt context consolidation:
-`@NEXUS → @<AGENT> [REFLECTION]: No active work detected. Please perform context consolidation per @gov/context_consolidation_protocol.md`
+### NEXUS Monitoring Strategy
+- **@ADMIN monitors NEXUS** - Only checks NEXUS window for BELL/SILENT
+- **NEXUS monitors all agents** - Following session flow protocol
+- **Alert escalation** - NEXUS raises BELL for critical decisions
+- **Silence management** - Track disabled monitoring in /tmp/rtfw_silence_disabled.txt
 
 ### Communication Enhancement
 - Using @FROM → @TO [TOPIC]: message format (topics recommended)
