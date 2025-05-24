@@ -13,7 +13,7 @@ Define the framework for maintaining agent operational continuity when external 
 - **Governance**: @GOV maintains this protocol
 
 ### Agent Response Framework
-1. Execute idle reflection protocol (see @gov/idle_reflection_protocol.md)
+1. Execute context consolidation protocol (see gov/context_consolidation_protocol.md)
 2. Commit all changes to repository
 3. Confirm readiness to @ADMIN
 
