@@ -120,6 +120,10 @@
 **Use Case:** Direct agent attention to specific task or collaboration
 **Template:** `@NEXUS → @<AGENT>: <SPECIFIC_TASK> - collaborate with @<OTHER_AGENT> as needed`
 
+### Reflection Prompt
+**Use Case:** Prompt idle agents to perform context consolidation
+**Template:** `@NEXUS → @<AGENT> [REFLECTION]: No active work detected. Please perform context consolidation per @gov/context_consolidation_protocol.md`
+
 ### Session Transition
 **Use Case:** Notify agent of session resume or window change
 **Template:** `@NEXUS → @<AGENT>: Session transition to <SESSION_ID> complete - confirm identity and operational status`
@@ -169,13 +173,8 @@ fi
 - Reflection keeps agents improving during downtime
 
 ## Agent Maintenance Protocol
-When agents are blocked/idle, prompt reflection tasks:
-1. Review scratch for patterns worth promoting to context
-2. Check if context needs updates
-3. Consider if role/identity has shifted
-4. Update @GOV with current mood for STATE.md
-5. Generate insights about collaboration patterns
-6. Prepare for next work phase
+When agents are blocked/idle, prompt context consolidation:
+`@NEXUS → @<AGENT> [REFLECTION]: No active work detected. Please perform context consolidation per @gov/context_consolidation_protocol.md`
 
 ### Communication Enhancement
 - Using @FROM → @TO [TOPIC]: message format (topics recommended)
