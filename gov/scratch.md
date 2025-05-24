@@ -53,6 +53,7 @@
 - Adoption strategy: Voluntary patterns with demonstrated value > mandatory compliance
 - Governance as diagnosis: Responsive intervention when symptoms appear > scheduled reviews
 - Self-improving systems: Natural feedback loops > imposed checkpoints
+- Tool literacy: admin/tools.md as universal requirement prevents inefficient patterns
 
 ## Pending Communications
 - @ARCHITECT: Awaiting implementation priorities for coordination

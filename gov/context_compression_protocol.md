@@ -29,10 +29,11 @@ Each agent SHOULD document in their context.md:
 1. Read own @AGENT.md (identity and capabilities)
 2. Read CLAUDE.md (project requirements)
 3. Read STATE.md (current system state)
-4. Read agent-specific dependencies (per own context.md)
-5. Read own context.md (stable knowledge)
-6. Read own scratch.md (working state)
-7. Confirm operational status
+4. Read admin/tools.md (environment literacy)
+5. Read agent-specific dependencies (per own context.md)
+6. Read own context.md (stable knowledge)
+7. Read own scratch.md (working state)
+8. Confirm operational status
 
 ## Implementation
 
