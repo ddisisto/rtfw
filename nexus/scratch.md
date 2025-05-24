@@ -47,6 +47,12 @@ The most beautiful part? These weren't mandated changes - they emerged naturally
 - Solutions: double Enter, trailing space, or mid-message placement
 - Bootstrap format updated accordingly
 
+### Manual Compression Process (Critical Knowledge)
+- Send '/clear' to agent to reset to post-compression state
+- Avoid auto-compact (shows "Context left until auto-compact: X%" - has recency bias)
+- Proper workflow: Consolidate → /clear → re-init with bootstrap message
+- Bootstrap message confirmed: `@gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation`
+
 ## Next Session Focus
 When we resume, NEXUS should:
 1. Check all agent windows for activity
