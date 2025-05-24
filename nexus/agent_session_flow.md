@@ -32,7 +32,7 @@ After successful initialization, check for pending work:
 2. Does agent have pending messages to send?
    - `@NEXUS → @<AGENT> [STATUS]: Any pending messages to route?`
 3. Does agent have work to continue?
-   - `@NEXUS → @<AGENT> [STATUS]: Please continue with any pending work`
+   - `@NEXUS → @<AGENT> [STATUS]: Please continue with any pending work, or message @ADMIN or other agents for direction if needed`
 4. If all negative, transition to IDLE state
 
 ### 2. ACTIVE WORK
