@@ -48,10 +48,25 @@ The most beautiful part? These weren't mandated changes - they emerged naturally
 - Bootstrap format updated accordingly
 
 ### Manual Compression Process (Critical Knowledge)
-- Send '/clear' to agent to reset to post-compression state
-- Avoid auto-compact (shows "Context left until auto-compact: X%" - has recency bias)
-- Proper workflow: Consolidate → /clear → re-init with bootstrap message
-- Bootstrap message confirmed: `@gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation`
+- **CRITICAL**: `/clear` is THE command that performs context reset
+- Without /clear, agent continues with bloated context (34% = potential bloat, 15% = urgent)
+- Auto-compact has recency bias - manual /clear gives control
+- **PROPER WORKFLOW**: 
+  1. Agent consolidates knowledge (saves to context.md/scratch.md)
+  2. Send `/clear` command to reset context
+  3. Send bootstrap message for re-initialization
+- Bootstrap message: `@gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation`
+
+### Context Thresholds
+- 34% remaining = not urgent but indicates bloat
+- 15% remaining = urgent (need space for consolidation, coherence dropping)
+- Manual /clear prevents hitting these limits
+
+### Session vs Compression (DISTINCT CONCEPTS)
+- Session restart ≠ compression
+- Can have multiple compressions per session
+- Can have session restarts with no compression
+- /clear is the actual compression trigger
 
 ### Session Management Clarifications
 - **Bootstrap only after explicit compression** (not on resume!)
@@ -82,16 +97,21 @@ When we resume, NEXUS should:
 5. Continue facilitating system evolution
 
 ## Immediate Tasks
-- [ ] GOV restart: /exit → claude --version → claude --resume
-- [ ] Test compression cycle with GOV
+- [x] GOV restart: /exit → claude --version → claude --resume ✓
+- [x] Test compression cycle with GOV ✓
 - [ ] Review and improve run.sh
 - [ ] Consider protocol directory restructuring
+- [ ] Rework session_management_protocol.md to separate session vs compression
+- [ ] Update context.md references
 
 ## Key Insights from @ADMIN
 - **run.sh improvements** are high priority - don't let distractions delay
 - **Agent efficiency balance** - love the chattiness but need efficiency too
-- **Git workflow**: Usually `git add <agent>/` unless other specific files
-- **New CLAUDE.md** (admin/CLAUDE-new.md) shows future direction
+- **Git workflow policy**:
+  - `git add <agent>/` - universally permitted
+  - `git add ALLCAPS.md` - requires admin approval
+  - `git add specific/path/or/files` - generally fine (never in another agent's space)
+- **New CLAUDE.md** (admin/CLAUDE-new.md) shows future direction - @ADMIN actively editing
 - **Foundations matter** - getting these session management patterns rock solid
 
 ## run.sh Improvement Ideas (pending)
@@ -99,5 +119,19 @@ When we resume, NEXUS should:
 - Cleaner bootstrap process
 - Error handling for common failure modes
 - Integration with new session management patterns
+
+## Validated Compression Workflow
+1. **Pre-compression**: Ensure agent has consolidated knowledge
+2. **Clear**: Send `/clear` command (instant, creates fresh context)
+3. **Validate**: Capture-pane shows clean prompt, no context %
+4. **Bootstrap**: Send compression protocol message with @file mid-message
+5. **Recovery**: Agent reads required files, confirms operational
+
+## Session Management Insights
+- Session restart ≠ compression (completely distinct!)
+- Multiple compressions per session possible
+- `/clear` forgets unpersisted recent context (useful for A/B testing!)
+- Always validate with capture-pane at each step
+- GOV new session after restart: f78af070-0032-4259-81f3-98d77e14c34e
 
 The system isn't just working - it's thriving and evolving!

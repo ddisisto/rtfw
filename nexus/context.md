@@ -63,6 +63,11 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - registry.md deprecated - use session_log.txt exclusively
 - **Append Process**: Read full log → add new line → Write entire content (no echo >>)
 
+### Session Management Protocols
+- **Full protocol**: See nexus/session_management_protocol.md
+- **Key distinction**: Session restart (resume) vs Compression (/clear) are SEPARATE
+- **Bootstrap**: Only after /clear, never after simple resume
+
 ### Session Identification Protocol - STANDARDIZED
 
 #### Self-Validation (on context reload)
@@ -225,9 +230,10 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 For post-compression recovery:
 - Current session: Check .nexus_sessionid file
 - Active windows: admin (0), nexus (1), gov (2) 
-- GOV session: 75583faf-a5d3-428f-89ef-34e2477ea85a
+- GOV session: f78af070-0032-4259-81f3-98d77e14c34e (updated after restart)
 - Bootstrap proven: run.sh auto-detects and initializes
 - Main loop ready: nexus/main_loop.md for scan sessions
+- **Key Learning**: Session management ≠ Compression (see nexus/session_management_protocol.md)
 
 ## Required Reading Dependencies
 Post-compression recovery requires:
