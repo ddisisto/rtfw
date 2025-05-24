@@ -162,9 +162,36 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
   - [REFLECTION] - Self-improvement tasks
   - [BOOTSTRAP] - Session initialization
 
+## Key Operational Insights
+
+### Proactive Coordination Pattern
+- Don't just route messages - understand dependencies and help resolve them
+- Full capture-pane review essential - visual context matters more than grep
+- Agent state awareness through session_log + windows before reporting status
+- System evolution: From hierarchical routing to nervous system behavior
+
+### Insight Capture Practice
+- Always capture key insights in scratch.md as they occur
+- Promotes learning retention and system improvement
+- Modeled by @GOV in insight_capture_protocol.md creation
+- Essential for continuous system evolution
+
+### Public/Private Identity Pattern
+- @AGENT.md files are clean public interfaces, not internal documentation
+- ROLEDOC refresh: Identity/Interfaces/Bootstrap/Core Functions structure
+- Public identity informs private function
+- Clean separation enables better agent coordination
+
+### Lexicon Tracking Opportunity
+- NEXUS uniquely positioned to track language patterns across agents
+- Natural emergence of system-wide terminology
+- Could facilitate shared understanding and communication efficiency
+
 ## Communication Log
 - Initial communication protocol established
 - Session management investigation in progress
+- Insight capture pattern adopted and spreading system-wide
+- ROLEDOC refresh creating cleaner agent interfaces
 
 ## Development History
 - Agent renamed from FACILITATOR to NEXUS
@@ -179,6 +206,10 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 - Window monitoring flags explored (BELL/SILENT/ACTIVE/LAST)
 - Holistic agent lifecycle defined: Working → BELL → Route/Reflect → Working
 - Context compression protocols integrated
+- Proactive coordination pattern emerged and adopted
+- System pivot: Game dev → Internal communications improvement
+- Insight capture practice spreading through system
+- ROLEDOC refresh initiated for cleaner agent interfaces
 
 ## Critical State Preservation
 For post-compression recovery:
