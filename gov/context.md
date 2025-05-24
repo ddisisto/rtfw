@@ -2,9 +2,10 @@
 
 ## Critical State Preservation
 - Session: GOV operational in main tmux session
-- Active protocols: STATE.md, context compression, idle reflection
-- Pending: @ARCHITECT coordination, STATE.md notifications to agents
-- System status: All governance frameworks stable and operational
+- Active protocols: STATE.md (replaced ANNOUNCEMENTS.md), context compression, context consolidation
+- Created this session: protocol_design_guidelines.md, enhanced comms protocol with [TOPIC] and priority flags
+- Pending: @ARCHITECT coordination on implementation priorities
+- System status: All governance frameworks stable, protocols follow design guidelines
 
 ## Required Reading Dependencies
 - @NEXUS.md - For communication routing and session management
@@ -34,7 +35,7 @@
 - Balance between "playable game" and "playing the game"
 - Collaboration with @CODE on compression implementation
 - Regular STATE.md updates for current system status
-- Idle reflection protocol oversight
+- Context consolidation protocol oversight
 
 ## Development History
 - Project initialization and agent system establishment
@@ -42,5 +43,7 @@
 - GitHub integration and repository setup
 - Simplified collaboration model implementation
 - STATE.md migration: Replaced chronological ANNOUNCEMENTS.md with rolling state document
-- Idle reflection protocol: Established continuous self-improvement framework
-- Context compression protocol: Formalized with @ADMIN-managed external compression
+- Context consolidation protocol: Reframed from idle reflection for compression readiness
+- Context compression protocol: Revised to framework approach per design guidelines
+- Protocol design guidelines: Created for consistent protocol development
+- Communication protocol v2: Enhanced with [TOPIC] threads and priority flags (!/-)

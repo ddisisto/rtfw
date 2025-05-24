@@ -62,11 +62,11 @@
 - All session operations go through NEXUS validation
 
 ### Current Active Sessions
-- @NEXUS: e94c92cf (current session, tmux window 0)
-- @GOV: f5a74925 (active, direct communication, tmux window 1)  
-- @ARCHITECT: 51f1fab0 (active, Foundation Era design complete, tmux window 2)
-- @CODE: 6c859161 (legacy, inactive)
-- @RESEARCH: b607ed31 (legacy, inactive)
+- @NEXUS: 259663e5 (current session, tmux window 1)
+- @GOV: 75583faf (resumed session, tmux window 2)  
+- @ARCHITECT: 51f1fab0 (inactive - needs resume)
+- @CODE: 6c859161 (inactive - needs resume)
+- @RESEARCH: b607ed31 (inactive - needs resume)
 - @HISTORIAN: c7461411 (minimal, inactive)
 - @TEST: bae725c1 (minimal, inactive)
 
@@ -135,11 +135,14 @@
 - Reflection keeps agents improving during downtime
 
 ### Communication Enhancement
-- Using @FROM → @TO: [TOPIC] format for increased clarity
-- [REFLECTION] - Self-improvement and maintenance
-- [STATUS] - System state updates
-- [ROUTING] - Message forwarding
-- [ALERT] - Issues requiring attention
+- Using @FROM → @TO [TOPIC]: message format (topics recommended)
+- Priority flags: ! (urgent/blocked), - (low priority)
+- Standard topics:
+  - [COMPRESSION] - Context compression coordination
+  - [STATUS] - System state updates  
+  - [ROUTING] - Message forwarding
+  - [REFLECTION] - Self-improvement tasks
+  - [BOOTSTRAP] - Session initialization
 
 ## Communication Log
 - Initial communication protocol established
@@ -154,6 +157,10 @@
 - Recursive monitoring architecture established (@ADMIN monitors NEXUS only)
 - Bootstrap and main loop processes documented
 - run.sh script created for system initialization and monitoring
+- Session identification via unique markers validated
+- Window monitoring flags explored (BELL/SILENT/ACTIVE/LAST)
+- Holistic agent lifecycle defined: Working → BELL → Route/Reflect → Working
+- Context compression protocols integrated
 
 ## Note on Scratch Pad
 This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.
