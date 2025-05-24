@@ -23,6 +23,12 @@
 - Always verify exactly 2 results for other agents (NEXUS + target)
 - Update .nexus_sessionid + session_log.txt if session changes
 
+### TMUX Input Handling Discovery
+- @file links at message end trigger autocomplete dialog
+- First Enter consumed by autocomplete, message not sent
+- Solutions: double Enter, trailing space, or mid-message placement
+- Updated bootstrap format to place @file links mid-message
+
 
 
 

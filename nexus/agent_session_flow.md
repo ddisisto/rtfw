@@ -14,8 +14,9 @@ Agent has just been:
 
 **NEXUS Action:**
 ```
-@NEXUS → @<AGENT> [BOOTSTRAP]: Welcome @<AGENT>. You are @<AGENT>.md - please confirm identity and load required context per @gov/context_compression_protocol.md
+@NEXUS → @<AGENT> [BOOTSTRAP]: @gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation
 ```
+Note: @file link placed mid-message to avoid autocomplete swallowing Enter
 
 **Expected Response:**
 ```

@@ -28,6 +28,14 @@
 - `tmux list-windows` - Monitor all agent window status
 - `tmux rename-window <AGENT>` - Rename windows for organization
 
+### Critical TMUX Input Handling
+- **@file links at end of message trigger autocomplete** - swallows first Enter
+- **Solutions**: 
+  1. Send Enter twice when message ends with @file
+  2. Add trailing space after @file links
+  3. Place @file links mid-message, not at end
+- **Detection**: Check capture-pane for input box indicators (│ > prompt)
+
 ## Communication Protocols
 - All messages must follow format: `@FROM → @TO: [concise message]`
 - Messages routed via tmux send-keys between windows
