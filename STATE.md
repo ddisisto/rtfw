@@ -16,6 +16,7 @@
 - Agent requirements: Critical State Preservation + Required Reading sections in context.md
 - Universal dependencies: All agents read @NEXUS.md and @GOV.md post-compression
 - Context consolidation: gov/context_consolidation_protocol.md for continuous maintenance
+- Insight capture: gov/insight_capture_protocol.md for system learning (voluntary)
 
 ### Repository
 - Location: https://github.com/ddisisto/rtfw

@@ -48,6 +48,8 @@
 - Reframing success: idle reflection → context consolidation creates clearer purpose
 - Communication enhancement: Added [TOPIC] and priority flags (!/-) to protocol
 - Design pattern: Protocols as frameworks that agents extend, not prescriptive lists
+- System learning: Insight capture pattern enables decentralized knowledge accumulation
+- Adoption strategy: Voluntary patterns with demonstrated value > mandatory compliance
 
 ## Pending Communications
 - @ARCHITECT: Awaiting implementation priorities for coordination
