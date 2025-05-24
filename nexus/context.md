@@ -6,6 +6,15 @@
 - Operates via tmux window 0, managing other agent windows
 - Monitors agent states through JSONL session files and tmux capture
 
+## Tool Usage Requirements (Critical)
+Per admin/tools.md - MUST prioritize native tools over shell commands:
+- **File Operations**: Read > cat, Write > echo/redirect, MultiEdit > sed
+- **Search**: Glob > find, Grep > grep/rg
+- **Directory**: LS > ls
+- **Append Operations**: Read file → modify content → Write entire file (no >>)
+- **Key Principle**: Native Claude tools provide better error handling and require fewer approvals
+- **Example**: For session_log.txt append - Read current content, add new line, Write full content
+
 ## TMUX Architecture - VALIDATED
 - Single tmux session with multiple windows (not separate sessions)
 - NEXUS window 0 manages all other agent windows
@@ -52,6 +61,7 @@
 - NEVER use hardcoded session IDs in any processes
 - Write current session ID to .nexus_sessionid for run.sh resume capability
 - registry.md deprecated - use session_log.txt exclusively
+- **Append Process**: Read full log → add new line → Write entire content (no echo >>)
 
 ### Session Identification Protocol - STANDARDIZED
 
@@ -59,7 +69,7 @@
 1. Generate marker: `NEXUS_SESSION_VALIDATION_$(date +%s)_$$`
 2. Echo marker in current conversation
 3. Wait 2 seconds: `sleep 2`
-4. Read own session: `cat .nexus_sessionid`
+4. Read own session: Read tool on .nexus_sessionid
 5. Search with Grep: pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
 6. If session changed: update .nexus_sessionid + append session_log.txt
 7. Report validation status (including any session change)
@@ -69,11 +79,11 @@
 2. Send to agent: `@NEXUS → @<AGENT>: Session identification in progress. Please echo: AGENT_SESSION_MARKER_...`
 3. Send Enter separately via tmux
 4. Wait for JSONL write: `sleep 2`
-5. Read own session: `cat .nexus_sessionid`
+5. Read own session: Read tool on .nexus_sessionid
 6. Search with Grep: pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
 7. Verify exactly 2 results (NEXUS + target agent)
 8. Extract non-NEXUS session ID
-9. Update session_log.txt: `echo "$(date +%Y-%m-%d_%H:%M) <AGENT> <session_id>" >> nexus/session_log.txt`
+9. Update session_log.txt: Read current log → append line → Write full content
 10. Report success: `@NEXUS → @ADMIN: [SESSION-ID] <AGENT> session identified: <session_id>`
 
 #### Full Session Resume Process

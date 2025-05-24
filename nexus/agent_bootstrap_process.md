@@ -1,43 +1,56 @@
 # NEXUS Agent Bootstrap Process
 
-This document is executed when @ADMIN runs `./run.sh init` and confirms NEXUS startup.
+This document defines the bootstrap protocol executed when NEXUS receives:
+`@ADMIN → @NEXUS [AGENT-BOOTSTRAP]!: @gov/context_compression_protocol.md completed for @NEXUS.md - please reload all relevant agent context for continuation`
 
-## Bootstrap Sequence
+## Bootstrap Protocol
 
-### 1. Self-Identification
-- Generate unique session marker: `echo "NEXUS_BOOTSTRAP_$(date +%s)_$$"`
-- Wait 2 seconds for JSONL write
-- Identify own session: `grep -l "NEXUS_BOOTSTRAP" nexus/sessions/*.jsonl`
-- Update nexus/session_log.txt with new session ID
-- Write session ID to .nexus_sessionid using Write tool (avoids shell redirection approval)
+### 1. Read Critical Files (per NEXUS.md bootstrap section)
+- Read CLAUDE.md (project requirements and protocols)
+- Read STATE.md (current system state)
+- Read @ADMIN.md (admin authority and interfaces)
+- Read @GOV.md (governance protocols)
+- Read admin/tools.md (tool usage requirements)
 
-### 2. Verify Environment
-- Confirm in nexus window: `tmux display -p '#{window_name}'` should show "nexus"
-- Check for existing agent windows: `tmux list-windows`
-- Verify nexus/sessions/ symlinks are functional
-- Confirm git repository access
+### 2. Load Agent Context
+- Read nexus/context.md (stable knowledge and state)
+- Read nexus/scratch.md (working memory)
 
-### 3. Initialize Monitoring
-- Set window monitoring options:
-  ```bash
-  tmux set-window-option monitor-bell on
-  tmux set-window-option monitor-silence 30
-  ```
+### 3. Self-Validate Session ID
+Per standardized protocol in context.md:
+- Generate marker: Bash `echo "NEXUS_SESSION_VALIDATION_$(date +%s)_$$"`
+- Wait 2 seconds: Bash `sleep 2`
+- Read current session: Read tool on .nexus_sessionid
+- Search for marker: Grep tool with pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
+- If session changed:
+  - Write new session ID to .nexus_sessionid using Write tool
+  - Update session_log.txt: Read current log → append new line → Write full content
 
-### 4. Report Status
-- Output: `@NEXUS → @ADMIN: Bootstrap complete. Session <ID> active in nexus window.`
-- Output: `@NEXUS → @ADMIN: Ready for monitoring loop.`
+### 4. Announce Operational Status
+`@NEXUS → @ADMIN [BOOTSTRAP]: Identity confirmed. Context loaded. <Session validation status>. Operational and ready to support system coordination.`
 
-### 5. Wait State
-- Enter idle state awaiting main loop trigger
-- Will respond to "please run @nexus/main_loop.md" with scan sessions routine
+### 5. Check Agent Windows
+- Bash: `tmux list-windows` to see current agent states
+- Begin monitoring per agent_session_flow.md protocol
 
-## Error Handling
-- If session identification fails: Request manual session ID from @ADMIN
-- If not in window 1: Alert @ADMIN to correct window placement
-- If critical files missing: List missing dependencies
+## Tool Usage Requirements
+Per admin/tools.md - prioritize native tools:
+- Read > cat
+- Write > echo/redirect 
+- Grep > grep/find
+- MultiEdit for multiple changes
+- Bash only when no native tool exists
+
+## Post-Bootstrap Routing
+Per agent_session_flow.md section 1.5:
+1. Check for pending messages to route
+2. Query agents for pending outbound messages
+3. Prompt agents to continue work or seek direction
+4. Transition to IDLE if no work available
 
 ## Success Indicators
-- NEXUS window shows no BELL flag
-- Bootstrap complete message displayed
-- Ready for main loop activation
+- Session validation completed (with or without change)
+- Context files loaded successfully
+- Operational announcement sent
+- Agent window states assessed
+- Ready for main coordination loop

@@ -22,6 +22,7 @@
 - Location: https://github.com/ddisisto/rtfw
 - Workflow: Main branch, regular commits, no agent branches
 - GitHub integration: Operational and synchronized
+- Git policy: gov/git_policy.md (workspace sovereignty, ALLCAPS.md protection)
 
 ## Agent Requirements
 
