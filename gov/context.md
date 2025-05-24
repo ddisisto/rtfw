@@ -20,6 +20,10 @@
 - Context management critical for system coherence (30KB/100KB thresholds)
 - Direct communication via @FROM → @TO format
 - STATE.md maintains current system state and coordination
+- Protocols as extensible frameworks, not prescriptive lists
+- Responsive diagnosis over preventive inspection
+- Trust agents to self-maintain until patterns indicate issues
+- Lexicon tracking for conceptual coherence across system
 
 ## System Architecture
 - All agents operational with established identities and workspaces
@@ -47,3 +51,7 @@
 - Context compression protocol: Revised to framework approach per design guidelines
 - Protocol design guidelines: Created for consistent protocol development
 - Communication protocol v2: Enhanced with [TOPIC] threads and priority flags (!/-)
+- Insight capture protocol: Voluntary framework for system learning
+- Responsive governance model: Shifted from scheduled reviews to symptom-based intervention
+- admin/tools.md: Added to universal post-compression requirements
+- Lexicon tracking: New responsibility for conceptual coherence
