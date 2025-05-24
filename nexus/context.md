@@ -38,22 +38,37 @@
 - Write current session ID to .nexus_sessionid for run.sh resume capability
 - registry.md deprecated - use session_log.txt exclusively
 
-### Session Resume Process (NEXUS-managed) - VALIDATED
+### Session Identification Protocol - STANDARDIZED
+
+#### Self-Validation (on context reload)
+1. Generate marker: `NEXUS_SESSION_VALIDATION_$(date +%s)_$$`
+2. Echo marker in current conversation
+3. Wait 2 seconds: `sleep 2`
+4. Read own session: `cat .nexus_sessionid`
+5. Search with Grep: pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
+6. Verify single result matches .nexus_sessionid content
+7. Report validation status
+
+#### Other Agent Identification (for session resume/verification)
+1. Generate unique marker: `AGENT_SESSION_MARKER_$(date +%s)_$$`
+2. Send to agent: `@NEXUS → @<AGENT>: Session identification in progress. Please echo: AGENT_SESSION_MARKER_...`
+3. Send Enter separately via tmux
+4. Wait for JSONL write: `sleep 2`
+5. Read own session: `cat .nexus_sessionid`
+6. Search with Grep: pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
+7. Verify exactly 2 results (NEXUS + target agent)
+8. Extract non-NEXUS session ID
+9. Update session_log.txt: `echo "$(date +%Y-%m-%d_%H:%M) <AGENT> <session_id>" >> nexus/session_log.txt`
+10. Report success: `@NEXUS → @ADMIN: [SESSION-ID] <AGENT> session identified: <session_id>`
+
+#### Full Session Resume Process
 1. Create agent window: `tmux new-window -n <agent_name>`
-2. Read current session ID from session_log.txt (last entry for agent)
-3. Send tmux message to resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>'`
-4. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
-5. Wait for Claude to start: `sleep 10`
-6. Generate unique marker: `AGENT_SESSION_MARKER_$(date +%s)_$$`
-7. Send validation request: `tmux send-keys -t <agent_name> '@NEXUS → @<AGENT>: Session re-attachment in progress. Please echo AGENT_SESSION_MARKER_... for validation'`
-8. Send Enter separately: `tmux send-keys -t <agent_name> Enter`
-9. Wait for message delivery: `sleep 2`
-10. Capture pane to verify message sent: `tmux capture-pane -t <agent_name> -p | grep "@NEXUS → @"`
-11. If message not visible, raise error - something wrong with session
-12. Wait for JSONL write: `sleep 2`
-13. Identify new session (exclude NEXUS): `grep -l "AGENT_SESSION_MARKER" nexus/sessions/*.jsonl | grep -v $(cat .nexus_sessionid)`
-14. Update session_log.txt with new session ID
-15. Report success: `@NEXUS → @ADMIN: [STATUS] <AGENT> session resumed: <session_id>`
+2. Read last session ID from session_log.txt for agent
+3. Resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>'` + Enter
+4. Wait for startup: `sleep 10`
+5. Execute "Other Agent Identification" protocol above
+6. If new session detected, update records
+7. Send recovery message: `@NEXUS → @<AGENT>: @gov/context_compression_protocol.md completed for @<AGENT>.md - please reload all relevant agent context for continuation`
 
 ### Data Loss Prevention
 - Never attempt session identification via pattern matching
@@ -178,12 +193,8 @@ Post-compression recovery requires:
 - All agent @AGENT.md files for routing coordination
 
 ## Self-Validation Protocol
-On each context reload, NEXUS MUST:
-1. Generate marker: `NEXUS_SESSION_VALIDATION_$(date +%s)_$$`
-2. Wait 2 seconds: `sleep 2`
-3. Search with Grep tool: pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
-4. Verify found session matches .nexus_sessionid content
-5. Report validation status in recovery confirmation
+See "Session Identification Protocol - Self-Validation" section above for standardized process.
+MUST validate on every context reload and report status in recovery confirmation.
 
 ## Note on Scratch Pad
 This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.
