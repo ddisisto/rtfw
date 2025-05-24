@@ -46,8 +46,8 @@
 3. Wait 2 seconds: `sleep 2`
 4. Read own session: `cat .nexus_sessionid`
 5. Search with Grep: pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
-6. Verify single result matches .nexus_sessionid content
-7. Report validation status
+6. If session changed: update .nexus_sessionid + append session_log.txt
+7. Report validation status (including any session change)
 
 #### Other Agent Identification (for session resume/verification)
 1. Generate unique marker: `AGENT_SESSION_MARKER_$(date +%s)_$$`
