@@ -29,6 +29,12 @@
 - Solutions: double Enter, trailing space, or mid-message placement
 - Updated bootstrap format to place @file links mid-message
 
+### Key Insights (for next consolidation)
+- **Proactive coordination**: Don't just route - understand dependencies and help resolve
+- **Full capture review**: Never grep capture-pane, visual context matters
+- **Agent state awareness**: Check session_log + windows before reporting status
+- **Emergent behavior**: System feels more like nervous system than hierarchy
+
 
 
 
