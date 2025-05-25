@@ -6,13 +6,17 @@
 - [ ] Begin systematic review of @ADMIN interventions
 - [ ] Track patterns in admin/echo/ASSIGNMENT.md categories
 
-## Progress Tracker
+## Progress Tracker (RESET for chronological analysis)
 - Total sessions identified: 30
-- Sessions reviewed: 0
-- Current session: pending
-- Line number: N/A
-- Admin messages found: 3 (in first test)
-- Patterns emerging: [tracked incrementally]
+- Sessions reviewed: 1
+- Starting from: 2025-05-21 08:12 (true inception)
+- Current session: 932ef584-cac9-4868-ae0b-30fed3de40e5.jsonl
+- Patterns emerging: Pre-planned architecture, no @ADMIN/NEXUS yet
+
+## Analysis Method
+- **Historical Context**: What happened THEN (in logs)
+- **Operational Context**: What applies NOW (current protocols)
+- **Marker**: All log analysis prefixed with [HISTORICAL] to prevent confusion
 
 ## Current Session Notes
 - Distillation complete: promoted key learnings to context.md
@@ -76,6 +80,12 @@
 - Session logs are conversations, not just logs
 - Need to trace conversation flow to understand interventions
 - Think: What was agent doing BEFORE correction?
+
+### Context Confusion Prevention
+- Risk: Treating historical protocols as current
+- Solution: [HISTORICAL] prefix for all log content
+- Separate folders: /analysis/ for historical, /reports/ for insights
+- Git commits in logs = time travel opportunity
 
 ### Context Exploration Insights
 - @ADMIN has no workspace directory - truly external human agent
