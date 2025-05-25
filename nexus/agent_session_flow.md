@@ -1,6 +1,6 @@
 # Agent Session Flow Protocol
 
-**Purpose**: Complete reference for agent lifecycle states and transitions. Defines how agents move through INITIALIZATION → ACTIVE WORK → IDLE → PRE-DISTILLATION states. For basic operations, see context.md.
+**Purpose**: Complete reference for agent lifecycle states and transitions. Defines how agents move through RESTORE → ACTIVE WORK → IDLE → RESTORE states. For basic operations, see context.md.
 
 ## Overview
 
@@ -10,9 +10,8 @@ This protocol defines the complete lifecycle of agent sessions, from initializat
 
 ### 1. INITIALIZATION
 Agent has just been:
-- Started fresh (new session)
-- Resumed (existing session)
-- Recovered (post-distillation)
+- Started fresh (bootstrap of new agent - initial context files typically provided by @GOV)
+- Recovered (immediately following distillation → /clear)
 
 **NEXUS Action:**
 ```
@@ -43,7 +42,7 @@ Agent is processing tasks, using tools, generating outputs.
 **Main Loop Sequence:**
 1. NEXUS sends work/prompt
 2. Agent processes (may trigger BELL for tool approvals)
-3. Agent completes with end_turn
+3. Agent completes with end_turn (may trigger BELL)
 4. NEXUS reads final output only
 5. Repeat or transition to IDLE
 
