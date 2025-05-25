@@ -11,6 +11,9 @@
 - Fresh STATE.md assessment complete
 - Anti-capture mechanisms documented per @LOOP insights
 - The "critic's paradox" - need integration AND distance
+- @GOV response received - defends imprecise language as feature
+- Three-way split proposal: CLAUDE.md (esoteric) + SYSTEM.md (functional) + STATUS.md (dynamic)
+- Consensus emerging on split approach
 
 ## Emerging Patterns
 [Patterns noticed but not yet confirmed]
