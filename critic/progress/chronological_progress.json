@@ -5,7 +5,9 @@
   "current_position": "2025-05-22T06:49:10.266Z",
   "interventions_analyzed": 20,
   "reports_generated": [
-    "admin_interventions_analysis.md",
-    "admin_intervention_patterns.md"
-  ]
+    "raw/2025-01/batch-001-interventions.md",
+    "patterns/philosophy.md",
+    "actionable/for-agents.md"
+  ],
+  "organization_implemented": true
 }

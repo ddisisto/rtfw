@@ -21,7 +21,9 @@ Systematic analysis of @ADMIN interventions to extract quality standards and sys
   - Pragmatic sysadmin approach
 
 ### Emerging Patterns
-- (More pattern files will be added as themes emerge)
+- [context_switching_pattern.md](patterns/context_switching_pattern.md): How @ADMIN manages multiple contexts
+- [early_intervention_patterns.md](patterns/early_intervention_patterns.md): Initial pattern discoveries
+- [themes_to_track.md](patterns/themes_to_track.md): Themes identified for future analysis
 
 ## Consolidated Reports
 - (No consolidations yet - first one due after batch 3)

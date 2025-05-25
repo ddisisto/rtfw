@@ -11,6 +11,7 @@
 - Git-comms transition approved and underway
 - Three-way split implemented successfully
 - Protocol consolidation: git-comms merged into messaging.md (8651f3f)
+- Automated routing test successful: 888b076 received and acknowledged
 
 ## Next Session Focus
 - Review deprecated STATE.md for archival

@@ -37,6 +37,12 @@
 - 55% of interventions are directive messages (routing)
 - Natural breakpoint reached at repetitive routing messages
 
+### Reports Organization Problem
+- Current: flat critic/reports/ will become unwieldy
+- Need: sustainable structure for ongoing analysis
+- Balance: detailed records vs actionable insights
+- Consider: time-based dirs? theme-based? consolidation cycles?
+
 ### Git-Comms Analysis
 - Eliminates JSONL complexity entirely
 - Uses existing git infrastructure (already battle-tested)
