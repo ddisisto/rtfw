@@ -53,10 +53,10 @@ Note: Additional agents can be created as needs arise. The system is designed fo
 ```
 
 ### Communication Channels
-- Direct messaging via @mentions
-- Git commits for async communication
+- Git commits with @mentions (primary async channel)
 - Shared scratch files for high-bandwidth coordination
 - File-based persistence for context preservation
+- See /protocols/git-comms.md for implementation details
 
 ## Core Workflows
 
