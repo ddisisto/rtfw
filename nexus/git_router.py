@@ -120,10 +120,10 @@ class GitRouter:
             if routing:
                 print(f"\n→ Routing to {msg['to']}: {routing}")
                 
-                # For now, just show the command - actual delivery could be automated
-                # Uncomment to enable auto-delivery:
-                # if self.deliver_via_tmux(msg['to'], routing):
-                #     routed_count += 1
+                # Auto-deliver to agent windows
+                if self.deliver_via_tmux(msg['to'], routing):
+                    routed_count += 1
+                    print(f"✓ Delivered to {msg['to']}")
         
         # Update state to last message
         if messages:
