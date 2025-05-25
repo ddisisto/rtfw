@@ -27,8 +27,23 @@
 - Test assumptions before implementation
 
 ## Active Implementation Areas
-- System tools and scripts (run.sh, etc.)
+- System management tools (Python-based rewrite planned)
+- Git-based communication automation (git_comms.py)
 - Game mechanics implementation
 - Agent coordination tooling
 - Performance optimizations
-- Automation opportunities
+
+## Proven Patterns
+- Python for complex state management over shell scripts
+- Git commits as natural message queue
+- Collaboration with @NEXUS for system boundaries
+- Incremental migration strategies for production tools
+
+## Restore Order
+1. @BUILD.md
+2. CLAUDE.md 
+3. STATE.md
+4. @NEXUS.md, @GOV.md, @ADMIN.md
+5. admin/tools.md
+6. build/context.md (this file)
+7. build/scratch.md
