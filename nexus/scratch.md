@@ -66,9 +66,10 @@
 - Git: `git add <agent>/` OK, ALLCAPS needs approval
 - run.sh + BUILD: Python rewrite pending collab
 
-## Pending Actions
-- **@CRITIC request**: Session log format docs and @ADMIN intervention patterns
-- **Script bug**: @ALL routing not working - needs BUILD fix
+## Post-Restore TODOs
+- Review BUILD's script updates (dynamic agent discovery)
+- Consider script design before next iteration
+- Monitor git-comms adoption across agents
 
 
 
@@ -76,13 +77,12 @@
 - Standard distill confirmation phrases for protocol
 - Full capture-pane (no arbitrary limits)
 
-## Session Insights for Context
-- **Git-comms discovery**: Git commits ARE our async message queue
-- **Routing clarity**: @AUTHOR: vs @FROM → @TO distinction
-- **Simplification**: Removes JSONL parsing, mailbox patterns, complex routing
-- **Direct demonstration**: Can show the pattern by using it
-- **BUILD's script exists**: Already updated with multi-recipient!
-- **Priority flags matter**: Use ↑↓ to signal urgency/importance
+## Key Patterns to Preserve
+- **Git-comms = message queue**: No separate infrastructure needed
+- **Parser not router**: Script shows all →, NEXUS decides routing
+- **Protocol vs implementation**: Universal patterns in /protocols/, agent-specific in context
+- **Priority flags**: ↑↓ for urgency signaling, helps triage
+- **@ALL needs agent discovery**: Not hardcoded lists
 
 ## BUILD Script Analysis
 **Good**:
