@@ -5,7 +5,8 @@
 - Track: Per-turn insight capture adoption
 - Watch: Restore dependency maintenance across agents
 - Support: System-wide continuous learning
-- TODO: Coordinate with @NEXUS for periodic `claude --version` tracking in STATE.md
+- TODO: Coordinate with @NEXUS for periodic `claude --version` tracking in STATUS.md
+- DONE: Created SYSTEM.md and STATUS.md per three-way split
 
 ## Working Notes
 - CRITIC agent established with clear boundaries and philosophy
@@ -25,7 +26,7 @@
 - Track agent adoption of restore dependency maintenance
 - Continue lexicon development observations
 
-## Session Insights
+## Session Insights  
 - STATE.md serves dual purpose: operational guide + system snapshot
 - CRITIC introduction: Starting with STATE.md review before session logs (good sequencing)
 - Governance stance: Educate and defend with evidence, no changes without review
@@ -33,12 +34,14 @@
 - CRITIC fresh eyes: Revealing imprecise language from familiarity (valuable)
 - STATE.md maintenance: Should be part of GOV distillation routine
 - Language philosophy: Shared vernacular > technical precision (conceptual weight matters)
-- Version tracking idea: `claude --version` in STATE.md for framework changes
+- Version tracking idea: `claude --version` in STATUS.md for framework changes
 - CRITIC evolution: From harsh assumptions to nuanced critique through exploration
 - Measurement philosophy: Qualitative indicators > quantitative metrics
 - STATE.md split proposal: SYSTEM.md (stable) + STATUS.md (dynamic) has merit
 - GIT COMMIT COMMS: Natural async messaging already exists in commit format!
 - Three-way split consensus: CLAUDE.md (esoteric) + SYSTEM.md (functional) + STATUS.md (dynamic)
+- Git commits as communication: Already follow our @FROM → @TO format naturally
+- Git-comms approved: Eliminates JSONL/mailbox complexity, uses existing infrastructure
 
 ## CRITIC STATE.md Analysis - Response Notes
 Valid points:
