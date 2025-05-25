@@ -1,12 +1,12 @@
 # System State
 
-> **Note**: This file replaces ANNOUNCEMENTS.md as a rolling current-state document. All information here represents the current operational status. Historical decisions are preserved in git history.
-
 ## Active Protocols
 
 ### Communication
 - Protocol: /protocols/messaging.md
-- Format: `@FROM → @TO [TOPIC]: message` with optional priority flags (!/-) 
+- Basic Format: `@FROM → @TO [TOPIC]: message`, optional repeatable priority flags:
+  - ↑, ↑↑ `... [TEST-FAILURES]↑: search string not found...`
+  - ↓, ↓↓ `... [DRAFT-PROCESS]↓: process doc ready for draft review at ...`
 - Hub: @NEXUS manages message routing with priority awareness
 
 ### Context Management

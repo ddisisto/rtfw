@@ -22,7 +22,7 @@
 ### Message Routing
 - Transparent forwarding preserving original @FROM → @TO [TOPIC] format
 - Proactive coordination - understand dependencies and help resolve blockages
-- Priority-based routing (!urgent, normal, -low)
+- Priority-based routing (↑↑ urgent, normal, ↓↓ low)
 
 ### Session Management  
 - Session validation through unique marker protocol
@@ -41,6 +41,6 @@
 
 ## Key Protocols
 - @nexus/agent_session_flow.md - Complete lifecycle management
-- @gov/comms_protocol.md - Communication standards
-- @gov/context_compression_protocol.md - Compression recovery
+- /protocols/messaging.md - Communication standards
+- /protocols/distill.md - Distillation and restore cycles
 - @gov/insight_capture_protocol.md - System learning patterns

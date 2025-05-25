@@ -9,13 +9,20 @@
 - **Session ID**: UUID identifying a Claude conversation
 - **JSONL file**: `/nexus/sessions/<session_id>.jsonl` containing conversation history
 - **session_log.txt**: Append-only log tracking current session per agent
-- **.nexus_sessionid**: File containing NEXUS's current session ID
+- **nexus/.sessionid**: File containing NEXUS's current session ID
 
 ### Key Principle
 Session management (starting/stopping processes) is completely independent from context management (distill/restore). You can:
 - Restart sessions without distilling
 - Distill multiple times within one session
 - Resume sessions that retain full context
+
+## Critical: Claude CLI Input Handling
+
+**VITAL**: In Claude CLI, Enter within tmux send-keys creates newlines, NOT submission!
+- Always send message text and Enter as SEPARATE commands
+- Pattern: `tmux send-keys -t <agent> 'message'` then `tmux send-keys -t <agent> Enter`
+- This applies to ALL interactions with Claude sessions
 
 ## Starting New Sessions
 
@@ -27,7 +34,7 @@ After any session start/resume, identify the session:
 2. Send to agent: 
    ```
    tmux send-keys -t <agent> '@NEXUS → @<AGENT>: Session identification in progress. Please echo: <AGENT>_SESSION_MARKER_...'
-   tmux send-keys -t <agent> Enter
+   tmux send-keys -t <agent> Enter  # CRITICAL: Separate command to submit!
    ```
 3. Wait for JSONL write: `sleep 2`
 4. Search for marker: 
@@ -35,7 +42,7 @@ After any session start/resume, identify the session:
    Grep pattern=<AGENT>_SESSION_MARKER_... path=/home/daniel/prj/rtfw/nexus/sessions
    ```
 5. Extract session ID from matching filename
-6. Update session_log.txt:
+6. Update nexus/session_log.txt:
    ```
    Read session_log.txt
    Append: <agent_name> <session_id> <timestamp>
@@ -48,10 +55,10 @@ When @ADMIN requests validation:
 1. Generate marker: `NEXUS_SESSION_VALIDATION_$(date +%s)_$$`
 2. Echo marker in conversation
 3. Wait: `sleep 2`
-4. Read .nexus_sessionid
+4. Read nexus/.sessionid
 5. Grep for marker in sessions/, should find prior session + new one if applicable
 6. If session changed:
-   - Update .nexus_sessionid
+   - Update nexus/.sessionid
    - Append to session_log.txt
 7. Report validation status
 

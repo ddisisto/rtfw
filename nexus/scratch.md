@@ -101,6 +101,14 @@ When we resume, NEXUS should:
 4. Continue facilitating system evolution
 
 
+## Auto-Compact Observation (Corrected)
+Just witnessed firsthand: After continuous distillation, context shows "35% left until auto-compact"
+- This means 65% used, 35% remaining free (NOT past threshold)
+- 34% threshold = when to plan distillation (almost there)
+- 15% = urgent action needed
+- Proves continuous distillation doesn't clear context (only organizes knowledge)
+- Critical to read these percentages correctly: X% LEFT not X% USED
+
 ## Active Tasks
 - [ ] Monitor BUILD's run.sh improvements (with @ADMIN)
 - [ ] Begin lexicon tracking experiments
@@ -151,3 +159,64 @@ When we resume, NEXUS should:
 - Git operations stay in Bash (no native equivalents)
 
 The system isn't just working - it's thriving and evolving!
+
+## Context Restore Critical Learning (2025-05-25)
+**MAJOR MISS**: During restore sequence, attempted to search /tmp for session ID
+- **Root cause**: Did not read session-mgmt.md during restore sequence
+- **Impact**: Tried incorrect path, would have failed session validation
+- **Correction**: session-mgmt.md MUST be included in restore sequence
+- **Update needed**: Add to context.md restore dependencies list
+
+This proves "personality offline" during restore - mechanical file reading isn't enough.
+Need explicit session-mgmt.md reference in restore protocol!
+
+### Other Context Restore Issues Encountered
+1. **.nexus_sessionid location ambiguity**
+   - Found: nexus/.nexus_sessionid (created there initially)
+   - Expected: /home/daniel/prj/rtfw/.nexus_sessionid (per run.sh)
+   - Resolution: Moved to project root, updated session-mgmt.md for clarity
+   
+2. **Missing session-mgmt.md in restore sequence**
+   - Current protocol doesn't include it
+   - Result: Attempted wrong search path (/tmp instead of nexus/sessions)
+   - Fix needed: Add to context.md dependencies OR restore protocol
+
+3. **Priority flag format change in STATE.md**
+   - Old format: ! and - flags
+   - New format: ↑↑↑ and ↓↓↓ (repeatable arrows)
+   - Impact: Message routing logic may need update
+
+4. **Restore sequence clarity**
+   - Need explicit list of NEXUS-specific files beyond generic protocol
+   - session-mgmt.md critical for operational knowledge
+   - context-lifecycle.md important for orchestration duties
+   - **RESOLVED**: Updated context.md with proper restore order
+
+### Priority Flag Migration Status
+- ✓ STATE.md - already updated by @ADMIN
+- ✓ /protocols/messaging.md - already has new format
+- ✓ nexus/context.md - updated from ! and - to ↑↑ and ↓↓
+- ✓ NEXUS.md - updated routing description and fixed dead protocol links
+- **New format**: ↑/↑↑ (urgent), ↓/↓↓ (low) - much clearer than !/- 
+- Other files may have old examples but these are the key operational docs
+
+## Insight: claude-additions.md Review
+- New structured approach: inbox → work → insight capture → outbox
+- "Insight capture" step aligns perfectly with distill protocol's "think hard"
+- Key addition: EVERY turn should include scratch.md reflection (not just idle times)
+- This formalizes what good agents already do naturally
+- New agent creation coming from this - exciting system evolution!
+
+## Session Management Insight: Tmux Restart Practice
+- Outer tmux session restart planned to fix capture-pane issues
+- No distillation needed - all context preserved in files
+- Good practice for NEXUS bootstrap procedures
+- Will need to restart GOV and BUILD sessions
+- Key learning: Context persistence through files enables clean restarts!
+
+## Critical Learning: Read the Docs!
+- **Always** check session-mgmt.md and context-lifecycle.md when doing those operations
+- Don't try random fixes - diagnose from authoritative sources
+- If stuck, escalate to @ADMIN for careful diagnosis
+- Documentation restructure revealed missing critical detail about Enter handling
+- Proper root cause analysis > quick fixes every time

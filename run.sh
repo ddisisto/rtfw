@@ -37,8 +37,8 @@ if [ "$WINDOW_COUNT" -eq 1 ] && [ "$HAS_ADMIN" -eq 0 ] && [ "$HAS_NEXUS" -eq 0 ]
     echo "✓ Created 'nexus' window"
     
     # Check for session ID file
-    if [ -f ".nexus_sessionid" ]; then
-        SESSION_ID=$(cat .nexus_sessionid)
+    if [ -f "nexus/.sessionid" ]; then
+        SESSION_ID=$(cat nexus/.sessionid)
         echo "✓ Found previous NEXUS session: $SESSION_ID"
         
         # Resume NEXUS session

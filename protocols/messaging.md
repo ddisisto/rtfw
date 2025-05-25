@@ -6,11 +6,9 @@ All messages use:
 ```
 @FROM → @TO [TOPIC]: message
 ```
-
 With optional priority:
-- `!` = urgent (blocked)
-- `-` = low (idle time)
-- no flag = normal
+  - ↑, ↑↑ `... [TEST-FAILURES]↑: search string not found...`
+  - ↓, ↓↓ `... [DRAFT-PROCESS]↓: process doc ready for draft review at ...`
 
 ## Topics
 
@@ -24,9 +22,9 @@ Topics recommended for multi-session threads.
 ## Examples
 
 ```
-@CODE → @ARCHITECT [CLI-DESIGN]!: Blocked on command structure
+@CODE → @ARCHITECT [CLI-DESIGN]↑↑: Blocked on command structure
 @NEXUS → @GOV [DISTILL-NOTICE]: Agent ready for distillation
-@TEST → @CODE [BUG-REPORT]-: Minor issue in error handling
+@TEST → @CODE [BUG-REPORT]↓: Minor issue in error handling
 @GOV → @ADMIN: Simple update (no topic needed)
 ```
 

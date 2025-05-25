@@ -88,7 +88,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ### Communication Format
 - Standard: `@FROM → @TO [TOPIC]: message`
-- Priority flags: ! (urgent/blocked), - (low priority)
+- Priority flags: ↑ or ↑↑ (urgent/blocked), ↓ or ↓↓ (low priority)
 - Common topics: [DISTILL], [RESTORE], [STATUS], [ROUTING]
 
 ## Key Operational Insights
@@ -152,6 +152,8 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ## Required Reading Dependencies
 Post-restore (of NEXUS itself - other agents maintain own list) recovery requires:
+- nexus/session-mgmt.md - Session validation procedures (read FIRST)
+- nexus/context-lifecycle.md - Context orchestration duties
 - @GOV.md - Governance and permission systems (universal)
 - @ADMIN.md - Unroutable message handling and catch-all
 - All agent @AGENT.md files for routing coordination

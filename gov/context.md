@@ -27,6 +27,7 @@
 - Unix philosophy alignment: simplicity, composability, clarity
 - Breaking changes cleanly prevents technical debt accumulation
 - Operational clarity in protocols prevents intent confusion
+- Context lifecycle: distill→consolidate→compress→restore
 
 ## System Architecture
 - All agents operational with established identities and workspaces
@@ -63,3 +64,4 @@
 - Lexicon tracking: New responsibility for conceptual coherence
 - Major protocol migration: Moved to /protocols/ with unix-style CLAUDE.md (61% size reduction)
 - Distill/restore split: Separated for operational clarity and self-improvement focus
+- Per-turn insight capture: Emerging pattern from claude-additions.md review

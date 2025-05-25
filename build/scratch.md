@@ -1,22 +1,38 @@
 # BUILD Agent Scratch Pad
 
-## Current Focus
-- First task: Improve run.sh based on system learnings
-- Key improvements needed:
-  - Better session detection and management
-  - Error handling and recovery flows
-  - Clearer operational feedback
-  - Tool usage optimization
+## Complete Rewrite Concept: Python-Based Management System
 
-## System Learnings to Apply
-- Session management is complex but critical
-- Clear feedback prevents confusion
-- Error states need graceful handling
-- Scripts should be self-documenting
+### Core Insight
+- Shell scripts limiting expressiveness for complex session management
+- Python offers better state management, error handling, structured code
+- Need deep @NEXUS collaboration - they understand dovetailing processes
 
-## Next Steps
-1. Review current run.sh implementation
-2. Identify pain points from system experience
-3. Implement incremental improvements
-4. Test with other agents
-5. Document changes clearly
+### Initial Architecture Ideas
+- Python-based session orchestrator
+- State management via structured data (JSON/YAML)
+- Modular design: session validation, window management, monitoring
+- Rich feedback with proper logging levels
+- Configuration-driven behavior
+
+### Critical Interfaces to Define with @NEXUS
+- Session lifecycle boundaries
+- Bootstrap/restore handoff protocols  
+- Monitoring state definitions
+- Error escalation pathways
+- Recovery process coordination
+
+### Dependencies for Planning Phase
+- @NEXUS dovetailing process knowledge
+- Current pain point analysis
+- Interface boundary documentation
+- State transition mapping
+
+### Implementation Philosophy
+- Incremental migration from current shell
+- Backwards compatibility during transition
+- Clear separation of concerns
+- Native tool integration maintained
+
+## Standby Status
+- Ready for @NEXUS collaboration when requested
+- Architecture concepts documented for future planning
