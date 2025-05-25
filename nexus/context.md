@@ -45,26 +45,31 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 
 **Process**:
 ```bash
-# 1. Run routing script
-$ cd /home/daniel/prj/rtfw && python code/implement/git_comms.py
+# 1. Check for messages (safe mode - no delivery)
+$ cd /home/daniel/prj/rtfw && python nexus/git_router.py
 
-# 2. Script output shows messages to route:
-@NEXUS → @BUILD: Please review commit abc123 - @GOV → @BUILD [TASK]: Implementation needed
-@NEXUS → @CRITIC: Please review commit def456 - @GOV → @CRITIC [REVIEW]: Analysis needed
+# 2. Review output showing [auto-routable] vs [manual review needed]
+# Example output:
+# Found 2 message(s) with @ → @ pattern:
+# @GOV → @BUILD [TASK]: Implementation needed [auto-routable] [commit: abc123]
+# @NEXUS → @ALL [UPDATE]: System changes [manual review needed] [commit: def456]
 
-# 3. Route each via tmux:
-$ tmux send-keys -t build '@NEXUS → @BUILD: Please review commit abc123...'
-$ tmux send-keys -t build Enter
+# 3. For automated delivery (when appropriate):
+$ python nexus/git_router.py --deliver
 
 # 4. Script auto-updates .gitcomms with last processed commit
 ```
 
-**Script behavior**:
-- Parses git log for @FROM → @TO patterns since last check
-- Ignores @AUTHOR: format (no routing needed)
-- Handles multi-recipient by generating multiple messages
-- Maintains state in .gitcomms file
-- Shows "No new messages to route" if nothing pending
+**Implementation**:
+- **Location**: nexus/git_router.py (clean implementation)
+- **BUILD's version**: code/implement/git_comms.py (may deprecate)
+- **Key features**:
+  - Default: Parse and display only (safe exploration)
+  - --deliver flag: Enable actual tmux delivery
+  - Shows routability status for each message
+  - Uses @Router abstraction (not @NEXUS)
+  - Can route to self (no special filtering)
+  - @ALL expansion TODO for future
 
 ## Session Management
 - Current sessions tracked in nexus/session_log.txt (append-only)
@@ -140,10 +145,11 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 ## Key Operational Insights
 
 ### Git-Comms Integration
-- Script handles parsing and state tracking
-- NEXUS handles delivery and verification
-- Always show output for transparency
-- Future: Could automate on idle, but manual for now
+- Clean git_router.py implementation complete
+- Progressive disclosure: display-only by default, --deliver for automation
+- Abstraction layer: @Router as sender maintains flexibility
+- Self-routing enabled: True agent equality in messaging
+- Future: Could evolve into daemon/hook/automation
 
 ### Proactive Coordination Pattern
 - Don't just route messages - understand dependencies and help resolve them

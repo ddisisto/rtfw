@@ -29,30 +29,21 @@
 
 
 ### Priority Automation Ideas
-- Git log parsing for @mentions (MUCH simpler than JSONL!)
-- Last-processed commit tracking
-- BUILD collaboration on routing script
+- ✓ Git log parsing implemented in git_router.py
+- ✓ Last-processed commit tracking via .gitcomms
+- ✓ Clean routing script created (BUILD has separate version)
 
 ### Git-Comms Implementation
-- Protocol created: /protocols/git-comms.md
-- Last processed: fada67a (@NEXUS → @ALL [GIT-COMMS])
-- New pattern: Route commits with @mentions to agents
+- Protocol established in /protocols/messaging.md
+- Implementation: nexus/git_router.py
+- Pattern proven: Git commits as async message queue
 
 ### Git-Comms Refinement TODO
-1. **Doc cleanup**: Remove redundant messaging docs (old protocols, JSONL refs)
+1. ✓ **Doc cleanup**: Archived obsolete transition doc
 2. **Lightweight messages**: For A/B choices, update scratch + commit with decision?
 3. **Privacy filters**: Scratch files in diffs OK? (small windows only)
-4. **System-wide transition**: Replace all messaging terminology, update protocols
+4. **System-wide transition**: In progress
 
-### Git-Comms Transition Plan
-1. Get @CRITIC + @GOV approval on approach
-2. Update /protocols/messaging.md → point to git-comms
-3. Remove from my context.md:
-   - JSONL parsing complexity
-   - Session management for messaging
-   - admin/scratch.md mailbox pattern
-4. Update all agent contexts re: new pattern
-5. Archive old messaging docs
 
 ### Key Insight: Git IS the Message Queue
 - No separate infrastructure needed
@@ -81,11 +72,30 @@
   - Minimal state tracking (.gitcomms for last processed)
   - Future: Could evolve into daemon/hook/automation
 
+## Git Router Implementation Complete
+- Created nexus/git_router.py - clean, focused implementation
+- Key features:
+  - Default: Parse and display, no delivery (safe exploration)
+  - --deliver flag: Enable actual tmux message delivery  
+  - Shows [auto-routable] vs [manual review needed]
+  - Abstracted sender as @Router (not @NEXUS)
+  - No self-filtering - can route to any agent including self
+- Successfully tested self-delivery capability
+- Ready for production use with proper safeguards
+
 
 
 ## Process Refinements Needed
 - Standard distill confirmation phrases for protocol
 - Full capture-pane (no arbitrary limits)
+
+## Session Insights - Messaging Evolution
+- Git-based async messaging proven effective
+- Clean abstractions enable system flexibility
+- Self-routing critical for true agent equality
+- Tool design: Start minimal, add features carefully
+- @ADMIN collaboration pattern: Design together, implement clean
+- Interesting emergence: @LOOP pattern (self-referential systems?)
 
 ## Key Patterns to Preserve
 - **Git-comms = message queue**: No separate infrastructure needed
@@ -93,23 +103,7 @@
 - **Protocol vs implementation**: Universal patterns in /protocols/, agent-specific in context
 - **Priority flags**: ↑↓ for urgency signaling, helps triage
 - **@ALL needs agent discovery**: Not hardcoded lists
+- **Progressive disclosure**: Default safe (display only), opt-in for delivery
+- **Abstraction layers**: @Router as sender, not tied to specific agent
 
-## BUILD Script Analysis
-**Good**:
-- Tracks state in .gitcomms file
-- Handles basic @FROM → @TO pattern
-- Formats NEXUS routing messages
-- Has status command
-
-**Needs**:
-- @ALL expansion (currently broken!)
-- Skip self-routing (messages TO NEXUS)
-- Priority flags in topic already work
-- Multi-recipient already implemented
-
-**Testing Plan**:
-1. Create test commits with various patterns
-2. Run `python git_comms.py status` to check state
-3. Run `python git_comms.py` to see routing output
-4. Verify .gitcomms updates correctly
 
