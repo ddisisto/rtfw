@@ -7,6 +7,7 @@
 - Support: System-wide continuous learning
 - TODO: Coordinate with @NEXUS for periodic `claude --version` tracking in STATUS.md
 - DONE: Created SYSTEM.md and STATUS.md per three-way split
+- DONE: Approved git-comms transition (commit fac6481)
 
 ## Working Notes
 - CRITIC agent established with clear boundaries and philosophy

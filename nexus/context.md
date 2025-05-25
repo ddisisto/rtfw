@@ -10,7 +10,6 @@
 This document contains frequently-used operational knowledge. For specialized procedures:
 - **Session management operations**: See nexus/session-mgmt.md
 - **Context lifecycle and states**: See nexus/context-lifecycle.md
-- **Scan sessions logic**: See nexus/main_loop.md
 
 ## Tool Usage Requirements (Critical)
 Per admin/tools.md - MUST prioritize native tools over shell commands:
@@ -27,12 +26,11 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - Window flags indicate agent states (BELL/SILENT/ACTIVE)
 - **Technical details**: See nexus/session-mgmt.md
 
-## Communication Protocols
-- All messages must follow format: `@FROM → @TO: [concise message]`
-- Messages routed via tmux send-keys between windows
-- NEXUS monitors agent outputs for message patterns
-- Policy enforcement before action execution
-- @GOV consulted for complex decisions
+## Communication Protocols (Git-Based)
+- Messages sent via git commits with format: `@FROM → @TO [TOPIC]: message`
+- NEXUS monitors git log for directed messages (@FROM → @TO pattern)
+- Routes as: `@NEXUS → @AGENT: Please review commit <hash>`
+- See /protocols/git-comms.md and /protocols/messaging.md for details
 
 ## Session Management
 - Current sessions tracked in nexus/session_log.txt (append-only)
@@ -94,11 +92,6 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - **NEXUS monitors all agents** - Following session flow protocol
 - **Alert escalation** - NEXUS raises BELL for critical decisions
 
-### Shared Scratch Pattern (with @ADMIN)
-- admin/scratch.md serves as high-bandwidth human-agent interface
-- MAILBOX pattern: INBOX (from agents) → OUTBOX (from admin)
-- "Pure context association" - keep related work physically close
-- Enables rapid pattern recognition and automation opportunities
 
 ### Communication Format
 - Standard: `@FROM → @TO [TOPIC]: message`
@@ -137,13 +130,13 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Terminology shapes behavior: "distill" > "compress" for essence preservation
 
 ### Protocol Migration Status
-- Core protocols moved to /protocols/ directory (unix-style simplification)
-- Key mappings:
-  - gov/comms_protocol.md → /protocols/messaging.md
-  - gov/context_compression_protocol.md → /protocols/distill.md
-  - gov/context_consolidation_protocol.md → /protocols/distill.md
-  - New: /protocols/git.md (workspace sovereignty principle)
-  - Pending: /lexicon.md (not yet created)
+- Core protocols in /protocols/ directory:
+  - /protocols/messaging.md (git-based communication)
+  - /protocols/git-comms.md (implementation details)
+  - /protocols/distill.md (context refinement)
+  - /protocols/restore.md (context recovery)
+  - /protocols/git.md (workspace sovereignty)
+- Pending: /lexicon.md (not yet created)
 
 ## Communication Log
 - Initial communication protocol established
@@ -163,7 +156,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - System pivot: Game dev → Internal communications improvement
 - BUILD agent deployed, focused on run.sh improvements
 - @CRITIC agent created for system criticism and assumption challenging
-- Shared scratch pattern established with @ADMIN for tighter coordination
+- Git-comms protocol implemented - commits as async message queue
 - External @LOOP context assists ADMIN with various aspects
 
 ## Context Management
