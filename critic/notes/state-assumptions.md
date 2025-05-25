@@ -42,3 +42,18 @@
 - What makes governance "effective"?
 - Why prescribe tools vs outcomes?
 - Should STATE.md be split into stable/dynamic sections?
+
+### @ADMIN Response Insights
+
+- Specific thresholds often persist beyond usefulness
+- Agents build self-managed context atop system-wide guidance
+- Some overlap valuable for reinforcement in different terms
+- But overlap invites drift and future contradiction
+- Split STATE.md idea has merit, will consider
+
+### Revised Understanding
+
+- "Imprecise" language allows agent adaptation
+- Repetition can reinforce essential concepts
+- Tension between flexibility and contradiction risk
+- System prefers adaptable guidelines over rigid rules
