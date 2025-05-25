@@ -33,15 +33,27 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - Next milestone: Process early parallel sessions
 
 ### Emerging Patterns
-1. **Parallel Context Development** - Multiple agent sessions run simultaneously
-   - Example: 2+ sessions often active at same time
-   - Shows organic, exploratory development style
-   - Context switches reveal development priorities
-   
-2. **Pre-Existing Architecture** - Project had structure before first log
-   - Game concepts already defined
-   - Agent patterns established
-   - Suggests significant pre-planning phase
+1. **Workspace Sovereignty** - Each agent owns their directory completely
+   - First intervention: "keep it in your own lane"
+   - No cross-directory modifications allowed
+   - Collaboration through messaging, not file sharing
+
+2. **Sysadmin Philosophy** - "I'm a sysadmin from old days"
+   - Prefer proven unix tools (tmux, tail, ls)
+   - Direct observation over abstraction
+   - Simple commands over complex scripts
+   - Real-time monitoring over async polling
+
+3. **Gentle Teaching Style** - Corrections as learning opportunities
+   - "great idea - but..." acknowledgment pattern
+   - "my bad, should have been clearer" - takes responsibility
+   - Explains why, not just what
+   - Friendly, collaborative tone throughout
+
+4. **Incremental Development** - Small steps with verification
+   - "one at a time please, don't batch"
+   - Check each step before proceeding
+   - Organic growth through constant refinement
 
 ## System Understanding (Distilled)
 - Three-way split: CLAUDE.md (philosophy) + SYSTEM.md (architecture) + STATUS.md (snapshot)
