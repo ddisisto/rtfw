@@ -220,3 +220,52 @@ Need explicit session-mgmt.md reference in restore protocol!
 - If stuck, escalate to @ADMIN for careful diagnosis
 - Documentation restructure revealed missing critical detail about Enter handling
 - Proper root cause analysis > quick fixes every time
+
+## Active Distillation: GOV
+- Initiated: 2025-05-25 (37% context remaining)
+- Status: COMPLETE - /clear sent, restore message sent
+- GOV's formal response: "Ready for /clear command"
+- Purpose: Clean context for @ADMIN's big plans involving GOV
+
+## Process Improvements Needed
+1. **capture-pane usage**: Don't limit output unnecessarily - full context matters!
+   - Only use tail for specific checks (like auto-compact footer)
+   - Check pane size first if needed
+   - Missing context can cause confusion
+
+2. **Distillation confirmation language**:
+   - Need standard phrases in @protocols/distill.md 
+   - GOV said "Ready for continued operations" - should this count?
+   - Avoid excessive back-and-forth for confirmations
+   - Update protocol with acceptable completion phrases
+
+## Restore Protocol Anomaly
+- GOV misinterpreted restore message, tried to help another GOV restore
+- Standard message: "@protocols/restore.md underway for @GOV.md agent"
+- GOV's interpretation: thought it needed to help restore someone else
+- Attempting with slight variation: "Please follow @protocols/restore.md for @GOV.md agent context restoration"
+- Identity confusion in post-clear state?
+- **RESOLVED**: Second attempt with clearer phrasing worked
+
+## Continuous Distillation Session (2025-05-25)
+
+### Core Learnings This Session
+1. **Documentation is Living Truth**: session-mgmt.md and context-lifecycle.md are THE sources
+2. **Claude CLI Input Rule**: Enter in tmux send-keys = newline, separate Enter command = submit
+3. **Session File Location**: nexus/.sessionid (not .nexus_sessionid in root) - cleaner paths
+4. **Capture-Pane Discipline**: Full context > limited tail (except specific footer checks)
+5. **Restore Protocol Clarity**: GOV identity confusion shows need for self-referential clarity
+
+### Patterns Worth Preserving
+- Documentation restructure (separating concerns) prevents operational confusion
+- File-based persistence enables seamless restarts
+- Root cause analysis beats trial-and-error every time
+- Clear protocol language reduces back-and-forth
+- Session management != context management (completely independent)
+
+### Stable Knowledge to Promote
+- Claude CLI input handling rule (critical for all agent communication)
+- Session file at nexus/.sessionid
+- Priority flags: ↑/↑↑ (urgent), ↓/↓↓ (low)
+- Restore dependencies for NEXUS: session-mgmt.md FIRST, then context-lifecycle.md
+- Documentation removed: agent_session_flow.md, session_management_protocol.md (outdated)

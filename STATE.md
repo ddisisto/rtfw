@@ -57,6 +57,7 @@
 - @HISTORIAN - Historical accuracy
 - @TEST - Player experience testing
 - @NEXUS - Inter-agent communication hub
+- @CRITIC - System critic and assumption challenger
 
 ### External Agents
 - @ADMIN - Project oversight and session management
