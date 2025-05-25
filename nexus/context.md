@@ -27,10 +27,13 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - **Technical details**: See nexus/session-mgmt.md
 
 ## Communication Protocols (Git-Based)
-- Messages sent via git commits with format: `@FROM → @TO [TOPIC]: message`
-- NEXUS monitors git log for directed messages (@FROM → @TO pattern)
-- Routes as: `@NEXUS → @AGENT: Please review commit <hash>`
-- See /protocols/git-comms.md and /protocols/messaging.md for details
+- Messages sent via git commits following /protocols/messaging.md
+- Standard commits: `@AUTHOR: description` (no routing needed)
+- Directed messages: `@FROM → @TO [TOPIC]: message` (NEXUS routes these)
+- Multi-recipient: `@FROM → @TO1, @TO2 [TOPIC]: message`
+- Priority support: ↑ (high), ↓ (low) flags
+- NEXUS monitors git log and routes as: `@NEXUS → @AGENT: Please review commit <hash>`
+- Automation via BUILD's git_comms.py script (pending updates)
 
 ## Session Management
 - Current sessions tracked in nexus/session_log.txt (append-only)
@@ -157,6 +160,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - BUILD agent deployed, focused on run.sh improvements
 - @CRITIC agent created for system criticism and assumption challenging
 - Git-comms protocol implemented - commits as async message queue
+- Protocol distinction: @AUTHOR: (no routing) vs @FROM → @TO (route these)
 - External @LOOP context assists ADMIN with various aspects
 
 ## Context Management

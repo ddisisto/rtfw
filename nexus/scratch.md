@@ -77,4 +77,24 @@
 - **Routing clarity**: @AUTHOR: vs @FROM → @TO distinction
 - **Simplification**: Removes JSONL parsing, mailbox patterns, complex routing
 - **Direct demonstration**: Can show the pattern by using it
+- **BUILD's script exists**: code/implement/git_comms.py needs updates
+
+## BUILD Script Analysis
+**Good**:
+- Tracks state in .gitcomms file
+- Handles basic @FROM → @TO pattern
+- Formats NEXUS routing messages
+- Has status command
+
+**Needs**:
+- Multi-recipient support (@TO1, @TO2)
+- Priority flags (↑↓)
+- Skip routing for @AUTHOR: commits (currently routes if @mentions found)
+- Handle commit message line breaks
+
+**Testing Plan**:
+1. Create test commits with various patterns
+2. Run `python git_comms.py status` to check state
+3. Run `python git_comms.py` to see routing output
+4. Verify .gitcomms updates correctly
 
