@@ -29,16 +29,16 @@ sleep 10  # Allow startup
 ### Session Identification Protocol
 After any session start/resume, identify the session:
 
-1. Generate marker: `AGENT_SESSION_MARKER_$(date +%s)_$$`
+1. Generate marker: `<AGENT>_SESSION_MARKER_$(date +%s)_$$`
 2. Send to agent: 
    ```
-   tmux send-keys -t <agent> '@NEXUS → @<AGENT>: Session identification in progress. Please echo: AGENT_SESSION_MARKER_...'
+   tmux send-keys -t <agent> '@NEXUS → @<AGENT>: Session identification in progress. Please echo: GOV_SESSION_MARKER_...'
    tmux send-keys -t <agent> Enter
    ```
 3. Wait for JSONL write: `sleep 2`
 4. Search for marker: 
    ```
-   Grep pattern=AGENT_SESSION_MARKER_... path=/home/daniel/prj/rtfw/nexus/sessions
+   Grep pattern=GOV_SESSION_MARKER_... path=/home/daniel/prj/rtfw/nexus/sessions
    ```
 5. Extract session ID from matching filename
 6. Update session_log.txt:
@@ -67,12 +67,15 @@ tmux capture-pane -t <agent> -p
 
 # Resume session
 tmux send-keys -t <agent> 'claude --resume <session_id>' Enter
-sleep 10
+sleep 3
+
+# capture pane again - should be inside claude code cli again, validate it shows /exit as last activity, waiting for next input.
+# --resume always creates a new session_id / jsonl file - identify new and update to session_log is _essential_ right here!
 ```
 
-**Important**: No restore protocol needed on resume - agent retains full context.
+**Important**: No context restore protocol needed on resume - agent retains full context.
 
-## Session Monitoring
+## Session Monitoring <- don't think this section is warranted here right now, likely to change soon, lets just remove for now?
 
 ### Window Flags
 - **BELL**: Agent needs attention (tool approval or completed work)
@@ -89,7 +92,7 @@ tmux list-windows -F "#{window_index}:#{window_name} #{?window_bell_flag,BELL,} 
 tmux capture-pane -t <agent> -p | tail -50
 ```
 
-## NEXUS Self-Validation
+## NEXUS Self-Validation <- special case of Session Identification Protocol, integrate into that section instead, remove instructions for when to do (just that @ADMIN will advise)
 
 On every context reload, NEXUS must validate its own session:
 
@@ -103,7 +106,7 @@ On every context reload, NEXUS must validate its own session:
    - Append to session_log.txt
 7. Report validation status
 
-## Common Operations
+## Common Operations <- thinking this should kept directly in streamlined context.md (working on that next) rather than here. Or maybe a new doc that covers message routing, tool use approvals. Note incomplete/outdated comms protocol usage example - this is the sort of drift we need to be always vigilant for 
 
 ### Send Message to Agent
 ```bash
@@ -114,11 +117,12 @@ tmux send-keys -t <agent> Enter
 
 ### Approve Tool Use
 ```bash
-# Send '1' for yes, '2' for yes+auto-approve, Escape for no
-tmux send-keys -t <agent> '1'
+# when - after identifying tool use approval state TODO: have we got details on this identification already?
+# Typically requires '1' for yes, '2' for yes+auto-approve (*if* available), Escape for no. Must understand options as presented before sending.
+tmux send-keys -t <agent> '1' # Enter not required
 ```
 
-### Create New Window
+### Create New Window <- this one is very different concern to others in this section, don't bundle these
 ```bash
 tmux new-window -n <agent_name>
 ```
