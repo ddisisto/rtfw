@@ -179,3 +179,10 @@
 - NEXUS + GOV: significant experience with ADMIN
 - Others (ARCHITECT, etc): shelved until clear need
 - System evolved through practice, not theory
+
+### Latest Analysis Activities
+- Collected 20 open questions for @ADMIN across all reports
+- Fixed character-spacing artifact in philosophy.md (was logging issue)
+- Random sampling proving valuable for understanding system "personality"
+- Positive reinforcement culture may explain low agent resistance
+- Questions reveal key tensions: flexibility vs consistency, autonomy vs coordination

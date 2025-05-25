@@ -9,7 +9,6 @@ Files analyzed from /home/daniel/prj/rtfw/nexus/sessions/
 ### 1. **Directive Messages** (55% - 11 instances)
 These involve @ADMIN routing messages between agents or providing specific instructions:
 - Message routing using `@FROM → @TO` format
-- Often spaced out character-by-character (e.g., "@ N E X U S → @ G O V")
 - Examples:
   - "@NEXUS → @GOV: Direct communication established..."
   - "github is already setup @NEXUS → @GOV: Local git repository..."
@@ -60,7 +59,6 @@ Providing additional context or fixing misunderstandings:
 ### Pattern 4: Communication Protocol
 **Observations:**
 - Heavy use of `@FROM → @TO` format
-- Messages often character-spaced (possibly for clarity in terminal)
 - Direct routing through @NEXUS as central hub
 - No automated message passing - everything goes through @NEXUS
 
@@ -113,7 +111,6 @@ From interventions, the established system uses:
 - Direct file operations (Read/Edit) for state
 - Git commits for message passing
 - Session IDs in registry.md
-- Character-spaced messages for clarity
 - @NEXUS as central routing hub
 
 This approach reflects @ADMIN's background as a sysadmin - practical, reliable, and directly observable.
