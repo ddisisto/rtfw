@@ -54,7 +54,6 @@ Note: Additional agents can be created as needs arise. The system is designed fo
 
 ### Communication Channels
 - Git commits with @mentions (primary async channel)
-- Shared scratch files for high-bandwidth coordination
 - File-based persistence for context preservation
 - See /protocols/git-comms.md for implementation details
 
@@ -101,7 +100,7 @@ Note: Additional agents can be created as needs arise. The system is designed fo
 ├── /protocols/ (system-wide protocols)
 ├── /gov/ (governance meta-protocols)
 ├── /admin/ (administrative workspace)
-└── /sessions/ (NEXUS session management)
+└── /nexus/sessions/ (NEXUS session management)
 ```
 
 ## Protocol Locations
