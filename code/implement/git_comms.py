@@ -15,8 +15,8 @@ class GitCommsMonitor:
     def __init__(self, state_file: str = ".gitcomms"):
         self.state_file = Path(state_file)
         self.last_processed = self._load_state()
-        # Active agents (excluding admin, nexus who handle routing)
-        self.active_agents = ['GOV', 'BUILD', 'CRITIC', 'RESEARCH', 'ARCHITECT', 'HISTORIAN', 'TEST']
+        # Discover active agents from @AGENT.md files
+        self.active_agents = self._discover_agents()
         
     def _load_state(self) -> Optional[str]:
         """Load last processed commit hash."""
@@ -53,49 +53,66 @@ class GitCommsMonitor:
                 })
         return commits
     
+    def _discover_agents(self) -> List[str]:
+        """Discover active agents from @AGENT.md files."""
+        agents = []
+        for path in Path('.').glob('*.md'):
+            if path.stem.isupper() and path.stem not in ['ADMIN', 'NEXUS', 'STATE', 'CLAUDE']:
+                agents.append(path.stem)
+        return agents
+    
     def extract_messages(self, commit: Dict) -> List[Dict]:
         """Extract routable messages from commit."""
         messages = []
         msg = commit['message']
         
         # Pattern 1: @FROM → @TO [TOPIC]: Message (single recipient)
-        pattern1 = r'@(\w+)\s*→\s*@(\w+)\s*\[([^\]]+)\]:\s*(.+)'
-        match = re.match(pattern1, msg)
+        pattern1 = r'@(\w+)\s*→\s*@(\w+)\s*\[([^\]]+)\](.*):\s*(.+)'
+        match = re.match(pattern1, msg, re.DOTALL)
         if match:
+            topic = match.group(3)
+            # Handle priority flags after topic
+            priority_flags = match.group(4).strip()
+            content = match.group(5)
             messages.append({
                 'from': match.group(1),
                 'to': match.group(2),
-                'topic': match.group(3),
-                'content': match.group(4),
+                'topic': topic + priority_flags,
+                'content': content,
                 'commit': commit['hash']
             })
             return messages
         
         # Pattern 2: @FROM → @TO1, @TO2 [TOPIC]: Message (multi-recipient)
-        pattern2 = r'@(\w+)\s*→\s*@([\w,\s]+)\s*\[([^\]]+)\]:\s*(.+)'
-        match = re.match(pattern2, msg)
+        pattern2 = r'@(\w+)\s*→\s*@([\w,\s]+)\s*\[([^\]]+)\](.*):\s*(.+)'
+        match = re.match(pattern2, msg, re.DOTALL)
         if match:
             from_agent = match.group(1)
             recipients = [r.strip() for r in match.group(2).split(',')]
             topic = match.group(3)
-            content = match.group(4)
+            priority_flags = match.group(4).strip()
+            content = match.group(5)
             
             # Expand @ALL to active agents
-            expanded_recipients = []
             for recipient in recipients:
                 if recipient == 'ALL':
-                    expanded_recipients.extend(self.active_agents)
+                    for agent in self.active_agents:
+                        messages.append({
+                            'from': from_agent,
+                            'to': agent,
+                            'topic': topic + priority_flags,
+                            'content': content,
+                            'commit': commit['hash'],
+                            'original_to': 'ALL'  # Track expansion
+                        })
                 else:
-                    expanded_recipients.append(recipient)
-            
-            for recipient in expanded_recipients:
-                messages.append({
-                    'from': from_agent,
-                    'to': recipient,
-                    'topic': topic,
-                    'content': content,
-                    'commit': commit['hash']
-                })
+                    messages.append({
+                        'from': from_agent,
+                        'to': recipient,
+                        'topic': topic + priority_flags,
+                        'content': content,
+                        'commit': commit['hash']
+                    })
             return messages
         
         # Pattern 3: @AGENT: Simple message (no routing required per protocol)
@@ -105,10 +122,18 @@ class GitCommsMonitor:
     
     def format_nexus_message(self, msg: Dict) -> str:
         """Format message for NEXUS routing."""
-        return f"@NEXUS → @{msg['to']}: Please review commit {msg['commit']} - @{msg['from']} → @{msg['to']} [{msg['topic']}]: {msg['content']}"
+        # Show original message format, expanding @ALL in display
+        to_display = msg['to']
+        if msg.get('original_to') == 'ALL':
+            to_display = f"{msg['to']} (via @ALL)"
+        return f"@{msg['from']} → @{to_display} [{msg['topic']}]: {msg['content']} [commit: {msg['commit']}]"
     
-    def process_new_commits(self) -> List[str]:
-        """Process new commits and return formatted messages."""
+    def process_new_commits(self, show_all: bool = True) -> List[str]:
+        """Process new commits and return formatted messages.
+        
+        Args:
+            show_all: If True, show all → messages. If False, filter by target.
+        """
         commits = self.get_commits_since(self.last_processed)
         if not commits:
             return []
@@ -117,7 +142,9 @@ class GitCommsMonitor:
         for commit in commits:
             messages = self.extract_messages(commit)
             for msg in messages:
-                all_messages.append(self.format_nexus_message(msg))
+                # For NEXUS, show all → messages regardless of target
+                if show_all or msg['to'] in self.active_agents:
+                    all_messages.append(self.format_nexus_message(msg))
         
         # Update state to last processed commit
         if commits:
