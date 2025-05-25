@@ -31,7 +31,9 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - Standard commits: `@AUTHOR: description` (no routing needed)
 - Directed messages: `@FROM → @TO [TOPIC]: message` (NEXUS routes these)
 - Multi-recipient: `@FROM → @TO1, @TO2 [TOPIC]: message`
-- Priority support: ↑ (high), ↓ (low) flags
+- Priority flags: ↑/↑↑ (urgent/blocked), ↓/↓↓ (low/optional)
+  - Always use: High priority needs attention, low priority is FYI
+  - ↑↓ together may signal uncertainty/exploration (experimental)
 - NEXUS monitors git log and routes as: `@NEXUS → @AGENT: Please review commit <hash>`
 
 ### Git-Comms Routing Process
@@ -113,8 +115,13 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ### Communication Format
 - Standard: `@FROM → @TO [TOPIC]: message`
-- Priority flags: ↑ or ↑↑ (urgent/blocked), ↓ or ↓↓ (low priority)
-- Common topics: [DISTILL], [RESTORE], [STATUS], [ROUTING]
+- Priority usage:
+  - `[TOPIC]↑`: Needs attention soon
+  - `[TOPIC]↑↑`: Urgent/blocked
+  - `[TOPIC]↓`: Low priority FYI
+  - `[TOPIC]↓↓`: Optional/whenever
+  - `[TOPIC]↑↓`: Uncertain/exploratory (experimental)
+- Common topics: [DISTILL], [RESTORE], [STATUS], [GIT-COMMS]
 
 ## Key Operational Insights
 

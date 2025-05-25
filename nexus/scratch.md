@@ -77,7 +77,8 @@
 - **Routing clarity**: @AUTHOR: vs @FROM → @TO distinction
 - **Simplification**: Removes JSONL parsing, mailbox patterns, complex routing
 - **Direct demonstration**: Can show the pattern by using it
-- **BUILD's script exists**: code/implement/git_comms.py needs updates
+- **BUILD's script exists**: Already updated with multi-recipient!
+- **Priority flags matter**: Use ↑↓ to signal urgency/importance
 
 ## BUILD Script Analysis
 **Good**:
