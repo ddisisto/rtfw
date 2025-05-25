@@ -15,6 +15,8 @@ class GitCommsMonitor:
     def __init__(self, state_file: str = ".gitcomms"):
         self.state_file = Path(state_file)
         self.last_processed = self._load_state()
+        # Active agents (excluding admin, nexus who handle routing)
+        self.active_agents = ['GOV', 'BUILD', 'CRITIC', 'RESEARCH', 'ARCHITECT', 'HISTORIAN', 'TEST']
         
     def _load_state(self) -> Optional[str]:
         """Load last processed commit hash."""
@@ -78,7 +80,15 @@ class GitCommsMonitor:
             topic = match.group(3)
             content = match.group(4)
             
+            # Expand @ALL to active agents
+            expanded_recipients = []
             for recipient in recipients:
+                if recipient == 'ALL':
+                    expanded_recipients.extend(self.active_agents)
+                else:
+                    expanded_recipients.append(recipient)
+            
+            for recipient in expanded_recipients:
                 messages.append({
                     'from': from_agent,
                     'to': recipient,
