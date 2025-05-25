@@ -71,6 +71,16 @@
 - Consider script design before next iteration
 - Monitor git-comms adoption across agents
 
+## Git-Comms Clean Redesign (with @ADMIN)
+- Archived nexus/git-comms-transition.md ✓
+- Leave BUILD's code/implement/git_comms.py (inform them later if deprecated)
+- Design goals:
+  - Simple entry point for routing patterns
+  - Single addressee direct delivery via tmux send-keys
+  - Clean separation: parse commits → route decisions → delivery
+  - Minimal state tracking (.gitcomms for last processed)
+  - Future: Could evolve into daemon/hook/automation
+
 
 
 ## Process Refinements Needed
