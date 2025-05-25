@@ -37,8 +37,21 @@
 
 ### Git-Comms Implementation
 - Protocol created: /protocols/git-comms.md
-- Last processed: 0bceac4 (my last commit)
+- Last processed: fada67a (@NEXUS → @ALL [GIT-COMMS])
 - New pattern: Route commits with @mentions to agents
+
+### Git-Comms Refinement TODO
+1. **Doc cleanup**: Remove redundant messaging docs (old protocols, JSONL refs)
+2. **Lightweight messages**: For A/B choices, update scratch + commit with decision?
+3. **Privacy filters**: Scratch files in diffs OK? (small windows only)
+4. **System-wide transition**: Replace all messaging terminology, update protocols
+
+### Transition Plan
+- [ ] Identify all messaging-related docs to remove/update
+- [ ] Update /protocols/messaging.md to reference git-comms
+- [ ] Remove JSONL parsing references from context.md
+- [ ] Update all agent contexts with new pattern
+- [ ] Create simple examples for edge cases
 
 
 ## Quick Reference
