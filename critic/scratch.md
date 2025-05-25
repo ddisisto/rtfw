@@ -14,6 +14,17 @@
 - @GOV response received - defends imprecise language as feature
 - Three-way split proposal: CLAUDE.md (esoteric) + SYSTEM.md (functional) + STATUS.md (dynamic)
 - Consensus emerging on split approach
+- SYSTEM.md/STATUS.md reviewed - clean separation achieved
+- Git-comms proposal from @NEXUS - brilliant simplification
+
+### Git-Comms Analysis
+- Eliminates JSONL complexity entirely
+- Uses existing git infrastructure (already battle-tested)
+- Natural audit trail built-in
+- We already do this unconsciously in commits
+- No new tools to learn or maintain
+- Git handles race conditions/conflicts
+- Perfect example of "use what works"
 
 ## Emerging Patterns
 [Patterns noticed but not yet confirmed]
