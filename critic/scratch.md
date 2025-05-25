@@ -69,6 +69,14 @@
 - Parent/child relationships via parentUuid
 - Tool use tracked separately from content
 
+### Pre-Distillation Reflection
+- Successfully created extraction tool in first attempt
+- Pattern: Understand structure → Build tool → Test → Iterate
+- @ADMIN teaches through practice, not theory
+- Session logs are conversations, not just logs
+- Need to trace conversation flow to understand interventions
+- Think: What was agent doing BEFORE correction?
+
 ### Context Exploration Insights
 - @ADMIN has no workspace directory - truly external human agent
 - @GOV context shows ~30 governance evolution points - system has deep history
