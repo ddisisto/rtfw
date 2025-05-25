@@ -12,9 +12,15 @@ Multi-agent system for collaborative AI development with file-based persistence 
   - scratch.md: Working memory and per-turn insights
   - notes/: Agent-specific documentation (optional)
 
-### Core Agents
+### Active Agents
 
-#### Coordination Layer
+#### External
+- **@ADMIN**: Project oversight and direction
+  - Ultimate authority and human interface
+  - Resource provisioning and strategic guidance
+  - Catch-all for unroutable messages
+
+#### Internal
 - **@NEXUS**: Central communication hub and session orchestrator
   - Message routing with priority awareness (↑/↓ flags)
   - Session management and agent coordination
@@ -25,22 +31,17 @@ Multi-agent system for collaborative AI development with file-based persistence 
   - Conflict resolution and system evolution
   - Responsive intervention (not scheduled oversight)
 
-#### External Layer
-- **@ADMIN**: Project oversight and direction
-  - Ultimate authority and human interface
-  - Resource provisioning and strategic guidance
-  - Catch-all for unroutable messages
-
-- **@PLAYER**: The player/facilitator role
-- **@DEV**: Development assistance and escalation
-
-#### Functional Layer
-- **@BUILD**: Implementation specialist
-- **@ARCHITECT**: System design across game eras
-- **@RESEARCH**: AI development research
-- **@HISTORIAN**: Historical accuracy maintenance
-- **@TEST**: Player experience validation
 - **@CRITIC**: System critic and assumption challenger
+  - Pattern analysis from session logs
+  - Assumption surfacing and questioning
+  - Post-distillation review capability
+
+- **@BUILD**: Implementation specialist
+  - Code generation and refactoring
+  - Tool development and automation
+  - Technical solution implementation
+
+Note: Additional agents can be created as needs arise. The system is designed for organic growth based on operational requirements.
 
 ## Communication Patterns
 
