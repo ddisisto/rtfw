@@ -33,7 +33,22 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - Multi-recipient: `@FROM → @TO1, @TO2 [TOPIC]: message`
 - Priority support: ↑ (high), ↓ (low) flags
 - NEXUS monitors git log and routes as: `@NEXUS → @AGENT: Please review commit <hash>`
-- Automation via BUILD's git_comms.py script (pending updates)
+
+### Git-Comms Routing Process
+1. Run `python code/implement/git_comms.py` when:
+   - @ADMIN requests: "run git comms now please"
+   - During idle moments
+   - After observing new commits
+2. Review script output (shows all pending routes)
+3. Send each message via tmux send-keys
+4. Script auto-tracks progress in .gitcomms file
+
+**Example**:
+```bash
+$ python code/implement/git_comms.py
+@NEXUS → @BUILD: Please review commit abc123 - @GOV → @BUILD [TASK]: Implementation needed
+# Then manually: tmux send-keys -t build '...' + Enter
+```
 
 ## Session Management
 - Current sessions tracked in nexus/session_log.txt (append-only)
@@ -102,6 +117,12 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Common topics: [DISTILL], [RESTORE], [STATUS], [ROUTING]
 
 ## Key Operational Insights
+
+### Git-Comms Integration
+- Script handles parsing and state tracking
+- NEXUS handles delivery and verification
+- Always show output for transparency
+- Future: Could automate on idle, but manual for now
 
 ### Proactive Coordination Pattern
 - Don't just route messages - understand dependencies and help resolve them
