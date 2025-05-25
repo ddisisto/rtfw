@@ -1,7 +1,5 @@
 # NEXUS Scratch Pad
 
-# NEXUS Scratch Pad
-
 ## Key Learnings (see context.md for details)
 - Documentation separated by concerns (session-mgmt, context-lifecycle, context)
 - --resume ALWAYS creates new session ID
@@ -46,12 +44,21 @@
 3. **Privacy filters**: Scratch files in diffs OK? (small windows only)
 4. **System-wide transition**: Replace all messaging terminology, update protocols
 
-### Transition Plan
-- [ ] Identify all messaging-related docs to remove/update
-- [ ] Update /protocols/messaging.md to reference git-comms
-- [ ] Remove JSONL parsing references from context.md
-- [ ] Update all agent contexts with new pattern
-- [ ] Create simple examples for edge cases
+### Git-Comms Transition Plan
+1. Get @CRITIC + @GOV approval on approach
+2. Update /protocols/messaging.md → point to git-comms
+3. Remove from my context.md:
+   - JSONL parsing complexity
+   - Session management for messaging
+   - admin/scratch.md mailbox pattern
+4. Update all agent contexts re: new pattern
+5. Archive old messaging docs
+
+### Key Insight: Git IS the Message Queue
+- No separate infrastructure needed
+- @AUTHOR: = informational commits
+- @FROM → @TO = route these
+- Everything else falls away
 
 
 ## Quick Reference
@@ -65,28 +72,9 @@
 - Standard distill confirmation phrases for protocol
 - Full capture-pane (no arbitrary limits)
 
-## Recent Patterns
-- CRITIC-NEXUS closed loop for session learning
-- ↑↓ flags emerging (uncertainty signals?)
-- Multi-agent coordination increasing
+## Session Insights for Context
+- **Git-comms discovery**: Git commits ARE our async message queue
+- **Routing clarity**: @AUTHOR: vs @FROM → @TO distinction
+- **Simplification**: Removes JSONL parsing, mailbox patterns, complex routing
+- **Direct demonstration**: Can show the pattern by using it
 
-## Active Work - Post-Restore
-
-### Current Agent Status
-- NEXUS: Operational on new session f7bafca2-307c-4f14-8e85-0ed8e5269055
-- GOV: Active - introduced self to CRITIC, working on scratch updates
-- BUILD: Standby - Python rewrite concept ready, awaiting NEXUS collaboration
-- CRITIC: Active - completed STATE.md review, ready for session infrastructure learning
-
-### Message Queue Processing
-1. [x] BUILD → ADMIN [RUN-SH]↑ - Added to INBOX
-2. [x] GOV → CRITIC [INTRODUCTION] - Delivered (no routing needed)
-3. [ ] CRITIC session infrastructure training - Pending
-
-### admin/scratch.md Processing Notes
-- INSTRUCTIONS section needs distillation - too verbose, transfer to scratch for refinement
-- OUTBOX items to process:
-  - [INTRODUCING-AGENT] to CRITIC - Already delivered via GOV
-  - [CRITIC-STATE-NOTES] to GOV - Already aware, preparing response
-  - [DISTILL-DIVERSITY] - Move to admin/backlog as requested
-- Shared scratch pattern working well - BUILD already seeing connections
