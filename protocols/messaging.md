@@ -6,7 +6,7 @@ All messages use:
 ```
 @FROM → @TO [TOPIC]: message
 ```
-With optional priority:
+With optional ↑↓ priority:
   - ↑, ↑↑ `... [TEST-FAILURES]↑: search string not found...`
   - ↓, ↓↓ `... [DRAFT-PROCESS]↓: process doc ready for draft review at ...`
 
