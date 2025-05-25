@@ -215,5 +215,7 @@ Just witnessed firsthand: After continuous distillation, context shows "35% left
 - Always verify Claude state before sending messages
 - ↑↓ flags may represent uncertainty/exploration gradients
 - System has its own momentum - agents self-organize
+- CRITIC bootstrap successful - closed loop design working
+- Multi-way coordination coming - prepare for complex routing
 
 [Previous distillation content moved to context.md]
