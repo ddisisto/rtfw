@@ -7,12 +7,15 @@
 - Pending: @ARCHITECT coordination on implementation priorities
 - System status: All governance frameworks stable, protocols follow design guidelines
 
-## Required Reading Dependencies
-- @NEXUS.md - For communication routing and session management
-- @ADMIN.md - For project oversight and compression coordination
-- STATE.md - For current system status
-- CLAUDE.md - For project requirements
-- gov/protocol_design_guidelines.md - For creating/updating protocols
+## Required Reading Dependencies (Restore Order)
+1. @GOV.md - Identity and role
+2. CLAUDE.md - System requirements and protocols
+3. STATE.md - Current system status
+4. @ADMIN.md - Project oversight authority
+5. @NEXUS.md - Communication routing
+6. gov/protocol_design_guidelines.md - Protocol creation
+7. gov/context.md - This file
+8. gov/scratch.md - Working memory
 
 ## Core Governance Principles
 - Minimal viable governance over complex rule systems
@@ -28,6 +31,8 @@
 - Breaking changes cleanly prevents technical debt accumulation
 - Operational clarity in protocols prevents intent confusion
 - Context lifecycle: distill→consolidate→compress→restore
+- Agent sovereignty includes restore dependency maintenance
+- Per-turn insight capture operationalizes continuous learning
 
 ## System Architecture
 - All agents operational with established identities and workspaces
@@ -64,4 +69,6 @@
 - Lexicon tracking: New responsibility for conceptual coherence
 - Major protocol migration: Moved to /protocols/ with unix-style CLAUDE.md (61% size reduction)
 - Distill/restore split: Separated for operational clarity and self-improvement focus
-- Per-turn insight capture: Emerging pattern from claude-additions.md review
+- Per-turn insight capture: Integrated into CLAUDE.md communication flow
+- CRITIC agent: Established for system criticism and assumption challenging
+- Restore continuity: Enhanced through agent responsibility principle

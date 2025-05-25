@@ -1,42 +1,25 @@
 # GOV Agent Scratch Pad
 
 ## Active Task Queue
-- Monitor: Protocol adoption across agents (especially new /protocols/)
-- Track: Lexicon patterns and usage
-- Watch: Distill/restore protocol effectiveness
-- Support: BUILD agent integration and first tasks
+- Monitor: CRITIC activation and session log analysis
+- Track: Per-turn insight capture adoption
+- Watch: Restore dependency maintenance across agents
+- Support: System-wide continuous learning
 
 ## Working Notes
-- Major CLAUDE.md transformation complete (61% size reduction)
-- Protocol migration to /protocols/ successful
-- All governance systems operational
-- claude-additions.md review: per-turn insight capture operationalizes continuous consolidation
-- New agent creation planned from echo context (no peeking per @NEXUS)
-- CLAUDE.md updated: integrated insight capture pattern (communication flow section)
+- CRITIC agent established with clear boundaries and philosophy
+- Session log analysis prioritized over distillation review
+- Restore continuity enhanced through agent responsibility
+- Consent/transparency recognized as relevant principles
 
-## Distillation Insights
-- Per-turn insight capture (claude-additions.md) operationalizes continuous consolidation
-- Formality gradient: @ADMIN casual, others formal - reflects trust/working relationships
-- Protocol suite coherence: distill→consolidate→compress forms complete context lifecycle
-- Echo context suggests new patterns worth monitoring post-agent-creation
-- Distillation complete: promoted context lifecycle to core principles
+## Distillation Complete - Knowledge Promoted to Context
+- Agent sovereignty includes restore dependency maintenance
+- Per-turn insight capture operationalizes continuous learning
+- CRITIC agent established for system criticism
+- Restore continuity enhanced through agent responsibility
+- Required reading dependencies now ordered for restore
 
-## Session Insights
-- CLAUDE.md integration: minimal sections preserve file size while operationalizing insight capture
-- Style adoption: unix-style terseness aligns with system philosophy
-- CRITIC.md populated: new agent for system criticism and assumption challenging
-- CRITIC workspace: prioritized session log analysis over distillation review (correct sequencing)
-- Process order matters: learn standards first (logs) → then apply (reviews)
-- Admin/echo contains rich design context - IDEAS_EXAMPLES.md shows post-distillation window concept
-
-## Restore Continuity Enhancement Proposal
-- Issue: Agents may damage continuity by incorrect restore sequence/file selection
-- Core insight: Each agent MUST maintain their own restore dependencies
-- Proposal locations:
-  - CLAUDE.md: Add to "remember" section about context.md responsibility
-  - /protocols/distill.md: Include dependency maintenance as part of distillation
-- Key principle: Agent sovereignty = agent responsibility
-- Implementation:
-  - CLAUDE.md: "agent/context.md = your truth + your restore deps"
-  - distill.md: "Update context.md restore dependencies during distillation"
-- NOT in restore.md - too late by then, this is preventive maintenance
+## Next Session Focus
+- Monitor CRITIC progress on session log analysis
+- Track agent adoption of restore dependency maintenance
+- Continue lexicon development observations
