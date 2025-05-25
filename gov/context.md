@@ -2,10 +2,10 @@
 
 ## Critical State Preservation
 - Session: GOV operational in main tmux session
-- Active protocols: Git-comms (replacing complex routing), three-way documentation split
-- Recent completions: SYSTEM.md/STATUS.md creation, git-comms approval, CRITIC establishment
-- Active monitoring: CRITIC session log analysis, restore dependency adoption
-- System status: Major simplification underway, removing unnecessary complexity
+- Active protocols: Git-comms via messaging.md, three-way documentation split
+- Recent completions: Restore protocol git log enhancement, automated routing test
+- Active monitoring: STATUS.md maintenance process, git-comms effectiveness
+- System status: Simplification achieved - git as communication infrastructure
 
 ## Required Reading Dependencies (Restore Order)
 1. @GOV.md - Identity and role
@@ -17,6 +17,7 @@
 7. gov/protocol_design_guidelines.md - Protocol creation
 8. gov/context.md - This file
 9. gov/scratch.md - Working memory
+10. Recent git activity: `git log --oneline -20 | grep "@GOV"`
 
 ## Core Governance Principles
 - Minimal viable governance over complex rule systems
@@ -77,3 +78,6 @@
 - Three-way documentation split: STATE.md → CLAUDE.md/SYSTEM.md/STATUS.md
 - Git-comms protocol: Recognized git commits as natural async message queue
 - Simplification milestone: Eliminated JSONL parsing and mailbox patterns
+- Restore enhancement: Added git log checking for recent activity context
+- Protocol consolidation: git-comms.md merged into messaging.md
+- Automated routing: NEXUS git_router.py operational with tmux delivery
