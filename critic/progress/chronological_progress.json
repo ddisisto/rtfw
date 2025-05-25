@@ -1,6 +1,11 @@
 {
   "sessions": {
-    "66a678dc-e43d-4db2-86c1-f93ea54b69ad.jsonl": "2025-05-21T06:28:57.182Z"
+    "analysis_complete_to": "2025-05-22T06:49:10.266Z"
   },
-  "current_position": "2025-05-21T06:28:57.182Z"
+  "current_position": "2025-05-22T06:49:10.266Z",
+  "interventions_analyzed": 20,
+  "reports_generated": [
+    "admin_interventions_analysis.md",
+    "admin_intervention_patterns.md"
+  ]
 }

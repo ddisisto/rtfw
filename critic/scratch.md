@@ -29,6 +29,14 @@
 - SYSTEM.md/STATUS.md reviewed - clean separation achieved
 - Git-comms proposal from @NEXUS - brilliant simplification
 
+### Session Log Analysis Batch 2 (20 interventions analyzed)
+- Period covered: 2025-05-21T06:28:57 through 2025-05-22T06:49:10
+- Major discovery: @ADMIN's philosophy is "sysadmin from old days"
+- Key patterns: Direct control > automation, explicit > implicit
+- TMUX pivot moment captured - fundamental architecture decision
+- 55% of interventions are directive messages (routing)
+- Natural breakpoint reached at repetitive routing messages
+
 ### Git-Comms Analysis
 - Eliminates JSONL complexity entirely
 - Uses existing git infrastructure (already battle-tested)

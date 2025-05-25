@@ -27,10 +27,11 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
    - Adoption success/failure
 
 ### Analysis Progress
-- Sessions reviewed: Multiple chronologically, 22 identified total
-- Interventions found: 20 total, 10 analyzed in detail
-- Patterns identified: 4 major themes emerging
+- Sessions reviewed: Multiple chronologically through 2025-05-22T06:49:10
+- Interventions analyzed: 20 total in detail
+- Patterns identified: 4 major themes confirmed
 - Tracking method: Chronological across interleaved sessions
+- Key discovery: TMUX architecture pivot moment captured
 - Next milestone: Continue through CRITIC instantiation
 
 ### Emerging Patterns
@@ -55,6 +56,12 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
    - "one at a time please, don't batch"
    - Check each step before proceeding
    - Organic growth through constant refinement
+
+5. **Direct Control Philosophy** - Automation skepticism
+   - "nope, don't want to use pattern matching"
+   - "I want *you* in the loop" (not automated scripts)
+   - Preference for explicit tracking over inference
+   - Direct tool usage over abstraction layers
 
 ## System Understanding (Distilled)
 - Three-way split: CLAUDE.md (philosophy) + SYSTEM.md (architecture) + STATUS.md (snapshot)
