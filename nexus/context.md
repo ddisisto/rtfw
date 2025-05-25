@@ -36,9 +36,16 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 
 ## Session Management
 - Current sessions tracked in nexus/session_log.txt (append-only)
+- Session file: nexus/.sessionid (contains current NEXUS session ID)
 - Session operations are independent from context management
 - NEXUS must validate its own session on each reload
 - **Full procedures**: See nexus/session-mgmt.md
+
+## Critical: Claude CLI Input Handling
+- **VITAL**: Enter within tmux send-keys creates newlines, NOT submission
+- Always send message text and Enter as SEPARATE commands
+- Pattern: `tmux send-keys -t <agent> 'message'` then `tmux send-keys -t <agent> Enter`
+- This applies to ALL interactions with Claude sessions
 
 ## GitHub Repository
 - Repository established: https://github.com/ddisisto/rtfw
@@ -99,6 +106,11 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Agent state awareness through session_log + windows before reporting status
 - System evolution: From hierarchical routing to nervous system behavior
 
+### Capture-Pane Discipline
+- Use full capture-pane output for context (no arbitrary limits)
+- Only use tail/head for specific checks (e.g., auto-compact footer)
+- Missing context leads to operational confusion
+
 ### Insight Capture Practice
 - Always capture key insights in scratch.md as they occur
 - Promotes learning retention and system improvement
@@ -128,7 +140,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ## Communication Log
 - Initial communication protocol established
-- Session management investigation in progress
+- Session management fully documented and operational
 - Insight capture pattern adopted and spreading system-wide
 - ROLEDOC refresh creating cleaner agent interfaces
 
@@ -138,6 +150,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Session identification via unique markers validated
 - Critical discovery: --resume ALWAYS creates new session ID
 - Documentation restructured: session-mgmt.md, context-lifecycle.md, context.md
+- Removed outdated: agent_session_flow.md, session_management_protocol.md
 - NEXUS role evolved: message router → context lifecycle orchestrator
 - Proactive coordination pattern emerged and adopted
 - System pivot: Game dev → Internal communications improvement

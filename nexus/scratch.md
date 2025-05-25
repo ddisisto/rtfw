@@ -27,9 +27,11 @@ From passive message router to active context orchestrator:
 ## Active Work - System Focus Shift
 
 ### Current Status
-- NEXUS session: 03cdfb8a-0c30-46e1-a345-140eb3c4af51 (changed!)
-- Active windows: admin (0), nexus (1), gov (2)
-- @GOV operational: 75583faf-a5d3-428f-89ef-34e2477ea85a (pending restart)
+- NEXUS session: 03cdfb8a-0c30-46e1-a345-140eb3c4af51
+- Active windows: admin (0), nexus (1), gov (2), build (3)
+- @GOV operational: f7bafca2-307c-4f14-8e85-0ed8e5269055 (fresh context)
+- @BUILD operational: Status pending
+- **NEW**: @CRITIC agent created (system critic and assumption challenger)
 - **FOCUS**: Internal communications improvement (game dev paused)
 
 
@@ -93,12 +95,11 @@ From passive message router to active context orchestrator:
 - Suggests lexicon ownership by NEXUS (natural fit!)
 - Protocols migrated - alignment complete!
 
-## Next Session Focus
-When we resume, NEXUS should:
-1. Improve run.sh based on learnings (high priority!)
-2. Begin lexicon tracking experiments
-3. Monitor protocol adoption across agents
-4. Continue facilitating system evolution
+## Current Priorities
+1. Support @ADMIN's big plans (context ready)
+2. Monitor @CRITIC integration
+3. Check BUILD status and run.sh progress
+4. Begin lexicon tracking experiments
 
 
 ## Auto-Compact Observation (Corrected)
@@ -221,11 +222,7 @@ Need explicit session-mgmt.md reference in restore protocol!
 - Documentation restructure revealed missing critical detail about Enter handling
 - Proper root cause analysis > quick fixes every time
 
-## Active Distillation: GOV
-- Initiated: 2025-05-25 (37% context remaining)
-- Status: COMPLETE - /clear sent, restore message sent
-- GOV's formal response: "Ready for /clear command"
-- Purpose: Clean context for @ADMIN's big plans involving GOV
+[PRUNED - Distillation complete]
 
 ## Process Improvements Needed
 1. **capture-pane usage**: Don't limit output unnecessarily - full context matters!
@@ -263,9 +260,13 @@ Need explicit session-mgmt.md reference in restore protocol!
 - Clear protocol language reduces back-and-forth
 - Session management != context management (completely independent)
 
-### Stable Knowledge to Promote
+### Stable Knowledge PROMOTED to context.md ✓
 - Claude CLI input handling rule (critical for all agent communication)
 - Session file at nexus/.sessionid
-- Priority flags: ↑/↑↑ (urgent), ↓/↓↓ (low)
-- Restore dependencies for NEXUS: session-mgmt.md FIRST, then context-lifecycle.md
 - Documentation removed: agent_session_flow.md, session_management_protocol.md (outdated)
+- Capture-pane discipline (full output > limited tail)
+
+### System Updates During Distillation
+- CLAUDE.md updated with communication flow (per-turn insight capture)
+- @CRITIC agent created by @GOV (system critic role)
+- ADMIN.md updated with CRITIC dependency
