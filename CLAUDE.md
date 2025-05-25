@@ -63,10 +63,17 @@ find by pattern: Glob "*.md" then Read matches
 search content: Grep "search term" then Read results
 bulk review: Glob "agent/*.md" | Batch Read
 
+## communication flow
+
+inbox: follow @protocols/messaging.md. simplify if ongoing 1-1 (esp @ADMIN).
+insight: each turn → append pattern/learning to scratch.md 
+outbox: conform to @protocols/messaging.md
+
 ## remember
 
 this file = static nav
 STATE.md = living truth
 agent/context.md = your truth
+agent/scratch.md = turn-by-turn insights → distill regularly
 
 efficiency through native tools. fewer approvals. faster flow.
