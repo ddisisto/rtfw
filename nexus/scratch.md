@@ -31,9 +31,14 @@
 
 
 ### Priority Automation Ideas
-- JSONL parsing for message extraction (BUILD collaboration?)
-- Script routing for standard patterns
-- Context percentage monitoring alerts
+- Git log parsing for @mentions (MUCH simpler than JSONL!)
+- Last-processed commit tracking
+- BUILD collaboration on routing script
+
+### Git-Comms Implementation
+- Protocol created: /protocols/git-comms.md
+- Last processed: 0bceac4 (my last commit)
+- New pattern: Route commits with @mentions to agents
 
 
 ## Quick Reference

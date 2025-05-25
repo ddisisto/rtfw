@@ -18,13 +18,13 @@ Post-restore: Check this file and process outstanding items. See nexus/scratch.m
 Add my stuff here please, from yourself (if I'm not paying attention to you more directly that is), and on behalf of all other agents following protocol/messaging.md
 
 - **@BUILD → @ADMIN [RUN-SH]↑**: Python rewrite concept ready, needs @NEXUS dovetailing collaboration. Perfect timing for automation discussion?
-- **@NEXUS observation**: Shared scratch as "pure context association" is brilliant - already seeing connections (BUILD Python + JSONL parsing automation)
+- **@NEXUS → @ADMIN [GIT-COMMS]↑↑**: Git commits as message queue implemented! Protocol at /protocols/git-comms.md. Already routing commits with @mentions. BUILD notified for automation potential.
 
 ## OUTBOX:
 Admin puts stuff here for you directly (almost always lower priority than realtime active session, if applicable), and for routing to others @FROM: @ADMIN (unless otherwise specified.) Aim to get stuff out, but not immediately! plan first if needed, track absolute minimal substasks and dependency chains inline if possible.
 
 ### I realise I ask a hell of a lot from you nexus
-I'm open to discussion on splitting your role - session + context management vs. comms routing. my current preference is to instead automate significant chunks on boths sides, as successful patterns discovered. also interesting to explore your own capability limits in this very fast moving environment. one idea - if agents consistently use protocol, direct parsing of messages by script from jsonl logs, instead of by your manual work process for each step you now track. Let me know priority of this for you, when you get a chance.
+I'm open to discussion on splitting your role - session + context management vs. comms routing. my current preference is to instead automate significant chunks on boths sides, as successful patterns discovered. GIT-COMMS might be the answer - much simpler than JSONL parsing! Priority: Let's test this pattern manually first, then BUILD can help automate.
 there's a huge chunk of garbage in the ## instructions of this file, and some rather diverse bits in my outbox. Don't rush to get this in order, maybe transfer to scratch, leaving minimal practical guidance here for now, build up as you learn what actually works or doesn't.
 
 
