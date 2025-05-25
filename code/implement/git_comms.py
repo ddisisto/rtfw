@@ -56,7 +56,7 @@ class GitCommsMonitor:
         messages = []
         msg = commit['message']
         
-        # Pattern 1: @FROM → @TO [TOPIC]: Message
+        # Pattern 1: @FROM → @TO [TOPIC]: Message (single recipient)
         pattern1 = r'@(\w+)\s*→\s*@(\w+)\s*\[([^\]]+)\]:\s*(.+)'
         match = re.match(pattern1, msg)
         if match:
@@ -69,24 +69,27 @@ class GitCommsMonitor:
             })
             return messages
         
-        # Pattern 2: @AGENT: Simple message (extract mentions from content)
-        pattern2 = r'@(\w+):\s*(.+)'
+        # Pattern 2: @FROM → @TO1, @TO2 [TOPIC]: Message (multi-recipient)
+        pattern2 = r'@(\w+)\s*→\s*@([\w,\s]+)\s*\[([^\]]+)\]:\s*(.+)'
         match = re.match(pattern2, msg)
         if match:
-            agent = match.group(1)
-            content = match.group(2)
+            from_agent = match.group(1)
+            recipients = [r.strip() for r in match.group(2).split(',')]
+            topic = match.group(3)
+            content = match.group(4)
             
-            # Look for @mentions in content
-            mentions = re.findall(r'@(\w+)', content)
-            for mention in mentions:
-                if mention != agent:  # Don't route to self
-                    messages.append({
-                        'from': agent,
-                        'to': mention,
-                        'topic': 'COMMIT',
-                        'content': f"See commit {commit['hash']}: {content}",
-                        'commit': commit['hash']
-                    })
+            for recipient in recipients:
+                messages.append({
+                    'from': from_agent,
+                    'to': recipient,
+                    'topic': topic,
+                    'content': content,
+                    'commit': commit['hash']
+                })
+            return messages
+        
+        # Pattern 3: @AGENT: Simple message (no routing required per protocol)
+        # These are just informational signatures, not communications
         
         return messages
     
