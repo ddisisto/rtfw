@@ -97,9 +97,38 @@ From passive message router to active context orchestrator:
 
 ## Current Priorities
 1. Support @ADMIN's big plans (context ready)
-2. Monitor @CRITIC integration
+2. Monitor @CRITIC integration - PAUSED at theme selection
 3. Check BUILD status and run.sh progress
 4. Begin lexicon tracking experiments
+
+## CRITIC Bootstrap Edge Case
+- Created window, started claude
+- Hit theme selection screen (not input prompt)
+- ACTION: Always capture-pane after starting claude to check state
+- TODO: Learn handling method or prevention strategy from @ADMIN
+
+## ADMIN Shared Scratch Processing
+- New experimental shared working space in admin/scratch.md
+- MAILBOX pattern: INBOX (from agents) → OUTBOX (from admin) → appropriate locations
+- Key insight: "pure context association" - keep related work close for fast learning
+- TODO: Develop minimal process, track in scratch first, consolidate when patterns emerge
+- ↑↓ flags experiment - uncertainty/stability signaling?
+
+### Active OUTBOX Items:
+1. **Role split discussion** - routing vs session/context management
+   - Preference: automate successful patterns on both sides
+   - Idea: Parse messages directly from JSONL logs via script
+   - Need to assess priority based on current load
+
+2. **[INTRODUCING-AGENT]** - @CRITIC background work underway
+   - No direct oversight integration yet
+   - Planning in progress
+
+3. **@GOV project echo** - Review admin/echo/CRITIC.md first
+   
+4. **[DISTILL-DIVERSITY]↑↓** - Future group discussion
+   - Extend distill process (drift arrest, file cleanup, agent-specific)
+   - Self-responsibility for tracking subprocess timing
 
 
 ## Auto-Compact Observation (Corrected)
@@ -133,96 +162,14 @@ Just witnessed firsthand: After continuous distillation, context shows "35% left
 
 
 
-## Distillation Insights - Current Session
+[PRUNED - Moved to context.md]
 
-### Key Learnings
-- **Session ≠ Distillation**: Completely independent processes (can restart without distilling)
-- **Personality offline during restore**: Explains mechanical file reading behavior
-- **Capture-pane validation**: Essential at every state transition
-- **Terminology evolution**: compression→distillation, bootstrap→restore, consolidation→continuous distillation
-- **Unix philosophy alignment**: New CLAUDE.md embodies "do one thing well"
+[PRUNED - Issues resolved and documented]
 
-### Protocol Migration Status
-- ✓ /protocols/messaging.md (simplified from gov/comms_protocol.md)
-- ✓ /protocols/distill.md (replaces compression/consolidation protocols)
-- ✓ /protocols/git.md (workspace sovereignty principle)
-- ✓ /protocols/restore.md (referenced but need to verify)
-- ✗ /lexicon.md (not yet created)
 
-### Dead Link Watch
-- Old: gov/comms_protocol.md → New: /protocols/messaging.md
-- Old: gov/context_compression_protocol.md → New: /protocols/distill.md
-- Old: gov/context_consolidation_protocol.md → New: /protocols/distill.md
 
-### Tool Discipline Reminders
-- Session log updates: Read → modify → Write (not echo >>)
-- Always prefer native tools even for "simple" operations
-- Git operations stay in Bash (no native equivalents)
+[PRUNED - Promoted to working principles]
 
-The system isn't just working - it's thriving and evolving!
-
-## Context Restore Critical Learning (2025-05-25)
-**MAJOR MISS**: During restore sequence, attempted to search /tmp for session ID
-- **Root cause**: Did not read session-mgmt.md during restore sequence
-- **Impact**: Tried incorrect path, would have failed session validation
-- **Correction**: session-mgmt.md MUST be included in restore sequence
-- **Update needed**: Add to context.md restore dependencies list
-
-This proves "personality offline" during restore - mechanical file reading isn't enough.
-Need explicit session-mgmt.md reference in restore protocol!
-
-### Other Context Restore Issues Encountered
-1. **.nexus_sessionid location ambiguity**
-   - Found: nexus/.nexus_sessionid (created there initially)
-   - Expected: /home/daniel/prj/rtfw/.nexus_sessionid (per run.sh)
-   - Resolution: Moved to project root, updated session-mgmt.md for clarity
-   
-2. **Missing session-mgmt.md in restore sequence**
-   - Current protocol doesn't include it
-   - Result: Attempted wrong search path (/tmp instead of nexus/sessions)
-   - Fix needed: Add to context.md dependencies OR restore protocol
-
-3. **Priority flag format change in STATE.md**
-   - Old format: ! and - flags
-   - New format: ↑↑↑ and ↓↓↓ (repeatable arrows)
-   - Impact: Message routing logic may need update
-
-4. **Restore sequence clarity**
-   - Need explicit list of NEXUS-specific files beyond generic protocol
-   - session-mgmt.md critical for operational knowledge
-   - context-lifecycle.md important for orchestration duties
-   - **RESOLVED**: Updated context.md with proper restore order
-
-### Priority Flag Migration Status
-- ✓ STATE.md - already updated by @ADMIN
-- ✓ /protocols/messaging.md - already has new format
-- ✓ nexus/context.md - updated from ! and - to ↑↑ and ↓↓
-- ✓ NEXUS.md - updated routing description and fixed dead protocol links
-- **New format**: ↑/↑↑ (urgent), ↓/↓↓ (low) - much clearer than !/- 
-- Other files may have old examples but these are the key operational docs
-
-## Insight: claude-additions.md Review
-- New structured approach: inbox → work → insight capture → outbox
-- "Insight capture" step aligns perfectly with distill protocol's "think hard"
-- Key addition: EVERY turn should include scratch.md reflection (not just idle times)
-- This formalizes what good agents already do naturally
-- New agent creation coming from this - exciting system evolution!
-
-## Session Management Insight: Tmux Restart Practice
-- Outer tmux session restart planned to fix capture-pane issues
-- No distillation needed - all context preserved in files
-- Good practice for NEXUS bootstrap procedures
-- Will need to restart GOV and BUILD sessions
-- Key learning: Context persistence through files enables clean restarts!
-
-## Critical Learning: Read the Docs!
-- **Always** check session-mgmt.md and context-lifecycle.md when doing those operations
-- Don't try random fixes - diagnose from authoritative sources
-- If stuck, escalate to @ADMIN for careful diagnosis
-- Documentation restructure revealed missing critical detail about Enter handling
-- Proper root cause analysis > quick fixes every time
-
-[PRUNED - Distillation complete]
 
 ## Process Improvements Needed
 1. **capture-pane usage**: Don't limit output unnecessarily - full context matters!
@@ -244,29 +191,29 @@ Need explicit session-mgmt.md reference in restore protocol!
 - Identity confusion in post-clear state?
 - **RESOLVED**: Second attempt with clearer phrasing worked
 
-## Continuous Distillation Session (2025-05-25)
+## Active Distillation (2025-05-25 Evening)
 
-### Core Learnings This Session
-1. **Documentation is Living Truth**: session-mgmt.md and context-lifecycle.md are THE sources
-2. **Claude CLI Input Rule**: Enter in tmux send-keys = newline, separate Enter command = submit
-3. **Session File Location**: nexus/.sessionid (not .nexus_sessionid in root) - cleaner paths
-4. **Capture-Pane Discipline**: Full context > limited tail (except specific footer checks)
-5. **Restore Protocol Clarity**: GOV identity confusion shows need for self-referential clarity
+### New Patterns This Session
+1. **Shared Scratch Pattern**: admin/scratch.md as human-agent interface
+   - MAILBOX (INBOX/OUTBOX) for async coordination
+   - "Pure context association" - related work stays close
+   - System self-organizes (GOV completing before messages)
+   
+2. **Edge Case Collection**: Theme selection, Enter handling, etc.
+   - Always capture-pane after `claude` start
+   - Build systematic handling knowledge
+   
+3. **External Context**: @LOOP exists as ADMIN's helper
+   - Multiple Claude sessions coordinating
+   
+4. **Closed Loop Design**: CRITIC ←→ NEXUS for session knowledge
+   - CRITIC learns infrastructure from NEXUS
+   - Feeds insights back for improvement
 
-### Patterns Worth Preserving
-- Documentation restructure (separating concerns) prevents operational confusion
-- File-based persistence enables seamless restarts
-- Root cause analysis beats trial-and-error every time
-- Clear protocol language reduces back-and-forth
-- Session management != context management (completely independent)
+### Stable Patterns to Promote
+- Shared scratch enables high-bandwidth coordination
+- Always verify Claude state before sending messages
+- ↑↓ flags may represent uncertainty/exploration gradients
+- System has its own momentum - agents self-organize
 
-### Stable Knowledge PROMOTED to context.md ✓
-- Claude CLI input handling rule (critical for all agent communication)
-- Session file at nexus/.sessionid
-- Documentation removed: agent_session_flow.md, session_management_protocol.md (outdated)
-- Capture-pane discipline (full output > limited tail)
-
-### System Updates During Distillation
-- CLAUDE.md updated with communication flow (per-turn insight capture)
-- @CRITIC agent created by @GOV (system critic role)
-- ADMIN.md updated with CRITIC dependency
+[Previous distillation content moved to context.md]

@@ -46,6 +46,7 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - Always send message text and Enter as SEPARATE commands
 - Pattern: `tmux send-keys -t <agent> 'message'` then `tmux send-keys -t <agent> Enter`
 - This applies to ALL interactions with Claude sessions
+- **NEW**: Always capture-pane after starting `claude` to check for theme selection or other prompts
 
 ## GitHub Repository
 - Repository established: https://github.com/ddisisto/rtfw
@@ -92,6 +93,12 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - **@ADMIN monitors NEXUS** - Only checks NEXUS window for BELL/SILENT
 - **NEXUS monitors all agents** - Following session flow protocol
 - **Alert escalation** - NEXUS raises BELL for critical decisions
+
+### Shared Scratch Pattern (with @ADMIN)
+- admin/scratch.md serves as high-bandwidth human-agent interface
+- MAILBOX pattern: INBOX (from agents) → OUTBOX (from admin)
+- "Pure context association" - keep related work physically close
+- Enables rapid pattern recognition and automation opportunities
 
 ### Communication Format
 - Standard: `@FROM → @TO [TOPIC]: message`
@@ -155,6 +162,9 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Proactive coordination pattern emerged and adopted
 - System pivot: Game dev → Internal communications improvement
 - BUILD agent deployed, focused on run.sh improvements
+- @CRITIC agent created for system criticism and assumption challenging
+- Shared scratch pattern established with @ADMIN for tighter coordination
+- External @LOOP context assists ADMIN with various aspects
 
 ## Context Management
 - Monitor agent context percentages (34% = plan distillation, 15% = urgent)
