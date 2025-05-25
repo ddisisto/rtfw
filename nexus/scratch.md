@@ -66,6 +66,10 @@
 - Git: `git add <agent>/` OK, ALLCAPS needs approval
 - run.sh + BUILD: Python rewrite pending collab
 
+## Pending Actions
+- **@CRITIC request**: Session log format docs and @ADMIN intervention patterns
+- **Script bug**: @ALL routing not working - needs BUILD fix
+
 
 
 ## Process Refinements Needed
@@ -88,10 +92,10 @@
 - Has status command
 
 **Needs**:
-- Multi-recipient support (@TO1, @TO2)
-- Priority flags (↑↓)
-- Skip routing for @AUTHOR: commits (currently routes if @mentions found)
-- Handle commit message line breaks
+- @ALL expansion (currently broken!)
+- Skip self-routing (messages TO NEXUS)
+- Priority flags in topic already work
+- Multi-recipient already implemented
 
 **Testing Plan**:
 1. Create test commits with various patterns

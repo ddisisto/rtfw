@@ -10,6 +10,7 @@
 - Distillation complete: Major simplification theme
 - Git-comms transition approved and underway
 - Three-way split implemented successfully
+- Protocol consolidation: git-comms merged into messaging.md (8651f3f)
 
 ## Next Session Focus
 - Review deprecated STATE.md for archival

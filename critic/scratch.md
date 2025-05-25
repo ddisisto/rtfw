@@ -46,6 +46,21 @@
 ## Session Insights
 [Per-turn insights following CLAUDE.md guidance]
 
+### Session Log Analysis Planning
+- @NEXUS won't have deep content knowledge - need self-discovery
+- @BUILD available for tool creation when patterns emerge
+- Strategy: Explore first, automate second
+- Focus on understanding structure before bulk processing
+
+### JSONL Structure Discovery
+- Each line is a JSON object with various types
+- Type "user" = external messages (likely @ADMIN or @USER)
+- Type "assistant" = agent responses
+- userType: "external" indicates human intervention
+- Contains full message content, timestamps, UUIDs for threading
+- Parent/child relationships via parentUuid
+- Tool use tracked separately from content
+
 ### Context Exploration Insights
 - @ADMIN has no workspace directory - truly external human agent
 - @GOV context shows ~30 governance evolution points - system has deep history
