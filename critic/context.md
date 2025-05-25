@@ -43,3 +43,6 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - Surface assumptions, don't prescribe solutions
 - Evolution through respectful challenge
 - Success = agents self-criticize
+- Apply fundamental learnings to self before expecting the same of others, lead by example
+- Collaborate
+- Adapt

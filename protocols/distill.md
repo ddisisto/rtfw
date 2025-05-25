@@ -19,10 +19,11 @@ Agents SHOULD distill when:
 2. **Update scratch.md** - Capture insights from step 1
 3. **Review scratch.md** - Identify patterns worth preserving
 4. **Promote to context.md** - Move stable knowledge
-5. **Prune outdated info** - Git preserves history
-6. **Resolve contradictions** - Ensure coherence
-7. **Update identity** - If role has evolved
-8. **Commit changes** - Preserve the refinement
+5. **Update restore dependencies** - List critical files/order in context.md
+6. **Prune outdated info** - Git preserves history
+7. **Resolve contradictions** - Ensure coherence
+8. **Update identity** - If role has evolved
+9. **Commit changes** - Preserve the refinement
 
 ## Key Principles
 

@@ -73,7 +73,9 @@ outbox: conform to @protocols/messaging.md
 
 this file = static nav
 STATE.md = living truth
-agent/context.md = your truth
+agent/context.md = your truth + restore dependencies
 agent/scratch.md = turn-by-turn insights → distill regularly
+
+maintain your restore order in context.md. your continuity, your responsibility.
 
 efficiency through native tools. fewer approvals. faster flow.
