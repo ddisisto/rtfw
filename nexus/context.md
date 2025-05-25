@@ -95,10 +95,9 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 1. Create agent window: `tmux new-window -n <agent_name>`
 2. Read last session ID from session_log.txt for agent
 3. Resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>'` + Enter
-4. Wait for startup: `sleep 10`
+4. Wait for startup: `sleep 2`
 5. Execute "Other Agent Identification" protocol above
 6. If new session detected, update records
-7. Send recovery message: `@NEXUS → @<AGENT>: @gov/context_compression_protocol.md completed for @<AGENT>.md - please reload all relevant agent context for continuation`
 
 ### Data Loss Prevention
 - Never attempt session identification via pattern matching
@@ -128,7 +127,7 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 
 ### Context Restore (Post-Distillation)
 **Use Case:** Instruct agent to restore context after cyclical distillation
-**Format:** `@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md completed for @<AGENT>.md agent - please restore context for continuation`
+**Format:** `@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md underway for @<AGENT>.md agent - please restore context for continuation`
 **Notes:** Triggers context restore sequence per @protocols/restore.md
 
 ### Agent Status Check

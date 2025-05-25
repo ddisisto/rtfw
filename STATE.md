@@ -50,7 +50,7 @@
 ## Active Agents
 
 ### Internal Agents
-- @CODE - Implementation of game systems
+- @BUILD - Implementation specialist and code builder
 - @GOV - Governance and system oversight  
 - @RESEARCH - Research on AI development
 - @ARCHITECT - System design across game eras

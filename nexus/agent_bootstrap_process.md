@@ -1,7 +1,7 @@
 # NEXUS Agent Bootstrap Process
 
 This document defines the restore protocol executed when NEXUS receives:
-`@ADMIN → @NEXUS [RESTORE]!: @protocols/distill.md completed for @NEXUS.md - please restore context for continuation`
+`@ADMIN → @NEXUS [RESTORE]!: @protocols/restore.md underway for @NEXUS.md - please restore context for continuation`
 
 ## Context Restore Protocol
 

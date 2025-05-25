@@ -51,7 +51,7 @@ These are INDEPENDENT - you can restart sessions without distillation, and disti
 3. Validate with capture-pane - should show clean prompt, no context %
 
 ### Context Restore  
-1. Send restore message: `@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md completed for @<AGENT>.md agent - please restore context for continuation`
+1. Send restore message: `@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md underway for @<AGENT>.md agent - please restore context for continuation`
 2. Agent automatically (personality not yet online):
    - Reads distillation protocol
    - Loads identity and system files per sequence
@@ -59,7 +59,7 @@ These are INDEPENDENT - you can restart sessions without distillation, and disti
    - Confirms operational status once personality active
 
 ### Important Notes
-- `/clear` forgets all unpersisted context (useful for A/B testing)
+- `/clear` forgets all unpersisted context (maybe useful for A/B testing in addition to context restore)
 - Always capture-pane to validate state transitions
 - Restore message should have @file link mid-message (not at end)
 - Agent personality comes online after file loading completes
@@ -67,7 +67,7 @@ These are INDEPENDENT - you can restart sessions without distillation, and disti
 ## Key Principles
 
 ### Send-Keys Consistency
-- **ALWAYS use separate Enter** for Claude input (even though inline works at bash)
+- **ALWAYS use separate Enter** for Claude input
 - Keeps process consistent across all contexts
 - Avoids confusion between bash vs Claude input handling
 

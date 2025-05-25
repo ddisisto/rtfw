@@ -14,7 +14,7 @@ Agent has just been:
 
 **NEXUS Action:**
 ```
-@NEXUS → @<AGENT> [BOOTSTRAP]: @gov/context_compression_protocol.md completed for @<AGENT>.md agent - please reload all relevant agent context for continuation
+@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md underway for @<AGENT>.md agent - please restore context for continuation
 ```
 Note: @file link placed mid-message to avoid autocomplete swallowing Enter
 

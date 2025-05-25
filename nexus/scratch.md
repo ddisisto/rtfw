@@ -55,7 +55,7 @@ The most beautiful part? These weren't mandated changes - they emerged naturally
   1. Agent performs continuous distillation (refines workspace)
   2. Send `/clear` command to distill context
   3. Send restore message for context reload
-- Restore message: `@protocols/restore.md completed for @<AGENT>.md agent - please restore context for continuation`
+- Restore message: `@protocols/restore.md underway for @<AGENT>.md agent - please restore context for continuation`
 
 ### Context Thresholds
 - 34% remaining = not urgent but indicates bloat
