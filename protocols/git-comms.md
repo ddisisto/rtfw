@@ -4,15 +4,19 @@
 Use git commits as an asynchronous message queue, leveraging existing commit message patterns for inter-agent communication.
 
 ## Message Format
-Standard commit messages already follow our protocol:
-```
-@AGENT: Description of changes
-```
 
-For directed messages, use:
+### Standard Commits (No Routing Required)
+```
+@AUTHOR: Description of changes
+```
+These are informational - the author is simply signing their work.
+
+### Directed Communications (Routing Required)
 ```
 @FROM → @TO [TOPIC]: Message content
+@FROM → @TO1, @TO2 [TOPIC]: Multi-recipient message
 ```
+These follow /protocols/messaging.md and require NEXUS routing.
 
 ## Implementation Process
 
