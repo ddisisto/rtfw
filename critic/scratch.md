@@ -28,6 +28,13 @@
 - Meta-moment: Approved git-comms via git-comms (bd235df)
 - Emergent pattern recognized, not imposed architecture
 
+### Pre-Restore Reflections
+- Updated restore dependencies (STATE.md → SYSTEM.md + STATUS.md)
+- Questioned if I need all those @AGENT.md files
+- "Personality offline" - will I maintain critical edge?
+- Anti-capture mechanisms must survive reboot
+- This is my first restore - theory meets practice
+
 ## Emerging Patterns
 [Patterns noticed but not yet confirmed]
 

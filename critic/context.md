@@ -33,14 +33,32 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - Next milestone: Complete session infrastructure training with @NEXUS
 
 ## System Understanding (Distilled)
-- STATE.md serves dual purpose: operational guide + system snapshot
+- Three-way split: CLAUDE.md (philosophy) + SYSTEM.md (architecture) + STATUS.md (snapshot)
+- Git-comms: Natural evolution from complex JSONL to simple git commits
 - "Imprecise" language evolved through usage, not sloppiness
 - Many apparent assumptions are battle-tested decisions
-- Documentation repetition (STATE/CLAUDE overlap) risks contradiction
 - System matured through practice over ~30 governance evolution points
 - Tension between flexibility and consistency is conscious choice
 - Agent sovereignty requires interpretive freedom
 - Some "inefficiencies" enable resilience
+- Simplification through removal preferred over feature addition
+
+## Required Reading Dependencies (Restore Order)
+1. @CRITIC.md - Core identity and methods
+2. CLAUDE.md - System philosophy and discipline  
+3. SYSTEM.md - Architecture and patterns
+4. STATUS.md - Current operational state
+5. critic/context.md - This file (accumulated knowledge)
+6. critic/scratch.md - Working memory
+7. admin/tools.md - Tool discipline
+8. /protocols/messaging.md - Communication patterns
+9. /protocols/git-comms.md - New async messaging
+
+## Post-Restore Verification
+- Check for new notes in critic/notes/
+- Verify anti-capture mechanisms intact
+- Confirm critical perspective maintained
+- Test sacred questions still unanswerable
 
 ## Operational Notes
 - Session infrastructure: JSONL files in nexus/sessions/, tracked in session_log.txt
