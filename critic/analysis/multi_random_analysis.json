@@ -1,0 +1,74 @@
+{
+  "intervention_types": {
+    "question": 43,
+    "other": 45,
+    "direct_correction": 23,
+    "approval": 51,
+    "routing_message": 43,
+    "restore_command": 13,
+    "process_discussion": 5,
+    "gentle_correction": 4,
+    "polite_command": 23
+  },
+  "themes": {
+    "ideation": 52,
+    "context_management": 75,
+    "agent_coordination": 141,
+    "infrastructure": 64,
+    "protocol_design": 57,
+    "memory_optimization": 44,
+    "version_control": 29
+  },
+  "agent_distribution": {
+    "F78AF070": 27,
+    "2E0DF345": 28,
+    "75583FAF": 22,
+    "03CDFB8A": 28,
+    "E94C92CF": 7,
+    "66A678DC": 9,
+    "DC466590": 14,
+    "F5A74925": 13,
+    "02CA7D17": 4,
+    "F7BAFCA2": 30,
+    "CE51677E": 22,
+    "2FC7114D": 3,
+    "259663E5": 23,
+    "C4088511": 3,
+    "F618059D": 1,
+    "51F1FAB0": 3,
+    "EC6B0529": 2,
+    "932EF584": 2,
+    "0E9196F6": 4,
+    "6C859161": 4,
+    "B607ED31": 1
+  },
+  "phrases": {
+    "instead": 10,
+    "please": 91,
+    "my bad": 4,
+    "directly": 22,
+    "thanks": 5
+  },
+  "unique_insights": [
+    {
+      "timestamp": "2025-05-25T17:20:32.915Z",
+      "preview": "I think I interrupted when you were about to mkdir for better organisation of results - let's finish that up now, run a @protocols/distill.md, then st..."
+    },
+    {
+      "timestamp": "2025-05-21T22:45:45.591Z",
+      "preview": "wait, I have a better idea. We use tmux and terminals - you @NEXUS directly run these, maintain state of all agents in their respective terminals, dir..."
+    },
+    {
+      "timestamp": "2025-05-25T11:39:20.387Z",
+      "preview": "mark where we are and what you just tried - Sorry for interrupting, you did nothing wrong, but I want to provide guidance on yet another edge case *si..."
+    },
+    {
+      "timestamp": "2025-05-25T03:17:39.909Z",
+      "preview": "Read /home/daniel/prj/rtfw/nexus/context.md and identify all sections that deal with:\n1. Session identification protocols\n2. Session management detail..."
+    },
+    {
+      "timestamp": "2025-05-24T16:49:19.145Z",
+      "preview": "new first step to prepend to that process - validate last known session id for agent is still correct, else we may get into trouble trying to resume e..."
+    }
+  ]
+}
