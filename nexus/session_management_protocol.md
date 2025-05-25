@@ -1,5 +1,7 @@
 # NEXUS Session Management Protocol
 
+**Purpose**: Authoritative reference for agent session restart procedures (rare but essential). For frequently-used protocols like self-validation and basic messaging, see context.md.
+
 ## Overview
 
 This protocol defines TWO DISTINCT processes:

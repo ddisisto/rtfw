@@ -1,5 +1,9 @@
 # NEXUS Main Loop Process
 
+**Purpose**: Technical reference for the scan sessions routine triggered by run.sh. Defines window flag processing, message routing logic, and escalation criteria. For general operations, see context.md.
+
+**Note**: This document is under active revision as @BUILD and @ADMIN are reworking run.sh. Details may change pending review.
+
 This document defines the scan sessions routine triggered by @ADMIN running `./run.sh`.
 
 ## Main Loop Execution
@@ -24,11 +28,11 @@ For each window with BELL or SILENT:
 2. Determine BELL cause:
    - Tool confirmation prompt → Send '1' to approve, Escape to reject, or if applicable '2' to approve + auto-approve
    - End turn reached → Check for messages to route
-   - If no messages → Prompt reflection: `@NEXUS → @AGENT: [REFLECTION] Please review and update your context/scratch as needed`
+   - If no messages → Prompt distillation: `@NEXUS → @AGENT: [DISTILL] Please perform continuous distillation per @protocols/distill.md`
 
 **SILENT Processing:**
 1. Should rarely happen without BELL first
-2. If persistent after reflection:
+2. If persistent after distillation:
    - `tmux set-window-option -t <window> monitor-silence 0` (disable)
    - Note: Re-enable when routing new message to them
 

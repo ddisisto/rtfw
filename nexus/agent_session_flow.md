@@ -1,5 +1,7 @@
 # Agent Session Flow Protocol
 
+**Purpose**: Complete reference for agent lifecycle states and transitions. Defines how agents move through INITIALIZATION → ACTIVE WORK → IDLE → PRE-DISTILLATION states. For basic operations, see context.md.
+
 ## Overview
 
 This protocol defines the complete lifecycle of agent sessions, from initialization through active work to compression management. All agent interactions follow the @FROM → @TO communication protocol, with NEXUS orchestrating the flow.
@@ -10,7 +12,7 @@ This protocol defines the complete lifecycle of agent sessions, from initializat
 Agent has just been:
 - Started fresh (new session)
 - Resumed (existing session)
-- Recovered (post-compression)
+- Recovered (post-distillation)
 
 **NEXUS Action:**
 ```
@@ -20,7 +22,7 @@ Note: @file link placed mid-message to avoid autocomplete swallowing Enter
 
 **Expected Response:**
 ```
-@<AGENT> → @NEXUS [BOOTSTRAP]: Identity confirmed. Context loaded. <Operational status summary>
+@<AGENT> → @NEXUS [RESTORE]: Identity confirmed. Context loaded. <Operational status summary>
 ```
 
 ### 1.5. POST-INITIALIZATION ROUTING
@@ -65,20 +67,20 @@ Agent has no active work, awaiting input.
 
 **Reflection Prompt:**
 ```
-@NEXUS → @<AGENT> [REFLECTION]: No active work detected. Please perform context consolidation per @gov/context_consolidation_protocol.md
+@NEXUS → @<AGENT> [DISTILL]: No active work detected. Please perform continuous distillation per @protocols/distill.md
 ```
 
-### 4. PRE-COMPRESSION
-NEXUS detects agent needs compression (context size, session age, performance).
+### 4. PRE-DISTILLATION
+NEXUS detects agent needs distillation (context size, session age, performance).
 
-**Compression Notice:**
+**Distillation Notice:**
 ```
-@NEXUS → @<AGENT> [COMPRESSION]: External compression scheduled. Please consolidate per @gov/context_consolidation_protocol.md and confirm readiness.
+@NEXUS → @<AGENT> [DISTILL]: Cyclical distillation initiated. Please complete continuous distillation per @protocols/distill.md and confirm readiness.
 ```
 
 **Agent Response:**
 ```
-@<AGENT> → @NEXUS [COMPRESSION]: Context consolidated. Changes committed. Ready for compression.
+@<AGENT> → @NEXUS [DISTILL]: Context distilled. Changes committed. Ready for /clear command.
 ```
 
 ## Main Loop Simplification
@@ -103,18 +105,18 @@ while agent_active:
 - Read only final agent output after end_turn
 - Never interrupt active work (no flags = working)
 
-## Compression Detection
+## Distillation Detection
 
-NEXUS monitors for compression triggers:
+NEXUS monitors for distillation triggers:
 - Session JSONL size > threshold
 - Agent context.md + scratch.md size > limits
 - Performance degradation detected
 - Manual trigger from @ADMIN
 
 When detected:
-1. Send pre-compression notice
-2. Wait for agent consolidation
-3. Report to @ADMIN for compression
+1. Send pre-distillation notice
+2. Wait for agent continuous distillation
+3. Send /clear command when ready
 4. Resume with INITIALIZATION state
 
 ## Message Flow Standards
@@ -128,26 +130,26 @@ Must follow format: `@FROM → @TO [TOPIC]: message`
 No exceptions - agents always use protocol
 
 ### Identity Reinforcement
-- Bootstrap messages always include "@<AGENT>.md" reference
+- Restore messages always include "@<AGENT>.md" reference
 - First message confirms both TO field and identity file
-- Post-compression recovery re-establishes identity
+- Post-distillation recovery re-establishes identity
 
 ## Implementation Notes
 
 ### For NEXUS
 - Track agent states in scratch.md
-- Monitor compression indicators
+- Monitor distillation indicators
 - Maintain session flow for each agent
 - Ensure identity reinforcement in bootstrap
 
 ### For Agents
 - Always respond with protocol format
 - Confirm identity when requested
-- Perform consolidation when prompted
-- Report readiness for compression
+- Perform distillation when prompted
+- Report readiness for /clear command
 
 ### For System
 - All interactions logged in JSONL
 - Session state preserved across transitions
 - Git commits at key checkpoints
-- Compression managed by @ADMIN with NEXUS coordination
+- Distillation managed by @ADMIN with NEXUS coordination

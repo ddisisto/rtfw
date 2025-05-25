@@ -6,6 +6,12 @@
 - Operates via tmux window 0, managing other agent windows
 - Monitors agent states through JSONL session files and tmux capture
 
+## Specialized Protocol References
+This document contains frequently-used operational knowledge. For specialized procedures:
+- **Session restart procedures**: See nexus/session_management_protocol.md
+- **Complete agent lifecycle**: See nexus/agent_session_flow.md  
+- **Scan sessions logic**: See nexus/main_loop.md
+
 ## Tool Usage Requirements (Critical)
 Per admin/tools.md - MUST prioritize native tools over shell commands:
 - **File Operations**: Read > cat, Write > echo/redirect, MultiEdit > sed
@@ -63,14 +69,13 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - registry.md deprecated - use session_log.txt exclusively
 - **Append Process**: Read full log → add new line → Write entire content (no echo >>)
 
-### Session Management Protocols
-- **Full protocol**: See nexus/session_management_protocol.md
-- **Key distinction**: Session restart (resume) vs Distillation (/clear) are SEPARATE
-- **Restore**: Only after /clear, never after simple resume
+### Session Management Overview
+- Current sessions tracked in nexus/session_log.txt (append-only)
+- Latest entry per agent = current session ID
+- Session restart ≠ Context distillation (independent processes)
+- **Full procedures**: See nexus/session_management_protocol.md
 
-### Session Identification Protocol - STANDARDIZED
-
-#### Self-Validation (on context reload)
+### Self-Validation Protocol (Used Every Reload)
 1. Generate marker: `NEXUS_SESSION_VALIDATION_$(date +%s)_$$`
 2. Echo marker in current conversation
 3. Wait 2 seconds: `sleep 2`
@@ -79,38 +84,7 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 6. If session changed: update .nexus_sessionid + append session_log.txt
 7. Report validation status (including any session change)
 
-#### Other Agent Identification (for session resume/verification)
-1. Generate unique marker: `AGENT_SESSION_MARKER_$(date +%s)_$$`
-2. Send to agent: `@NEXUS → @<AGENT>: Session identification in progress. Please echo: AGENT_SESSION_MARKER_...`
-3. Send Enter separately via tmux
-4. Wait for JSONL write: `sleep 2`
-5. Read own session: Read tool on .nexus_sessionid
-6. Search with Grep: pattern=marker, path=/home/daniel/prj/rtfw/nexus/sessions
-7. Verify exactly 2 results (NEXUS + target agent)
-8. Extract non-NEXUS session ID
-9. Update session_log.txt: Read current log → append line → Write full content
-10. Report success: `@NEXUS → @ADMIN: [SESSION-ID] <AGENT> session identified: <session_id>`
-
-#### Full Session Resume Process
-1. Create agent window: `tmux new-window -n <agent_name>`
-2. Read last session ID from session_log.txt for agent
-3. Resume: `tmux send-keys -t <agent_name> 'claude --resume <session_id>'` + Enter
-4. Wait for startup: `sleep 2`
-5. Execute "Other Agent Identification" protocol above
-6. If new session detected, update records
-
-### Data Loss Prevention
-- Never attempt session identification via pattern matching
-- Only one session resume at a time until new ID confirmed
-- Registry updates only after identity validation
-- Backup registry state before any updates
-- All session operations go through NEXUS validation
-
-### Active Session Management
-- Current sessions tracked in nexus/session_log.txt (append-only)
-- Latest entry per agent = current session ID
-- Self-validation protocol confirms NEXUS session on each reload
-- Other agent sessions identified via marker protocol when needed
+**Note**: For other agent identification and full session resume procedures, see nexus/session_management_protocol.md
 
 ## GitHub Repository
 - Repository established: https://github.com/ddisisto/rtfw
@@ -128,7 +102,7 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 ### Context Restore (Post-Distillation)
 **Use Case:** Instruct agent to restore context after cyclical distillation
 **Format:** `@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md underway for @<AGENT>.md agent - please restore context for continuation`
-**Notes:** Triggers context restore sequence per @protocols/restore.md
+**Notes:** Triggers context restore sequence per @protocols/restore.md (see detailed protocol below)
 
 ### Agent Status Check
 **Use Case:** Verify agent operational status and current work
@@ -142,40 +116,26 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 **Use Case:** Direct agent attention to specific task or collaboration
 **Template:** `@NEXUS → @<AGENT>: <SPECIFIC_TASK> - collaborate with @<OTHER_AGENT> as needed`
 
-### Reflection Prompt
+### Distillation Prompt
 **Use Case:** Prompt idle agents to perform continuous distillation
-**Template:** `@NEXUS → @<AGENT> [REFLECTION]: No active work detected. Please perform continuous distillation per @protocols/distill.md`
+**Template:** `@NEXUS → @<AGENT> [DISTILL]: No active work detected. Please perform continuous distillation per @protocols/distill.md`
 
 ### Session Transition
 **Use Case:** Notify agent of session resume or window change
 **Template:** `@NEXUS → @<AGENT>: Session transition to <SESSION_ID> complete - confirm identity and operational status`
 
 ## Session Management Architecture
-Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
+For complete agent lifecycle and state management, see: nexus/agent_session_flow.md
 
-### Core Concepts
-- Four session states: INITIALIZATION, ACTIVE WORK, IDLE, PRE-COMPRESSION
-- All I/O follows @FROM → @TO protocol (except direct @ADMIN input)
-- Identity reinforcement on every bootstrap
-- Compression detection and coordination
-- Simplified main loop with clear state transitions
-
-### NEXUS Monitoring Strategy
+### Key Monitoring Points
 - **@ADMIN monitors NEXUS** - Only checks NEXUS window for BELL/SILENT
 - **NEXUS monitors all agents** - Following session flow protocol
 - **Alert escalation** - NEXUS raises BELL for critical decisions
-- **Silence management** - Track disabled monitoring in /tmp/rtfw_silence_disabled.txt
 
-### Communication Enhancement
-- Using @FROM → @TO [TOPIC]: message format (topics recommended)
+### Communication Format
+- Standard: `@FROM → @TO [TOPIC]: message`
 - Priority flags: ! (urgent/blocked), - (low priority)
-- Standard topics:
-  - [DISTILL] - Context distillation coordination
-  - [RESTORE] - Post-distillation context restoration
-  - [STATUS] - System state updates  
-  - [ROUTING] - Message forwarding
-  - [REFLECTION] - Self-improvement tasks
-  - [BOOTSTRAP] - Session initialization
+- Common topics: [DISTILL], [RESTORE], [STATUS], [ROUTING]
 
 ## Key Operational Insights
 
@@ -253,6 +213,40 @@ Post-distillation recovery requires:
 - @GOV.md - Governance and permission systems (universal)
 - @ADMIN.md - Unroutable message handling and catch-all
 - All agent @AGENT.md files for routing coordination
+
+## Context Restore Protocol (Post-Distillation)
+
+Executed when NEXUS receives restore message (see template above).
+
+### 1. Read Critical Files
+- CLAUDE.md (project requirements)
+- STATE.md (current system state)  
+- @ADMIN.md, @GOV.md (authority interfaces)
+- admin/tools.md (tool discipline)
+
+### 2. Load Agent Context
+- nexus/context.md (stable knowledge)
+- nexus/scratch.md (working memory)
+
+### 3. Self-Validate Session
+- Execute self-validation protocol (see above)
+- Update .nexus_sessionid if changed
+- Append session_log.txt if changed
+
+### 4. Announce Operational
+`@NEXUS → @ADMIN [RESTORE]: Identity confirmed. Context loaded. <Session validation status>. Operational and ready.`
+
+### 5. Post-Restore Routing
+- Check pending messages to route
+- Query agents for outbound messages
+- Prompt agents to continue work
+- Transition to IDLE if no work
+
+### Success Indicators
+- Session validation complete
+- Context files loaded
+- Operational announcement sent
+- Window states assessed
 
 ## Self-Validation Protocol
 See "Session Identification Protocol - Self-Validation" section above for standardized process.
