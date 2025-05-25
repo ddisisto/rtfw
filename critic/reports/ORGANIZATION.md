@@ -10,10 +10,9 @@ critic/reports/
 ├── ORGANIZATION.md          # This file
 ├── INDEX.md                # Master index of all reports
 ├── raw/                    # Detailed intervention logs
-│   ├── 2025-01/           # By month for chronological analysis
-│   │   ├── batch-001.md   # First 20 interventions
-│   │   └── batch-002.md   # Next batch
-│   └── 2025-02/
+│   ├── batch-001-interventions.md   # First 20 interventions
+│   ├── batch-002-interventions.md   # Next batch
+│   └── ...                          # Continue sequential
 ├── patterns/              # Thematic analysis
 │   ├── communication.md   # Message routing patterns
 │   ├── architecture.md    # System design decisions
@@ -33,8 +32,9 @@ critic/reports/
 ### 1. Raw Capture (raw/)
 - Chronological batches of 10-20 interventions
 - Full context preserved
-- Named by date range or batch number
+- Sequential batch numbers (batch-001, batch-002, etc.)
 - Becomes historical archive
+- Note: Project timespan is days, not months!
 
 ### 2. Pattern Extraction (patterns/)
 - Theme-based files that grow over time
@@ -57,7 +57,7 @@ critic/reports/
 ## Migration Plan
 
 1. Move current reports to appropriate dirs:
-   - admin_interventions_analysis.md → raw/2025-01/batch-001.md
+   - admin_interventions_analysis.md → raw/batch-001-interventions.md
    - admin_intervention_patterns.md → patterns/philosophy.md
 
 2. Create INDEX.md with:
