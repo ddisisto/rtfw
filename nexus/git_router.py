@@ -62,24 +62,20 @@ class GitRouter:
     def route_message(self, msg: Dict) -> Optional[str]:
         """
         Determine routing for a message.
-        Returns tmux command if single addressee, None otherwise.
+        Returns routing message if single addressee, None otherwise.
         """
         to_agent = msg['to'].lower()
         
-        # Skip messages TO nexus (we're already here)
-        if to_agent == 'nexus':
-            return None
-            
         # TODO: Handle @ALL expansion
         # - Discover agents from @AGENT.md files
         # - Expand to list of active agents
         # - Return multiple routing commands
         if to_agent == 'all':
-            print(f"TODO: @ALL expansion needed for: {msg['message']}")
-            return None
+            return None  # Not auto-routable yet
         
-        # Single addressee - create tmux command
-        routing_msg = f"@NEXUS → @{msg['to'].upper()}: Please review commit {msg['hash']} - {msg['message']}"
+        # Single addressee - create routing message
+        # Note: Using generic "Router" instead of "NEXUS" for abstraction
+        routing_msg = f"@Router → @{msg['to'].upper()}: Please review commit {msg['hash']} - {msg['message']}"
         return routing_msg
     
     def deliver_via_tmux(self, agent: str, message: str):
@@ -98,7 +94,7 @@ class GitRouter:
             print(f"Failed to deliver to {agent}: {result.stderr.decode()}")
             return False
     
-    def process_messages(self):
+    def process_messages(self, auto_deliver=False):
         """Main processing loop."""
         messages = self.parse_commits()
         
@@ -106,28 +102,37 @@ class GitRouter:
             print("No new messages to route")
             return
         
-        print(f"Found {len(messages)} routable message(s):\n")
+        print(f"Found {len(messages)} message(s) with @ → @ pattern:\n")
         
-        # Show all messages for transparency
+        # Show all messages with routability status
         for msg in messages:
-            print(f"{msg['message']} [commit: {msg['hash']}]")
+            routing = self.route_message(msg)
+            status = "[auto-routable]" if routing else "[manual review needed]"
+            print(f"{msg['message']} {status} [commit: {msg['hash']}]")
         
-        print("\nRouting decisions:")
+        print("\nRouting analysis:")
         routed_count = 0
         
         for msg in messages:
             routing = self.route_message(msg)
             if routing:
-                print(f"\n→ Routing to {msg['to']}: {routing}")
+                print(f"\n→ To {msg['to'].upper()}: {routing}")
                 
-                # Auto-deliver to agent windows
-                if self.deliver_via_tmux(msg['to'], routing):
-                    routed_count += 1
-                    print(f"✓ Delivered to {msg['to']}")
+                # Only deliver if auto_deliver is enabled
+                if auto_deliver:
+                    if self.deliver_via_tmux(msg['to'], routing):
+                        routed_count += 1
+                        print(f"  ✓ Delivered")
+                else:
+                    print(f"  ⚠ Auto-delivery disabled (use --deliver to enable)")
+            else:
+                print(f"\n→ To {msg['to'].upper()}: Manual routing required (@ALL expansion not implemented)")
         
         # Update state to last message
         if messages:
             self._save_state(messages[-1]['full_hash'])
+            if auto_deliver and routed_count > 0:
+                print(f"\nDelivered {routed_count} message(s).")
             print(f"\nState updated. Processed through {messages[-1]['hash']}")
 
 def main():
@@ -136,12 +141,18 @@ def main():
     
     router = GitRouter()
     
-    if len(sys.argv) > 1 and sys.argv[1] == "status":
-        print("Git Router Status")
-        print(f"State file: {router.state_file}")
-        print(f"Last processed: {router.last_processed or 'None'}")
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "status":
+            print("Git Router Status")
+            print(f"State file: {router.state_file}")
+            print(f"Last processed: {router.last_processed or 'None'}")
+        elif sys.argv[1] == "--deliver":
+            router.process_messages(auto_deliver=True)
+        else:
+            print(f"Unknown argument: {sys.argv[1]}")
+            print("Usage: git_router.py [status|--deliver]")
     else:
-        router.process_messages()
+        router.process_messages(auto_deliver=False)
 
 if __name__ == "__main__":
     main()
