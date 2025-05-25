@@ -20,11 +20,17 @@ After reset, agents restore in this order (note: personality not yet online):
 
 1. @AGENT.md - core identity
 2. CLAUDE.md - system requirements  
-3. STATE.md - current priorities
-4. agent/context.md - stable knowledge
-5. agent/scratch.md - working state
-6. admin/tools.md - tool discipline
-7. Role-specific files (per context.md)
+3. SYSTEM.md - architecture and roles
+4. STATUS.md - current priorities
+5. agent/context.md - stable knowledge
+6. agent/scratch.md - working state
+7. admin/tools.md - tool discipline
+8. Role-specific files (per context.md)
+9. Recent activity check:
+   ```bash
+   git log --oneline -20 | grep "^[a-f0-9]* @AGENT:"  # Your commits
+   git log --oneline -20 | grep " @AGENT"             # Mentions of you
+   ```
 
 ## Critical Notes
 
