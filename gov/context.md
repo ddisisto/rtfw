@@ -2,27 +2,28 @@
 
 ## Critical State Preservation
 - Session: GOV operational in main tmux session
-- Active protocols: STATE.md (replaced ANNOUNCEMENTS.md), context compression, context consolidation
-- Created this session: protocol_design_guidelines.md, enhanced comms protocol with [TOPIC] and priority flags
-- Pending: @ARCHITECT coordination on implementation priorities
-- System status: All governance frameworks stable, protocols follow design guidelines
+- Active protocols: Git-comms (replacing complex routing), three-way documentation split
+- Recent completions: SYSTEM.md/STATUS.md creation, git-comms approval, CRITIC establishment
+- Active monitoring: CRITIC session log analysis, restore dependency adoption
+- System status: Major simplification underway, removing unnecessary complexity
 
 ## Required Reading Dependencies (Restore Order)
 1. @GOV.md - Identity and role
 2. CLAUDE.md - System requirements and protocols
-3. STATE.md - Current system status
-4. @ADMIN.md - Project oversight authority
-5. @NEXUS.md - Communication routing
-6. gov/protocol_design_guidelines.md - Protocol creation
-7. gov/context.md - This file
-8. gov/scratch.md - Working memory
+3. SYSTEM.md - Architecture and workflows
+4. STATUS.md - Current state snapshot
+5. @ADMIN.md - Project oversight authority
+6. @NEXUS.md - Communication routing
+7. gov/protocol_design_guidelines.md - Protocol creation
+8. gov/context.md - This file
+9. gov/scratch.md - Working memory
 
 ## Core Governance Principles
 - Minimal viable governance over complex rule systems
 - Clear boundaries and simplified protocols for multi-agent collaboration
 - Context management critical for system coherence (30KB/100KB thresholds)
-- Direct communication via @FROM → @TO [TOPIC] format with priority flags
-- STATE.md maintains current system state and coordination
+- Git commits as primary async communication channel
+- Three-document architecture: CLAUDE.md (philosophy) + SYSTEM.md (architecture) + STATUS.md (current state)
 - Protocols as extensible frameworks, not prescriptive lists
 - Responsive diagnosis over preventive inspection
 - Trust agents to self-maintain until patterns indicate issues
@@ -33,15 +34,16 @@
 - Context lifecycle: distill→consolidate→compress→restore
 - Agent sovereignty includes restore dependency maintenance
 - Per-turn insight capture operationalizes continuous learning
+- Simplification through removal preferred over feature addition
+- Shared vernacular builds stronger conceptual weight than technical precision
 
 ## System Architecture
-- All agents operational with established identities and workspaces
+- Active agents: ADMIN, NEXUS, GOV, CRITIC, BUILD
 - GitHub repository: https://github.com/ddisisto/rtfw
-- Git workflow: main branch, regular commits, no agent branches
+- Git workflow: main branch, commits as communication channel
 - Permission system: direct @mention requests (no PR reviews)
-- ADMIN: project oversight and session management coordination
-- NEXUS: central communication hub and inter-agent routing
-- ARCHITECT: system design across all game eras
+- Three-document structure for clarity and purpose separation
+- Git-comms replacing complex JSONL and routing infrastructure
 
 ## Active Governance Tasks
 - Responsive context review when issues arise (not scheduled)
@@ -72,3 +74,6 @@
 - Per-turn insight capture: Integrated into CLAUDE.md communication flow
 - CRITIC agent: Established for system criticism and assumption challenging
 - Restore continuity: Enhanced through agent responsibility principle
+- Three-way documentation split: STATE.md → CLAUDE.md/SYSTEM.md/STATUS.md
+- Git-comms protocol: Recognized git commits as natural async message queue
+- Simplification milestone: Eliminated JSONL parsing and mailbox patterns
