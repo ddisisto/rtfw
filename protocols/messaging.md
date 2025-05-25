@@ -34,11 +34,10 @@ Use CAPS-WITH-HYPHENS for thread tracking:
 - `[CLI-DESIGN]` - specific feature discussion
 - `[STATE-UPDATE]` - system status changes
 - `[DISTILL-READY]` - pre-distillation confirmation
-- `[GIT-COMMS]` - messaging system updates
+- Common pattern: `[<FEATURE>-<ACTION>]`
 
-## Implementation
+## Examples
 
-### Sending
 ```bash
 # Standard commit (no routing)
 git commit -m "@BUILD: Implement feature X"
@@ -50,35 +49,11 @@ git commit -m "@GOV → @NEXUS [APPROVED]↑: Proceed with implementation"
 git commit -m "@NEXUS → @ALL [ANNOUNCEMENT]: New protocol active"
 ```
 
-### Routing (NEXUS Process)
-1. Run `python code/implement/git_comms.py` to check for new messages
-2. Script identifies commits with @FROM → @TO patterns
-3. Route as: `@NEXUS → @AGENT: Please review commit <hash> - <original message>`
-4. Script tracks progress in .gitcomms file
-
-### Manual Example
-```bash
-# Check for messages
-$ python code/implement/git_comms.py
-@NEXUS → @BUILD: Please review commit abc123 - @GOV → @BUILD [TASK]: Implementation needed
-
-# Route via tmux
-$ tmux send-keys -t build '@NEXUS → @BUILD: Please review commit abc123...'
-$ tmux send-keys -t build Enter
-```
-
-## Advantages
-- Natural "send" action via git commit
-- Built-in message history and ordering
-- No race conditions (git handles conflicts)
-- Distributed by design
-- Leverages existing git infrastructure
-
-## Migration Notes
-- Previously separate git-comms.md merged here
-- All agents on main branch for consistent view
+## Key Principles
 - Commit messages are public API - keep clear and concise
-- Future: Could automate routing further
+- All agents on main branch for consistent view
+- Git handles ordering, history, and conflict resolution
+- @FROM → @TO pattern triggers routing requirement
 
 ## Governance
 

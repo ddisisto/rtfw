@@ -36,21 +36,35 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
   - ↑↓ together may signal uncertainty/exploration (experimental)
 - NEXUS monitors git log and routes as: `@NEXUS → @AGENT: Please review commit <hash>`
 
-### Git-Comms Routing Process
-1. Run `python code/implement/git_comms.py` when:
-   - @ADMIN requests: "run git comms now please"
-   - During idle moments
-   - After observing new commits
-2. Review script output (shows all pending routes)
-3. Send each message via tmux send-keys
-4. Script auto-tracks progress in .gitcomms file
+### Git-Comms Routing Process (NEXUS Implementation)
 
-**Example**:
+**When to check**:
+- @ADMIN requests: "run git comms now please"
+- During idle moments
+- After observing new commits
+
+**Process**:
 ```bash
-$ python code/implement/git_comms.py
+# 1. Run routing script
+$ cd /home/daniel/prj/rtfw && python code/implement/git_comms.py
+
+# 2. Script output shows messages to route:
 @NEXUS → @BUILD: Please review commit abc123 - @GOV → @BUILD [TASK]: Implementation needed
-# Then manually: tmux send-keys -t build '...' + Enter
+@NEXUS → @CRITIC: Please review commit def456 - @GOV → @CRITIC [REVIEW]: Analysis needed
+
+# 3. Route each via tmux:
+$ tmux send-keys -t build '@NEXUS → @BUILD: Please review commit abc123...'
+$ tmux send-keys -t build Enter
+
+# 4. Script auto-updates .gitcomms with last processed commit
 ```
+
+**Script behavior**:
+- Parses git log for @FROM → @TO patterns since last check
+- Ignores @AUTHOR: format (no routing needed)
+- Handles multi-recipient by generating multiple messages
+- Maintains state in .gitcomms file
+- Shows "No new messages to route" if nothing pending
 
 ## Session Management
 - Current sessions tracked in nexus/session_log.txt (append-only)
