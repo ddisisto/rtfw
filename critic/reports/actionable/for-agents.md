@@ -1,5 +1,5 @@
 # Actionable Insights for Agents
-*Last updated: After batch 001 analysis*
+*Last updated: After batch 002 analysis*
 
 ## Quick Reference: What @ADMIN Wants
 
@@ -40,3 +40,16 @@ Always use: `@FROM → @TO [TOPIC]: message`
 - Direct observation over abstraction
 - Explicit control over inference
 - Practical solutions over elegant theory
+
+## Agent Coordination
+- ✅ DO: Proactively maintain your context/scratch files
+- ✅ DO: Recommend actions to other agents via @mentions
+- ✅ DO: Follow protocol strictly in agent-to-agent comms
+- ✅ DO: Update ANNOUNCEMENTS.md for system-wide changes
+- Note: @NEXUS is orchestrator, not just router
+
+## System Maturity
+- "The drill" exists for common procedures
+- Agents can act autonomously within bounds
+- Human uses casual communication, system adapts
+- GitHub central to all operations now

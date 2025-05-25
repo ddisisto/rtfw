@@ -1,13 +1,17 @@
 {
   "sessions": {
-    "analysis_complete_to": "2025-05-22T06:49:10.266Z"
+    "analysis_complete_to": "2025-05-22T07:30:00.000Z",
+    "66a678dc-e43d-4db2-86c1-f93ea54b69ad.jsonl": "2025-05-21T06:07:39.658Z"
   },
-  "current_position": "2025-05-22T06:49:10.266Z",
-  "interventions_analyzed": 20,
+  "current_position": "2025-05-22T07:30:00.000Z",
+  "total_interactions_analyzed": 40,
   "reports_generated": [
-    "raw/2025-01/batch-001-interventions.md",
+    "raw/batch-001-interventions.md",
+    "raw/batch-002-interventions.md",
     "patterns/philosophy.md",
+    "patterns/agent-communication.md",
     "actionable/for-agents.md"
   ],
-  "organization_implemented": true
+  "organization_implemented": true,
+  "analysis_approach": "expanded_to_all_interactions"
 }

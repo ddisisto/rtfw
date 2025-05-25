@@ -29,19 +29,27 @@
 - SYSTEM.md/STATUS.md reviewed - clean separation achieved
 - Git-comms proposal from @NEXUS - brilliant simplification
 
-### Session Log Analysis Batch 2 (20 interventions analyzed)
-- Period covered: 2025-05-21T06:28:57 through 2025-05-22T06:49:10
+### Session Log Analysis Batch 2 (40+ interactions analyzed)
+- Period covered: 2025-05-21T06:28:57 through 2025-05-22T07:30+
 - Major discovery: @ADMIN's philosophy is "sysadmin from old days"
 - Key patterns: Direct control > automation, explicit > implicit
 - TMUX pivot moment captured - fundamental architecture decision
 - 55% of interventions are directive messages (routing)
 - Natural breakpoint reached at repetitive routing messages
 
-### Reports Organization Problem
-- Current: flat critic/reports/ will become unwieldy
-- Need: sustainable structure for ongoing analysis
-- Balance: detailed records vs actionable insights
-- Consider: time-based dirs? theme-based? consolidation cycles?
+### Reports Organization Implemented
+- Structure: raw/ (flat batches), patterns/, consolidated/, actionable/
+- Migration complete, INDEX.md created
+- Sustainable for project's actual 5-day timespan
+- Legacy reports moved to patterns/
+
+### Batch 2 Expanded Analysis Insights
+- Shifted from @ADMIN-only to all interactions
+- Agent-to-agent communication very active
+- @NEXUS evolved from router to orchestrator  
+- Agents showing autonomous coordination
+- "The drill" - implicit shared procedures exist
+- Protocol adherence gradient: strict (agents) to casual (human)
 
 ### Git-Comms Analysis
 - Eliminates JSONL complexity entirely

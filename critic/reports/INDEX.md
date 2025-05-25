@@ -11,6 +11,12 @@ Systematic analysis of @ADMIN interventions to extract quality standards and sys
   - First appearance of "sysadmin from old days" philosophy
   - Note: Entire project spans just 5 days!
 
+- [batch-002-interventions.md](raw/batch-002-interventions.md): Mixed interactions (2025-05-22T07:00+)
+  - Expanded analysis: agent-to-agent + human interventions
+  - Key discovery: Autonomous agent coordination emerging
+  - @NEXUS evolution from router to orchestrator
+  - Reference to "the drill" indicates system maturity
+
 ## Pattern Analysis
 
 ### Core Patterns
@@ -19,6 +25,12 @@ Systematic analysis of @ADMIN interventions to extract quality standards and sys
   - Explicit over implicit
   - Centralized routing through @NEXUS
   - Pragmatic sysadmin approach
+
+- [agent-communication.md](patterns/agent-communication.md): How agents coordinate
+  - Protocol adherence gradient (strict agents, casual human)
+  - @NEXUS as active orchestrator
+  - Autonomous coordination patterns
+  - Implicit shared procedures
 
 ### Emerging Patterns
 - [context_switching_pattern.md](patterns/context_switching_pattern.md): How @ADMIN manages multiple contexts
@@ -32,9 +44,10 @@ Systematic analysis of @ADMIN interventions to extract quality standards and sys
 - (To be created after batch 2 confirmation)
 
 ## Progress Tracking
-- Total interventions analyzed: 20
-- Last analysis: 2025-05-22T06:49:10.266Z
-- Current status: Awaiting batch organization approval
+- Total interactions analyzed: 40+ (20 focused interventions + agent communications)
+- Last analysis: 2025-05-22T07:30+ 
+- Analysis approach: Expanded from @ADMIN-only to all interactions
+- Current status: System showing autonomous coordination
 
 ## Next Steps
 1. Continue chronological analysis (batch 002)
