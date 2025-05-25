@@ -232,8 +232,9 @@ Complete agent lifecycle management defined in: @nexus/agent_session_flow.md
 - Window monitoring flags explored (BELL/SILENT/ACTIVE/LAST)
 - Holistic agent lifecycle defined: Working → BELL → Route/Reflect → Working
 - Context distillation protocols integrated
-- BUILD agent successfully created and deployed (session: 02ca7d17-cc53-4647-9b6a-e5f997434f19)
+- BUILD agent successfully created, deployed, and validated (session: 02ca7d17-cc53-4647-9b6a-e5f997434f19)
 - First implementation agent focused on run.sh improvements
+- Restore protocol validated end-to-end with correct @protocols/restore.md reference
 - Proactive coordination pattern emerged and adopted
 - System pivot: Game dev → Internal communications improvement
 - Insight capture practice spreading through system

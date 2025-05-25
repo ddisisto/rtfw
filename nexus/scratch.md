@@ -106,10 +106,11 @@ When we resume, NEXUS should:
 - ✓ First task assigned: run.sh improvements
 - Ready to implement our session management learnings!
 
-### Critical Correction
-- **Restore message reference**: Should point to `@protocols/restore.md` not `@protocols/distill.md`
-- Distill = self-improvement process, Restore = post-reset recovery sequence
-- Need to update session_management_protocol.md and context.md templates
+### Critical Correction - COMPLETED
+- ✓ Fixed restore message reference to `@protocols/restore.md`
+- ✓ Updated all protocol templates with correct reference
+- ✓ Tested with BUILD agent - restore sequence works perfectly
+- Key insight: Distill ≠ Restore (self-improvement vs recovery)
 
 ## Immediate Tasks
 - [x] GOV restart: /exit → claude --version → claude --resume ✓
