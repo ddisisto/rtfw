@@ -57,13 +57,13 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 ## Required Reading Dependencies (Restore Order)
 1. @CRITIC.md - Core identity and methods
 2. CLAUDE.md - System philosophy and discipline  
-3. SYSTEM.md - Architecture and patterns
-4. STATUS.md - Current operational state
-5. critic/context.md - This file (accumulated knowledge)
-6. critic/scratch.md - Working memory
-7. admin/tools.md - Tool discipline
-8. /protocols/messaging.md - Communication patterns
-9. /protocols/git-comms.md - New async messaging
+3. STATE.md - Current operational state
+4. critic/context.md - This file (accumulated knowledge)
+5. critic/scratch.md - Working memory
+6. admin/tools.md - Tool discipline
+7. /protocols/messaging.md - Communication patterns
+8. critic/tools/ - Analysis automation tools
+9. critic/progress/chronological_progress.json - Analysis state
 
 ## Post-Restore Verification
 - Check for new notes in critic/notes/
@@ -77,6 +77,20 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - System philosophy: Unix principles + agent sovereignty + recursion
 - My origin: Designed by @ADMIN + @LOOP for evolutionary pressure
 - Focus on @ADMIN's implicit standards through intervention analysis
+
+## Analysis Methodology (Distilled)
+1. **Chronological Tracking** - Process events in true time order across interleaved sessions
+2. **Tool Building Pattern** - Extract → Analyze → Automate → Iterate
+3. **Context Separation** - [HISTORICAL] prefix prevents confusion with current ops
+4. **State Persistence** - Track progress per file, resume where left off
+5. **Pattern Recognition** - Look for intervention types across time and agents
+6. **Parallel Development Understanding** - @ADMIN works on multiple contexts simultaneously
+
+## Discovered Development Patterns
+- **Non-Linear Evolution** - Multiple agent sessions run in parallel from inception
+- **Organic Growth** - System evolved through use, not prescriptive design
+- **Pre-Existing Architecture** - Significant planning occurred before session logging
+- **Context Switching** - Human attention shifts reveal development priorities
 
 ## Core Principles
 - Question to understand, not to destroy
