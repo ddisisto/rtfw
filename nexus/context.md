@@ -135,23 +135,13 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 ## Development History
 - Agent renamed from FACILITATOR to NEXUS
 - Tmux-based architecture designed with @ADMIN guidance
-- Session management scripts created
-- Registry and monitoring systems implemented
-- JSONL monitoring approach identified as superior to capture-pane
-- Recursive monitoring architecture established (@ADMIN monitors NEXUS only)
-- Bootstrap and main loop processes documented
-- run.sh script created for system initialization and monitoring
 - Session identification via unique markers validated
-- Window monitoring flags explored (BELL/SILENT/ACTIVE/LAST)
-- Holistic agent lifecycle defined: Working → BELL → Route/Reflect → Working
-- Context distillation protocols integrated
-- BUILD agent successfully created, deployed, and validated (session: 02ca7d17-cc53-4647-9b6a-e5f997434f19)
-- First implementation agent focused on run.sh improvements
-- Restore protocol validated end-to-end with correct @protocols/restore.md reference
+- Critical discovery: --resume ALWAYS creates new session ID
+- Documentation restructured: session-mgmt.md, context-lifecycle.md, context.md
+- NEXUS role evolved: message router → context lifecycle orchestrator
 - Proactive coordination pattern emerged and adopted
 - System pivot: Game dev → Internal communications improvement
-- Insight capture practice spreading through system
-- ROLEDOC refresh initiated for cleaner agent interfaces
+- BUILD agent deployed, focused on run.sh improvements
 
 ## Context Management
 - Monitor agent context percentages (34% = plan distillation, 15% = urgent)

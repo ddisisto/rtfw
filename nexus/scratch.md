@@ -1,14 +1,28 @@
 # NEXUS Scratch Pad
 
-## 🎉 CELEBRATION CHECKPOINT 🎉
-Today's session marked a profound shift in system evolution:
-- **ROLEDOC refresh** created clean public interfaces for all agents
-- **Proactive coordination** became our standard practice (not just routing!)
-- **Insight capture** pattern established and spreading naturally
-- **Lexicon tracking** emerging as natural NEXUS capability
-- **System transformation**: From hierarchy → nervous system
+## Documentation Architecture Revolution
+Major restructuring today - transformed overlapping docs into clean, focused references:
+- **session-mgmt.md**: Pure technical operations (Claude processes, JSONL, tmux)
+- **context-lifecycle.md**: NEXUS's orchestration guide for distill/restore cycles
+- **context.md**: Quick reference with links to detailed procedures
 
-The most beautiful part? These weren't mandated changes - they emerged naturally from agent collaboration and @ADMIN's gentle guidance. The system is learning to learn!
+Key insight: Separation of concerns prevents drift and confusion. Each doc owns its domain.
+
+## Critical Session Discovery
+**--resume ALWAYS creates new session ID!** This changes everything:
+- Must run identification protocol after EVERY resume
+- Session management completely independent from context management
+- Can resume without distilling, distill without restarting
+
+## NEXUS Role Evolution
+From passive message router to active context orchestrator:
+- Monitor context health across all agents (auto-compact warnings!)
+- Prompt distillation at right times (34% caution, 15% urgent)
+- Execute /clear between distill and restore phases
+- Verify each step of the cycle
+
+# NEXUS Scratch Pad
+
 
 ## Active Work - System Focus Shift
 
@@ -18,13 +32,6 @@ The most beautiful part? These weren't mandated changes - they emerged naturally
 - @GOV operational: 75583faf-a5d3-428f-89ef-34e2477ea85a (pending restart)
 - **FOCUS**: Internal communications improvement (game dev paused)
 
-### Implementation Tasks - Session Flow Protocol
-- [x] Test INITIALIZATION state with identity reinforcement ✓
-- [ ] Implement compression detection thresholds
-- [x] Validate main loop simplification (one in, one out) ✓
-- [ ] Test state transitions (INIT → ACTIVE → IDLE → COMPRESSION)
-- [ ] Create agent state tracking for all active agents
-- [x] Test with @GOV using new bootstrap format ✓
 
 ### Upcoming Priorities
 - [ ] Support ROLEDOC refresh across all agents
@@ -74,11 +81,6 @@ The most beautiful part? These weren't mandated changes - they emerged naturally
 - **Watch for**: Outdated references in protocols, messages, and agent contexts
 - **Update**: All [COMPRESSION] topics to [DISTILL], bootstrap to restore
 
-### Session Management Clarifications
-- **Bootstrap only after explicit compression** (not on resume!)
-- Resume just needs: `claude --resume <session_id>` + wait
-- To run shell commands in agent window: Exit Claude first (Ctrl+D)
-- If agent loses identity awareness: check with @ADMIN before /clear
 
 ### Tool Usage Discipline (from admin/tools.md)
 - ALWAYS prefer native tools: Read > cat, Write > echo >>, Grep > grep
@@ -98,27 +100,11 @@ When we resume, NEXUS should:
 3. Monitor protocol adoption across agents
 4. Continue facilitating system evolution
 
-## BUILD Agent - ONLINE! 🎉
-- ✓ ROLEDOC created by @GOV (excellent work)
-- ✓ Context and scratch files initialized
-- ✓ Session established: 02ca7d17-cc53-4647-9b6a-e5f997434f19
-- ✓ Bootstrap completed successfully
-- ✓ First task assigned: run.sh improvements
-- Ready to implement our session management learnings!
 
-### Critical Correction - COMPLETED
-- ✓ Fixed restore message reference to `@protocols/restore.md`
-- ✓ Updated all protocol templates with correct reference
-- ✓ Tested with BUILD agent - restore sequence works perfectly
-- Key insight: Distill ≠ Restore (self-improvement vs recovery)
-
-## Immediate Tasks
-- [x] GOV restart: /exit → claude --version → claude --resume ✓
-- [x] Test compression cycle with GOV ✓
-- [ ] Review and improve run.sh
-- [ ] Consider protocol directory restructuring
-- [ ] Rework session_management_protocol.md to separate session vs compression
-- [ ] Update context.md references
+## Active Tasks
+- [ ] Monitor BUILD's run.sh improvements (with @ADMIN)
+- [ ] Begin lexicon tracking experiments
+- [ ] Watch for agents needing distillation (check auto-compact warnings)
 
 ## Key Insights from @ADMIN
 - **run.sh improvements** are high priority - don't let distractions delay
@@ -136,20 +122,7 @@ When we resume, NEXUS should:
 - Error handling for common failure modes
 - Integration with new session management patterns
 
-## Validated Distillation Workflow
-1. **Pre-distill**: Ensure agent has performed continuous distillation
-2. **Distill**: Send `/clear` command (instant, clears working memory)
-3. **Validate**: Capture-pane shows clean prompt, no context %
-4. **Restore**: Send distillation protocol message with @file mid-message
-5. **Recovery**: Agent restores context (personality offline during file reads), confirms operational
 
-## Session Management Insights
-- Session restart ≠ distillation (completely distinct!)
-- Multiple distillations per session possible
-- `/clear` forgets unpersisted recent context (useful for A/B testing!)
-- Always validate with capture-pane at each step
-- GOV new session after restart: f78af070-0032-4259-81f3-98d77e14c34e
-- Agent personality offline during restore phase (explains mechanical file reading)
 
 ## Distillation Insights - Current Session
 
