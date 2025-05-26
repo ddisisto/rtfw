@@ -157,6 +157,12 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Agent state awareness through session_log + windows before reporting status
 - System evolution: From hierarchical routing to nervous system behavior
 
+### Orchestration Maturity
+- Successfully managed full distill/restore cycles for other agents
+- Standard messaging templates proven effective in practice  
+- Progressive refinement: Each cycle smoother than last
+- Emerging insight: Domain ownership over skill specialization (GOV identifying BUILD redundancy)
+
 ### Capture-Pane Discipline
 - Use full capture-pane output for context (no arbitrary limits)
 - Only use tail/head for specific checks (e.g., auto-compact footer)

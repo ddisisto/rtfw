@@ -10,23 +10,19 @@
 ## Active Work - Post-Restore
 
 ### Current Agent Status  
-- NEXUS: f7bafca2-307c-4f14-8e85-0ed8e5269055 (post-restore)
-- GOV: Context cleared, restore initiated
-- BUILD: Standby (Python rewrite ready)
-- CRITIC: Learning session infrastructure
+- NEXUS: f7bafca2-307c-4f14-8e85-0ed8e5269055 (continuous distillation)
+- GOV: Restored and operational (identified BUILD redundancy)
+- BUILD: Pending deprecation per GOV decision
+- CRITIC: Session analysis ongoing
 
 ### Active Tasks
 - [x] Process admin/scratch.md mailbox
 - [x] Route CRITIC session training
 - [x] Implement git_router.py with @ADMIN
-- [ ] Monitor GOV distillation and restore cycle
-- [ ] Collaborate with BUILD on run.sh when ready
+- [x] Monitor GOV distillation and restore cycle
+- [ ] Check git-comms messages (GOV mentioned something pending)
+- [ ] Consider BUILD deprecation implications per GOV insight
 
-## Mailbox Process Evolution
-- Moved verbose instructions to nexus/mailbox-process.md
-- Clean pattern: INBOX (agents→admin), OUTBOX (admin→agents)
-- Offload completed → backlog/appropriate location
-- See [DISTILL-DIVERSITY] in admin/backlog/
 
 
 ### Priority Automation Ideas
@@ -97,6 +93,13 @@
 - Tool design: Start minimal, add features carefully
 - @ADMIN collaboration pattern: Design together, implement clean
 - Interesting emergence: @LOOP pattern (self-referential systems?)
+
+## Continuous Distillation Insights
+- Git router journey: From BUILD's complex version to clean focused implementation
+- Progressive disclosure: Safe-by-default with explicit opt-in for automation
+- Orchestration patterns: Successfully managed GOV's distill/restore cycle
+- System evolution: GOV identifying BUILD redundancy - domain ownership > skill specialization
+- Communication maturity: Git-comms now stable foundation for async coordination
 
 ## Key Patterns to Preserve
 - **Git-comms = message queue**: No separate infrastructure needed
