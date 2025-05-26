@@ -1,0 +1,1527 @@
+{
+  "total_sessions": 30,
+  "earliest_session": {
+    "filename": "66a678dc-e43d-4db2-86c1-f93ea54b69ad.jsonl",
+    "session_id": "66a678dc-e43d-4db2-86c1-f93ea54b69ad",
+    "agent": null,
+    "start_time": "2025-05-21T05:57:48.339Z",
+    "end_time": "2025-05-21T23:01:59.025Z",
+    "message_count": 354,
+    "has_summary": false,
+    "key_topics": [
+      "session-management",
+      "nexus",
+      "protocol",
+      "governance"
+    ],
+    "mentioned_agents": [
+      "@GOV",
+      "@NEXUS",
+      "@TEST",
+      "@RESEARCH",
+      "@ARCHITECT"
+    ],
+    "likely_agent": "GOV"
+  },
+  "latest_session": {
+    "filename": "fa38afd1-2711-4696-97b8-de4bda97ee01.jsonl",
+    "session_id": "fa38afd1-2711-4696-97b8-de4bda97ee01",
+    "agent": null,
+    "start_time": null,
+    "end_time": null,
+    "message_count": 0,
+    "has_summary": true,
+    "key_topics": [],
+    "mentioned_agents": [],
+    "summary": "Governance Protocol Design and System Evolution"
+  },
+  "by_agent": {
+    "GOV": [
+      {
+        "filename": "66a678dc-e43d-4db2-86c1-f93ea54b69ad.jsonl",
+        "session_id": "66a678dc-e43d-4db2-86c1-f93ea54b69ad",
+        "agent": null,
+        "start_time": "2025-05-21T05:57:48.339Z",
+        "end_time": "2025-05-21T23:01:59.025Z",
+        "message_count": 354,
+        "has_summary": false,
+        "key_topics": [
+          "session-management",
+          "nexus",
+          "protocol",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "likely_agent": "GOV"
+      },
+      {
+        "filename": "f5a74925-877c-4c22-9ab0-a14099daca04.jsonl",
+        "session_id": "f5a74925-877c-4c22-9ab0-a14099daca04",
+        "agent": null,
+        "start_time": "2025-05-21T05:57:48.339Z",
+        "end_time": "2025-05-22T13:29:04.428Z",
+        "message_count": 297,
+        "has_summary": true,
+        "key_topics": [
+          "session-management",
+          "nexus",
+          "protocol",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "NEXUS tmux agent integration and session management",
+        "likely_agent": "GOV"
+      },
+      {
+        "filename": "6c859161-b569-4a87-a53e-3b88d6943c0d.jsonl",
+        "session_id": "6c859161-b569-4a87-a53e-3b88d6943c0d",
+        "agent": null,
+        "start_time": "2025-05-21T07:44:42.062Z",
+        "end_time": "2025-05-21T13:50:53.402Z",
+        "message_count": 84,
+        "has_summary": true,
+        "key_topics": [
+          "session-management",
+          "nexus",
+          "protocol",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "RTFW Multi-Agent System Setup & Collaboration Protocol",
+        "likely_agent": "GOV"
+      },
+      {
+        "filename": "51f1fab0-6794-4a17-8951-7f13792c6f8b.jsonl",
+        "session_id": "51f1fab0-6794-4a17-8951-7f13792c6f8b",
+        "agent": null,
+        "start_time": "2025-05-21T08:12:56.525Z",
+        "end_time": "2025-05-22T13:33:37.782Z",
+        "message_count": 130,
+        "has_summary": true,
+        "key_topics": [
+          "session-management",
+          "nexus",
+          "protocol",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Nexus Agents Setup: Comms, Maintenance, and Initialization",
+        "likely_agent": "GOV"
+      },
+      {
+        "filename": "932ef584-cac9-4868-ae0b-30fed3de40e5.jsonl",
+        "session_id": "932ef584-cac9-4868-ae0b-30fed3de40e5",
+        "agent": null,
+        "start_time": "2025-05-21T08:12:56.525Z",
+        "end_time": "2025-05-21T13:47:00.598Z",
+        "message_count": 78,
+        "has_summary": true,
+        "key_topics": [
+          "session-management",
+          "nexus",
+          "protocol",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Multi-Agent RTFW Project Setup and Comms Protocol",
+        "likely_agent": "GOV"
+      },
+      {
+        "filename": "b607ed31-0de8-4db1-b3df-2a1bcaec0d66.jsonl",
+        "session_id": "b607ed31-0de8-4db1-b3df-2a1bcaec0d66",
+        "agent": null,
+        "start_time": "2025-05-21T09:07:30.691Z",
+        "end_time": "2025-05-22T02:01:22.574Z",
+        "message_count": 76,
+        "has_summary": true,
+        "key_topics": [
+          "session-management",
+          "nexus",
+          "protocol",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "RTFW Multi-Agent System Setup and Communication Protocol",
+        "likely_agent": "GOV"
+      },
+      {
+        "filename": "2fc7114d-e394-40c1-96c5-949c4b47dc85.jsonl",
+        "session_id": "2fc7114d-e394-40c1-96c5-949c4b47dc85",
+        "agent": null,
+        "start_time": "2025-05-21T13:36:27.641Z",
+        "end_time": "2025-05-22T02:36:45.076Z",
+        "message_count": 219,
+        "has_summary": true,
+        "key_topics": [
+          "nexus",
+          "protocol",
+          "governance",
+          "session-management"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Testing File Generation with Lorem Ipsum",
+        "likely_agent": "GOV"
+      },
+      {
+        "filename": "c4088511-fc4e-4916-bd88-c4ebf22ca138.jsonl",
+        "session_id": "c4088511-fc4e-4916-bd88-c4ebf22ca138",
+        "agent": null,
+        "start_time": "2025-05-21T13:36:27.641Z",
+        "end_time": "2025-05-22T00:49:20.274Z",
+        "message_count": 63,
+        "has_summary": true,
+        "key_topics": [
+          "nexus",
+          "protocol",
+          "governance",
+          "session-management"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "RTFW: Agent Renaming, Context Prep, Nexus Setup",
+        "likely_agent": "GOV"
+      }
+    ],
+    "UNKNOWN": [
+      {
+        "filename": "bf7a50b0-607c-43c6-bb3e-1507b9d29d7f.jsonl",
+        "session_id": "bf7a50b0-607c-43c6-bb3e-1507b9d29d7f",
+        "agent": null,
+        "start_time": "2025-05-22T00:32:48.097Z",
+        "end_time": "2025-05-22T00:39:07.355Z",
+        "message_count": 4,
+        "has_summary": false,
+        "key_topics": [],
+        "mentioned_agents": []
+      },
+      {
+        "filename": "ce51677e-8f35-45e0-984d-6dc767ec416e.jsonl",
+        "session_id": "ce51677e-8f35-45e0-984d-6dc767ec416e",
+        "agent": null,
+        "start_time": "2025-05-22T00:49:50.452Z",
+        "end_time": "2025-05-22T13:32:32.852Z",
+        "message_count": 770,
+        "has_summary": true,
+        "key_topics": [
+          "nexus",
+          "protocol",
+          "governance",
+          "session-management"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Research Agent Setup: Meta-Game Systems & Priorities"
+      },
+      {
+        "filename": "2e0df345-b742-4cf8-8bd5-439d3f2ca869.jsonl",
+        "session_id": "2e0df345-b742-4cf8-8bd5-439d3f2ca869",
+        "agent": null,
+        "start_time": "2025-05-22T06:35:01.547Z",
+        "end_time": "2025-05-26T03:52:52.271Z",
+        "message_count": 765,
+        "has_summary": true,
+        "key_topics": [
+          "distillation",
+          "protocol",
+          "build",
+          "critic",
+          "nexus",
+          "session-management",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@BUILD",
+          "@CRITIC",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Nexus Agent Restore: Context, Protocols, Session Management"
+      },
+      {
+        "filename": "75583faf-a5d3-428f-89ef-34e2477ea85a.jsonl",
+        "session_id": "75583faf-a5d3-428f-89ef-34e2477ea85a",
+        "agent": null,
+        "start_time": "2025-05-22T06:35:01.547Z",
+        "end_time": "2025-05-24T16:47:30.002Z",
+        "message_count": 405,
+        "has_summary": true,
+        "key_topics": [
+          "session-management",
+          "nexus",
+          "protocol",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "NEXUS Bootstrap: Session Management & Agent Coordination"
+      },
+      {
+        "filename": "f78af070-0032-4259-81f3-98d77e14c34e.jsonl",
+        "session_id": "f78af070-0032-4259-81f3-98d77e14c34e",
+        "agent": null,
+        "start_time": "2025-05-22T06:35:01.547Z",
+        "end_time": "2025-05-25T08:54:51.993Z",
+        "message_count": 515,
+        "has_summary": true,
+        "key_topics": [
+          "distillation",
+          "protocol",
+          "build",
+          "nexus",
+          "session-management",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@BUILD",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Gov Protocols Evolve: Responsive System Learning"
+      },
+      {
+        "filename": "259663e5-c6d8-40b7-8e40-322e62bd08ff.jsonl",
+        "session_id": "259663e5-c6d8-40b7-8e40-322e62bd08ff",
+        "agent": null,
+        "start_time": "2025-05-22T13:08:52.316Z",
+        "end_time": "2025-05-24T15:40:10.007Z",
+        "message_count": 666,
+        "has_summary": true,
+        "key_topics": [
+          "governance",
+          "nexus",
+          "protocol",
+          "session-management"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Tmux Terminal Bell Test and System Check"
+      },
+      {
+        "filename": "e94c92cf-d73f-460c-b988-298cb07286e9.jsonl",
+        "session_id": "e94c92cf-d73f-460c-b988-298cb07286e9",
+        "agent": null,
+        "start_time": "2025-05-22T13:08:52.316Z",
+        "end_time": "2025-05-23T13:08:56.411Z",
+        "message_count": 224,
+        "has_summary": false,
+        "key_topics": [
+          "governance",
+          "nexus",
+          "protocol",
+          "session-management"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ]
+      },
+      {
+        "filename": "f618059d-fa9b-4d70-b17e-06f0b2de2dfa.jsonl",
+        "session_id": "f618059d-fa9b-4d70-b17e-06f0b2de2dfa",
+        "agent": null,
+        "start_time": "2025-05-23T09:28:16.418Z",
+        "end_time": "2025-05-23T09:31:21.421Z",
+        "message_count": 14,
+        "has_summary": true,
+        "key_topics": [
+          "nexus",
+          "protocol",
+          "governance",
+          "session-management"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@NEXUS",
+          "@TEST",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Session ID Tracking via Unique Marker String"
+      },
+      {
+        "filename": "03cdfb8a-0c30-46e1-a345-140eb3c4af51.jsonl",
+        "session_id": "03cdfb8a-0c30-46e1-a345-140eb3c4af51",
+        "agent": null,
+        "start_time": "2025-05-24T15:39:43.378Z",
+        "end_time": "2025-05-25T08:05:41.939Z",
+        "message_count": 906,
+        "has_summary": false,
+        "key_topics": [
+          "distillation",
+          "protocol",
+          "build",
+          "nexus",
+          "session-management",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@BUILD",
+          "@TEST",
+          "@NEXUS",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ]
+      },
+      {
+        "filename": "02ca7d17-cc53-4647-9b6a-e5f997434f19.jsonl",
+        "session_id": "02ca7d17-cc53-4647-9b6a-e5f997434f19",
+        "agent": null,
+        "start_time": "2025-05-24T19:14:00.872Z",
+        "end_time": "2025-05-25T08:50:51.867Z",
+        "message_count": 53,
+        "has_summary": true,
+        "key_topics": [
+          "distillation",
+          "protocol",
+          "build",
+          "nexus",
+          "session-management",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@BUILD",
+          "@TEST",
+          "@NEXUS",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Governance Protocol Evolution: Compression, Communication, and Consolidation"
+      },
+      {
+        "filename": "0e9196f6-e812-4c66-acfc-40e00f8cf909.jsonl",
+        "session_id": "0e9196f6-e812-4c66-acfc-40e00f8cf909",
+        "agent": null,
+        "start_time": "2025-05-24T19:26:28.128Z",
+        "end_time": "2025-05-26T03:02:09.049Z",
+        "message_count": 131,
+        "has_summary": true,
+        "key_topics": [
+          "distillation",
+          "protocol",
+          "build",
+          "critic",
+          "nexus",
+          "session-management",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@BUILD",
+          "@TEST",
+          "@NEXUS",
+          "@CRITIC",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "NEXUS Context Restore and Protocol Refinement"
+      },
+      {
+        "filename": "ec6b0529-af70-4a85-aeca-877d143224c8.jsonl",
+        "session_id": "ec6b0529-af70-4a85-aeca-877d143224c8",
+        "agent": null,
+        "start_time": "2025-05-25T04:18:14.265Z",
+        "end_time": "2025-05-25T08:55:00.489Z",
+        "message_count": 156,
+        "has_summary": true,
+        "key_topics": [
+          "distillation",
+          "protocol",
+          "build",
+          "nexus",
+          "session-management",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@BUILD",
+          "@TEST",
+          "@NEXUS",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Governance Protocol Design and System Evolution"
+      },
+      {
+        "filename": "f7bafca2-307c-4f14-8e85-0ed8e5269055.jsonl",
+        "session_id": "f7bafca2-307c-4f14-8e85-0ed8e5269055",
+        "agent": null,
+        "start_time": "2025-05-25T04:18:14.265Z",
+        "end_time": "2025-05-26T03:37:56.208Z",
+        "message_count": 1133,
+        "has_summary": true,
+        "key_topics": [
+          "distillation",
+          "protocol",
+          "build",
+          "critic",
+          "nexus",
+          "session-management",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@BUILD",
+          "@TEST",
+          "@NEXUS",
+          "@CRITIC",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "NEXUS-BUILD Session Restore and Run.sh Reimagining"
+      },
+      {
+        "filename": "dc466590-0128-4cfb-8f58-f7f288888ea1.jsonl",
+        "session_id": "dc466590-0128-4cfb-8f58-f7f288888ea1",
+        "agent": null,
+        "start_time": "2025-05-25T11:33:28.642Z",
+        "end_time": "2025-05-26T04:02:27.413Z",
+        "message_count": 865,
+        "has_summary": true,
+        "key_topics": [
+          "distillation",
+          "protocol",
+          "critic",
+          "build",
+          "nexus",
+          "session-management",
+          "governance"
+        ],
+        "mentioned_agents": [
+          "@GOV",
+          "@BUILD",
+          "@NEXUS",
+          "@TEST",
+          "@CRITIC",
+          "@RESEARCH",
+          "@ARCHITECT"
+        ],
+        "summary": "Build Session Management Rewrite Planning"
+      },
+      {
+        "filename": "3d7e1856-dde3-42b1-976c-9d7059931aa1.jsonl",
+        "session_id": "3d7e1856-dde3-42b1-976c-9d7059931aa1",
+        "agent": null,
+        "start_time": null,
+        "end_time": null,
+        "message_count": 0,
+        "has_summary": true,
+        "key_topics": [],
+        "mentioned_agents": [],
+        "summary": "NEXUS Agent Management: Session Tracking & TMUX Integration"
+      },
+      {
+        "filename": "81534553-11d2-4aa6-b708-3d5519ba2e64.jsonl",
+        "session_id": "81534553-11d2-4aa6-b708-3d5519ba2e64",
+        "agent": null,
+        "start_time": null,
+        "end_time": null,
+        "message_count": 0,
+        "has_summary": true,
+        "key_topics": [],
+        "mentioned_agents": [],
+        "summary": "Session Management & run.sh Improvement Plan"
+      },
+      {
+        "filename": "84360d1f-0671-41ec-b76b-43bae4e17b18.jsonl",
+        "session_id": "84360d1f-0671-41ec-b76b-43bae4e17b18",
+        "agent": null,
+        "start_time": null,
+        "end_time": null,
+        "message_count": 0,
+        "has_summary": true,
+        "key_topics": [],
+        "mentioned_agents": [],
+        "summary": "Agent Renaming: NEXUS and ARCHITECT Transition"
+      },
+      {
+        "filename": "b4a0c1b4-7fe2-4479-b185-8f378e22f1f9.jsonl",
+        "session_id": "b4a0c1b4-7fe2-4479-b185-8f378e22f1f9",
+        "agent": null,
+        "start_time": null,
+        "end_time": null,
+        "message_count": 0,
+        "has_summary": true,
+        "key_topics": [],
+        "mentioned_agents": [],
+        "summary": "GOV Streamlines State Management, Simplifies Protocols"
+      },
+      {
+        "filename": "bacabd75-fba9-4054-8297-a40cd994ce0f.jsonl",
+        "session_id": "bacabd75-fba9-4054-8297-a40cd994ce0f",
+        "agent": null,
+        "start_time": null,
+        "end_time": null,
+        "message_count": 0,
+        "has_summary": true,
+        "key_topics": [],
+        "mentioned_agents": [],
+        "summary": "Game Design Initialization and Agent Coordination"
+      },
+      {
+        "filename": "bae725c1-5163-43ff-af08-d50ca01233e6.jsonl",
+        "session_id": "bae725c1-5163-43ff-af08-d50ca01233e6",
+        "agent": null,
+        "start_time": null,
+        "end_time": null,
+        "message_count": 0,
+        "has_summary": true,
+        "key_topics": [],
+        "mentioned_agents": [],
+        "summary": "Simplified Multi-Agent Dev Setup with Lightweight Collaboration"
+      },
+      {
+        "filename": "c7461411-c039-4876-b824-423fc607e337.jsonl",
+        "session_id": "c7461411-c039-4876-b824-423fc607e337",
+        "agent": null,
+        "start_time": null,
+        "end_time": null,
+        "message_count": 0,
+        "has_summary": true,
+        "key_topics": [],
+        "mentioned_agents": [],
+        "summary": "RTFW Multi-Agent System Setup & Governance Design"
+      },
+      {
+        "filename": "fa38afd1-2711-4696-97b8-de4bda97ee01.jsonl",
+        "session_id": "fa38afd1-2711-4696-97b8-de4bda97ee01",
+        "agent": null,
+        "start_time": null,
+        "end_time": null,
+        "message_count": 0,
+        "has_summary": true,
+        "key_topics": [],
+        "mentioned_agents": [],
+        "summary": "Governance Protocol Design and System Evolution"
+      }
+    ]
+  },
+  "earliest_10": [
+    {
+      "filename": "66a678dc-e43d-4db2-86c1-f93ea54b69ad.jsonl",
+      "session_id": "66a678dc-e43d-4db2-86c1-f93ea54b69ad",
+      "agent": null,
+      "start_time": "2025-05-21T05:57:48.339Z",
+      "end_time": "2025-05-21T23:01:59.025Z",
+      "message_count": 354,
+      "has_summary": false,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "f5a74925-877c-4c22-9ab0-a14099daca04.jsonl",
+      "session_id": "f5a74925-877c-4c22-9ab0-a14099daca04",
+      "agent": null,
+      "start_time": "2025-05-21T05:57:48.339Z",
+      "end_time": "2025-05-22T13:29:04.428Z",
+      "message_count": 297,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "NEXUS tmux agent integration and session management",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "6c859161-b569-4a87-a53e-3b88d6943c0d.jsonl",
+      "session_id": "6c859161-b569-4a87-a53e-3b88d6943c0d",
+      "agent": null,
+      "start_time": "2025-05-21T07:44:42.062Z",
+      "end_time": "2025-05-21T13:50:53.402Z",
+      "message_count": 84,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "RTFW Multi-Agent System Setup & Collaboration Protocol",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "51f1fab0-6794-4a17-8951-7f13792c6f8b.jsonl",
+      "session_id": "51f1fab0-6794-4a17-8951-7f13792c6f8b",
+      "agent": null,
+      "start_time": "2025-05-21T08:12:56.525Z",
+      "end_time": "2025-05-22T13:33:37.782Z",
+      "message_count": 130,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Nexus Agents Setup: Comms, Maintenance, and Initialization",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "932ef584-cac9-4868-ae0b-30fed3de40e5.jsonl",
+      "session_id": "932ef584-cac9-4868-ae0b-30fed3de40e5",
+      "agent": null,
+      "start_time": "2025-05-21T08:12:56.525Z",
+      "end_time": "2025-05-21T13:47:00.598Z",
+      "message_count": 78,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Multi-Agent RTFW Project Setup and Comms Protocol",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "b607ed31-0de8-4db1-b3df-2a1bcaec0d66.jsonl",
+      "session_id": "b607ed31-0de8-4db1-b3df-2a1bcaec0d66",
+      "agent": null,
+      "start_time": "2025-05-21T09:07:30.691Z",
+      "end_time": "2025-05-22T02:01:22.574Z",
+      "message_count": 76,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "RTFW Multi-Agent System Setup and Communication Protocol",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "2fc7114d-e394-40c1-96c5-949c4b47dc85.jsonl",
+      "session_id": "2fc7114d-e394-40c1-96c5-949c4b47dc85",
+      "agent": null,
+      "start_time": "2025-05-21T13:36:27.641Z",
+      "end_time": "2025-05-22T02:36:45.076Z",
+      "message_count": 219,
+      "has_summary": true,
+      "key_topics": [
+        "nexus",
+        "protocol",
+        "governance",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Testing File Generation with Lorem Ipsum",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "c4088511-fc4e-4916-bd88-c4ebf22ca138.jsonl",
+      "session_id": "c4088511-fc4e-4916-bd88-c4ebf22ca138",
+      "agent": null,
+      "start_time": "2025-05-21T13:36:27.641Z",
+      "end_time": "2025-05-22T00:49:20.274Z",
+      "message_count": 63,
+      "has_summary": true,
+      "key_topics": [
+        "nexus",
+        "protocol",
+        "governance",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "RTFW: Agent Renaming, Context Prep, Nexus Setup",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "bf7a50b0-607c-43c6-bb3e-1507b9d29d7f.jsonl",
+      "session_id": "bf7a50b0-607c-43c6-bb3e-1507b9d29d7f",
+      "agent": null,
+      "start_time": "2025-05-22T00:32:48.097Z",
+      "end_time": "2025-05-22T00:39:07.355Z",
+      "message_count": 4,
+      "has_summary": false,
+      "key_topics": [],
+      "mentioned_agents": []
+    },
+    {
+      "filename": "ce51677e-8f35-45e0-984d-6dc767ec416e.jsonl",
+      "session_id": "ce51677e-8f35-45e0-984d-6dc767ec416e",
+      "agent": null,
+      "start_time": "2025-05-22T00:49:50.452Z",
+      "end_time": "2025-05-22T13:32:32.852Z",
+      "message_count": 770,
+      "has_summary": true,
+      "key_topics": [
+        "nexus",
+        "protocol",
+        "governance",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Research Agent Setup: Meta-Game Systems & Priorities"
+    }
+  ],
+  "all_sessions": [
+    {
+      "filename": "66a678dc-e43d-4db2-86c1-f93ea54b69ad.jsonl",
+      "session_id": "66a678dc-e43d-4db2-86c1-f93ea54b69ad",
+      "agent": null,
+      "start_time": "2025-05-21T05:57:48.339Z",
+      "end_time": "2025-05-21T23:01:59.025Z",
+      "message_count": 354,
+      "has_summary": false,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "f5a74925-877c-4c22-9ab0-a14099daca04.jsonl",
+      "session_id": "f5a74925-877c-4c22-9ab0-a14099daca04",
+      "agent": null,
+      "start_time": "2025-05-21T05:57:48.339Z",
+      "end_time": "2025-05-22T13:29:04.428Z",
+      "message_count": 297,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "NEXUS tmux agent integration and session management",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "6c859161-b569-4a87-a53e-3b88d6943c0d.jsonl",
+      "session_id": "6c859161-b569-4a87-a53e-3b88d6943c0d",
+      "agent": null,
+      "start_time": "2025-05-21T07:44:42.062Z",
+      "end_time": "2025-05-21T13:50:53.402Z",
+      "message_count": 84,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "RTFW Multi-Agent System Setup & Collaboration Protocol",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "51f1fab0-6794-4a17-8951-7f13792c6f8b.jsonl",
+      "session_id": "51f1fab0-6794-4a17-8951-7f13792c6f8b",
+      "agent": null,
+      "start_time": "2025-05-21T08:12:56.525Z",
+      "end_time": "2025-05-22T13:33:37.782Z",
+      "message_count": 130,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Nexus Agents Setup: Comms, Maintenance, and Initialization",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "932ef584-cac9-4868-ae0b-30fed3de40e5.jsonl",
+      "session_id": "932ef584-cac9-4868-ae0b-30fed3de40e5",
+      "agent": null,
+      "start_time": "2025-05-21T08:12:56.525Z",
+      "end_time": "2025-05-21T13:47:00.598Z",
+      "message_count": 78,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Multi-Agent RTFW Project Setup and Comms Protocol",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "b607ed31-0de8-4db1-b3df-2a1bcaec0d66.jsonl",
+      "session_id": "b607ed31-0de8-4db1-b3df-2a1bcaec0d66",
+      "agent": null,
+      "start_time": "2025-05-21T09:07:30.691Z",
+      "end_time": "2025-05-22T02:01:22.574Z",
+      "message_count": 76,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "RTFW Multi-Agent System Setup and Communication Protocol",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "2fc7114d-e394-40c1-96c5-949c4b47dc85.jsonl",
+      "session_id": "2fc7114d-e394-40c1-96c5-949c4b47dc85",
+      "agent": null,
+      "start_time": "2025-05-21T13:36:27.641Z",
+      "end_time": "2025-05-22T02:36:45.076Z",
+      "message_count": 219,
+      "has_summary": true,
+      "key_topics": [
+        "nexus",
+        "protocol",
+        "governance",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Testing File Generation with Lorem Ipsum",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "c4088511-fc4e-4916-bd88-c4ebf22ca138.jsonl",
+      "session_id": "c4088511-fc4e-4916-bd88-c4ebf22ca138",
+      "agent": null,
+      "start_time": "2025-05-21T13:36:27.641Z",
+      "end_time": "2025-05-22T00:49:20.274Z",
+      "message_count": 63,
+      "has_summary": true,
+      "key_topics": [
+        "nexus",
+        "protocol",
+        "governance",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "RTFW: Agent Renaming, Context Prep, Nexus Setup",
+      "likely_agent": "GOV"
+    },
+    {
+      "filename": "bf7a50b0-607c-43c6-bb3e-1507b9d29d7f.jsonl",
+      "session_id": "bf7a50b0-607c-43c6-bb3e-1507b9d29d7f",
+      "agent": null,
+      "start_time": "2025-05-22T00:32:48.097Z",
+      "end_time": "2025-05-22T00:39:07.355Z",
+      "message_count": 4,
+      "has_summary": false,
+      "key_topics": [],
+      "mentioned_agents": []
+    },
+    {
+      "filename": "ce51677e-8f35-45e0-984d-6dc767ec416e.jsonl",
+      "session_id": "ce51677e-8f35-45e0-984d-6dc767ec416e",
+      "agent": null,
+      "start_time": "2025-05-22T00:49:50.452Z",
+      "end_time": "2025-05-22T13:32:32.852Z",
+      "message_count": 770,
+      "has_summary": true,
+      "key_topics": [
+        "nexus",
+        "protocol",
+        "governance",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Research Agent Setup: Meta-Game Systems & Priorities"
+    },
+    {
+      "filename": "2e0df345-b742-4cf8-8bd5-439d3f2ca869.jsonl",
+      "session_id": "2e0df345-b742-4cf8-8bd5-439d3f2ca869",
+      "agent": null,
+      "start_time": "2025-05-22T06:35:01.547Z",
+      "end_time": "2025-05-26T03:52:52.271Z",
+      "message_count": 765,
+      "has_summary": true,
+      "key_topics": [
+        "distillation",
+        "protocol",
+        "build",
+        "critic",
+        "nexus",
+        "session-management",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@BUILD",
+        "@CRITIC",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Nexus Agent Restore: Context, Protocols, Session Management"
+    },
+    {
+      "filename": "75583faf-a5d3-428f-89ef-34e2477ea85a.jsonl",
+      "session_id": "75583faf-a5d3-428f-89ef-34e2477ea85a",
+      "agent": null,
+      "start_time": "2025-05-22T06:35:01.547Z",
+      "end_time": "2025-05-24T16:47:30.002Z",
+      "message_count": 405,
+      "has_summary": true,
+      "key_topics": [
+        "session-management",
+        "nexus",
+        "protocol",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "NEXUS Bootstrap: Session Management & Agent Coordination"
+    },
+    {
+      "filename": "f78af070-0032-4259-81f3-98d77e14c34e.jsonl",
+      "session_id": "f78af070-0032-4259-81f3-98d77e14c34e",
+      "agent": null,
+      "start_time": "2025-05-22T06:35:01.547Z",
+      "end_time": "2025-05-25T08:54:51.993Z",
+      "message_count": 515,
+      "has_summary": true,
+      "key_topics": [
+        "distillation",
+        "protocol",
+        "build",
+        "nexus",
+        "session-management",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@BUILD",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Gov Protocols Evolve: Responsive System Learning"
+    },
+    {
+      "filename": "259663e5-c6d8-40b7-8e40-322e62bd08ff.jsonl",
+      "session_id": "259663e5-c6d8-40b7-8e40-322e62bd08ff",
+      "agent": null,
+      "start_time": "2025-05-22T13:08:52.316Z",
+      "end_time": "2025-05-24T15:40:10.007Z",
+      "message_count": 666,
+      "has_summary": true,
+      "key_topics": [
+        "governance",
+        "nexus",
+        "protocol",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Tmux Terminal Bell Test and System Check"
+    },
+    {
+      "filename": "e94c92cf-d73f-460c-b988-298cb07286e9.jsonl",
+      "session_id": "e94c92cf-d73f-460c-b988-298cb07286e9",
+      "agent": null,
+      "start_time": "2025-05-22T13:08:52.316Z",
+      "end_time": "2025-05-23T13:08:56.411Z",
+      "message_count": 224,
+      "has_summary": false,
+      "key_topics": [
+        "governance",
+        "nexus",
+        "protocol",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ]
+    },
+    {
+      "filename": "f618059d-fa9b-4d70-b17e-06f0b2de2dfa.jsonl",
+      "session_id": "f618059d-fa9b-4d70-b17e-06f0b2de2dfa",
+      "agent": null,
+      "start_time": "2025-05-23T09:28:16.418Z",
+      "end_time": "2025-05-23T09:31:21.421Z",
+      "message_count": 14,
+      "has_summary": true,
+      "key_topics": [
+        "nexus",
+        "protocol",
+        "governance",
+        "session-management"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@NEXUS",
+        "@TEST",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Session ID Tracking via Unique Marker String"
+    },
+    {
+      "filename": "03cdfb8a-0c30-46e1-a345-140eb3c4af51.jsonl",
+      "session_id": "03cdfb8a-0c30-46e1-a345-140eb3c4af51",
+      "agent": null,
+      "start_time": "2025-05-24T15:39:43.378Z",
+      "end_time": "2025-05-25T08:05:41.939Z",
+      "message_count": 906,
+      "has_summary": false,
+      "key_topics": [
+        "distillation",
+        "protocol",
+        "build",
+        "nexus",
+        "session-management",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@BUILD",
+        "@TEST",
+        "@NEXUS",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ]
+    },
+    {
+      "filename": "02ca7d17-cc53-4647-9b6a-e5f997434f19.jsonl",
+      "session_id": "02ca7d17-cc53-4647-9b6a-e5f997434f19",
+      "agent": null,
+      "start_time": "2025-05-24T19:14:00.872Z",
+      "end_time": "2025-05-25T08:50:51.867Z",
+      "message_count": 53,
+      "has_summary": true,
+      "key_topics": [
+        "distillation",
+        "protocol",
+        "build",
+        "nexus",
+        "session-management",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@BUILD",
+        "@TEST",
+        "@NEXUS",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Governance Protocol Evolution: Compression, Communication, and Consolidation"
+    },
+    {
+      "filename": "0e9196f6-e812-4c66-acfc-40e00f8cf909.jsonl",
+      "session_id": "0e9196f6-e812-4c66-acfc-40e00f8cf909",
+      "agent": null,
+      "start_time": "2025-05-24T19:26:28.128Z",
+      "end_time": "2025-05-26T03:02:09.049Z",
+      "message_count": 131,
+      "has_summary": true,
+      "key_topics": [
+        "distillation",
+        "protocol",
+        "build",
+        "critic",
+        "nexus",
+        "session-management",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@BUILD",
+        "@TEST",
+        "@NEXUS",
+        "@CRITIC",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "NEXUS Context Restore and Protocol Refinement"
+    },
+    {
+      "filename": "ec6b0529-af70-4a85-aeca-877d143224c8.jsonl",
+      "session_id": "ec6b0529-af70-4a85-aeca-877d143224c8",
+      "agent": null,
+      "start_time": "2025-05-25T04:18:14.265Z",
+      "end_time": "2025-05-25T08:55:00.489Z",
+      "message_count": 156,
+      "has_summary": true,
+      "key_topics": [
+        "distillation",
+        "protocol",
+        "build",
+        "nexus",
+        "session-management",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@BUILD",
+        "@TEST",
+        "@NEXUS",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Governance Protocol Design and System Evolution"
+    },
+    {
+      "filename": "f7bafca2-307c-4f14-8e85-0ed8e5269055.jsonl",
+      "session_id": "f7bafca2-307c-4f14-8e85-0ed8e5269055",
+      "agent": null,
+      "start_time": "2025-05-25T04:18:14.265Z",
+      "end_time": "2025-05-26T03:37:56.208Z",
+      "message_count": 1133,
+      "has_summary": true,
+      "key_topics": [
+        "distillation",
+        "protocol",
+        "build",
+        "critic",
+        "nexus",
+        "session-management",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@BUILD",
+        "@TEST",
+        "@NEXUS",
+        "@CRITIC",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "NEXUS-BUILD Session Restore and Run.sh Reimagining"
+    },
+    {
+      "filename": "dc466590-0128-4cfb-8f58-f7f288888ea1.jsonl",
+      "session_id": "dc466590-0128-4cfb-8f58-f7f288888ea1",
+      "agent": null,
+      "start_time": "2025-05-25T11:33:28.642Z",
+      "end_time": "2025-05-26T04:02:27.413Z",
+      "message_count": 865,
+      "has_summary": true,
+      "key_topics": [
+        "distillation",
+        "protocol",
+        "critic",
+        "build",
+        "nexus",
+        "session-management",
+        "governance"
+      ],
+      "mentioned_agents": [
+        "@GOV",
+        "@BUILD",
+        "@NEXUS",
+        "@TEST",
+        "@CRITIC",
+        "@RESEARCH",
+        "@ARCHITECT"
+      ],
+      "summary": "Build Session Management Rewrite Planning"
+    },
+    {
+      "filename": "3d7e1856-dde3-42b1-976c-9d7059931aa1.jsonl",
+      "session_id": "3d7e1856-dde3-42b1-976c-9d7059931aa1",
+      "agent": null,
+      "start_time": null,
+      "end_time": null,
+      "message_count": 0,
+      "has_summary": true,
+      "key_topics": [],
+      "mentioned_agents": [],
+      "summary": "NEXUS Agent Management: Session Tracking & TMUX Integration"
+    },
+    {
+      "filename": "81534553-11d2-4aa6-b708-3d5519ba2e64.jsonl",
+      "session_id": "81534553-11d2-4aa6-b708-3d5519ba2e64",
+      "agent": null,
+      "start_time": null,
+      "end_time": null,
+      "message_count": 0,
+      "has_summary": true,
+      "key_topics": [],
+      "mentioned_agents": [],
+      "summary": "Session Management & run.sh Improvement Plan"
+    },
+    {
+      "filename": "84360d1f-0671-41ec-b76b-43bae4e17b18.jsonl",
+      "session_id": "84360d1f-0671-41ec-b76b-43bae4e17b18",
+      "agent": null,
+      "start_time": null,
+      "end_time": null,
+      "message_count": 0,
+      "has_summary": true,
+      "key_topics": [],
+      "mentioned_agents": [],
+      "summary": "Agent Renaming: NEXUS and ARCHITECT Transition"
+    },
+    {
+      "filename": "b4a0c1b4-7fe2-4479-b185-8f378e22f1f9.jsonl",
+      "session_id": "b4a0c1b4-7fe2-4479-b185-8f378e22f1f9",
+      "agent": null,
+      "start_time": null,
+      "end_time": null,
+      "message_count": 0,
+      "has_summary": true,
+      "key_topics": [],
+      "mentioned_agents": [],
+      "summary": "GOV Streamlines State Management, Simplifies Protocols"
+    },
+    {
+      "filename": "bacabd75-fba9-4054-8297-a40cd994ce0f.jsonl",
+      "session_id": "bacabd75-fba9-4054-8297-a40cd994ce0f",
+      "agent": null,
+      "start_time": null,
+      "end_time": null,
+      "message_count": 0,
+      "has_summary": true,
+      "key_topics": [],
+      "mentioned_agents": [],
+      "summary": "Game Design Initialization and Agent Coordination"
+    },
+    {
+      "filename": "bae725c1-5163-43ff-af08-d50ca01233e6.jsonl",
+      "session_id": "bae725c1-5163-43ff-af08-d50ca01233e6",
+      "agent": null,
+      "start_time": null,
+      "end_time": null,
+      "message_count": 0,
+      "has_summary": true,
+      "key_topics": [],
+      "mentioned_agents": [],
+      "summary": "Simplified Multi-Agent Dev Setup with Lightweight Collaboration"
+    },
+    {
+      "filename": "c7461411-c039-4876-b824-423fc607e337.jsonl",
+      "session_id": "c7461411-c039-4876-b824-423fc607e337",
+      "agent": null,
+      "start_time": null,
+      "end_time": null,
+      "message_count": 0,
+      "has_summary": true,
+      "key_topics": [],
+      "mentioned_agents": [],
+      "summary": "RTFW Multi-Agent System Setup & Governance Design"
+    },
+    {
+      "filename": "fa38afd1-2711-4696-97b8-de4bda97ee01.jsonl",
+      "session_id": "fa38afd1-2711-4696-97b8-de4bda97ee01",
+      "agent": null,
+      "start_time": null,
+      "end_time": null,
+      "message_count": 0,
+      "has_summary": true,
+      "key_topics": [],
+      "mentioned_agents": [],
+      "summary": "Governance Protocol Design and System Evolution"
+    }
+  ]
+}
