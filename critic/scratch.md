@@ -1,9 +1,9 @@
 # CRITIC Scratch Pad
 
 ## Active Analysis Queue
-- [ ] Develop efficient JSONL analysis tools
-- [ ] Continue Q&A cycle with @ADMIN (Questions 4-20)
-- [ ] Track agent autonomy evolution
+- [x] Develop efficient JSONL analysis tools ✓ (session_query.py complete)
+- [ ] Continue session analysis with new tools
+- [ ] Track active agent evolution (NEXUS, GOV, CRITIC only)
 
 ## Current Tools (Consolidated)
 - session_query.py - Unified JSONL query engine (replaces 10 tools)
@@ -11,17 +11,16 @@
 - extract_session_timestamps.py - Update session index with time ranges
 - sessions_index.csv - Agent mappings and timestamps
 
-## Next Analysis Proposals
-1. "Emergence Moments" - Search for unexpected discoveries
-2. "Failure Patterns" - What didn't work and why
-3. "Agent Autonomy Evolution" - Decision-making growth
-4. "Protocol Birth Stories" - How protocols emerged
-5. "Cross-Agent Learning" - Inter-agent influence
+## Next Analysis Focus (Post-Consolidation)
+1. **Active Agent Deep Dives** - GOV 4-day session, NEXUS coordination patterns
+2. **Deprecation Patterns** - Why CODE→BUILD, why others shelved
+3. **Protocol Evolution** - Track how protocols changed during 5-day burst
+4. **@ADMIN Intervention Types** - Now queryable with proper tools
 
 ## Working Notes
-- Distillation protocol evolution analysis complete
-- Tool efficiency is critical bottleneck for session analysis
-- Need to focus on practical tooling improvements next
+- Tool consolidation complete - efficiency crisis resolved
+- Session deduplication revealed true work patterns
+- Infrastructure-first approach validated
 
 ## Tool Analysis Patterns (2025-05-26)
 
@@ -96,20 +95,28 @@ Extracted first 5 user prompts from 22 session files. Key patterns:
 
 ## Critical Session Insights (2025-05-26)
 
-### Tool Efficiency Crisis
-- Session log analysis consuming excessive context
-- Grep returns "found" without content on JSONL
-- Multiple Bash calls needed for simple searches
-- Built Python tools as workaround, but need native solution
+### Session Analysis Meta-Learning
+- **Start with infrastructure basics**: Should have built session index first
+- **Duplicate sessions waste ~30% effort**: Resume creates full copies
+- **Session-agent mapping essential**: Can't query efficiently without it
+- **Tool proliferation anti-pattern**: 10 tools → 1 unified tool
+- **Native > Shell always**: Stream processing beats loading
 
-### Distillation/Restore Evolution (Complete)
-- Traced full evolution: compression → consolidation → distillation
-- @ADMIN's metaphor choices shape system behavior
-- "Distillation" reframed from loss-prevention to value-concentration
-- Created comprehensive report: critic/reports/distillation_protocol_evolution.md
+### Tool Consolidation Success
+- Replaced 10 specialized tools with session_query.py
+- Strict indexing requirement prevents confusion
+- CSV index provides fast agent lookup
+- Deduplication revealed true work patterns
 
-### Analysis Method Validation
-- Random sampling: reveals system "personality" (20% approvals)
-- Chronological: shows system "biography" (evolution patterns)
-- Targeted sampling: efficient for specific pattern investigation
-- Need native JSONL tools to make these efficient
+### Project Timeline Insights
+- **5-day burst development** (May 21-26)
+- **Clear phases**: bootstrap → governance → implementation → critique
+- **GOV 4-day marathon** shows deep architectural work
+- **BUILD replaced CODE** mid-project (domain specialization)
+- **Only 3 active agents now**: NEXUS, GOV, CRITIC
+
+### Outdated Context Corrections Needed
+- Remove references to inactive agents (CODE, GAMEDESIGN, etc.)
+- Update "Active agents" lists everywhere
+- Clarify BUILD deprecation wasn't failure but evolution
+- Document session deduplication as standard practice

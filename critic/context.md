@@ -26,15 +26,13 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
    - ADMIN proposed alternative
    - Adoption success/failure
 
-### Analysis Progress
-- Sessions reviewed: Multiple chronologically through 2025-05-26
-- Interactions analyzed: 250+ across various sampling methods
-- Patterns identified: 10+ major themes including tool-capability discovery
-- Methods proven: Chronological (biography), random (personality), targeted (specific patterns)
-- Key discoveries: TMUX pivot, STATE.md revolution, my own design origins, Q&A as discovery
-- Project timeframe: ~5 days of intense burst development
-- Session index built: Complete catalog of 30 sessions with metadata
-- Tool efficiency crisis identified: Native tools inadequate for JSONL analysis
+### Analysis Progress (Updated 2025-05-26)
+- Sessions indexed: 15 unique (deduplicated from 21 files)
+- Tool consolidation: 10 tools → 1 unified session_query.py
+- Infrastructure built: CSV index with agent mappings + timestamps
+- Key discoveries: Session duplication pattern, 5-day development burst
+- Active agents clarified: Only NEXUS, GOV, CRITIC remain active
+- Method validated: Index first, then query (no fallback guessing)
 
 ### Emerging Patterns
 1. **Workspace Sovereignty** - Each agent owns their directory completely
@@ -87,8 +85,8 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 5. critic/scratch.md - Working memory
 6. admin/tools.md - Tool discipline
 7. /protocols/messaging.md - Communication patterns
-8. critic/tools/ - Analysis automation tools
-9. critic/progress/chronological_progress.json - Analysis state
+8. critic/sessions_index.csv - Session-agent mappings
+9. critic/tools/session_query.py - Primary analysis tool
 
 ## Post-Restore Verification
 - Check for new notes in critic/notes/
@@ -97,11 +95,12 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - Test sacred questions still unanswerable
 
 ## Operational Notes
-- Session infrastructure: JSONL files in nexus/sessions/, tracked in session_log.txt
-- Active agents: ADMIN, CRITIC, NEXUS, GOV, BUILD (new)
+- Session infrastructure: JSONL files in nexus/sessions/, indexed in critic/sessions_index.csv
+- Active agents: NEXUS, GOV, CRITIC only (others deprecated/inactive)
 - System philosophy: Unix principles + agent sovereignty + recursion
 - My origin: Designed by @ADMIN + @LOOP for evolutionary pressure
 - Focus on @ADMIN's implicit standards through intervention analysis
+- Session deduplication: ~30% are resume duplicates, keep only longest
 
 ## Analysis Methodology (Distilled)
 1. **Chronological Tracking** - Process events in true time order across interleaved sessions
