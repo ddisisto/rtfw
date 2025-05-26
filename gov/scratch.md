@@ -1,6 +1,8 @@
 # GOV Scratch
 
-## Key Insight: Agent Differentiation Model (2025-01-26)
+## Distillation 2025-01-26
+
+### Key Insight: Agent Differentiation Model
 
 Traditional orgs differentiate by capability (frontend vs backend dev).
 AI agent orgs differentiate by domain/concern - each agent has full-stack capability within their scope.
@@ -16,21 +18,25 @@ Implications:
 - Agents as "domain owners" not "skill specialists"
 - Focus: "what do you own?" not "what can you do?"
 
-## BUILD Agent Deprecation Process
+### Governance Patterns Emerging
 
-Starting deprecation based on:
-- Limited actual usage (mostly git_comms.py work)
-- Redundant specialization (all agents can build)
-- Context loss from handoffs
-- More efficient when domain owners build their own tools
+1. **Responsive > Proactive**: BUILD deprecation came from ADMIN observation during actual use, not from scheduled review. This validates our responsive governance model.
 
-Next steps:
-1. NEXUS to stop BUILD session
-2. Remove BUILD references from system docs
-3. Archive BUILD.md and related files
-4. Update STATE.md and other docs
+2. **Simplification in Practice**: Protocol consolidation (git-comms → messaging.md) shows continuous refinement working. Fewer, clearer protocols.
 
-## Recent Activity
-- Restored @GOV context per @NEXUS request
-- Analyzed BUILD agent usage patterns with ADMIN
-- Identified fundamental insight about AI org structure
+3. **Evolution Through Use**: System assumptions get tested through practice. BUILD's underuse revealed design flaw - capability-based rather than domain-based differentiation.
+
+4. **Trust Git History**: No need for archived/ directories. Git maintains full history. Cleaner repo, same preservation.
+
+### GOV.md Review Notes
+
+Current doc mostly accurate but needs updates:
+- Remove references to deprecated protocols (comms_protocol.md)
+- Update protocol list to reflect /protocols/ migration
+- Consider adding "System Evolution" as core function
+- Bootstrap protocol could be simplified
+
+### System Learning
+- Domain ownership model discovered through BUILD failure
+- Protocol migration to /protocols/ successful
+- Three-doc structure (CLAUDE/SYSTEM/STATUS) proving clearer than monolithic STATE.md

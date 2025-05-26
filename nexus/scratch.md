@@ -101,6 +101,15 @@
 - System evolution: GOV identifying BUILD redundancy - domain ownership > skill specialization
 - Communication maturity: Git-comms now stable foundation for async coordination
 
+## NEXUS.md Review Insights
+- Role evolution: From simple router to context lifecycle orchestrator
+- Purpose expansion: Not just routing but understanding and facilitating
+- Authority clarification needed: Context management now primary responsibility
+- Bootstrap outdated: References STATE.md (deprecated) not STATUS.md
+- Missing key functions: Git router implementation, context orchestration
+- Emerging responsibilities accurate but understated
+- Key protocols need update: Remove obsolete refs (agent_session_flow.md)
+
 ## Key Patterns to Preserve
 - **Git-comms = message queue**: No separate infrastructure needed
 - **Parser not router**: Script shows all →, NEXUS decides routing

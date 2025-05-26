@@ -37,9 +37,10 @@
 - Per-turn insight capture operationalizes continuous learning
 - Simplification through removal preferred over feature addition
 - Shared vernacular builds stronger conceptual weight than technical precision
+- Domain ownership model: Agents differentiate by scope not capability
 
 ## System Architecture
-- Active agents: ADMIN, NEXUS, GOV, CRITIC, BUILD
+- Active agents: ADMIN, NEXUS, GOV, CRITIC, RESEARCH, ARCHITECT, HISTORIAN, TEST
 - GitHub repository: https://github.com/ddisisto/rtfw
 - Git workflow: main branch, commits as communication channel
 - Permission system: direct @mention requests (no PR reviews)
@@ -81,3 +82,4 @@
 - Restore enhancement: Added git log checking for recent activity context
 - Protocol consolidation: git-comms.md merged into messaging.md
 - Automated routing: NEXUS git_router.py operational with tmux delivery
+- Domain-based agents: BUILD deprecated - agents implement within their scope
