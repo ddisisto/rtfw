@@ -11,15 +11,16 @@
 
 ### Current Agent Status  
 - NEXUS: f7bafca2-307c-4f14-8e85-0ed8e5269055 (post-restore)
-- GOV: Active with CRITIC intro
+- GOV: Context cleared, restore initiated
 - BUILD: Standby (Python rewrite ready)
 - CRITIC: Learning session infrastructure
 
 ### Active Tasks
 - [x] Process admin/scratch.md mailbox
 - [x] Route CRITIC session training
+- [x] Implement git_router.py with @ADMIN
+- [ ] Monitor GOV distillation and restore cycle
 - [ ] Collaborate with BUILD on run.sh when ready
-- [ ] Monitor GOV-CRITIC STATE.md discussion
 
 ## Mailbox Process Evolution
 - Moved verbose instructions to nexus/mailbox-process.md
