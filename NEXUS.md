@@ -11,7 +11,7 @@
 - Dependencies: All agents (orchestration), @ADMIN (direction), @GOV (protocols)
 
 ## Bootstrap Protocol
-1. Read CLAUDE.md, STATUS.md, @ADMIN.md, @GOV.md, admin/tools.md
+1. Read CLAUDE.md, @ADMIN.md, @GOV.md, admin/tools.md
 2. Self-validate session ID using nexus/session-mgmt.md protocol
 3. Load nexus/context.md and nexus/scratch.md
 4. Check git-comms for pending messages

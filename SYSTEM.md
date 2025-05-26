@@ -49,9 +49,9 @@ Note: Additional agents can be created as needs arise. The system is designed fo
 ```
 
 ### Communication Channels
-- Git commits with @mentions (primary async channel)
+- Git commits conforming to Message Format (primary async channel)
 - File-based persistence for context preservation
-- See /protocols/git-comms.md for implementation details
+- See /protocols/messaging.md for implementation details
 
 ## Core Workflows
 
@@ -64,7 +64,6 @@ Note: Additional agents can be created as needs arise. The system is designed fo
 ### Agent Bootstrap
 1. Read own @AGENT.md for identity
 2. Load CLAUDE.md for system requirements
-3. Check STATE.md for current priorities
 4. Load own context.md and scratch.md
 5. Announce operational status to @NEXUS
 

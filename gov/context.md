@@ -10,7 +10,7 @@
 ## Required Reading Dependencies (Restore Order)
 1. @GOV.md - Identity and role
 2. CLAUDE.md - System requirements and protocols
-3. STATUS.md - Current state snapshot
+3. SYSTEM.md - Architecture and workflows
 5. @ADMIN.md - Project oversight authority
 6. @NEXUS.md - Communication routing
 7. gov/protocol_design_guidelines.md - Protocol creation

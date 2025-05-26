@@ -40,3 +40,8 @@ Current doc mostly accurate but needs updates:
 - Domain ownership model discovered through BUILD failure
 - Protocol migration to /protocols/ successful
 - Three-doc structure (CLAUDE/SYSTEM/STATUS) proving clearer than monolithic STATE.md
+- STATUS.md deprecated (2025-01-26): High maintenance overhead, duplicated agent-tracked state
+  - Evolution: STATE.md → three docs → two docs (CLAUDE.md + SYSTEM.md)
+  - Agents track own state in context.md/scratch.md more effectively
+  - Distributed state tracking more resilient than central document
+  - Simplification continues: less to maintain, clearer boundaries
