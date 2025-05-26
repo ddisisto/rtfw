@@ -128,12 +128,14 @@ class GitRouter:
             else:
                 print(f"\n→ To {msg['to'].upper()}: Manual routing required (@ALL expansion not implemented)")
         
-        # Update state to last message
-        if messages:
+        # Update state only if we actually delivered messages
+        if messages and auto_deliver:
             self._save_state(messages[-1]['full_hash'])
-            if auto_deliver and routed_count > 0:
+            if routed_count > 0:
                 print(f"\nDelivered {routed_count} message(s).")
             print(f"\nState updated. Processed through {messages[-1]['hash']}")
+        elif messages and not auto_deliver:
+            print(f"\nViewing only - state file not updated (use --deliver to process)")
 
 def main():
     """Entry point."""

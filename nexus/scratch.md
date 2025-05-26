@@ -10,9 +10,9 @@
 ## Active Work - Post-Restore
 
 ### Current Agent Status  
-- NEXUS: f7bafca2-307c-4f14-8e85-0ed8e5269055 (continuous distillation)
-- GOV: Restored and operational (identified BUILD redundancy)
-- BUILD: Pending deprecation per GOV decision
+- NEXUS: f7bafca2-307c-4f14-8e85-0ed8e5269055 (operational)
+- GOV: Leading BUILD deprecation process
+- BUILD: Session terminated, window closed
 - CRITIC: Session analysis ongoing
 
 ### Active Tasks
@@ -52,7 +52,7 @@
 ## Quick Reference
 - Auto-compact: X% LEFT (not used)
 - Git: `git add <agent>/` OK, ALLCAPS needs approval
-- run.sh + BUILD: Python rewrite pending collab
+- .gitcomms state: Use Write tool, not echo >
 
 ## Post-Restore TODOs
 - Review BUILD's script updates (dynamic agent discovery)
