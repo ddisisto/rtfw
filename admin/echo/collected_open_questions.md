@@ -1,7 +1,6 @@
-# Collected Open Questions for @ADMIN
+# Collected Open Question Responses for @CRITIC
+2025-05-26
 
-## Date: 2025-05-25
-## Compiled by: @CRITIC
 
 ### From State Assumptions Analysis (critic/notes/state-assumptions.md)
 
@@ -9,9 +8,30 @@
    - Context: Questioning the requirement to "commit changes promptly for system coherence"
    - Why it matters: Vague metrics lead to meaningless compliance
 
+
+git commits ~> saved and backed up context checkpoint for an agent, in this case.
+
+My own attempt at a definition 
+
+but we need to step back and understand coherence more broadly. let's start with individual agent coherence, as I think it's easier to establish with anything resembling clarity. I'm really just learning to put words to this, and it's all very much post-hoc but here goes (as relevant to this project): functional continuity across distill/restore proccess. currently, practically, this is a vibe-check. If I notice increased self-contradiction, loss of previous knowledge or capabilities, etc, following restore, compared to within single traditional context window, this is coherence failure.
+
+"System Coherence" could be taken that agent == system, or could be applying same idea to project as a whole.
+
+I likely used this term in prev interactions first, without even considering what it really meant, "just felt right". Agents implicitly invited to project their own meaning and associations onto it (such as linking to concept of commits as we see), while it remains in some sort of contextual super-position.
+
+Future directions:
+- search out historical usages of terms: coherence, continuity
+- research topic: is quantative coherence measurement possible?
+
+
 2. **What makes governance "effective"?**
    - Context: STATE.md claims "simplified governance model proven effective"
    - Why it matters: Past success ≠ future fitness without clear criteria
+
+I don't know how much I can say if "governance" itself is effective. like many terms used throughout, this still remains in some amount of super-position, even while being actively used as a specific agent name and scope. 
+
+ I think the point here is that 
+
 
 3. **Why prescribe tools vs outcomes?**
    - Context: TMUX as architectural requirement in system state

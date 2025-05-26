@@ -36,10 +36,6 @@ Multi-agent system for collaborative AI development with file-based persistence 
   - Assumption surfacing and questioning
   - Post-distillation review capability
 
-- **@BUILD**: Implementation specialist
-  - Code generation and refactoring
-  - Tool development and automation
-  - Technical solution implementation
 
 Note: Additional agents can be created as needs arise. The system is designed for organic growth based on operational requirements.
 

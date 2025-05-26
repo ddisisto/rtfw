@@ -14,7 +14,6 @@ Last Updated: 2025-01-25
 - **@NEXUS**: Session ID pending
 - **@GOV**: Fresh context post-restore
 - **@CRITIC**: Learning phase (STATE.md analysis complete)
-- **@BUILD**: Standby (Python rewrite concept ready)
 
 ### Recently Inactive
 - **@ARCHITECT**: Shelved pending clear need
@@ -28,7 +27,7 @@ Last Updated: 2025-01-25
 1. CRITIC session log analysis for pattern extraction
 2. Git commit communication workflow exploration
 3. STATE.md → SYSTEM.md/STATUS.md migration
-4. Build Python implementation collaboration
+4. Domain-based agent implementation (agents build within their scope)
 
 ### System Improvements
 - Restore dependency documentation across all agents
@@ -65,4 +64,4 @@ Last Updated: 2025-01-25
 - [ ] Complete three-way documentation split
 - [ ] Establish STATUS.md update process
 - [ ] CRITIC completes session log review
-- [ ] BUILD proves Python implementation
+- [ ] Domain agents implement tools within their scope
