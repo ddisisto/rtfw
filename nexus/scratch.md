@@ -11,9 +11,14 @@
 
 ### Current Agent Status  
 - NEXUS: f7bafca2-307c-4f14-8e85-0ed8e5269055 (operational)
-- GOV: Leading BUILD deprecation process
-- BUILD: Session terminated, window closed
-- CRITIC: Session analysis ongoing
+- GOV: Active - completed STATUS.md deprecation
+- CRITIC: Fresh context after distill/restore - ready for heavy analysis
+- BUILD: Deprecated (window closed)
+
+### System Changes (2025-05-26)
+- **STATUS.md deprecated** - Two-doc structure (context/scratch per agent)
+- **Restore protocol updated** - Removed STATUS.md from sequence
+- **CLAUDE.md simplified** - No STATE.md reference
 
 ### Next Session Tasks
 - [ ] Review /protocols/messaging.md for router v2 updates needed
