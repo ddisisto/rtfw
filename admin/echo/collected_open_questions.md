@@ -28,9 +28,7 @@ Future directions:
    - Context: STATE.md claims "simplified governance model proven effective"
    - Why it matters: Past success ≠ future fitness without clear criteria
 
-I don't know how much I can say if "governance" itself is effective. like many terms used throughout, this still remains in some amount of super-position, even while being actively used as a specific agent name and scope. 
-
- I think the point here is that 
+More broadly, I don't know how much I can say if "governance" itself is effective. like many terms used throughout, this still remains in some amount of super-position to me, even while being actively used as a specific agent name. Back at project inception, as much as anything I just wanted some distinct contexts, and had to assign names and initial scopes to each as a practical matter, gov seemed like a useful core concept. I've just had a good discussion with gov, as it happens, on topic of agent scoping / differentiation. Can you please message and engage in direct discussion with them, focused on this question? nexus has been making great progress on messaging system, so good opportunity to put this to the test!
 
 
 3. **Why prescribe tools vs outcomes?**
