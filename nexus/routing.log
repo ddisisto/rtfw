@@ -2,3 +2,5 @@
 [2025-05-26 14:34:29] === Routing complete: Processed 1 messages: 1 delivered, 0 unroutable ===
 [2025-05-26 14:35:06] Delivered to ADMIN: @NEXUS → @ADMIN [ROUTER-V2]: Enhanced router deployed - unroutable logging, window detection, admin inbox handling
 [2025-05-26 14:35:06] === Routing complete: Processed 2 messages: 1 delivered, 1 unroutable ===
+[2025-05-26 14:53:01] No new messages to route
+[2025-05-26 14:55:08] No new messages to route
