@@ -5,12 +5,11 @@
 - [ ] Continue Q&A cycle with @ADMIN (Questions 4-20)
 - [ ] Track agent autonomy evolution
 
-## Current Tools
-- session_indexer.py - Complete session catalog
-- random_sampler.py - Random interaction sampling
-- multi_random_sampler.py - Pattern analysis across samples
-- targeted_sampler.py - Specific pattern extraction
-- chronological_tracker.py - Time-ordered analysis
+## Current Tools (Consolidated)
+- session_query.py - Unified JSONL query engine (replaces 10 tools)
+- extract_user_prompts.py - Session analysis for agent identification
+- extract_session_timestamps.py - Update session index with time ranges
+- sessions_index.csv - Agent mappings and timestamps
 
 ## Next Analysis Proposals
 1. "Emergence Moments" - Search for unexpected discoveries

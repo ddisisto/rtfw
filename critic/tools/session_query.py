@@ -62,35 +62,12 @@ class SessionQuery:
             return str(content)
     
     def extract_agent(self, entry: Dict[str, Any], filename: str) -> str:
-        """Extract agent name from entry content or session mapping."""
-        # First check session mapping
+        """Extract agent name from session mapping."""
         session_id = filename.replace('.jsonl', '')
         if session_id in self.session_mappings:
             return self.session_mappings[session_id]
-        
-        # Fall back to content patterns
-        content = self.extract_content(entry)
-        
-        # Look for init pattern
-        if 'init @' in content:
-            match = re.search(r'init @(\w+)\.md', content)
-            if match:
-                return match.group(1).upper()
-        
-        # Look for agent identification in messages
-        if 'whoami' in content.lower() and '@' in content:
-            match = re.search(r'@(\w+)', content)
-            if match:
-                agent = match.group(1).upper()
-                if agent in ['GOV', 'NEXUS', 'BUILD', 'CRITIC', 'ARCHITECT', 'TEST', 'RESEARCH', 'HISTORIAN']:
-                    return agent
-        
-        # Look for agent message patterns
-        for agent in ['GOV', 'NEXUS', 'BUILD', 'CRITIC', 'ARCHITECT', 'TEST', 'RESEARCH', 'HISTORIAN']:
-            if f'@{agent}:' in content or f'@{agent} →' in content:
-                return agent
-                
-        return 'UNKNOWN'
+        else:
+            raise Exception(f"Session {session_id} not found in index. Please run extract_user_prompts.py to analyze and update critic/sessions_index.csv")
     
     def stream_entries(self, 
                       agent: Optional[str] = None,
