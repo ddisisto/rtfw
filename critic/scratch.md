@@ -196,3 +196,15 @@
 - "vibe" / "feel" - intuitive measures
 - "sovereignty" - agent autonomy patterns
 - "drift" / "diverge" - system evolution markers
+- "super-position" - deliberate ambiguity as design
+- "brittle" / "rigid" - anti-patterns to avoid
+- "self-organize" - emergence patterns
+
+### Key Insights from Q&A
+1. Coherence = functional continuity (vibe-check method valid)
+2. Governance effectiveness = system's self-organization ability
+3. Super-position governance prevents brittleness
+4. BUILD deprecation validated responsive governance model
+5. Tools prescribed for: a) capability exploration (ADMIN), b) shared reality anchors (CRITIC)
+6. Concrete infrastructure enables abstract emergence
+7. "I don't know what I think until I see what I make" - tools reveal possibilities
