@@ -24,6 +24,50 @@
 - Tool efficiency is critical bottleneck for session analysis
 - Need to focus on practical tooling improvements next
 
+## Tool Analysis Patterns (2025-05-26)
+
+### Common Patterns Across 10 Python Tools
+1. **JSONL Processing Core** - All tools read/parse nexus/sessions/*.jsonl files
+2. **Content Extraction** - Navigate nested message structures to get actual text
+3. **Agent Identification** - Extract from filename or content patterns
+4. **Timestamp Handling** - Sort/filter by time, track chronology
+5. **Pattern Detection** - Search for keywords, phrases, intervention types
+6. **State Persistence** - Some track progress for resumability
+7. **Output Generation** - JSON reports to critic/analysis/, text summaries
+
+### Core Operations Needed
+1. **Stream Processing** - Read JSONL entries without loading full files
+2. **Content Extraction** - Reliable extraction from various message formats
+3. **Pattern Matching** - Flexible search across content/metadata
+4. **Time Navigation** - Jump to specific times, track progress
+5. **Aggregation** - Count patterns, group by agent/type/time
+
+### Proposed Minimal Toolset
+1. **session_query.py** - Swiss army knife for session analysis
+   - Stream JSONL with filters (time range, agent, content pattern)
+   - Extract specific fields or full entries
+   - Output formats: JSON, CSV, readable text
+   - Stateless - filters passed as arguments
+
+2. **session_stats.py** - Aggregation and counting
+   - Message counts by agent/type/time
+   - Pattern frequency analysis
+   - Intervention type distribution
+   - Session metadata summary
+
+3. **session_tracker.py** - Stateful chronological analysis
+   - Resume from last position
+   - Navigate by time or event count
+   - Context preservation (show surrounding messages)
+   - Progress tracking
+
+### Key Improvements Over Current Tools
+- Native JSONL streaming (no full file loads)
+- Unified content extraction logic
+- Composable filters (combine time + agent + pattern)
+- Standard output formats for piping
+- Clear separation: query (stateless) vs track (stateful)
+
 ## Critical Session Insights (2025-05-26)
 
 ### Tool Efficiency Crisis
