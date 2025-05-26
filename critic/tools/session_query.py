@@ -15,6 +15,22 @@ import re
 class SessionQuery:
     def __init__(self, session_dir: str = "/home/daniel/prj/rtfw/nexus/sessions"):
         self.session_dir = Path(session_dir)
+        self.session_mappings = self.load_session_mappings()
+    
+    def load_session_mappings(self) -> Dict[str, str]:
+        """Load session-to-agent mappings from CSV."""
+        mappings = {}
+        csv_path = Path("/home/daniel/prj/rtfw/critic/sessions_index.csv")
+        if csv_path.exists():
+            import csv
+            with open(csv_path, 'r') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    session_id = row['sessionId']
+                    agent = row['agent']
+                    if agent != 'UNKNOWN':
+                        mappings[session_id] = agent
+        return mappings
         
     def extract_content(self, entry: Dict[str, Any]) -> str:
         """Unified content extraction from various message formats."""
@@ -46,8 +62,13 @@ class SessionQuery:
             return str(content)
     
     def extract_agent(self, entry: Dict[str, Any], filename: str) -> str:
-        """Extract agent name from entry content."""
-        # Try to extract from content patterns
+        """Extract agent name from entry content or session mapping."""
+        # First check session mapping
+        session_id = filename.replace('.jsonl', '')
+        if session_id in self.session_mappings:
+            return self.session_mappings[session_id]
+        
+        # Fall back to content patterns
         content = self.extract_content(entry)
         
         # Look for init pattern

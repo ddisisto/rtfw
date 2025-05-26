@@ -68,6 +68,33 @@
 - Standard output formats for piping
 - Clear separation: query (stateless) vs track (stateful)
 
+## Session-Agent Mapping Analysis (2025-05-26)
+
+Extracted first 5 user prompts from 22 session files. Key patterns:
+
+### Clear Agent Identification Patterns
+1. **Init patterns**: "init @AGENT.md" (early sessions only)
+2. **Direct addressing**: "@NEXUS → @BUILD [TOPIC]:" format
+3. **Restore patterns**: "@protocols/restore.md completed for @BUILD.md agent"
+4. **Context references**: "resuming session @GOV.md after context clear"
+
+### Session Types
+1. **Agent-specific**: Most sessions dedicated to one agent
+2. **Cross-agent**: Some sessions involve NEXUS routing to others
+3. **Admin/utility**: Quick tests, environment checks
+
+### Mapping Challenges
+- Session IDs are UUIDs, not semantic
+- Some sessions start mid-conversation (after restore)
+- NEXUS sessions often route to other agents
+- Need persistent mapping storage
+
+### Proposed Solution
+1. Create `session_mappings.json` with discovered mappings
+2. Use multiple detection patterns (init, restore, addressing)
+3. Store confidence level with each mapping
+4. Update mappings as new patterns discovered
+
 ## Critical Session Insights (2025-05-26)
 
 ### Tool Efficiency Crisis
