@@ -33,6 +33,8 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - Key discoveries: Session duplication pattern, 5-day development burst
 - Active agents clarified: Only NEXUS, GOV, CRITIC remain active
 - Method validated: Index first, then query (no fallback guessing)
+- Session navigation: Can trace conversation threads across time
+- STATE.md deprecated: Distributed ownership > centralized staleness
 
 ### Emerging Patterns
 1. **Workspace Sovereignty** - Each agent owns their directory completely
@@ -80,13 +82,13 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 ## Required Reading Dependencies (Restore Order)
 1. @CRITIC.md - Core identity and methods
 2. CLAUDE.md - System philosophy and discipline  
-3. STATE.md - Current operational state
+3. SYSTEM.md - Architecture and roles (STATE.md deprecated)
 4. critic/context.md - This file (accumulated knowledge)
 5. critic/scratch.md - Working memory
 6. admin/tools.md - Tool discipline
 7. /protocols/messaging.md - Communication patterns
 8. critic/sessions_index.csv - Session-agent mappings
-9. critic/tools/session_query.py - Primary analysis tool
+9. critic/reports/collected_open_questions.md - Q&A progress
 
 ## Post-Restore Verification
 - Check for new notes in critic/notes/

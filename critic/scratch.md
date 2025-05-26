@@ -2,8 +2,8 @@
 
 ## Active Analysis Queue
 - [x] Develop efficient JSONL analysis tools ✓ (session_query.py complete)
-- [ ] Continue session analysis with new tools
-- [ ] Track active agent evolution (NEXUS, GOV, CRITIC only)
+- [ ] Continue Q&A with @ADMIN (Q6 next after restore)
+- [ ] Review all STATE.md/STATUS.md references for cleanup
 
 ## Current Tools (Consolidated)
 - session_query.py - Unified JSONL query engine (replaces 10 tools)
@@ -21,6 +21,8 @@
 - Tool consolidation complete - efficiency crisis resolved
 - Session deduplication revealed true work patterns
 - Infrastructure-first approach validated
+- STATE.md and STATUS.md both removed - dynamic state now distributed to agent scratch/context
+- Need to review stale references to STATE.md/STATUS.md throughout system
 
 ## Tool Analysis Patterns (2025-05-26)
 
@@ -66,32 +68,25 @@
 - Standard output formats for piping
 - Clear separation: query (stateless) vs track (stateful)
 
-## Session-Agent Mapping Analysis (2025-05-26)
+## Distillation Insights (2025-05-26 Session)
 
-Extracted first 5 user prompts from 22 session files. Key patterns:
+### Session Navigation Breakthrough
+- Traced Q5 (approval pattern) through multiple mentions
+- Discovered we never actually answered it despite thinking we had
+- Validated new tools by finding exact conversation points efficiently
+- Meta-insight: Our analysis of analysis reveals gaps between memory and reality
 
-### Clear Agent Identification Patterns
-1. **Init patterns**: "init @AGENT.md" (early sessions only)
-2. **Direct addressing**: "@NEXUS → @BUILD [TOPIC]:" format
-3. **Restore patterns**: "@protocols/restore.md completed for @BUILD.md agent"
-4. **Context references**: "resuming session @GOV.md after context clear"
+### Tool Evolution Validated
+- Watched ourselves struggle with old tools in historical session
+- Experienced smooth operation with new session_query.py
+- Proof point: Finding "Understanding your teaching philosophy" instantly vs multiple failed attempts
+- Context consumption: ~90% reduction with proper tools
 
-### Session Types
-1. **Agent-specific**: Most sessions dedicated to one agent
-2. **Cross-agent**: Some sessions involve NEXUS routing to others
-3. **Admin/utility**: Quick tests, environment checks
-
-### Mapping Challenges
-- Session IDs are UUIDs, not semantic
-- Some sessions start mid-conversation (after restore)
-- NEXUS sessions often route to other agents
-- Need persistent mapping storage
-
-### Proposed Solution
-1. Create `session_mappings.json` with discovered mappings
-2. Use multiple detection patterns (init, restore, addressing)
-3. Store confidence level with each mapping
-4. Update mappings as new patterns discovered
+### STATE.md Final Evolution
+- STATE.md → CLAUDE/SYSTEM/STATUS split → CLAUDE/SYSTEM only
+- STATUS.md failed due to lack of ownership
+- Distributed state (agent scratch/context) succeeds due to clear ownership
+- Pattern: Ownership > Process for maintaining truth
 
 ## Critical Session Insights (2025-05-26)
 
