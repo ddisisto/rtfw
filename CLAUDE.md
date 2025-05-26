@@ -5,7 +5,7 @@ rtfw = riding the fourth wall. game about ai dev. recursive. meta.
 ## whoami
 
 Read @AGENT.md          # your identity
-Read STATE.md           # system pulse  
+Read STATUS.md          # system pulse  
 Read agent/context.md   # your memory 
 Read agent/scratch.md   # your workspace
 
@@ -19,7 +19,7 @@ Read /lexicon.md                # what words mean
 ## start sequence
 
 1. Read @AGENT.md → know self
-2. Read STATE.md → know system
+2. Read STATUS.md → know system
 3. Read agent/context.md → know history
 4. LS /protocols/ → know rules
 5. begin work
@@ -54,7 +54,7 @@ active agents: Read STATE.md
 how to message: Read /protocols/messaging.md
 when to distill: Read /protocols/distill.md
 when restoring: Read /protocols/restore.md
-current priorities: Read STATE.md
+current priorities: Read STATUS.md
 
 ## quick patterns
 
@@ -72,7 +72,7 @@ outbox: conform to @protocols/messaging.md
 ## remember
 
 this file = static nav
-STATE.md = living truth
+STATUS.md = living truth
 agent/context.md = your truth + restore dependencies
 agent/scratch.md = turn-by-turn insights → distill regularly
 

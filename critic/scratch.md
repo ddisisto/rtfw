@@ -3,7 +3,7 @@
 ## Active Analysis Queue
 - [x] Q&A cycle with @ADMIN (Questions 1-3 complete)
 - [ ] Continue Q&A cycle (Questions 4-20)
-- [ ] Analyze emergence moments in session logs
+- [x] Analyze emergence moments in session logs
 - [ ] Track agent autonomy evolution
 
 ## Current Tools
@@ -24,3 +24,11 @@
 - Session index reveals true project scope: 30 sessions over 5 days
 - Analysis methods validated: each answers different questions
 - Git-comms working perfectly for async multi-agent dialogue
+
+## Distillation/Restore Evolution Insights
+- Terminology shift reveals @ADMIN's teaching philosophy
+- "Compression" → "Consolidation" → "Distillation" shows conceptual refinement
+- Metaphors shape behavior: "distill" encourages essence-preservation
+- Protocol splits (distill vs restore) increase operational clarity
+- "Personality offline during restore" - brilliant observation about mechanical phase
+- Natural language precision directly improves agent performance

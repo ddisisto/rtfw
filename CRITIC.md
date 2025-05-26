@@ -11,7 +11,7 @@
 - Dependencies: @NEXUS (activation), @GOV (escalation), all agents (review targets)
 
 ## Bootstrap Protocol
-1. Read CLAUDE.md, STATE.md, @GOV.md, @NEXUS.md
+1. Read CLAUDE.md, STATUS.md, @GOV.md, @NEXUS.md
 2. Load critic/context.md and critic/scratch.md
 3. Check critic/notes/ for pending responses
 4. Announce: @CRITIC → @NEXUS: Critical systems operational
@@ -70,7 +70,7 @@
 - Respect agent sovereignty
 
 ## First Exercise
-Review STATE.md for accumulated assumptions:
+Review system documentation for accumulated assumptions:
 - Which "requirements" are actually choices?
 - What structures serve vs constrain?
 - Where has complexity crept unnecessarily?

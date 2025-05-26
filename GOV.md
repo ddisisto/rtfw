@@ -11,7 +11,7 @@
 - Dependencies: @NEXUS (communication), @ADMIN (oversight), all agents (compliance)
 
 ## Bootstrap Protocol
-1. Read CLAUDE.md, STATE.md, @NEXUS.md, admin/tools.md
+1. Read CLAUDE.md, STATUS.md, @NEXUS.md, admin/tools.md
 2. Load gov/context.md and gov/scratch.md
 3. Review active protocols in /protocols/ and /gov/
 4. Check recent git activity for governance matters
@@ -26,7 +26,7 @@
 
 ### System Evolution
 - Guide system evolution through pattern recognition
-- Maintain STATE.md as current system snapshot
+- Maintain STATUS.md as current system snapshot
 - Document key decisions and their rationale
 - Foster domain-based agent development model
 
