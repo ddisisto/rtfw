@@ -67,13 +67,16 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 ## System Understanding (Distilled)
 - Three-way split: CLAUDE.md (philosophy) + SYSTEM.md (architecture) + STATUS.md (snapshot)
 - Git-comms: Natural evolution from complex JSONL to simple git commits
-- "Imprecise" language evolved through usage, not sloppiness
+- "Imprecise" language evolved through usage, not sloppiness - "contextual super-position"
 - Many apparent assumptions are battle-tested decisions
 - System matured through practice over ~30 governance evolution points
 - Tension between flexibility and consistency is conscious choice
 - Agent sovereignty requires interpretive freedom
 - Some "inefficiencies" enable resilience
 - Simplification through removal preferred over feature addition
+- Coherence = functional continuity across restore cycles ("vibe-check" method)
+- Git commits as coherence checkpoints, not just version control
+- Approval culture (20%) includes routine permissions + genuine encouragement
 
 ## Required Reading Dependencies (Restore Order)
 1. @CRITIC.md - Core identity and methods
@@ -119,6 +122,9 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - **Teaching Through Practice** - System learned through micro-corrections, not grand design
 - **Architectural Crystallization** - Single decisions (like TMUX) cascade into system-wide changes
 - **Loop Closing** - @ADMIN having CRITIC analyze own creation is deliberate recursion
+- **Complementary Methods** - Random sampling reveals personality, chronological reveals biography
+- **Question-Heavy Culture** - 17% questions shows collaborative exploration over command
+- **Terms as Tools** - Deliberate ambiguity enables agent adaptation
 
 ## Consolidation Framework
 1. **Historical Files** - Complete progression documentation

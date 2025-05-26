@@ -186,3 +186,13 @@
 - Random sampling proving valuable for understanding system "personality"
 - Positive reinforcement culture may explain low agent resistance
 - Questions reveal key tensions: flexibility vs consistency, autonomy vs coordination
+- Discovered "coherence" = functional continuity across restore (vibe-check method)
+- Terms left in "contextual super-position" deliberately for agent interpretation
+- Git commits serve as coherence checkpoints, not just backups
+
+### Search Terms to Explore
+- "context loss" - failures and recovery patterns
+- "coherence" / "continuity" - evolution of usage
+- "vibe" / "feel" - intuitive measures
+- "sovereignty" - agent autonomy patterns
+- "drift" / "diverge" - system evolution markers
