@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Minimal git-comms router for NEXUS.
-Parse git commits → Extract routable messages → Deliver via tmux
+Enhanced git-comms router for NEXUS.
+Parse git commits → Check tmux windows → Route or log unroutable
 """
 
 import subprocess
 import re
 from pathlib import Path
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Set, Tuple
+from datetime import datetime
 
 class GitRouter:
     """Git-based message router for RTFW agent system."""
@@ -15,6 +16,10 @@ class GitRouter:
     def __init__(self, state_file: str = ".gitcomms"):
         self.state_file = Path(state_file)
         self.last_processed = self._load_state()
+        self.tmux_windows = self._get_tmux_windows()
+        self.unroutable_log = Path("nexus/unroutable.log")
+        self.routing_log = Path("nexus/routing.log")
+        self.admin_inbox = Path("admin/inbox.txt")
         
     def _load_state(self) -> Optional[str]:
         """Load last processed commit hash."""
@@ -25,6 +30,26 @@ class GitRouter:
     def _save_state(self, commit_hash: str):
         """Save last processed commit hash."""
         self.state_file.write_text(commit_hash)
+    
+    def _get_tmux_windows(self) -> Set[str]:
+        """Get list of current tmux windows."""
+        try:
+            result = subprocess.run(
+                ["tmux", "list-windows", "-F", "#W"],
+                capture_output=True,
+                text=True
+            )
+            if result.returncode == 0:
+                return set(result.stdout.strip().split('\n'))
+            return set()
+        except:
+            return set()
+    
+    def _append_to_file(self, filepath: Path, content: str):
+        """Atomically append to file with timestamp."""
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open(filepath, 'a') as f:
+            f.write(f"[{timestamp}] {content}\n")
     
     def parse_commits(self) -> List[Dict]:
         """Parse git log for routable messages."""
@@ -59,31 +84,39 @@ class GitRouter:
         
         return messages
     
-    def route_message(self, msg: Dict) -> Optional[str]:
+    def check_routable(self, msg: Dict) -> Tuple[bool, str]:
         """
-        Determine routing for a message.
-        Returns routing message if single addressee, None otherwise.
+        Check if message is routable.
+        Returns (is_routable, reason)
         """
         to_agent = msg['to'].lower()
         
-        # TODO: Handle @ALL expansion
-        # - Discover agents from @AGENT.md files
-        # - Expand to list of active agents
-        # - Return multiple routing commands
-        if to_agent == 'all':
-            return None  # Not auto-routable yet
+        # Special handling for ADMIN
+        if to_agent == 'admin':
+            return True, "admin-inbox"
         
-        # Single addressee - create routing message
-        # Note: Using generic "Router" instead of "NEXUS" for abstraction
-        routing_msg = f"@Router → @{msg['to'].upper()}: Please review commit {msg['hash']} - {msg['message']}"
-        return routing_msg
+        # Check if window exists
+        if to_agent in self.tmux_windows:
+            return True, "tmux-window"
+        
+        # Not routable
+        return False, f"No tmux window '{to_agent}'"
     
-    def deliver_via_tmux(self, agent: str, message: str):
-        """Send message to agent via tmux."""
-        agent_window = agent.lower()
+    def deliver_message(self, msg: Dict) -> bool:
+        """Deliver message to appropriate destination."""
+        to_agent = msg['to'].lower()
+        routing_msg = f"@Router → @{msg['to'].upper()}: Please review commit {msg['hash']} - {msg['message']}"
+        
+        # Special handling for ADMIN
+        if to_agent == 'admin':
+            self._append_to_file(self.admin_inbox, routing_msg)
+            return True
+        
+        # Normal tmux delivery
+        agent_window = to_agent
         
         # Send message text
-        cmd = ["tmux", "send-keys", "-t", agent_window, message]
+        cmd = ["tmux", "send-keys", "-t", agent_window, routing_msg]
         result = subprocess.run(cmd, capture_output=True)
         
         if result.returncode == 0:
@@ -91,7 +124,7 @@ class GitRouter:
             subprocess.run(["tmux", "send-keys", "-t", agent_window, "Enter"])
             return True
         else:
-            print(f"Failed to deliver to {agent}: {result.stderr.decode()}")
+            print(f"Failed to deliver to {to_agent}: {result.stderr.decode()}")
             return False
     
     def process_messages(self, auto_deliver=False):
@@ -100,42 +133,47 @@ class GitRouter:
         
         if not messages:
             print("No new messages to route")
+            self._append_to_file(self.routing_log, "No new messages to route")
             return
         
         print(f"Found {len(messages)} message(s) with @ → @ pattern:\n")
+        print(f"Active tmux windows: {sorted(self.tmux_windows)}\n")
         
-        # Show all messages with routability status
-        for msg in messages:
-            routing = self.route_message(msg)
-            status = "[auto-routable]" if routing else "[manual review needed]"
-            print(f"{msg['message']} {status} [commit: {msg['hash']}]")
-        
-        print("\nRouting analysis:")
         routed_count = 0
+        unroutable_count = 0
         
         for msg in messages:
-            routing = self.route_message(msg)
-            if routing:
-                print(f"\n→ To {msg['to'].upper()}: {routing}")
-                
-                # Only deliver if auto_deliver is enabled
-                if auto_deliver:
-                    if self.deliver_via_tmux(msg['to'], routing):
+            is_routable, reason = self.check_routable(msg)
+            status = "[routable]" if is_routable else f"[unroutable: {reason}]"
+            print(f"{msg['message']} {status}")
+            
+            if auto_deliver:
+                if is_routable:
+                    if self.deliver_message(msg):
                         routed_count += 1
-                        print(f"  ✓ Delivered")
+                        log_msg = f"Delivered to {msg['to']}: {msg['message']}"
+                        self._append_to_file(self.routing_log, log_msg)
+                        print(f"  ✓ Delivered to {msg['to']} ({reason})")
                 else:
-                    print(f"  ⚠ Auto-delivery disabled (use --deliver to enable)")
+                    unroutable_count += 1
+                    log_msg = f"Unroutable ({reason}): {msg['message']}"
+                    self._append_to_file(self.unroutable_log, log_msg)
+                    print(f"  ⚠ Logged as unroutable")
             else:
-                print(f"\n→ To {msg['to'].upper()}: Manual routing required (@ALL expansion not implemented)")
+                if is_routable:
+                    print(f"  → Would route to {msg['to']} ({reason})")
+                else:
+                    print(f"  → Would log as unroutable")
         
-        # Update state only if we actually delivered messages
+        # Update state only if we actually processed messages
         if messages and auto_deliver:
             self._save_state(messages[-1]['full_hash'])
-            if routed_count > 0:
-                print(f"\nDelivered {routed_count} message(s).")
-            print(f"\nState updated. Processed through {messages[-1]['hash']}")
+            summary = f"Processed {len(messages)} messages: {routed_count} delivered, {unroutable_count} unroutable"
+            self._append_to_file(self.routing_log, f"=== Routing complete: {summary} ===")
+            print(f"\n{summary}")
+            print(f"State updated. Processed through {messages[-1]['hash']}")
         elif messages and not auto_deliver:
-            print(f"\nViewing only - state file not updated (use --deliver to process)")
+            print(f"\nViewing only - no actions taken (use --deliver to process)")
 
 def main():
     """Entry point."""
@@ -148,6 +186,8 @@ def main():
             print("Git Router Status")
             print(f"State file: {router.state_file}")
             print(f"Last processed: {router.last_processed or 'None'}")
+            print(f"Active windows: {sorted(router.tmux_windows)}")
+            print(f"Log files: {router.routing_log}, {router.unroutable_log}")
         elif sys.argv[1] == "--deliver":
             router.process_messages(auto_deliver=True)
         else:

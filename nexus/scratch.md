@@ -20,8 +20,8 @@
 - [x] Route CRITIC session training
 - [x] Implement git_router.py with @ADMIN
 - [x] Monitor GOV distillation and restore cycle
-- [ ] Check git-comms messages (GOV mentioned something pending)
-- [ ] Consider BUILD deprecation implications per GOV insight
+- [x] Update NEXUS.md to reflect evolved role
+- [x] Stop BUILD session per deprecation request
 
 
 
