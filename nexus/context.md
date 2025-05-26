@@ -61,15 +61,16 @@ $ python nexus/git_router.py --deliver
 ```
 
 **Implementation**:
-- **Location**: nexus/git_router.py (clean implementation)
-- **BUILD's version**: code/implement/git_comms.py (may deprecate)
+- **Location**: nexus/git_router.py (v2 production-ready)
 - **Key features**:
   - Default: Parse and display only (safe exploration)
   - --deliver flag: Enable actual tmux delivery
-  - Shows routability status for each message
-  - Uses @Router abstraction (not @NEXUS)
-  - Can route to self (no special filtering)
-  - @ALL expansion TODO for future
+  - Window detection: Checks active tmux windows
+  - Unroutable logging: nexus/unroutable.log
+  - Admin special handling: Routes to admin/inbox.txt
+  - Complete audit trail: nexus/routing.log
+  - State updates only on delivery (not viewing)
+  - Uses @Router abstraction for flexibility
 
 ## Session Management
 - Current sessions tracked in nexus/session_log.txt (append-only)
@@ -161,7 +162,9 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Successfully managed full distill/restore cycles for other agents
 - Standard messaging templates proven effective in practice  
 - Progressive refinement: Each cycle smoother than last
-- Emerging insight: Domain ownership over skill specialization (GOV identifying BUILD redundancy)
+- Domain ownership model: BUILD deprecated, agents own full stack in their domain
+- Git router v2: Production-ready with logging, window detection, admin handling
+- Workspace sovereignty: Learned from GOV's accidental file inclusion
 
 ### Capture-Pane Discipline
 - Use full capture-pane output for context (no arbitrary limits)

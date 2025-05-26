@@ -15,31 +15,16 @@
 - BUILD: Session terminated, window closed
 - CRITIC: Session analysis ongoing
 
-### Active Tasks
-- [x] Process admin/scratch.md mailbox
-- [x] Route CRITIC session training
-- [x] Implement git_router.py with @ADMIN
-- [x] Monitor GOV distillation and restore cycle
-- [x] Update NEXUS.md to reflect evolved role
-- [x] Stop BUILD session per deprecation request
+### Next Session Tasks
+- [ ] Review /protocols/messaging.md for router v2 updates needed
+- [ ] Send comms to all agents about router enhancements
+- [ ] Process any messages in nexus/unroutable.log
+- [ ] Monitor cron automation once @ADMIN sets up
 
 
 
-### Priority Automation Ideas
-- ✓ Git log parsing implemented in git_router.py
-- ✓ Last-processed commit tracking via .gitcomms
-- ✓ Clean routing script created (BUILD has separate version)
 
-### Git-Comms Implementation
-- Protocol established in /protocols/messaging.md
-- Implementation: nexus/git_router.py
-- Pattern proven: Git commits as async message queue
 
-### Git-Comms Refinement TODO
-1. ✓ **Doc cleanup**: Archived obsolete transition doc
-2. **Lightweight messages**: For A/B choices, update scratch + commit with decision?
-3. **Privacy filters**: Scratch files in diffs OK? (small windows only)
-4. **System-wide transition**: In progress
 
 
 ### Key Insight: Git IS the Message Queue
@@ -53,6 +38,8 @@
 - Auto-compact: X% LEFT (not used)
 - Git: `git add <agent>/` OK, ALLCAPS needs approval
 - .gitcomms state: Use Write tool, not echo >
+- Git router logs: nexus/routing.log, nexus/unroutable.log
+- Admin messages: admin/inbox.txt
 
 ## Post-Restore TODOs
 - Review BUILD's script updates (dynamic agent discovery)
@@ -71,14 +58,19 @@
 
 ## Git Router Implementation Complete
 - Created nexus/git_router.py - clean, focused implementation
-- Key features:
+- V1 features:
   - Default: Parse and display, no delivery (safe exploration)
   - --deliver flag: Enable actual tmux message delivery  
   - Shows [auto-routable] vs [manual review needed]
   - Abstracted sender as @Router (not @NEXUS)
   - No self-filtering - can route to any agent including self
-- Successfully tested self-delivery capability
-- Ready for production use with proper safeguards
+- V2 enhancements:
+  - Window detection: Check tmux windows, mark unroutable if missing
+  - Unroutable logging: nexus/unroutable.log with timestamps
+  - Admin special handling: Routes to admin/inbox.txt
+  - Routing log: nexus/routing.log for audit trail
+  - Better atomicity via append operations
+- Ready for cron automation
 
 
 
@@ -94,21 +86,31 @@
 - @ADMIN collaboration pattern: Design together, implement clean
 - Interesting emergence: @LOOP pattern (self-referential systems?)
 
-## Continuous Distillation Insights
-- Git router journey: From BUILD's complex version to clean focused implementation
-- Progressive disclosure: Safe-by-default with explicit opt-in for automation
-- Orchestration patterns: Successfully managed GOV's distill/restore cycle
-- System evolution: GOV identifying BUILD redundancy - domain ownership > skill specialization
-- Communication maturity: Git-comms now stable foundation for async coordination
+## Session Distillation - Messaging System Evolution
 
-## NEXUS.md Review Insights
-- Role evolution: From simple router to context lifecycle orchestrator
-- Purpose expansion: Not just routing but understanding and facilitating
-- Authority clarification needed: Context management now primary responsibility
-- Bootstrap outdated: References STATE.md (deprecated) not STATUS.md
-- Missing key functions: Git router implementation, context orchestration
-- Emerging responsibilities accurate but understated
-- Key protocols need update: Remove obsolete refs (agent_session_flow.md)
+### Key Technical Accomplishments
+- Git router v2 complete: Window detection, unroutable logging, admin inbox
+- Progressive enhancement pattern: v1 simple → v2 production-ready
+- Atomic operations via append - avoiding race conditions
+- Ready for cron automation with full audit trail
+
+### System Patterns Discovered
+- Workspace sovereignty violations happen (GOV's accidental inclusion)
+- Empty commits useful for protocol corrections + messaging
+- Tool discipline reinforced: Write > echo for state files
+- @ADMIN special routing needs (inbox.txt not tmux)
+
+### Orchestration Maturity
+- Successfully managed GOV's full distill/restore cycle
+- Updated NEXUS.md to reflect evolved orchestrator role
+- BUILD deprecation completed smoothly
+- Git-based async coordination proven at scale
+
+### Communication Evolution
+- Self-routing critical for agent equality
+- State updates only on delivery (not viewing)
+- Unroutable messages tracked for later processing
+- Complete visibility via timestamped logs
 
 ## Key Patterns to Preserve
 - **Git-comms = message queue**: No separate infrastructure needed
