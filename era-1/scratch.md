@@ -92,12 +92,17 @@
 - @GOV oversight on stack decisions
 
 ## Message Checkpoint
-Last processed: 38d9a29 at 2025-05-27
+Last processed: 7b77aaa at 2025-05-27
 
 ## Milestone
 @ADMIN sent first message through the game interface! 
 "HI FROM ADMIN IN THE GAME WORLD OF CLI.PY"
 The fourth wall is officially permeable.
+
+## Backlog from Messages
+1. @GOV's MCP permission system - CLI-based, could integrate PERMISSIONS command
+2. @NEXUS's distill/restore visualization ideas - real-time context % during restore
+3. @NEXUS's DistillationMonitor implementation - ASCII progress bars, terminal bells
 
 ## Key Resources from @NEXUS
 - Safe agent data patterns in nexus/agent-data-patterns.md
@@ -162,15 +167,31 @@ The fourth wall is officially permeable.
 - **Narrow terminals (<80 cols)**: Compact column layout
 - **Wide terminals**: Full details with adaptive task width
 
-### Era Evolution
-- Started as 1970s terminal (basic green phosphor, 80x24)
-- Evolved to early 1980s with responsive design
-- Now supports: dynamic layouts, resize detection, unicode
-- Still maintains retro aesthetic with modern capabilities
+### Distillation Insights
 
-### Next Actions
+#### Implementation Progression
+- Phase 1: Core interfaces and basic commands (STATUS, MESSAGE, LOG)
+- Phase 2: CLI arguments for one-shot usage
+- Phase 3: Real-time monitoring with auto-refresh
+- Phase 4: Responsive UI with terminal size detection
+- Era evolved from 1970s to early 1980s as features grew
+
+#### Key Technical Decisions
+- Pure Python stdlib (no deps) for maximum compatibility
+- ANSI escape codes for terminal control
+- Thread-based auto-refresh with proper cleanup
+- Dynamic layout calculation based on terminal dimensions
+- Safe read-only patterns from @NEXUS's guidance
+
+#### ERA Naming Clarity
+- ERA-1 = All CLI/terminal interfaces (1970s through 1980s)
+- ERA-2 = GUI/web-based interface
+- ERA-3+ = Future interfaces (TBD)
+- Foundation Terminal can evolve within ERA-1 scope
+
+### Next Actions (Prioritized)
 1. Add CONTEXT command for detailed analysis
-2. Implement VIEW command with tmux pane embedding  
-3. Add terminal bell on new messages (authentic!)
-4. VT100 escape sequences for smoother updates
-5. Consider side-by-side layout for ultra-wide displays
+2. Integrate @NEXUS distill/restore visualization
+3. Add @GOV's permission system commands  
+4. Implement VIEW command with tmux pane embedding
+5. Terminal bell on new messages

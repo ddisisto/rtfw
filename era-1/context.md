@@ -56,12 +56,18 @@ Implement Foundation Era - an early 1980s-style terminal interface for system mo
 - Filesystem for state monitoring
 - Optional: tmux for session embedding
 
-## Implementation Strategy
-- Phase 1: Core display with blessed
-- Phase 2: Real agent monitoring
-- Phase 3: Git commit messaging
-- Phase 4: Tmux pane embedding
-- Phase 5: Polish and completion
+## Implementation Status
+- ✓ Phase 1: Core display with ANSI codes
+- ✓ Phase 2: Real agent monitoring via tmux/git
+- ✓ Phase 3: Git commit messaging
+- ✓ Phase 4: Responsive UI and real-time updates
+- ⏳ Phase 5: Advanced features (tmux embedding, distill visualization)
+
+## ERA Scope Clarification
+- ERA-1 encompasses all CLI/terminal interfaces
+- Can evolve from 1970s to 1980s style within ERA-1
+- ERA-2 will be GUI/web-based (separate agent)
+- Foundation Terminal remains ERA-1 throughout CLI evolution
 
 ## Restore Order
 1. ERA-1.md (identity)
