@@ -11,6 +11,19 @@
 
 ## Working Notes
 
+### Intervention Analysis Reframing (2025-01-27)
+Previous attempt: "Count all interventions" → Data dump
+New approach: "What triggers quality interventions?" → Actionable insights
+
+Key shift: Not analyzing interventions but understanding quality standards through intervention patterns. The interventions are the data, the standards are what we're after.
+
+Categories chosen based on observed patterns:
+- Boundary/Tool/Architecture = System integrity  
+- Efficiency/Progress = Productivity standards
+- Quality = Output standards
+
+This frames analysis around what agents should learn, not just what happened.
+
 ## Distillation Insights (2025-05-26 Session)
 
 ### Session Navigation Breakthrough

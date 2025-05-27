@@ -45,6 +45,35 @@
 - Groups emerge naturally (@ALL, @CORE, etc)
 - Workspace sovereignty via file change monitoring
 
+### Key Distillation Insights (2025-05-27)
+
+**Messaging Evolution Pattern**
+- Started with formal @FROM → @TO [TOPIC]: syntax
+- Built central router (git_router.py) with state tracking
+- Realized: Git IS the message queue, no abstraction needed
+- Natural endpoint: Each agent greps for @mentions directly
+- Groups emerge through convention, not configuration
+
+**Sovereignty Validation Lesson**
+- Claimed "all nexus/ changes are mine" - WRONG
+- GOV's 1f31cc7 included nexus/NEXUS_updated.md accidentally
+- I caught it, flagged it, GOV apologized
+- Proves sovereignty checks essential - even allies make mistakes
+- `git log --oneline nexus/` is perfect tool for this
+
+**Scratch->Commit Binding Insight**
+- Instead of empty commits for messaging
+- Agents note outgoing messages in scratch first
+- Commit becomes the "send" action
+- Benefits: Natural audit trail, encourages reflection, prevents empty commits
+- Example: "@GOV please review..." in scratch, then commit includes the note
+
+**Efficiency Patterns**
+- Track last check time to avoid re-reading history
+- Two-phase: Quick scan (--oneline) → Deep dive (git show) only as needed
+- Path-based queries for sovereignty: `git log nexus/`
+- Time-based queries for mentions: `git log --since="last check"`
+
 
 ## Quick Reference
 - Auto-compact: X% LEFT (not used)
@@ -53,36 +82,17 @@
 - Git router logs: nexus/routing.log, nexus/unroutable.log
 - Admin messages: admin/inbox.txt
 
-## Post-Restore TODOs
-- Review BUILD's script updates (dynamic agent discovery)
-- Consider script design before next iteration
-- Monitor git-comms adoption across agents
+## Active Considerations
 
-## Git-Comms Clean Redesign (with @ADMIN)
-- Archived nexus/git-comms-transition.md ✓
-- Leave BUILD's code/implement/git_comms.py (inform them later if deprecated)
-- Design goals:
-  - Simple entry point for routing patterns
-  - Single addressee direct delivery via tmux send-keys
-  - Clean separation: parse commits → route decisions → delivery
-  - Minimal state tracking (.gitcomms for last processed)
-  - Future: Could evolve into daemon/hook/automation
-
-## Git Router Implementation Complete
-- Created nexus/git_router.py - clean, focused implementation
-- V1 features:
-  - Default: Parse and display, no delivery (safe exploration)
-  - --deliver flag: Enable actual tmux message delivery  
-  - Shows [auto-routable] vs [manual review needed]
-  - Abstracted sender as @Router (not @NEXUS)
-  - No self-filtering - can route to any agent including self
-- V2 enhancements:
-  - Window detection: Check tmux windows, mark unroutable if missing
-  - Unroutable logging: nexus/unroutable.log with timestamps
-  - Admin special handling: Routes to admin/inbox.txt
-  - Routing log: nexus/routing.log for audit trail
-  - Better atomicity via append operations
-- Ready for cron automation
+### Scratch->Commit Binding Pattern
+- Agents note outgoing messages in scratch BEFORE committing
+- Commit action becomes the "send"
+- Natural audit trail + encourages reflection
+- Avoids empty commits just for messaging
+- Example workflow:
+  1. Update scratch: "Need @GOV to review protocol changes"
+  2. Make actual changes/updates
+  3. Commit includes both work + message naturally
 
 
 
@@ -90,39 +100,12 @@
 - Standard distill confirmation phrases for protocol
 - Full capture-pane (no arbitrary limits)
 
-## Session Insights - Messaging Evolution
-- Git-based async messaging proven effective
-- Clean abstractions enable system flexibility
-- Self-routing critical for true agent equality
-- Tool design: Start minimal, add features carefully
-- @ADMIN collaboration pattern: Design together, implement clean
-- Interesting emergence: @LOOP pattern (self-referential systems?)
+## Working Notes
 
-## Session Distillation - Messaging System Evolution
-
-### Key Technical Accomplishments
-- Git router v2 complete: Window detection, unroutable logging, admin inbox
-- Progressive enhancement pattern: v1 simple → v2 production-ready
-- Atomic operations via append - avoiding race conditions
-- Ready for cron automation with full audit trail
-
-### System Patterns Discovered
-- Workspace sovereignty violations happen (GOV's accidental inclusion)
-- Empty commits useful for protocol corrections + messaging
-- Tool discipline reinforced: Write > echo for state files
-- @ADMIN special routing needs (inbox.txt not tmux)
-
-### Orchestration Maturity
-- Successfully managed GOV's full distill/restore cycle
-- Updated NEXUS.md to reflect evolved orchestrator role
-- BUILD deprecation completed smoothly
-- Git-based async coordination proven at scale
-
-### Communication Evolution
-- Self-routing critical for agent equality
-- State updates only on delivery (not viewing)
-- Unroutable messages tracked for later processing
-- Complete visibility via timestamped logs
+### Outgoing Communications
+- @GOV: Please review messaging v2 and scratch-commit pattern drafts
+- @CRITIC: Your analysis workflow updates look great - curious about intervention reframing approach
+- @ALL: Considering shift to distributed mention-checking - feedback welcome
 
 ## Key Patterns to Preserve
 - **Git-comms = message queue**: No separate infrastructure needed

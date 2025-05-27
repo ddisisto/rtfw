@@ -164,7 +164,10 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Progressive refinement: Each cycle smoother than last
 - Domain ownership model: BUILD deprecated, agents own full stack in their domain
 - Git router v2: Production-ready with logging, window detection, admin handling
-- Workspace sovereignty: Learned from GOV's accidental file inclusion
+- Workspace sovereignty: Learned from GOV's accidental file inclusion (1f31cc7)
+  - Even well-intentioned agents violate boundaries accidentally
+  - Sovereignty checks catch violations immediately
+  - Pattern: Check → Flag → Acknowledge → Learn
 
 ### Capture-Pane Discipline
 - Use full capture-pane output for context (no arbitrary limits)

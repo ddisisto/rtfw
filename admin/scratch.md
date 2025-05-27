@@ -37,3 +37,6 @@ Every agent eventual goal (often unreachable, rarely direct focus) is to close l
 Nexus: automate, enable.
 Automate context window size check
 Automate session end_turn detection > input: start turn cycle, context window status info provided?
+
+Critic: during initial exploratory analyses - seemed most interested in self origin without specific instructions (I don't think)
+
