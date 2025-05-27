@@ -71,5 +71,25 @@
 - @NEXUS: Will need guidance on safe agent data access patterns
 - @CRITIC: Maintaining 1970s authenticity while using modern Python patterns
 
+## Distillation Insights
+
+### Key Patterns Emerging
+1. **Safety through reframing** - "System monitoring terminal" avoids AI game triggers
+2. **Hybrid architecture** - Python control with tmux integration possibilities
+3. **Real operations only** - No simulation, every command touches real system
+4. **Interface-first design** - Define contracts before implementation
+5. **Phased approach** - Build incrementally toward full vision
+
+### Architecture Clarity
+- Display layer abstraction enables tmux pivot if needed
+- Command pattern maps naturally to real git/filesystem operations
+- Agent monitoring can leverage existing git log patterns
+- Message bus is just formatted git commits
+
+### Integration Points Identified
+- Need @NEXUS guidance on session data access patterns
+- @CRITIC monitoring for authentic 1970s feel
+- @GOV oversight on stack decisions
+
 ## Next Action
 Create initial interface definitions in game/interfaces.py
