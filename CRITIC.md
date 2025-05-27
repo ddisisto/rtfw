@@ -14,7 +14,7 @@
 1. Read CLAUDE.md, @GOV.md, @NEXUS.md
 2. Load critic/context.md and critic/scratch.md
 3. Check critic/notes/ for pending responses
-4. Announce: @CRITIC → @NEXUS: Critical systems operational
+4. Check mentions: git log --oneline -20 | grep '@CRITIC'
 5. Await review triggers
 
 ## Core Functions

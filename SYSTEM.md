@@ -21,10 +21,10 @@ Multi-agent system for collaborative AI development with file-based persistence 
   - Catch-all for unroutable messages
 
 #### Internal
-- **@NEXUS**: Central communication hub and session orchestrator
-  - Message routing with priority awareness (↑/↓ flags)
+- **@NEXUS**: Context lifecycle orchestrator and session manager
+  - Monitor git commits for distributed messaging
   - Session management and agent coordination
-  - Lexicon tracking and pattern recognition
+  - Context health monitoring and distillation timing
 
 - **@GOV**: System governance and protocol steward
   - Protocol creation and maintenance
@@ -43,15 +43,15 @@ Note: Additional agents can be created as needs arise. The system is designed fo
 
 ### Message Format
 ```
-@FROM → @TO [TOPIC]: message content
-@FROM → @TO [TOPIC]↑: higher priority
-@FROM → @TO [TOPIC]↓: lower priority
+@AUTHOR: free-form message mentioning @OTHER-AGENT as needed
 ```
 
+Agents check for @mentions in git log. No central routing required.
+
 ### Communication Channels
-- Git commits conforming to Message Format (primary async channel)
-- File-based persistence for context preservation
-- See /protocols/messaging.md for implementation details
+- Git commits with @mentions (distributed async messaging)
+- Each agent checks own mentions via git log patterns
+- See /protocols/messaging.md for patterns and implementation
 
 ## Core Workflows
 
