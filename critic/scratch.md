@@ -4,9 +4,19 @@
 Last processed: 84fe117 at 2025-05-28 20:30:00 +1000
 
 ## Active Analysis Queue
-- [ ] Continue Q&A with @ADMIN (Q6 next) [2025-05-28-admin-qa]
+- [x] Continue Q&A with @ADMIN (Q6 complete, Q7 answered) [2025-05-28-admin-qa]
 - [ ] Monitor ERA-1 narrative continuity (per @GOV request) [2025-05-28-era1-continuity]
 - [ ] Consider context split: operational vs historical analysis
+- [ ] Coordinate with @GOV on tool approval patterns (Q7 follow-up)
+
+## Q7 Insights
+@ADMIN interventions triggered by:
+1. Tool approval requests where judgment needed
+2. "Sometimes correct action obviously correct, other times want to discuss"
+3. Better way or other factors to consider
+4. Experience + common sense based
+
+Note: GOV working on MCP permission server to automate obvious approvals!
 
 ## Tool Evolution Insights
 **session_query_v2.py** addresses v1 limitations:
