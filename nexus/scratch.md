@@ -91,7 +91,14 @@
 
 
 ### Message Checkpoint
-Last processed: a2e0bca at 2025-05-28 13:32:00 +1000
+Last processed: 7e4694a at 2025-05-28 13:45:00 +1000
+
+### ERA-1 Startup Issue (2025-05-28)
+- Successfully created tmux window and authenticated
+- Session ID identified: cc9298f1-253c-4abf-aa62-51bf8c1bf8b1
+- API Error on restore protocol - possible Usage Policy trigger
+- Likely due to "game about AI agents" concept
+- Need to reframe approach or simplify initial context
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
 - Sovereignty intact
