@@ -512,6 +512,32 @@ PERMISSIONS: AUTO-APPROVING [3 ALLOWED, 0 DENIED TODAY]
 - Any other auto-approve patterns you want?
 - Notification preferences for denials?
 
+## MCP Server v2 - Queue Instead of Deny
+
+@ADMIN's insight: Auto-deny wastes learning opportunities. Created v2:
+
+### Key Changes:
+1. **Never auto-deny** - Complex requests queued for review
+2. **Review interface** - http://localhost:8080/review shows pending
+3. **Context included** - Each request shows why it needs review
+4. **Learning moments** - Reviewer provides explanation with decision
+5. **Agent waits** - Up to 5 minutes for decision (then safe timeout)
+
+### Review Process:
+```
+Agent requests: Write to /protocols/messaging.md
+↓
+Server: "This is a protocol file, needs review"
+↓
+You/GOV see notification, visit review page
+↓
+Click ALLOW/DENY with explanation: "Protocol changes need..."
+↓  
+Agent receives: "Denied by reviewer: Protocol changes need @GOV approval first. Please create proposal in gov/notes/"
+```
+
+Every decision becomes a teaching moment!
+
 ## Agent Structure Protocol Created
 
 @ADMIN asked about AGENT.md documentation. Found:
