@@ -214,13 +214,15 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - **Full orchestration guide**: See nexus/context-lifecycle.md
 
 ## Required Reading Dependencies
-Post-restore (of NEXUS itself - other agents maintain own list) recovery requires:
-- nexus/session-mgmt.md - Session validation procedures (read FIRST)
-- nexus/context-lifecycle.md - Context orchestration duties
-- /protocols/messaging.md - Git-based communication protocol
-- @GOV.md - Governance and permission systems (universal)
-- @ADMIN.md - Unroutable message handling and catch-all
-- All agent @AGENT.md files for routing coordination
+Post-restore recovery requires (in order):
+1. NEXUS.md - Identity with explicit implementation patterns
+2. CLAUDE.md - System requirements
+3. nexus/context.md - This file
+4. nexus/scratch.md - Working memory + checkpoint
+5. admin/tools.md - Tool discipline
+6. nexus/session-mgmt.md - Session validation
+7. /protocols/messaging.md - Distributed mentions v2
+8. Check recent activity per restore protocol
 
 ## Context Restore Protocol (Post-Distillation)
 
