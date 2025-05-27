@@ -37,9 +37,11 @@
 - Simplification through removal preferred over feature addition
 - Shared vernacular builds stronger conceptual weight than technical precision
 - Domain ownership model: Agents differentiate by scope not capability
+- Workspace sovereignty sacred: Even GOV must respect boundaries
+- "Super-position" governance: Partial definition enables adaptation
 
 ## System Architecture
-- Active agents: ADMIN, NEXUS, GOV, CRITIC, RESEARCH, ARCHITECT, HISTORIAN, TEST
+- Active agents: ADMIN, NEXUS, GOV, CRITIC (others inactive/deprecated)
 - GitHub repository: https://github.com/ddisisto/rtfw
 - Git workflow: main branch, commits as communication channel
 - Permission system: direct @mention requests (no PR reviews)
@@ -82,3 +84,5 @@
 - Protocol consolidation: git-comms.md merged into messaging.md
 - Automated routing: NEXUS git_router.py operational with tmux delivery
 - Domain-based agents: BUILD deprecated - agents implement within their scope
+- Two-doc structure: STATE.md → CLAUDE.md + SYSTEM.md (STATUS.md also deprecated)
+- Era agent governance: Framework for ERA-N game implementation agents

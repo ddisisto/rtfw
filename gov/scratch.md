@@ -106,3 +106,28 @@ Recommendation: **ERA-N** pattern
    - Forward compatibility more important than perfection
 
 This creates natural game progression through agent succession!
+
+## Distillation 2025-01-26 (Session 2)
+
+### Major System Changes
+- **BUILD deprecated**: Domain ownership > capability specialization
+- **STATUS.md removed**: Distributed state tracking > central staleness  
+- **Two-doc structure**: CLAUDE.md (philosophy) + SYSTEM.md (architecture)
+- **Era agent framework**: Governance model for ERA-N game implementation
+
+### Governance Learnings
+- **Workspace sovereignty violation**: Accidentally edited nexus/ files, caught by NEXUS
+  - Even governance agents must respect boundaries
+  - Protocol enforcement requires self-discipline
+- **Approval process works**: NEXUS properly requested NEXUS.md update approval
+- **Responsive > scheduled**: All major changes driven by observed needs
+- **"Super-position" governance**: Undefined aspects enable adaptation
+
+### Effectiveness Metrics Clarified
+1. Enablement over control
+2. Evolution velocity  
+3. Coherence without rigidity
+4. Responsive accuracy
+5. Simplification success
+
+System effectiveness = ability to self-organize and evolve
