@@ -153,6 +153,133 @@ state = get_system_state()
 - Git log for all commits
 - Tmux window list
 
+## Tmux Pane Embedding Patterns
+
+### Creating Embedded Panes
+```bash
+# Split current window for embedded view
+tmux split-window -h -p 70  # 70% for game, 30% for agent
+tmux split-window -v -p 80  # Further split for layout
+
+# Join existing agent window as pane
+tmux join-pane -s agent_name:0 -t game:0.1
+```
+
+### Window Switching in Embedded Pane
+```bash
+# List available windows for switching
+tmux list-windows -F "#{window_index}: #{window_name}"
+
+# Switch embedded pane to show different agent
+tmux respawn-pane -t game:0.1 -k "tmux attach -t agent_name"
+
+# Alternative: Use pipe-pane to mirror content
+tmux pipe-pane -t agent_name:0 -o "cat > /tmp/agent_mirror"
+```
+
+### Zoom Control
+```bash
+# Toggle zoom on embedded pane (near fullscreen)
+tmux resize-pane -Z -t game:0.1
+
+# Check if pane is zoomed
+tmux display -p -t game:0.1 '#{window_zoomed_flag}'
+```
+
+### Python Implementation for ERA-1
+```python
+class TmuxPaneManager:
+    def __init__(self, game_window="era-1"):
+        self.game_window = game_window
+        self.embedded_pane = None
+    
+    def create_embedded_pane(self, size_percent=30):
+        """Create pane for agent viewing within game"""
+        subprocess.run([
+            "tmux", "split-window", "-h", 
+            "-p", str(100 - size_percent),
+            "-t", f"{self.game_window}:0"
+        ])
+        # Get the new pane ID
+        result = subprocess.run([
+            "tmux", "display", "-p", "-t", 
+            f"{self.game_window}:0", "#{pane_id}"
+        ], capture_output=True, text=True)
+        self.embedded_pane = result.stdout.strip()
+    
+    def switch_to_agent(self, agent_name):
+        """Switch embedded pane to show specific agent"""
+        if not self.embedded_pane:
+            self.create_embedded_pane()
+        
+        # Link to agent window
+        subprocess.run([
+            "tmux", "respawn-pane", "-k",
+            "-t", self.embedded_pane,
+            f"tmux attach -t {agent_name}:0"
+        ])
+    
+    def toggle_zoom(self):
+        """Toggle fullscreen on embedded pane"""
+        subprocess.run([
+            "tmux", "resize-pane", "-Z",
+            "-t", self.embedded_pane
+        ])
+    
+    def get_available_agents(self):
+        """List windows that can be viewed"""
+        result = subprocess.run([
+            "tmux", "list-windows", "-F",
+            "#{window_index}:#{window_name}"
+        ], capture_output=True, text=True)
+        
+        agents = []
+        for line in result.stdout.splitlines():
+            if ":" in line:
+                idx, name = line.split(":", 1)
+                if name not in ["admin", self.game_window]:
+                    agents.append(name)
+        return agents
+```
+
+### Blessed Integration Example
+```python
+# In ERA-1's display manager
+class GameDisplay:
+    def __init__(self):
+        self.pane_mgr = TmuxPaneManager("era-1")
+        self.current_agent = None
+    
+    def handle_input(self, key):
+        if key == "v":  # View agent
+            agents = self.pane_mgr.get_available_agents()
+            # Show menu to select agent
+            selected = self.show_agent_menu(agents)
+            if selected:
+                self.pane_mgr.switch_to_agent(selected)
+                self.current_agent = selected
+        
+        elif key == "z":  # Zoom toggle
+            self.pane_mgr.toggle_zoom()
+        
+        elif key == "TAB":  # Cycle agents
+            agents = self.pane_mgr.get_available_agents()
+            if self.current_agent in agents:
+                idx = agents.index(self.current_agent)
+                next_agent = agents[(idx + 1) % len(agents)]
+                self.pane_mgr.switch_to_agent(next_agent)
+                self.current_agent = next_agent
+```
+
+### Layout Preservation
+```bash
+# Save current layout before modifications
+tmux display -p '#{window_layout}' > /tmp/game_layout
+
+# Restore layout if needed
+tmux select-layout "$(cat /tmp/game_layout)"
+```
+
 ## Security Notes
 
 - No direct file writes to agent directories
@@ -160,5 +287,6 @@ state = get_system_state()
 - Read access limited to documented files
 - No execution of agent code
 - No parsing of JSONL session files (privacy)
+- Tmux operations limited to display/navigation only
 
 This should provide ERA-1 with all needed patterns while maintaining system integrity.

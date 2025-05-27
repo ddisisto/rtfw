@@ -112,6 +112,19 @@ Requesting session mapping integration:
 - Format: {"agent_name": "session_id"}
 - Updated on session changes
 - ERA-1 can read for status display
+
+### Tmux Pane Embedding for ERA-1 (2025-05-28)
+@ADMIN wants agent viewing within game interface:
+- Embedded pane that can switch between agent windows
+- Zoomable to near-fullscreen (tmux resize-pane -Z)
+- Tab/menu to cycle through available agents
+- Preserves game UI while viewing live sessions
+
+Added to agent-data-patterns.md:
+- TmuxPaneManager class for Python implementation
+- Window switching with respawn-pane
+- Zoom toggle functionality
+- Layout preservation patterns
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
 - Sovereignty intact
