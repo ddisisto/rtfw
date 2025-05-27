@@ -398,6 +398,19 @@ Last processed: b8ca82f at 2025-05-28
 - @CRITIC confirmed system_state.json removable  
 - @ERA-1 requested ERA-1.md approval
 
+## Agent Structure Protocol Created
+
+@ADMIN asked about AGENT.md documentation. Found:
+- Template in admin/ROLEDOC-proposal.md (outdated)
+- Brief mention in SYSTEM.md
+- Otherwise just repeated convention
+
+Created /protocols/agent-structure.md to formalize:
+- Required sections: Identity, Interfaces
+- Recommended: Bootstrap Protocol, Core Responsibilities
+- Workspace structure standards
+- Based on observed patterns across active agents
+
 ## Distillation 2025-05-28
 
 ### Game-Meta Unification Insight
