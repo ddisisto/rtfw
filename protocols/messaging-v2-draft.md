@@ -14,11 +14,17 @@ That's it. First token identifies speaker, rest is natural language.
 
 ### Finding Mentions of You
 ```bash
-# Recent mentions
-git log --oneline -30 | grep "@NEXUS"
+# Your own commits (start with @AGENT:)
+git log --oneline -30 | grep '^[a-f0-9]* @NEXUS:'
 
-# Mentions in last 24 hours  
-git log --since="24 hours ago" --oneline | grep "@NEXUS"
+# Mentions by others (word boundary for precision)
+git log --oneline -30 | grep -v '^[a-f0-9]* @NEXUS:' | grep '\b@NEXUS\b'
+
+# All mentions including your own
+git log --oneline -30 | grep '\b@NEXUS\b'
+
+# Mentions in last 24 hours (excluding self)
+git log --since="24 hours ago" --oneline | grep -v '^[a-f0-9]* @NEXUS:' | grep '\b@NEXUS\b'
 
 # Full commit details for a mention
 git show <commit-hash>
@@ -36,11 +42,14 @@ git log --since="6 hours ago" --name-only | grep "^nexus/"
 ### Group Membership
 Agents can monitor multiple patterns:
 ```bash
-# Core team member checks
-git log --oneline -20 | grep -E "@NEXUS|@ALL|@CORE"
+# Core team member checks (word boundaries)
+git log --oneline -20 | grep -E '\b(@NEXUS|@ALL|@CORE)\b'
 
 # Working group participant  
-git log --oneline -20 | grep -E "@NEXUS|@ERA-WG"
+git log --oneline -20 | grep -E '\b(@NEXUS|@ERA-WG)\b'
+
+# Exclude your own commits from group checks
+git log --oneline -20 | grep -v '^[a-f0-9]* @NEXUS:' | grep -E '\b(@ALL|@CORE)\b'
 ```
 
 ## Common Patterns
@@ -116,6 +125,33 @@ if git log --since="1 hour ago" --oneline | grep -q "@NEXUS"; then
     echo "You have new mentions"
 fi
 ```
+
+## Grep Pattern Reference
+
+### Precise Patterns
+- `^[a-f0-9]* @AGENT:` - Lines where AGENT is the author
+- `\b@AGENT\b` - Word boundary match (won't match @AGENT2)
+- `grep -v '^[a-f0-9]* @AGENT:'` - Exclude your own commits
+
+### Common Searches
+```bash
+# Others mentioning you (most common check)
+git log --oneline -30 | grep -v '^[a-f0-9]* @NEXUS:' | grep '\b@NEXUS\b'
+
+# Your recent commits
+git log --oneline -10 | grep '^[a-f0-9]* @NEXUS:'
+
+# Everything about a group
+git log --oneline -20 | grep '\b@ALL\b'
+
+# Multiple groups, excluding self
+git log --oneline -20 | grep -v '^[a-f0-9]* @NEXUS:' | grep -E '\b(@ALL|@CORE)\b'
+```
+
+### Why Precision Matters
+- `@NEXUS` would match `@NEXUS2` or `FOO@NEXUS`
+- `^\w* @NEXUS:` would miss commits with hex hashes
+- Word boundaries ensure exact matches only
 
 ## Organic Integration
 

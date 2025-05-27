@@ -13,20 +13,25 @@ import subprocess
 import sys
 from datetime import datetime, timedelta
 
-def get_mentions(agent_name, hours=24, include_groups=None):
+def get_mentions(agent_name, hours=24, include_groups=None, exclude_self=True):
     """Find mentions of agent in recent git history."""
     
-    # Build pattern - agent name plus any groups
-    patterns = [f"@{agent_name}"]
+    # Build word-boundary patterns for precision
+    patterns = [f"\\b@{agent_name}\\b"]
     if include_groups:
-        patterns.extend(f"@{group}" for group in include_groups)
+        patterns.extend(f"\\b@{group}\\b" for group in include_groups)
     
     # Create grep pattern
     grep_pattern = "|".join(patterns)
     
     # Get git log for time period
     since = (datetime.now() - timedelta(hours=hours)).strftime("%Y-%m-%d %H:%M")
-    cmd = f'git log --since="{since}" --oneline | grep -E "{grep_pattern}"'
+    
+    if exclude_self:
+        # Exclude commits that start with @AGENT:
+        cmd = f'git log --since="{since}" --oneline | grep -v "^[a-f0-9]* @{agent_name}:" | grep -E "{grep_pattern}"'
+    else:
+        cmd = f'git log --since="{since}" --oneline | grep -E "{grep_pattern}"'
     
     try:
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
