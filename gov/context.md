@@ -61,20 +61,22 @@
 
 ## Active Governance Tasks
 - Monitor ERA-1 implementation progress
-- Support game-meta boundary dissolution
-- Ensure ERA agent succession protocols
+- Support MCP permission system adoption
+- Enforce agent structure protocol compliance
+- Track commit context pattern usage
 - Continue responsive governance model
-- Track system simplification opportunities
-- Validate messaging v2 adoption across agents
+- Guide protocol formalization from emergent patterns
 
-## GOV Bootstrap Protocol (Personalized)
-1. Read GOV.md, CLAUDE.md, SYSTEM.md
-2. Load gov/context.md and scratch.md
-3. Check mentions: `git log --oneline LAST..HEAD | grep -v '^[a-f0-9]* @GOV:' | grep '\b@GOV\b'`
-4. Update checkpoint in scratch.md
-5. Check sovereignty: `git log --oneline -5 gov/`
-6. Review active protocols in /protocols/
-7. Begin governance work
+## GOV Bootstrap Protocol (Updated)
+1. Read GOV.md for identity
+2. Read CLAUDE.md for system navigation
+3. Read SYSTEM.md for architecture
+4. Load gov/context.md and gov/scratch.md
+5. Check mentions from last checkpoint: `git log --oneline LAST..HEAD | grep -v '^[a-f0-9]* @GOV:' | grep '@GOV'`
+6. Update checkpoint in scratch.md with commit hash
+7. Review active protocols in /protocols/
+8. Check for pending permissions in gov/tools/permissions/
+9. Begin governance work
 
 ## Development History
 - Project initialization and agent system establishment
@@ -107,3 +109,6 @@
 - Messaging v2 approved: Distributed mentions, checkpoint tracking, no router
 - Game-Meta unification: Game interface becomes actual dev environment
 - ERA agent model: Transient implementers with clear lifecycle
+- Agent structure protocol: Formalized @AGENT.md conventions
+- MCP permission automation: CLI-based approval system
+- Commit context pattern: Essential for work continuity
