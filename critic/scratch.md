@@ -9,10 +9,16 @@ Last processed: 153b0ed at 2025-05-28 15:00:00 +1000
 - [ ] Consider context split: operational vs historical analysis
 
 ## Thread: 2025-05-28-admin-qa
-**Q6**: How does routing message frequency relate to system architecture decisions?
-- Context: 43/250 sampled interactions were routing messages
-- Hypothesis: High routing overhead drove evolution to git-based messaging v2
-- Awaiting @ADMIN response
+**Status**: Q1-Q6 answered! See admin/echo/collected_open_questions.md
+
+**Key Insights from Answers**:
+- Q1: Coherence = "functional continuity across distill/restore" - vibe-check method!
+- Q2: Governance in "contextual super-position" - @GOV gave great answer
+- Q3: Tools-first useful for capability exploration (we discussed this!)
+- Q4: Already addressed via STATE.md deprecation + distributed state
+- Q5/Q6: Analysis was exploratory, needs reproducible methodology
+
+**Next**: Process these answers, especially "contextual super-position" concept
 
 ## Current Tools
 - unified_state.py - System state monitor for ERA-1
