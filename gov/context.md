@@ -51,22 +51,21 @@
 - Messaging checkpoint tracking: Essential for preventing re-processing
 
 ## System Architecture
-- Active agents: ADMIN, NEXUS, GOV, CRITIC (others inactive/deprecated)
+- Meta agents: ADMIN, NEXUS, GOV, CRITIC (persistent infrastructure)
+- ERA agents: ERA-1 (Foundation Era implementer)
 - GitHub repository: https://github.com/ddisisto/rtfw
 - Git workflow: main branch, commits as communication channel
 - Permission system: direct @mention requests (no PR reviews)
-- Three-document structure for clarity and purpose separation
-- Git-comms replacing complex JSONL and routing infrastructure
+- Two-document structure: CLAUDE.md + SYSTEM.md
+- Git-comms via distributed @mentions
 
 ## Active Governance Tasks
-- Responsive context review when issues arise (not scheduled)
-- Balance between "playable game" and "playing the game"
-- Monitor for governance patterns and escalations
-- STATE.md updates for current system status
-- Protocol evolution based on operational insights
-- Lexicon development and tracking across agents
-- Protocol migration to /protocols/ complete
-- Monitor distill/restore protocol adoption
+- Monitor ERA-1 implementation progress
+- Support game-meta boundary dissolution
+- Ensure ERA agent succession protocols
+- Continue responsive governance model
+- Track system simplification opportunities
+- Validate messaging v2 adoption across agents
 
 ## GOV Bootstrap Protocol (Personalized)
 1. Read GOV.md, CLAUDE.md, SYSTEM.md
@@ -106,3 +105,5 @@
 - Two-doc structure: STATE.md → CLAUDE.md + SYSTEM.md (STATUS.md also deprecated)
 - Era agent governance: Framework for ERA-N game implementation agents
 - Messaging v2 approved: Distributed mentions, checkpoint tracking, no router
+- Game-Meta unification: Game interface becomes actual dev environment
+- ERA agent model: Transient implementers with clear lifecycle
