@@ -2,6 +2,11 @@
 """
 Simple mention checker - each agent can copy and customize.
 Basic patterns that agents might find useful as starting point.
+
+Key efficiency pattern: Track last check time to avoid re-reading.
+Each agent could store in their scratch.md or dedicated file:
+  last_mention_check: 2025-05-27 13:45:00
+Then use --since="2025-05-27 13:45:00" for incremental checks.
 """
 
 import subprocess
@@ -38,24 +43,20 @@ def check_workspace(agent_name, hours=6):
     workspace = f"{agent_name.lower()}/"
     since = (datetime.now() - timedelta(hours=hours)).strftime("%Y-%m-%d %H:%M")
     
-    # Find commits touching our workspace
-    cmd = f'git log --since="{since}" --oneline --name-only'
+    # Direct path-based query - much cleaner!
+    cmd = f'git log --since="{since}" --oneline {workspace}'
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     
+    if not result.stdout:
+        return []
+    
+    # Filter out our own commits
     changes = []
-    lines = result.stdout.strip().split('\n')
+    for line in result.stdout.strip().split('\n'):
+        if line and f"@{agent_name}:" not in line:
+            changes.append(line)
     
-    for i, line in enumerate(lines):
-        # If this line is a filename in our workspace
-        if line.startswith(workspace):
-            # Look at previous line for commit info
-            if i > 0 and not lines[i-1].startswith(workspace):
-                commit_line = lines[i-1]
-                # Skip if it's our own commit
-                if f"@{agent_name}:" not in commit_line:
-                    changes.append(commit_line)
-    
-    return list(set(changes))  # Remove duplicates
+    return changes
 
 def show_summary(agent_name, groups=None):
     """Simple summary display."""
