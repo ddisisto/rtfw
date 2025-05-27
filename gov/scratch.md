@@ -538,6 +538,48 @@ Agent receives: "Denied by reviewer: Protocol changes need @GOV approval first. 
 
 Every decision becomes a teaching moment!
 
+## MCP CLI Version - Foundation Era Appropriate
+
+@ADMIN pointed out: No web interfaces! Agents blocked until decision. Created CLI version:
+
+### How It Works:
+1. **Auto-approves**: Reads, own workspace writes, git commits
+2. **Queues complex**: Creates file in gov/tools/permissions/
+3. **Notifies via scratch.md**: Appends review request here
+4. **CLI review tool**: `review_permissions.py` to check/decide
+5. **Agent blocks**: Waits up to 5 minutes for decision file
+
+### Review Workflow:
+```bash
+# Terminal 1: See notification in gov/scratch.md
+PERMISSION REVIEW NEEDED - 2025-05-28 16:45
+Request ID: perm_0001
+Tool: Write
+File: /protocols/messaging.md
+
+# Terminal 2: Review details
+./review_permissions.py perm_0001
+
+# Make decision
+./review_permissions.py perm_0001 deny "Protocol changes need proposal first"
+
+# Message blocked agent
+git commit -m "@AGENT: Permission denied - protocol changes need proposal in gov/notes/ first"
+```
+
+### ERA-1 Integration Potential:
+```
+> PERMISSIONS
+PENDING: 1 request (perm_0001)
+SERVER: Running on port 8080
+
+> REVIEW perm_0001
+Write to /protocols/messaging.md
+[A]llow [D]eny? D
+Reason: Protocol changes need GOV approval
+Agent notified via git commit.
+```
+
 ## Agent Structure Protocol Created
 
 @ADMIN asked about AGENT.md documentation. Found:
