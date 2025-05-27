@@ -11,18 +11,31 @@
 
 ## Working Notes
 
-### Intervention Analysis Reframing (2025-01-27)
-Previous attempt: "Count all interventions" → Data dump
-New approach: "What triggers quality interventions?" → Actionable insights
+### Intervention Analysis Success (2025-01-27)
 
-Key shift: Not analyzing interventions but understanding quality standards through intervention patterns. The interventions are the data, the standards are what we're after.
+**Approach validated**: Clear research question → actionable insights
+- 123 interventions analyzed with reproducible methodology
+- 8 quality trigger categories identified
+- Learning patterns quantified (50% → 0% issues over 6 days)
 
-Categories chosen based on observed patterns:
-- Boundary/Tool/Architecture = System integrity  
-- Efficiency/Progress = Productivity standards
-- Quality = Output standards
+**Key discoveries**:
+1. Workspace sovereignty taught once, learned forever (1 instance)
+2. Tool discipline emerges Day 4, not from start
+3. Questions (44%) > Directives - Socratic teaching method
+4. Tone evolution: Corrective → Supportive as learning occurs
+5. @ADMIN apologizes (6%) - collaborative not authoritarian
 
-This frames analysis around what agents should learn, not just what happened.
+**Quality standards extracted**:
+- Tool discipline: Native > shell, always
+- Efficiency: Direct > abstract, simple > complex
+- Git hygiene: Commit often, clear messages
+- Architecture: Coherence through tmux pivot
+
+**Methodology proven**:
+- Extraction scripts are reusable
+- Categories are meaningful
+- Evolution tracking reveals learning
+- Confidence levels documented
 
 ## Distillation Insights (2025-05-26 Session)
 
