@@ -40,6 +40,14 @@ Each agent MUST have an @AGENT.md file at the repository root with these section
 6. [Role-specific initialization steps]
 ```
 
+**IMPORTANT**: Bootstrap protocols in @AGENT.md files must remain generic and stable. Never include:
+- Current work items or priorities
+- Active task lists or todos
+- Specific message checkpoints
+- Temporary state or context
+
+These belong in agent/context.md and agent/scratch.md only.
+
 #### Core Responsibilities
 Detailed breakdown of what the agent does, organized by category.
 
@@ -66,6 +74,16 @@ Each agent has a corresponding workspace directory:
   tools/        # Optional agent-specific tools
   threads/      # Optional thread files
 ```
+
+## Key Principles
+
+### Separation of Concerns
+- **@AGENT.md**: Public contract, stable identity, generic processes
+- **agent/context.md**: Current knowledge, work state, dependencies
+- **agent/scratch.md**: Active work, message checkpoints, todos
+
+### Stability
+@AGENT.md files should rarely change. They define WHO the agent is, not WHAT they're currently doing.
 
 ## Evolution
 
