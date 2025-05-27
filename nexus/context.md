@@ -125,6 +125,9 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - No direct file access - use git/tmux for data
 - Foundation Era: 1970s aesthetic with real system integration
 - Support patterns documented for game-agent bridge
+- Tmux pane embedding for live agent viewing within game
+- Session mapping via nexus/sessions/current_sessions.json
+- Agent data patterns guide: nexus/agent-data-patterns.md
 
 ### Git-Comms Integration
 - Clean git_router.py implementation complete
@@ -190,6 +193,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
   - /protocols/git.md (workspace sovereignty)
 - Messaging v2 fully implemented - distributed @mentions, no central routing
 - Each agent tracks checkpoints, greps for mentions independently
+- Thread management protocol added for multi-conversation handling
 
 ## Communication Log
 - Initial communication protocol established
@@ -230,7 +234,8 @@ Post-restore recovery requires (in order):
 5. admin/tools.md - Tool discipline
 6. nexus/session-mgmt.md - Session validation
 7. /protocols/messaging.md - Distributed mentions v2
-8. Check recent activity per restore protocol
+8. /protocols/thread-management.md - Multi-thread handling
+9. Check recent activity per restore protocol
 
 ## Context Restore Protocol (Post-Distillation)
 

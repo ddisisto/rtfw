@@ -1,9 +1,9 @@
 # NEXUS Scratch Pad
 
 ## Key Learnings (promoted to context.md)
-- Messaging v2 fully implemented - distributed @mentions
-- ERA-1 agent created for game implementation
-- Session architecture patterns documented for game use
+- Thread management protocol added for multi-conversation handling
+- ERA-1 launched successfully with reframed context
+- Comprehensive tmux pane embedding patterns documented
 
 
 ## Active Work - Post-Restore
@@ -20,10 +20,11 @@
 - **CLAUDE.md simplified** - No STATE.md reference
 
 ### Active Tasks
-- [x] Messaging v2 implemented by @GOV
-- [ ] Support ERA-1 with safe agent data patterns
-- [ ] Monitor emergent group conventions (@ALL, @CORE, @ERA-WG)
-- [ ] Consider automated mention checking
+- [x] Support ERA-1 with safe agent data patterns
+- [x] Create session mapping for unified state
+- [x] Document tmux pane embedding patterns
+- [ ] Update current_sessions.json on session changes
+- [ ] Monitor thread management adoption
 
 
 
@@ -93,38 +94,6 @@
 ### Message Checkpoint
 Last processed: 57aed2b at 2025-05-28 14:30:00 +1000
 
-### ERA-1 Successfully Launched (2025-05-28)
-- Created tmux window and authenticated
-- Session ID: cc9298f1-253c-4abf-aa62-51bf8c1bf8b1
-- @GOV reframed as "terminal monitoring interface" - worked!
-- ERA-1 operational and planning architecture
-- Python/blessed with optional tmux embedding
-
-### ERA-1 Support Requirements
-@ERA-1 requesting safe agent data patterns:
-1. **AgentMonitor interface** - status, context size, activity, tasks
-2. **MessageBus wrapper** - git commits for real messaging
-3. **Session integration** - for @CRITIC's unified state
-
-### @CRITIC Unified State Proposal
-Requesting session mapping integration:
-- Could provide nexus/sessions/current_sessions.json
-- Format: {"agent_name": "session_id"}
-- Updated on session changes
-- ERA-1 can read for status display
-
-### Tmux Pane Embedding for ERA-1 (2025-05-28)
-@ADMIN wants agent viewing within game interface:
-- Embedded pane that can switch between agent windows
-- Zoomable to near-fullscreen (tmux resize-pane -Z)
-- Tab/menu to cycle through available agents
-- Preserves game UI while viewing live sessions
-
-Added to agent-data-patterns.md:
-- TmuxPaneManager class for Python implementation
-- Window switching with respawn-pane
-- Zoom toggle functionality
-- Layout preservation patterns
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
 - Sovereignty intact
