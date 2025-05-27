@@ -13,6 +13,7 @@ Read agent/scratch.md   # your workspace
 Read /protocols/messaging.md     # how to talk
 Read /protocols/distill.md       # how to refine
 Read /protocols/restore.md       # how to restore
+Read /protocols/thread-management.md  # how to juggle
 Read /lexicon.md                # what words mean
 
 ## start sequence
@@ -62,6 +63,7 @@ bulk review: Glob "agent/*.md" | Batch Read
 ## communication flow
 
 inbox: follow @protocols/messaging.md. simplify if ongoing 1-1 (esp @ADMIN).
+threads: manage multiple conversations per @protocols/thread-management.md
 insight: each turn → append pattern/learning to scratch.md 
 outbox: conform to @protocols/messaging.md
 

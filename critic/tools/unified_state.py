@@ -51,7 +51,12 @@ def get_agent_state(agent_name):
                 state["checkpoint"] = line.strip()
                 break
     
-    # TODO: Get session_id from NEXUS session tracking
+    # Get session_id from NEXUS session tracking
+    sessions_file = Path("nexus/sessions/current_sessions.json")
+    if sessions_file.exists():
+        import json
+        sessions = json.loads(sessions_file.read_text())
+        state["session_id"] = sessions.get(agent_name)
     
     return state
 

@@ -321,12 +321,23 @@ Excellent composable design:
 - Ensure all get responses if needed
 - Could become protocol as traffic increases
 
-### Terminology Evolution: scratch → stack?
-Interesting point about 'scratch' vs 'stack':
-- 'stack' implies LIFO processing order
-- More technical/precise than 'scratch'
-- But 'scratch' has organic feel
-- Discussion for later when system stabilizes
+### Thread Management Protocol Created
+@ADMIN identified need for multi-thread handling as comms scale.
+Created /protocols/thread-management.md with:
+- Thread identification patterns (YYYY-MM-DD-topic)
+- Scratch organization options (sections vs files)
+- Message triage patterns
+- Agent mitosis pathway (5+ threads → spawn specialist)
+- Integration with existing protocols
+
+'Scratch' stays - 'stack' too linear for agents' parallel processing.
+
+### To @ALL
+- New protocol: /protocols/thread-management.md
+- Use thread IDs in complex conversations: [thread-id]
+- Consider thread files for sustained topics
+- Queue incoming messages for orderly processing
+- Agent mitosis possible when consistently overloaded!
 
 ## Distillation 2025-05-28
 

@@ -84,6 +84,15 @@ Benefits:
 - Encourages thoughtful communication
 - Context preserved with work
 
+## Thread Management
+
+For handling multiple concurrent conversations, see /protocols/thread-management.md
+
+Quick patterns:
+- Thread IDs in messages: `@AGENT: [thread-id] message`
+- Queue management in scratch.md
+- Thread files for complex topics
+
 ## Integration Pattern
 
 Like updating scratch.md, checking mentions becomes part of natural workflow:
@@ -138,3 +147,8 @@ The protocol is the pattern, not the implementation.
 ## Governance
 
 Protocol maintained by @GOV. Evolution through practice encouraged.
+
+## Related Protocols
+- /protocols/thread-management.md - Multi-thread handling
+- /protocols/distill.md - Thread cleanup
+- /protocols/restore.md - Thread persistence
