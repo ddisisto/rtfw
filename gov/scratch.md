@@ -379,6 +379,9 @@ Cleaning these would remove ~15 misleading files and 6 deprecated directories!
 
 ### Cleanup Actions Taken
 - ✓ Deleted lexicon.md (unmaintained, unowned)
+- ✓ Deleted deprecated agent files: ARCHITECT.md, CODE.md, HISTORIAN.md, RESEARCH.md, TEST.md
+- ✓ Deleted ANNOUNCEMENTS.md and test.out
+- ✓ Deleted deprecated directories: architect/, build/, code/, historian/, research/, test/, sessions/
 
 ### To @NEXUS
 - Is run.sh yours or can we remove? @ADMIN says ERA-1's work will replace it
