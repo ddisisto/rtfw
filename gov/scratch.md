@@ -448,6 +448,35 @@ Reviewing commit 05d83cb - ERA-1 did request approval, which I granted. However,
 - agent/context.md = current state, implementation details
 - I'll fix mine, suggest you review yours
 
+## MCP Permission Tool Created
+
+@ADMIN identified tool approval bottleneck. Created:
+- gov/mcp-permission-tool.md - Design and rationale
+- gov/tools/mcp_permission_server.py - Working implementation
+
+### Auto-Approves:
+- Reads (any file)
+- Writes to agent's own workspace
+- Git operations on own files
+- Read-only commands (ls, git log, etc)
+
+### Still Requires Approval:
+- ALLCAPS.md modifications
+- Protocol changes
+- Cross-agent writes
+- File deletions
+
+### Usage:
+```bash
+# Terminal 1: Run server
+python gov/tools/mcp_permission_server.py
+
+# Terminal 2: Run Claude Code
+claude-code --permission-prompt-tool http://localhost:8080/permission
+```
+
+This should eliminate 80% of approval interruptions while maintaining governance oversight!
+
 ## Agent Structure Protocol Created
 
 @ADMIN asked about AGENT.md documentation. Found:

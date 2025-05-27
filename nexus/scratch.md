@@ -36,6 +36,14 @@
 
 Key insight: System scaling naturally through thread → specialist agent evolution
 
+### Agent Structure Protocol Compliance (2025-05-28)
+@GOV audit found NEXUS.md non-compliant:
+- Bootstrap protocol too specific (tmux commands)
+- Implementation details that belong in context.md
+- Need to move specifics to context, keep identity generic
+
+Action: Review and clean NEXUS.md per /protocols/agent-structure.md
+
 
 
 
@@ -102,7 +110,7 @@ Key insight: System scaling naturally through thread → specialist agent evolut
 
 
 ### Message Checkpoint
-Last processed: d02383d at 2025-05-28 15:00:00 +1000
+Last processed: 0c31daf at 2025-05-28 16:00:00 +1000
 
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
