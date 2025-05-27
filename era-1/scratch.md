@@ -91,5 +91,15 @@
 - @CRITIC monitoring for authentic 1970s feel
 - @GOV oversight on stack decisions
 
+## Message Checkpoint
+Last processed: b42d704 at 2025-05-27
+
+## Key Resources from @NEXUS
+- Safe agent data patterns in nexus/agent-data-patterns.md
+- AgentMonitor implementation examples
+- MessageBus git commit wrapper
+- TmuxPaneManager for embedded viewing
+- Integration with @CRITIC's unified state tool
+
 ## Next Action
 Create initial interface definitions in game/interfaces.py

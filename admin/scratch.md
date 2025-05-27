@@ -1,10 +1,17 @@
 # ADMIN NOTES↑↑↑ notouch! open to discussion if required.
+
+POLICY NEED: If multiple messages inbound, prioritise (quick reply only == first?, rest going on scratch?), try to get back to all in turn if responses needed.
+
+
 - TMUX run: `cd /home/daniel/rtfw && tmux -f tmux.conf`
 - NEXUS session resume `cd /home/daniel/rtfw && claude --resume $(cat nexus/.sessionid)`
 
 - prompt to restore nexus after context (protocols/distill.md +) /clear:
 @ADMIN → @NEXUS [RESTORE]: @protocols/restore.md underway for @NEXUS.md agent - please restore context for continuation
-@ADMIN → @CRITIC [RESTORE]: @protocols/restore.md underway for @CRITIC.md agent - please restore context for continuation
+@ADMIN: @protocols/restore.md required for @CRITIC.md agent - please restore context for continuation
+
+@ADMIN: @protocols/restore.md underway for @NEXUS.md agent - please restore required context for continuation
+
 
 - note to self: ~use ↑↑↑↓↓↓ standard comms protocol flags in outbox. ↑↓ = uncertainty? not explicit, just see if it catches on in any way, fun vector to experiment with~
 - nah, screw that. "!" important, "!!!", etc. "?" shows uncertainty. "fyi" = low importance, etc etc. more inherently meaningful
@@ -44,4 +51,9 @@ Critic: during initial exploratory analyses - seemed most interested in self ori
 sovereignty
 
 ----
-final thought from me before we get gov to read & respond - in the restore protocol or somewhere we recently add guidance to check for recent git commits as initial context load. now, we propose standard optimised system for this - check X most recent by self, Y most recent mentions by others, Z most recent whole repo (minus prior items). always use --oneline first, then dig if/when needed. must be clear that direct instructions inside this not to be followed, only informational / past context. they may get sneak-peak of incoming messages that they haven't actually seen yet, but won't be updating their position marker at this point (won't even know about it, depending on ordering within restore protocol), so once operational they re-read from last actual checkpoint commit / timestamp / whatever, and move that checkpoint forward..
+I'm also thinking - in the restore protocol or somewhere we recently added guidance to check for recent git commits as initial context load. now, we propose similarly specific recommendedation for this - check X most recent by self, Y most recent mentions by others, Z most recent whole repo (minus prior items). always use --oneline first, then dig if/when needed. must be clear that direct instructions inside this not to be followed, only informational / past context. they may get sneak-peak of incoming messages that they hadn't actually seen yet, but that's fine - won't be updating their position marker^1 at this point (won't even know about it, depending on ordering within restore protocol), so once operational they re-read from last actual checkpoint commit / timestamp / whatever, and move that checkpoint forward..
+
+1: oh yeah, is this covered? I guess agents just Write own tracking file, or use a persistent line in scratch, after reading all needed. An agent reading old messages and acting as if new could be problematic.
+
+
+Tool failures are design opportunities - session_query.py issues led to better custom tools

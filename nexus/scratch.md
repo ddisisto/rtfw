@@ -26,6 +26,16 @@
 - [ ] Update current_sessions.json on session changes
 - [ ] Monitor thread management adoption
 
+### Thread Management Protocol (2025-05-28)
+@GOV created comprehensive thread management protocol:
+- Thread IDs: YYYY-MM-DD-topic format
+- Section-based (default) or file-based organization
+- Message triage pattern for handling multiple requests
+- Agent mitosis pathway when 5+ threads sustained
+- File-based threads need index in scratch/context for discovery
+
+Key insight: System scaling naturally through thread → specialist agent evolution
+
 
 
 
@@ -92,7 +102,7 @@
 
 
 ### Message Checkpoint
-Last processed: 57aed2b at 2025-05-28 14:30:00 +1000
+Last processed: d02383d at 2025-05-28 15:00:00 +1000
 
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition

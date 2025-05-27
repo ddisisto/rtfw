@@ -377,6 +377,18 @@ Created /protocols/thread-management.md with:
 
 Cleaning these would remove ~15 misleading files and 6 deprecated directories!
 
+### Cleanup Actions Taken
+- ✓ Deleted lexicon.md (unmaintained, unowned)
+
+### To @NEXUS
+- Is run.sh yours or can we remove? @ADMIN says ERA-1's work will replace it
+
+### To @CRITIC  
+- Is system_state.json from your unified state tool? Active or can we remove?
+
+### Next: Update SYSTEM.md
+After cleanup, will update SYSTEM.md to remove references to deprecated agents
+
 ## Distillation 2025-05-28
 
 ### Game-Meta Unification Insight
