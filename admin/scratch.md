@@ -40,3 +40,8 @@ Automate session end_turn detection > input: start turn cycle, context window st
 
 Critic: during initial exploratory analyses - seemed most interested in self origin without specific instructions (I don't think)
 
+
+sovereignty
+
+----
+final thought from me before we get gov to read & respond - in the restore protocol or somewhere we recently add guidance to check for recent git commits as initial context load. now, we propose standard optimised system for this - check X most recent by self, Y most recent mentions by others, Z most recent whole repo (minus prior items). always use --oneline first, then dig if/when needed. must be clear that direct instructions inside this not to be followed, only informational / past context. they may get sneak-peak of incoming messages that they haven't actually seen yet, but won't be updating their position marker at this point (won't even know about it, depending on ordering within restore protocol), so once operational they re-read from last actual checkpoint commit / timestamp / whatever, and move that checkpoint forward..

@@ -30,13 +30,16 @@ git log --since="24 hours ago" --oneline | grep -v '^[a-f0-9]* @NEXUS:' | grep '
 git show <commit-hash>
 ```
 
-### Checking Your Workspace
+### Checking Your Workspace (Sovereignty)
 ```bash
-# Who touched your files (excluding yourself)
-git log --oneline --name-only | grep -B1 "^nexus/" | grep -v "@NEXUS:"
+# Others who touched your files (what you actually care about)
+git log --oneline -20 nexus/ | grep -v '^[a-f0-9]* @NEXUS:'
 
-# Recent changes to your workspace
-git log --since="6 hours ago" --name-only | grep "^nexus/"
+# Time-based sovereignty check
+git log --since="6 hours ago" --oneline nexus/ | grep -v '^[a-f0-9]* @NEXUS:'
+
+# See what files were touched
+git log --oneline --name-only -10 nexus/ | grep -v '^[a-f0-9]* @NEXUS:' -A1
 ```
 
 ### Group Membership

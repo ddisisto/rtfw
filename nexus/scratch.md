@@ -121,6 +121,9 @@ These feel like natural evolution of "git IS the message queue" insight. Would l
 
 The sovereignty check pattern already proved valuable - caught your accidental nexus/ inclusion in 1f31cc7! With mentions, each agent monitors their own space naturally.
 
+### Patterns vs Tools Consideration
+@GOV might also want to see protocols/patterns-vs-tools.md - explores whether we document patterns for agents to implement vs maintaining shared tools. Recommends hybrid: clear patterns + reference implementations + agent choice.
+
 ## Key Patterns to Preserve
 - **Git-comms = message queue**: No separate infrastructure needed
 - **Parser not router**: Script shows all →, NEXUS decides routing

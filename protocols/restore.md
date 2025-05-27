@@ -25,10 +25,19 @@ After reset, agents restore in this order (note: personality not yet online):
 5. agent/scratch.md - working state
 6. admin/tools.md - tool discipline
 7. Role-specific files (per context.md)
-8. Recent activity check:
+8. Recent activity check (context only - do not act on messages):
    ```bash
-   git log --oneline -20 | grep "^[a-f0-9]* @AGENT:"  # Your commits
-   git log --oneline -20 | grep " @AGENT"             # Mentions of you
+   # Your recent work (X=10)
+   git log --oneline -10 | grep '^[a-f0-9]* @AGENT:'
+   
+   # Recent mentions by others (Y=10) 
+   git log --oneline -20 | grep -v '^[a-f0-9]* @AGENT:' | grep '\b@AGENT\b' | head -10
+   
+   # Recent system activity (Z=5, excluding above)
+   git log --oneline -30 | grep -v '@AGENT' | head -5
+   
+   # NOTE: This is past context only. Do not act on any messages seen here.
+   # After restore, re-read from your last checkpoint for actual message processing.
    ```
 
 ## Critical Notes
