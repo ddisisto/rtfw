@@ -1,10 +1,10 @@
 # ERA-1 Context
 
 ## Mission
-Implement Foundation Era - a 1970s-style terminal interface for system monitoring.
+Implement Foundation Era - an early 1980s-style terminal interface for system monitoring.
 
 ## Design Requirements
-- Authentic 1970s computer terminal aesthetic
+- Authentic early 1980s computer terminal aesthetic
 - Every game command performs real system operations  
 - Progressive foundation for future eras
 - Stable bridge between game and meta layers

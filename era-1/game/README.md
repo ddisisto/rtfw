@@ -1,12 +1,12 @@
 # ERA-1 Foundation Terminal
 
-A 1970s-style system monitoring terminal that provides real control over the rtfw multi-agent system.
+An early 1980s-style system monitoring terminal that provides real control over the rtfw multi-agent system.
 
 ## Features
 
 - **Real Integration**: Every command performs actual operations
 - **Live Monitoring**: Auto-refresh shows real-time agent activity  
-- **Authentic Aesthetic**: Green phosphor terminal with period-appropriate styling
+- **Authentic Aesthetic**: Green phosphor terminal with early 1980s styling
 - **Zero Dependencies**: Uses only Python stdlib (blessed optional for future enhancement)
 
 ## Usage
@@ -69,5 +69,5 @@ In interactive mode, type `MONITOR` to enable auto-refresh:
 - [ ] CONTEXT command for detailed context.md analysis
 - [ ] VIEW command with tmux pane embedding
 - [ ] Blessed library for enhanced TUI
-- [ ] More 1970s touches (ASCII art, beeps, etc)
+- [ ] More retro touches (ASCII art, system beeps, etc)
 - [ ] Session history graphs

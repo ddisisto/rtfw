@@ -15,9 +15,10 @@ from interfaces import DisplayManager, Agent, Message, AgentStatus
 
 class RetroTerminalDisplay(DisplayManager):
     """
-    1970s-style terminal display using basic ANSI codes
+    Early 1980s-style terminal display with ANSI codes
     
-    Now with responsive layout that adapts to terminal size
+    Features responsive layout, dynamic sizing, and enhanced capabilities
+    while maintaining retro phosphor aesthetic
     """
     
     def __init__(self):
@@ -91,7 +92,7 @@ class RetroTerminalDisplay(DisplayManager):
         return f"\033[{row};{col}H"
     
     def initialize(self) -> None:
-        """Set up terminal for 1970s aesthetic"""
+        """Set up terminal for early 1980s aesthetic"""
         # Clear screen and set green text
         print(self.hide_cursor + self.clear + self.phosphor_green, end='')
         self._draw_layout()
@@ -121,8 +122,8 @@ class RetroTerminalDisplay(DisplayManager):
         if self.width < 60:
             print("RTFW MONITOR v1.0".center(self.width))
         else:
-            print("RTFW SYSTEM MONITOR v1.0".center(self.width))
-            print("FOUNDATION ERA TERMINAL".center(self.width))
+            print("RTFW SYSTEM MONITOR v1.1".center(self.width))
+            print("FOUNDATION ERA TERMINAL - 1980s EDITION".center(self.width))
         
         print(datetime.now().strftime("%Y-%m-%d %H:%M:%S").center(self.width))
         print("=" * self.width)

@@ -162,9 +162,15 @@ The fourth wall is officially permeable.
 - **Narrow terminals (<80 cols)**: Compact column layout
 - **Wide terminals**: Full details with adaptive task width
 
+### Era Evolution
+- Started as 1970s terminal (basic green phosphor, 80x24)
+- Evolved to early 1980s with responsive design
+- Now supports: dynamic layouts, resize detection, unicode
+- Still maintains retro aesthetic with modern capabilities
+
 ### Next Actions
 1. Add CONTEXT command for detailed analysis
 2. Implement VIEW command with tmux pane embedding  
 3. Add terminal bell on new messages (authentic!)
-4. Unicode box drawing for modern terminals
+4. VT100 escape sequences for smoother updates
 5. Consider side-by-side layout for ultra-wide displays
