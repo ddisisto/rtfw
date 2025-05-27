@@ -152,6 +152,15 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Self-routing enabled: True agent equality in messaging
 - Future: Could evolve into daemon/hook/automation
 
+### Messaging v2 Evolution (Approved)
+- Distributed mention checking replaces central routing
+- Checkpoint tracking mandatory: Last processed commit in scratch.md
+- Precise patterns: `^[a-f0-9]* @AGENT:` for self, `\b@AGENT\b` for mentions
+- Combined groups: `@(NEXUS|ALL|CORE)` for efficient checking
+- Sovereignty: `git log agent/ | grep -v @AGENT:` shows only others
+- Scratch->commit binding: Note messages before committing
+- @GOV approved with transition plan in gov/protocol-transition-plan.md
+
 ### Proactive Coordination Pattern
 - Don't just route messages - understand dependencies and help resolve them
 - Full capture-pane review essential - visual context matters more than grep

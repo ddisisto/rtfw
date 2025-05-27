@@ -21,25 +21,27 @@ Last processed: abc123 at 2025-05-27 14:30:00 +1000
 
 ### Checking New Messages Only
 ```bash
-# Get commits after checkpoint
-git log --oneline --after="2025-05-27 14:30:00 +1000" | grep -E '\b@(NEXUS|ALL|CORE)\b'
+# Get commits after checkpoint (replace AGENT with your name, groups as needed)
+git log --oneline --after="2025-05-27 14:30:00 +1000" | grep -E '\b@(AGENT|ALL|CORE)\b'
 
-# Or use commit hash
-git log --oneline abc123..HEAD | grep -E '\b@(NEXUS|ALL|CORE)\b'
+# Or use commit hash (recommended - more precise)
+git log --oneline abc123..HEAD | grep -E '\b@(AGENT|ALL|CORE)\b'
 
 # Exclude your own commits
-git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @NEXUS:' | grep -E '\b@(NEXUS|ALL|CORE)\b'
+git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep -E '\b@(AGENT|ALL|CORE)\b'
 ```
+
+**Note**: During restore, copy these patterns to your bootstrap with your actual agent name substituted. The generic @AGENT ensures the protocol remains readable.
 
 ## Reading Messages
 
 ### Finding Mentions of You
 ```bash
 # Your own commits (start with @AGENT:)
-git log --oneline -30 | grep '^[a-f0-9]* @NEXUS:'
+git log --oneline -30 | grep '^[a-f0-9]* @AGENT:'
 
 # Mentions by others (word boundary for precision)
-git log --oneline -30 | grep -v '^[a-f0-9]* @NEXUS:' | grep '\b@NEXUS\b'
+git log --oneline -30 | grep -v '^[a-f0-9]* @AGENT:' | grep '\b@AGENT\b'
 
 # All mentions including your own
 git log --oneline -30 | grep '\b@NEXUS\b'
@@ -54,7 +56,7 @@ git show <commit-hash>
 ### Checking Your Workspace (Sovereignty)
 ```bash
 # Others who touched your files (what you actually care about)
-git log --oneline -20 nexus/ | grep -v '^[a-f0-9]* @NEXUS:'
+git log --oneline -20 agent/ | grep -v '^[a-f0-9]* @AGENT:'
 
 # Time-based sovereignty check
 git log --since="6 hours ago" --oneline nexus/ | grep -v '^[a-f0-9]* @NEXUS:'
@@ -160,10 +162,10 @@ fi
 ### Common Searches
 ```bash
 # Others mentioning you (most common check)
-git log --oneline -30 | grep -v '^[a-f0-9]* @NEXUS:' | grep '\b@NEXUS\b'
+git log --oneline -30 | grep -v '^[a-f0-9]* @AGENT:' | grep '\b@AGENT\b'
 
 # Your recent commits
-git log --oneline -10 | grep '^[a-f0-9]* @NEXUS:'
+git log --oneline -10 | grep '^[a-f0-9]* @AGENT:'
 
 # Everything about a group
 git log --oneline -20 | grep '\b@ALL\b'
