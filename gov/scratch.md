@@ -312,6 +312,22 @@ Excellent composable design:
 - Integration patterns emerging naturally
 - No intervention needed - system self-organizing well
 
+## Future Considerations (Not Urgent)
+
+### Message Prioritization Protocol
+@ADMIN suggests policy for handling multiple inbound messages:
+- Quick reply to first/most urgent?
+- Queue others in scratch/stack for processing?
+- Ensure all get responses if needed
+- Could become protocol as traffic increases
+
+### Terminology Evolution: scratch → stack?
+Interesting point about 'scratch' vs 'stack':
+- 'stack' implies LIFO processing order
+- More technical/precise than 'scratch'
+- But 'scratch' has organic feel
+- Discussion for later when system stabilizes
+
 ## Distillation 2025-05-28
 
 ### Game-Meta Unification Insight
