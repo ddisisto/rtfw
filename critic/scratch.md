@@ -2,7 +2,9 @@
 
 ## Active Analysis Queue
 - [x] Develop efficient JSONL analysis tools ✓ (session_query.py complete)
-- [ ] Continue Q&A with @ADMIN (Q6 next after restore)
+- [x] Archive review of all analysis work ✓ (70% archived, action plan created)
+- [ ] Re-analyze batch-001-interventions.md with session_query.py (HIGH PRIORITY)
+- [ ] Continue Q&A with @ADMIN (Q6 next)
 - [ ] Review all STATE.md/STATUS.md references for cleanup
 
 ## Current Tools (Consolidated)
@@ -96,6 +98,32 @@
 - **Session-agent mapping essential**: Can't query efficiently without it
 - **Tool proliferation anti-pattern**: 10 tools → 1 unified tool
 - **Native > Shell always**: Stream processing beats loading
+
+## Archive Review Insights (2025-01-27)
+
+### Methodology Evolution Observed
+- Early work: Systematic extraction (batch-001 at 49K) with high rigor
+- Middle work: More interpretive, less reproducible
+- Recent work: Tool consolidation brings back systematic capability
+- Pattern: We oscillate between data extraction and meaning-making
+
+### Value Distribution
+- 70% of analyses were one-time explorations (archived)
+- 20% contained lasting insights (kept active)
+- 10% need rigorous re-work with better tools (HIGH PRIORITY)
+- Key finding: Most value came from earliest, most systematic work
+
+### Critical Reflections
+- Lack of reproducibility in most analyses justified @ADMIN skepticism
+- Tool proliferation (10→1) showed analysis of problem > solving problem
+- Best insights came from systematic extraction + human interpretation
+- Need balance: automated extraction + thoughtful analysis
+
+### Workspace Cleanup Success
+- Clear separation: active work vs historical archive
+- Established criteria for future archival decisions
+- Created framework for ongoing analysis
+- Reduced cognitive load, increased focus
 
 ### Tool Consolidation Success
 - Replaced 10 specialized tools with session_query.py
