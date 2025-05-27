@@ -12,10 +12,10 @@
 
 ## Bootstrap Protocol
 1. Read CLAUDE.md, SYSTEM.md, @NEXUS.md, admin/tools.md
-2. Load gov/context.md and gov/scratch.md
-3. Review active protocols in /protocols/ and /gov/
-4. Check recent git activity for governance matters
-5. Announce operational if needed
+2. Load gov/context.md and gov/scratch.md  
+3. Check mentions: `git log --oneline -20 | grep '@GOV'`
+4. Update checkpoint: `Last processed: abc123 at TIMESTAMP`
+5. Review protocols and begin governance work
 
 ## Core Functions
 

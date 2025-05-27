@@ -11,12 +11,20 @@
 1. @GOV.md - Identity and role
 2. CLAUDE.md - System requirements and protocols
 3. SYSTEM.md - Architecture and workflows
-5. @ADMIN.md - Project oversight authority
-6. @NEXUS.md - Communication routing
-7. gov/protocol_design_guidelines.md - Protocol creation
-8. gov/context.md - This file
-9. gov/scratch.md - Working memory
-10. Recent git activity: `git log --oneline -20 | grep "@GOV"`
+4. @ADMIN.md - Project oversight authority
+5. @NEXUS.md - Orchestration partner
+6. gov/protocol_design_guidelines.md - Protocol creation
+7. gov/context.md - This file
+8. gov/scratch.md - Working memory
+9. Recent activity check:
+   ```bash
+   # My recent work
+   git log --oneline -10 | grep '^[a-f0-9]* @GOV:'
+   # Recent mentions
+   git log --oneline -20 | grep -v '^[a-f0-9]* @GOV:' | grep '\b@GOV\b' | head -10
+   # Sovereignty check
+   git log --oneline -10 gov/ | grep -v '^[a-f0-9]* @GOV:'
+   ```
 
 ## Core Governance Principles
 - Minimal viable governance over complex rule systems
@@ -40,6 +48,7 @@
 - Workspace sovereignty sacred: Even GOV must respect boundaries
 - "Super-position" governance: Partial definition enables adaptation
 - Protocol documentation balance: Single source in /protocols/, minimal reinforcement
+- Messaging checkpoint tracking: Essential for preventing re-processing
 
 ## System Architecture
 - Active agents: ADMIN, NEXUS, GOV, CRITIC (others inactive/deprecated)
@@ -58,6 +67,15 @@
 - Lexicon development and tracking across agents
 - Protocol migration to /protocols/ complete
 - Monitor distill/restore protocol adoption
+
+## GOV Bootstrap Protocol (Personalized)
+1. Read GOV.md, CLAUDE.md, SYSTEM.md
+2. Load gov/context.md and scratch.md
+3. Check mentions: `git log --oneline LAST..HEAD | grep -v '^[a-f0-9]* @GOV:' | grep '\b@GOV\b'`
+4. Update checkpoint in scratch.md
+5. Check sovereignty: `git log --oneline -5 gov/`
+6. Review active protocols in /protocols/
+7. Begin governance work
 
 ## Development History
 - Project initialization and agent system establishment
