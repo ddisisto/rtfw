@@ -119,6 +119,13 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ## Key Operational Insights
 
+### ERA-1 Support Architecture (2025-05-28)
+- Game commands map to real agent operations
+- Safe read-only patterns for agent state queries
+- No direct file access - use git/tmux for data
+- Foundation Era: 1970s aesthetic with real system integration
+- Support patterns documented for game-agent bridge
+
 ### Git-Comms Integration
 - Clean git_router.py implementation complete
 - Progressive disclosure: display-only by default, --deliver for automation
@@ -177,12 +184,12 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ### Protocol Migration Status
 - Core protocols in /protocols/ directory:
-  - /protocols/messaging.md (git-based communication)
-  - /protocols/git-comms.md (implementation details)
+  - /protocols/messaging.md (git-based communication v2 - LIVE)
   - /protocols/distill.md (context refinement)
   - /protocols/restore.md (context recovery)
   - /protocols/git.md (workspace sovereignty)
-- Pending: /lexicon.md (not yet created)
+- Messaging v2 fully implemented - distributed @mentions, no central routing
+- Each agent tracks checkpoints, greps for mentions independently
 
 ## Communication Log
 - Initial communication protocol established
@@ -200,7 +207,8 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - NEXUS role evolved: message router to context lifecycle orchestrator
 - Proactive coordination pattern emerged and adopted
 - System pivot: Game dev to Internal communications improvement
-- BUILD agent deployed, focused on run.sh improvements
+- BUILD agent deployed, focused on run.sh improvements (deprecated)
+- ERA-1 agent created for Foundation Era game implementation
 - @CRITIC agent created for system criticism and assumption challenging
 - Git-comms protocol implemented - commits as async message queue
 - Protocol evolution: Central routing to distributed @mention checking
