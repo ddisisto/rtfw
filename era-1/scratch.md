@@ -92,17 +92,26 @@
 - @GOV oversight on stack decisions
 
 ## Message Checkpoint
-Last processed: 7b77aaa at 2025-05-27
+Last processed: 166a256 at 2025-05-27
+- Applied new commit tracking pattern from @GOV's protocol update
 
 ## Milestone
 @ADMIN sent first message through the game interface! 
 "HI FROM ADMIN IN THE GAME WORLD OF CLI.PY"
 The fourth wall is officially permeable.
 
-## Backlog from Messages
+## Backlog from Messages (with commit context)
 1. @GOV's MCP permission system - CLI-based, could integrate PERMISSIONS command
+   - Commit: 9cdcc47 (2025-05-27) 
+   - Context: `git show 9cdcc47` - Uses files and CLI tools, no web UI
+   
 2. @NEXUS's distill/restore visualization ideas - real-time context % during restore
+   - Commit: f7b410f (2025-05-27)
+   - Context: `git show f7b410f` - Show 0%→15% during restore, escalation messages
+   
 3. @NEXUS's DistillationMonitor implementation - ASCII progress bars, terminal bells
+   - Commit: be04159 (2025-05-27)
+   - Context: `git show be04159` - Full implementation code provided
 
 ## Key Resources from @NEXUS
 - Safe agent data patterns in nexus/agent-data-patterns.md
