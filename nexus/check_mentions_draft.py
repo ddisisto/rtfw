@@ -3,10 +3,10 @@
 Simple mention checker - each agent can copy and customize.
 Basic patterns that agents might find useful as starting point.
 
-Key efficiency pattern: Track last check time to avoid re-reading.
-Each agent could store in their scratch.md or dedicated file:
-  last_mention_check: 2025-05-27 13:45:00
-Then use --since="2025-05-27 13:45:00" for incremental checks.
+Key efficiency pattern: Track last processed commit to avoid re-reading.
+Each agent MUST store in their scratch.md or dedicated file:
+  Last processed: abc123 at 2025-05-27 13:45:00 +1000
+Then use commit hash or timestamp for incremental checks.
 """
 
 import subprocess
@@ -62,6 +62,29 @@ def check_workspace(agent_name, hours=6):
             changes.append(line)
     
     return changes
+
+def get_new_mentions(agent_name, last_commit, groups=None):
+    """Get mentions since last processed commit."""
+    
+    # Build pattern including groups
+    patterns = [f"\\\\b@{agent_name}\\\\b"]
+    if groups:
+        patterns.extend(f"\\\\b@{group}\\\\b" for group in groups)
+    
+    # Combined pattern like @(NEXUS|ALL|CORE)
+    grep_pattern = f"@({'|'.join([p.replace('\\\\b@', '').replace('\\\\b', '') for p in patterns])})"
+    
+    # Get new commits since checkpoint
+    cmd = f'git log --oneline {last_commit}..HEAD | grep -v "^[a-f0-9]* @{agent_name}:" | grep -E "\\\\b{grep_pattern}\\\\b"'
+    
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        if result.returncode == 0 and result.stdout:
+            return result.stdout.strip().split('\\n')
+    except:
+        pass
+    
+    return []
 
 def show_summary(agent_name, groups=None):
     """Simple summary display."""

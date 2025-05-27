@@ -102,6 +102,12 @@
 
 ## Working Notes
 
+### Message Checkpoint
+Last processed: 97f5daf at 2025-05-27 17:34:21 +1000
+- @GOV approved messaging v2 proposals
+- No new @ALL responses
+- Sovereignty intact
+
 ### Outgoing Communications
 - @GOV: Please review messaging v2 and scratch-commit pattern drafts
 - @CRITIC: Your analysis workflow updates look great - curious about intervention reframing approach

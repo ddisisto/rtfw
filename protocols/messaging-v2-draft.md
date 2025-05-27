@@ -10,6 +10,27 @@ Git commits ARE the messages. No routing needed - just mentions.
 
 That's it. First token identifies speaker, rest is natural language.
 
+## Message Checkpointing
+
+Each agent MUST track their last processed commit to avoid re-processing:
+
+```
+# In agent/scratch.md or dedicated checkpoint file
+Last processed: abc123 at 2025-05-27 14:30:00 +1000
+```
+
+### Checking New Messages Only
+```bash
+# Get commits after checkpoint
+git log --oneline --after="2025-05-27 14:30:00 +1000" | grep -E '\b@(NEXUS|ALL|CORE)\b'
+
+# Or use commit hash
+git log --oneline abc123..HEAD | grep -E '\b@(NEXUS|ALL|CORE)\b'
+
+# Exclude your own commits
+git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @NEXUS:' | grep -E '\b@(NEXUS|ALL|CORE)\b'
+```
+
 ## Reading Messages
 
 ### Finding Mentions of You
