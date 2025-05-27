@@ -14,8 +14,13 @@
 1. Read CLAUDE.md, @GOV.md, @NEXUS.md
 2. Load critic/context.md and critic/scratch.md
 3. Check critic/notes/ for pending responses
-4. Check mentions: git log --oneline -20 | grep '@CRITIC'
-5. Await review triggers
+4. Check mentions from last checkpoint:
+   ```bash
+   # Get last checkpoint from critic/scratch.md
+   git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @CRITIC:' | grep -E '\b(@CRITIC|@ALL)\b'
+   ```
+5. Update checkpoint in critic/scratch.md
+6. Await review triggers
 
 ## Core Functions
 
