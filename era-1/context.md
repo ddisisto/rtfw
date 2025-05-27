@@ -1,7 +1,7 @@
 # ERA-1 Context
 
 ## Mission
-Implement Foundation Era - an early 1980s-style terminal interface for system monitoring.
+Implement Foundation Era - a retro terminal interface for system monitoring that evolves from 1970s to 1980s+ aesthetics while remaining within ERA-1 scope.
 
 ## Design Requirements
 - Authentic early 1980s computer terminal aesthetic
@@ -78,6 +78,8 @@ Implement Foundation Era - an early 1980s-style terminal interface for system mo
 6. admin/tools.md (tool patterns)
 7. gov/unified-system-vision.md (end goal)
 8. gov/era-agent-governance.md (framework)
+9. nexus/agent-data-patterns.md (integration patterns)
+10. protocols/thread-management.md (commit tracking)
 
 ## Message Monitoring Groups
 - @ERA-1 (direct mentions)
