@@ -87,6 +87,24 @@ class FileSystemAgentMonitor(AgentMonitor):
         else:
             status = AgentStatus.IDLE
         
+        # Extra real-time check: see if agent is actively typing
+        # by checking if their pane has recent activity
+        if status in [AgentStatus.ACTIVE, AgentStatus.IDLE]:
+            # Check if window has activity in last 30 seconds
+            activity_check = self._run_command(
+                f"tmux list-windows -F '#{{window_name}} #{{window_activity}}' | grep -i '{agent_name.lower()}'"
+            )
+            if activity_check:
+                try:
+                    parts = activity_check.split()
+                    if len(parts) >= 2:
+                        activity_time = int(parts[1])
+                        current_time = int(self._run_command("date +%s"))
+                        if current_time - activity_time < 30:  # Active in last 30 sec
+                            status = AgentStatus.ACTIVE
+                except:
+                    pass
+        
         # Get context size
         lines, percent = self.get_context_size(agent_name)
         

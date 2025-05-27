@@ -46,6 +46,7 @@ class ERA1Terminal:
         }
         
         self.running = True
+        self.monitoring = False
     
     def start_interactive(self):
         """Start the interactive game loop"""
@@ -67,6 +68,11 @@ class ERA1Terminal:
                 
                 if user_input.upper() in ["EXIT", "QUIT"]:
                     self.running = False
+                    continue
+                
+                # Handle special interactive commands
+                if user_input.upper() == "MONITOR":
+                    self._toggle_monitoring()
                     continue
                 
                 # Parse command
@@ -141,6 +147,34 @@ class ERA1Terminal:
     def _handle_interrupt(self, signum, frame):
         """Handle Ctrl+C gracefully"""
         self.running = False
+    
+    def _toggle_monitoring(self):
+        """Toggle real-time monitoring mode"""
+        if self.monitoring:
+            self.display.stop_auto_refresh()
+            self.monitoring = False
+            self.display.show_command_output("MONITORING DISABLED")
+        else:
+            # Start auto-refresh with callback
+            def refresh():
+                try:
+                    agents = []
+                    for agent_name in self.monitor.get_all_agents():
+                        agent = self.monitor.get_agent_status(agent_name)
+                        agents.append(agent)
+                    
+                    # Get recent messages too
+                    messages = self.message_bus.get_recent_messages(10)
+                    
+                    # Refresh display
+                    self.display.refresh_display(agents, messages)
+                except Exception as e:
+                    # Fail silently in refresh to avoid spam
+                    pass
+            
+            self.display.start_auto_refresh(refresh, interval=3)
+            self.monitoring = True
+            self.display.show_command_output("MONITORING ENABLED - REFRESH EVERY 3 SECONDS")
 
 
 def create_parser():

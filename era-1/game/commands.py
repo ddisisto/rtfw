@@ -29,6 +29,7 @@ class RetroCommandParser(CommandParser):
             "MESSAGE": "Send message to agent", 
             "LOG": "Show recent activity",
             "CONTEXT": "Show agent context health",
+            "MONITOR": "Toggle real-time monitoring (interactive only)",
             "HELP": "Display available commands",
             "EXIT": "Exit system monitor",
             "QUIT": "Exit system monitor",
