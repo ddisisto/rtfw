@@ -20,7 +20,7 @@ Multi-agent system for collaborative AI development with file-based persistence 
   - Resource provisioning and strategic guidance
   - Catch-all for unroutable messages
 
-#### Internal
+#### Meta Agents (Persistent)
 - **@NEXUS**: Context lifecycle orchestrator and session manager
   - Monitor git commits for distributed messaging
   - Session management and agent coordination
@@ -36,6 +36,11 @@ Multi-agent system for collaborative AI development with file-based persistence 
   - Assumption surfacing and questioning
   - Post-distillation review capability
 
+#### ERA Agents (Transient)
+- **@ERA-1**: Foundation Era implementation
+  - 1970s terminal interface with real system integration
+  - Python/blessed with optional tmux embedding
+  - Bootstrap ERA-2 when complete
 
 Note: Additional agents can be created as needs arise. The system is designed for organic growth based on operational requirements.
 
@@ -91,15 +96,27 @@ Agents check for @mentions in git log. No central routing required.
 ```
 /
 ├── @AGENT.md files (public identities)
+│   ├── ADMIN.md, NEXUS.md, GOV.md, CRITIC.md
+│   └── ERA-1.md (first ERA agent)
 ├── /agent/ directories (private workspaces)
+│   ├── /admin/ (ADMIN's workspace)
+│   ├── /nexus/ (NEXUS workspace + sessions/)
+│   ├── /gov/ (GOV workspace + meta-protocols)
+│   ├── /critic/ (CRITIC workspace + analysis tools)
+│   └── /era-1/ (ERA-1 game implementation)
 ├── /protocols/ (system-wide protocols)
-├── /gov/ (governance meta-protocols)
-├── /admin/ (administrative workspace)
-└── /nexus/sessions/ (NEXUS session management)
+│   ├── messaging.md, distill.md, restore.md
+│   ├── git.md, thread-management.md
+├── CLAUDE.md (system navigation)
+├── SYSTEM.md (this file)
+├── seed.md (historical)
+└── tmux.conf (ADMIN's tmux config)
 ```
 
 ## Protocol Locations
 - Communication: /protocols/messaging.md
 - Context Management: /protocols/distill.md, /protocols/restore.md
 - Repository: /protocols/git.md
+- Thread Management: /protocols/thread-management.md
 - Governance: /gov/protocol_design_guidelines.md
+- ERA Agents: /gov/era-agent-governance.md
