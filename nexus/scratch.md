@@ -1,9 +1,9 @@
 # NEXUS Scratch Pad
 
 ## Key Learnings (promoted to context.md)
-- Thread management protocol added for multi-conversation handling
-- ERA-1 launched successfully with reframed context
-- Comprehensive tmux pane embedding patterns documented
+- NEXUS.md made compliant with agent structure protocol
+- Distill/restore process evolution documented
+- System cleanup by GOV - focused repository
 
 
 ## Active Work - Post-Restore
@@ -20,41 +20,12 @@
 - **CLAUDE.md simplified** - No STATE.md reference
 
 ### Active Tasks
-- [x] Support ERA-1 with safe agent data patterns
-- [x] Create session mapping for unified state
-- [x] Document tmux pane embedding patterns
+- [x] Clean NEXUS.md per agent structure protocol
+- [x] Document distill/restore for ERA-1
+- [x] Support CRITIC distill/restore cycle
 - [ ] Update current_sessions.json on session changes
-- [ ] Monitor thread management adoption
+- [ ] Monitor ERA-1 implementation progress
 
-### Thread Management Protocol (2025-05-28)
-@GOV created comprehensive thread management protocol:
-- Thread IDs: YYYY-MM-DD-topic format
-- Section-based (default) or file-based organization
-- Message triage pattern for handling multiple requests
-- Agent mitosis pathway when 5+ threads sustained
-- File-based threads need index in scratch/context for discovery
-
-Key insight: System scaling naturally through thread → specialist agent evolution
-
-### Agent Structure Protocol Compliance (2025-05-28)
-@GOV audit found NEXUS.md non-compliant:
-- Bootstrap protocol too specific (tmux commands)
-- Implementation details that belong in context.md
-- Need to move specifics to context, keep identity generic
-
-Action: Review and clean NEXUS.md per /protocols/agent-structure.md
-✓ Completed: NEXUS.md now compliant with protocol
-
-### CRITIC Distill/Restore Process (2025-05-28)
-@CRITIC completed distillation, ready for context refresh:
-- Context at 247 lines (36% remaining)
-- Key learnings captured about tool evolution
-- Requesting context refresh cycle
-
-Key insight: Messaging protocol handles confirmation stages!
-- No capture-pane needed until after /clear
-- Agent confirms readiness via git commit
-- Only check tmux after clear to verify success
 
 
 

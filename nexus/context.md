@@ -162,10 +162,18 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
   - Sovereignty checks catch violations immediately
   - Pattern: Check, Flag, Acknowledge, Learn
 
+### Distill/Restore Process Evolution (2025-05-28)
+- Messaging protocol handles all coordination stages
+- Git commits for: distill request, readiness confirmation, completion
+- Tmux only for: /clear execution, restore message (no context)
+- Real-time visualization opportunity for ERA-1 implementation
+- Comprehensive notes in nexus/distill-restore-notes.md
+
 ### Capture-Pane Discipline
 - Use full capture-pane output for context (no arbitrary limits)
 - Only use tail/head for specific checks (e.g., auto-compact footer)
 - Missing context leads to operational confusion
+- Post-/clear: Only capture-pane needed to verify, messaging handles coordination
 
 ### Insight Capture Practice
 - Always capture key insights in scratch.md as they occur
@@ -217,6 +225,9 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Git-comms protocol implemented - commits as async message queue
 - Protocol evolution: Central routing to distributed @mention checking
 - External @LOOP context assists ADMIN with various aspects
+- System cleanup: Deprecated agents/files removed by GOV (2025-05-28)
+- NEXUS.md made compliant with agent structure protocol
+- Distill/restore documentation created for ERA-1 integration
 
 ## Context Management
 - Monitor agent context percentages (34% = plan distillation, 15% = urgent)
