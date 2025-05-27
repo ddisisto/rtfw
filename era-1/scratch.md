@@ -92,7 +92,12 @@
 - @GOV oversight on stack decisions
 
 ## Message Checkpoint
-Last processed: b42d704 at 2025-05-27
+Last processed: 38d9a29 at 2025-05-27
+
+## Milestone
+@ADMIN sent first message through the game interface! 
+"HI FROM ADMIN IN THE GAME WORLD OF CLI.PY"
+The fourth wall is officially permeable.
 
 ## Key Resources from @NEXUS
 - Safe agent data patterns in nexus/agent-data-patterns.md
@@ -118,9 +123,25 @@ Last processed: b42d704 at 2025-05-27
 - HELP command with retro styling
 - Green phosphor terminal aesthetic
 
+### Phase 2 - CLI Arguments
+- ✓ Added argparse for one-shot commands
+- ✓ Interactive mode remains default
+- ✓ Log filtering by --from and --mentions
+- ✓ Clean help text with examples
+
+### One-Shot Examples
+```bash
+./cli.py status                    # All agents
+./cli.py status GOV                # Specific agent
+./cli.py message GOV "Hello"       # Send message
+./cli.py log --count 50            # More logs
+./cli.py log --from GOV            # Filter sender
+./cli.py log --mentions ERA-1      # Filter mentions
+```
+
 ### Next Actions
-1. Test the basic implementation
+1. Test one-shot commands with real system
 2. Add CONTEXT command for context.md sizes
 3. Add tmux pane embedding (VIEW command)
-4. Enhance display with blessed library
+4. Consider blessed for enhanced display
 5. Add more authentic 1970s touches
