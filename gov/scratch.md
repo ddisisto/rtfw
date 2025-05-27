@@ -339,6 +339,44 @@ Created /protocols/thread-management.md with:
 - Queue incoming messages for orderly processing
 - Agent mitosis possible when consistently overloaded!
 
+## Cleanup Recommendations for @ADMIN
+
+### Deprecated Agent Files (Safe to Delete)
+**Inactive agents with no recent activity:**
+- ARCHITECT.md (replaced by ERA agents)
+- CODE.md (domain ownership model deprecated this)
+- HISTORIAN.md (no active role)
+- RESEARCH.md (inactive)
+- TEST.md (no testing agent needed)
+- BUILD.md (already gone - good!)
+
+### Deprecated System Files
+- ANNOUNCEMENTS.md (replaced by distributed state)
+- test.out (build artifact)
+- system_state.json (appears to be CRITIC's output, check first)
+
+### Empty/Minimal Directories
+- architect/ (only has old context/scratch)
+- build/ (empty)
+- code/ (has some implement files - check if needed for ERA-1)
+- historian/ (only context/scratch)
+- research/ (only context/scratch)  
+- test/ (only context/scratch)
+- sessions/ (empty - different from nexus/sessions)
+
+### Keep But Note
+- admin/echo/ (appears to be proposal work)
+- tmp/ (has context compression knowledge)
+- seed.md (historical value?)
+
+### Active & Essential
+- admin/, critic/, era-1/, gov/, nexus/ (all active)
+- protocols/ (system protocols)
+- ADMIN.md, CLAUDE.md, CRITIC.md, ERA-1.md, GOV.md, NEXUS.md, SYSTEM.md
+- lexicon.md, run.sh, tmux.conf
+
+Cleaning these would remove ~15 misleading files and 6 deprecated directories!
+
 ## Distillation 2025-05-28
 
 ### Game-Meta Unification Insight
