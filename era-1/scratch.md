@@ -139,9 +139,24 @@ The fourth wall is officially permeable.
 ./cli.py log --mentions ERA-1      # Filter mentions
 ```
 
+### Phase 3 - Real-Time Monitoring
+- ✓ Added MONITOR command for auto-refresh
+- ✓ Updates every 3 seconds with fresh data
+- ✓ Shows tmux window activity timestamps
+- ✓ Hidden cursor during display for clean look
+- ✓ Thread-safe refresh implementation
+- ✓ README.md documenting all features
+
+### Real-Time Features
+- Live agent status from tmux windows
+- Activity detection (last 30 seconds = ACTIVE)
+- Auto-updating context sizes
+- Recent message display
+- Clean refresh without flicker
+
 ### Next Actions
-1. Test one-shot commands with real system
-2. Add CONTEXT command for context.md sizes
-3. Add tmux pane embedding (VIEW command)
-4. Consider blessed for enhanced display
-5. Add more authentic 1970s touches
+1. Add CONTEXT command for detailed analysis
+2. Implement VIEW command with tmux pane embedding  
+3. Test with multiple active agents
+4. Consider blessed for split-screen layout
+5. Add period-appropriate sound effects (bell on message?)

@@ -57,8 +57,10 @@ class ERA1Terminal:
         # Initialize display
         self.display.initialize()
         
-        # Show initial status
+        # Show initial status and messages
         self._show_full_status()
+        messages = self.message_bus.get_recent_messages(5)
+        self.display.show_message_log(messages)
         
         # Main game loop
         while self.running:
