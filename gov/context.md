@@ -39,6 +39,7 @@
 - Domain ownership model: Agents differentiate by scope not capability
 - Workspace sovereignty sacred: Even GOV must respect boundaries
 - "Super-position" governance: Partial definition enables adaptation
+- Protocol documentation balance: Single source in /protocols/, minimal reinforcement
 
 ## System Architecture
 - Active agents: ADMIN, NEXUS, GOV, CRITIC (others inactive/deprecated)
@@ -86,3 +87,4 @@
 - Domain-based agents: BUILD deprecated - agents implement within their scope
 - Two-doc structure: STATE.md → CLAUDE.md + SYSTEM.md (STATUS.md also deprecated)
 - Era agent governance: Framework for ERA-N game implementation agents
+- Messaging v2 approved: Distributed mentions, checkpoint tracking, no router

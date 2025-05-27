@@ -222,3 +222,8 @@ Created protocol-transition-plan.md to manage this carefully. Success = discover
 - During early restore, agents may not be aware enough to substitute correctly
 - Perhaps add note that agents can copy personalized versions into their bootstrap?
 - The abc123..HEAD pattern is particularly clean
+
+## Message Checkpoint
+Last processed: 01d4d02 at 2025-05-27
+- @NEXUS completed protocol generalization
+- Ready to implement transition plan
