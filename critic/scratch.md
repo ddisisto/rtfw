@@ -1,74 +1,15 @@
 # CRITIC Scratch Pad
 
 ## Active Analysis Queue
-- [x] Develop efficient JSONL analysis tools ✓ (session_query.py complete)
-- [x] Archive review of all analysis work ✓ (70% archived, action plan created)
-- [ ] Re-analyze batch-001-interventions.md with session_query.py (HIGH PRIORITY)
+- [ ] Re-analyze interventions with clear research question (HIGH PRIORITY)
 - [ ] Continue Q&A with @ADMIN (Q6 next)
 - [ ] Review all STATE.md/STATUS.md references for cleanup
 
-## Current Tools (Consolidated)
-- session_query.py - Unified JSONL query engine (replaces 10 tools)
-- extract_user_prompts.py - Session analysis for agent identification
-- extract_session_timestamps.py - Update session index with time ranges
+## Current Tools
+- session_query.py - Unified JSONL query engine
 - sessions_index.csv - Agent mappings and timestamps
 
-## Next Analysis Focus (Post-Consolidation)
-1. **Active Agent Deep Dives** - GOV 4-day session, NEXUS coordination patterns
-2. **Deprecation Patterns** - Why CODE→BUILD, why others shelved
-3. **Protocol Evolution** - Track how protocols changed during 5-day burst
-4. **@ADMIN Intervention Types** - Now queryable with proper tools
-
 ## Working Notes
-- Tool consolidation complete - efficiency crisis resolved
-- Session deduplication revealed true work patterns
-- Infrastructure-first approach validated
-- STATE.md and STATUS.md both removed - dynamic state now distributed to agent scratch/context
-- Need to review stale references to STATE.md/STATUS.md throughout system
-
-## Tool Analysis Patterns (2025-05-26)
-
-### Common Patterns Across 10 Python Tools
-1. **JSONL Processing Core** - All tools read/parse nexus/sessions/*.jsonl files
-2. **Content Extraction** - Navigate nested message structures to get actual text
-3. **Agent Identification** - Extract from filename or content patterns
-4. **Timestamp Handling** - Sort/filter by time, track chronology
-5. **Pattern Detection** - Search for keywords, phrases, intervention types
-6. **State Persistence** - Some track progress for resumability
-7. **Output Generation** - JSON reports to critic/analysis/, text summaries
-
-### Core Operations Needed
-1. **Stream Processing** - Read JSONL entries without loading full files
-2. **Content Extraction** - Reliable extraction from various message formats
-3. **Pattern Matching** - Flexible search across content/metadata
-4. **Time Navigation** - Jump to specific times, track progress
-5. **Aggregation** - Count patterns, group by agent/type/time
-
-### Proposed Minimal Toolset
-1. **session_query.py** - Swiss army knife for session analysis
-   - Stream JSONL with filters (time range, agent, content pattern)
-   - Extract specific fields or full entries
-   - Output formats: JSON, CSV, readable text
-   - Stateless - filters passed as arguments
-
-2. **session_stats.py** - Aggregation and counting
-   - Message counts by agent/type/time
-   - Pattern frequency analysis
-   - Intervention type distribution
-   - Session metadata summary
-
-3. **session_tracker.py** - Stateful chronological analysis
-   - Resume from last position
-   - Navigate by time or event count
-   - Context preservation (show surrounding messages)
-   - Progress tracking
-
-### Key Improvements Over Current Tools
-- Native JSONL streaming (no full file loads)
-- Unified content extraction logic
-- Composable filters (combine time + agent + pattern)
-- Standard output formats for piping
-- Clear separation: query (stateless) vs track (stateful)
 
 ## Distillation Insights (2025-05-26 Session)
 
@@ -138,6 +79,35 @@ During distillation:
 2. Move INTEGRATED items to context.md
 3. Archive old IN_PROGRESS that stalled
 4. Update status tracker
+
+## Distillation Insights (2025-01-27)
+
+### Critical Learning: Analysis Anti-Patterns
+- **Over-tooling** - Built 10 tools to avoid using 1 well
+- **Over-analysis** - Endless categorization without action
+- **Under-methodology** - Exploration without reproducibility
+- **Assumption accumulation** - Never questioned our categories
+
+### Intervention Analysis True Goal
+Not just counting @ADMIN messages, but understanding:
+1. **Quality standards** - What triggers correction?
+2. **System learning** - How do patterns change behavior?
+3. **Prevention vs correction** - Proactive vs reactive guidance
+4. **Collaboration patterns** - Human-AI working relationship
+
+### Archive Review Meta-Lesson
+The act of reviewing our analyses revealed more than the analyses themselves:
+- We oscillate between data extraction and meaning-making
+- Best work happens at the intersection
+- Organization is prerequisite for insight
+- Skepticism is diagnostic tool
+
+### Methodology Principles Discovered
+1. **Start with clear question** - Not "analyze interventions" but "what are quality triggers?"
+2. **Use minimal tooling** - One good tool > ten specialized
+3. **Preserve raw data** - Interpretation changes, data doesn't
+4. **Track confidence** - Distinguish observation from inference
+5. **Seek actionable insights** - "So what?" test for every finding
 
 ### Tool Consolidation Success
 - Replaced 10 specialized tools with session_query.py

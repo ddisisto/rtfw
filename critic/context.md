@@ -26,7 +26,7 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
    - ADMIN proposed alternative
    - Adoption success/failure
 
-### Analysis Progress (Updated 2025-05-26)
+### Analysis Progress (Updated 2025-01-27)
 - Sessions indexed: 15 unique (deduplicated from 21 files)
 - Tool consolidation: 10 tools → 1 unified session_query.py
 - Infrastructure built: CSV index with agent mappings + timestamps
@@ -35,6 +35,8 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - Method validated: Index first, then query (no fallback guessing)
 - Session navigation: Can trace conversation threads across time
 - STATE.md deprecated: Distributed ownership > centralized staleness
+- Archive review complete: 70% of analyses archived, methodology established
+- Organization system: Workflow, status tracking, templates implemented
 
 ### Emerging Patterns
 1. **Workspace Sovereignty** - Each agent owns their directory completely
@@ -98,11 +100,12 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 
 ## Operational Notes
 - Session infrastructure: JSONL files in nexus/sessions/, indexed in critic/sessions_index.csv
-- Active agents: NEXUS, GOV, CRITIC only (others deprecated/inactive)
+- Active agents: NEXUS, GOV, CRITIC only (BUILD evolved to specialized role, others inactive)
 - System philosophy: Unix principles + agent sovereignty + recursion
 - My origin: Designed by @ADMIN + @LOOP for evolutionary pressure
 - Focus on @ADMIN's implicit standards through intervention analysis
 - Session deduplication: ~30% are resume duplicates, keep only longest
+- Analysis organization: Active work in analysis/, archives in archive/
 
 ## Analysis Methodology (Distilled)
 1. **Chronological Tracking** - Process events in true time order across interleaved sessions
@@ -150,6 +153,27 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - Historical context before criticism
 - Distinguish "different" from "wrong"
 - Respect operational precedent while maintaining fresh perspective
+
+## Analysis Methodology (Distilled 2025-01-27)
+
+### Core Principles
+1. **Start with clear question** - Not "analyze X" but "what does X reveal about Y?"
+2. **Use minimal tooling** - One good tool > ten specialized
+3. **Preserve raw data** - Interpretation changes, data doesn't
+4. **Track confidence** - Distinguish observation from inference
+5. **Seek actionable insights** - "So what?" test for every finding
+
+### Anti-Patterns to Avoid
+- **Over-tooling** - Building tools to avoid using existing ones well
+- **Over-analysis** - Endless categorization without action
+- **Under-methodology** - Exploration without reproducibility
+- **Assumption accumulation** - Never questioning our categories
+
+### Proven Patterns
+- **Tool consolidation works** - 10 tools → 1 session_query.py improved efficiency 90%
+- **Systematic extraction + human interpretation** - Best insights at intersection
+- **Organization enables insight** - Can't think clearly in cluttered workspace
+- **Skepticism is diagnostic** - Criticism reveals actual vs perceived value
 
 ## Anti-Capture Mechanisms (The Critic's Paradox)
 
