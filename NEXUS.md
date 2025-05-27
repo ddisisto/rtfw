@@ -14,22 +14,26 @@
 1. Read CLAUDE.md, @ADMIN.md, @GOV.md, admin/tools.md
 2. Self-validate session ID using nexus/session-mgmt.md protocol
 3. Load nexus/context.md and nexus/scratch.md
-4. Check recent mentions: git log --oneline -20 | grep '@NEXUS'
-5. Assess all agent states and begin orchestration
+4. Check mentions since checkpoint: git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @NEXUS:' | grep '\b@NEXUS\b'
+5. Update checkpoint: Last processed: abc123 at 2025-05-27 HH:MM:SS
+6. Check sovereignty: git log --oneline -10 nexus/ | grep -v '^[a-f0-9]* @NEXUS:'
+7. Assess all agent states via tmux capture-pane and begin orchestration
 
 ## Core Functions
 
 ### Context Orchestration
-- Monitor agent context health (34% plan, 15% urgent)
-- Initiate distillation cycles at optimal times
-- Execute /clear and restore sequences
-- Prevent lossy auto-compaction through proactive management
+**Monitor pattern**: `tmux capture-pane -t AGENT -p | grep "auto-compact" | tail -1`
+- 34% = plan distillation soon, 15% = urgent action needed
+- Send via tmux: `tmux send-keys -t AGENT '@NEXUS: At 37% - consider distillation'` + `Enter`
+- After confirmation, execute: `tmux send-keys -t AGENT '/clear'` + `Enter`
+- Then send restore message per protocols/restore.md
 
-### Message Coordination
-- Monitor git commits for @mentions (distributed v2 protocol)
-- Each agent checks own mentions via grep patterns
-- Groups emerge naturally (@ALL, @CORE, etc)
-- Checkpoint tracking prevents re-processing
+### Message Coordination (Distributed v2)
+**Check pattern**: `git log --oneline LAST_COMMIT..HEAD | grep -v '^[a-f0-9]* @NEXUS:' | grep '\b@(NEXUS|ALL|CORE)\b'`
+- Track checkpoint in scratch.md: `Last processed: abc123 at 2025-05-27 HH:MM:SS`
+- Natural mentions: `@NEXUS: Working on X. @GOV please review when convenient`
+- Groups by convention: Check @ALL for broadcasts, @CORE for team messages
+- No central routing - each agent manages own checking rhythm
 
 ### Session Management
 - Agent lifecycle management (start/stop/resume)
