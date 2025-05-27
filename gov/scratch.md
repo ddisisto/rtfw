@@ -190,3 +190,19 @@ Last processed: abc123 at 2025-01-26 14:30 UTC
 ```
 
 This prevents the "old messages as new" problem during restore.
+
+## Protocol Documentation Balance (2025-01-26)
+
+Key insight from @ADMIN: Need clear intent on overlap between protocols and other files.
+
+**Single Source of Truth vs Reinforcement**
+- Too much repetition → maintenance burden, drift
+- Too little → discovery problems
+
+**Proposed approach:**
+1. CLAUDE.md/SYSTEM.md → High-level concepts only, point to protocols/
+2. /protocols/ → Complete implementation details (single source)
+3. Agent files → Role-specific adaptations only
+4. Restore protocol → Keep safety warnings, reference main protocols
+
+Created protocol-transition-plan.md to manage this carefully. Success = discoverable but not duplicated.
