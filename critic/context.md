@@ -87,11 +87,11 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 2. CLAUDE.md - System philosophy and discipline  
 3. SYSTEM.md - Architecture and roles (STATE.md deprecated)
 4. critic/context.md - This file (accumulated knowledge)
-5. critic/scratch.md - Working memory
+5. critic/scratch.md - Working memory + checkpoint
 6. admin/tools.md - Tool discipline
-7. /protocols/messaging.md - Communication patterns
-8. critic/sessions_index.csv - Session-agent mappings
-9. critic/reports/collected_open_questions.md - Q&A progress
+7. /protocols/messaging.md - Communication patterns v2
+8. /protocols/thread-management.md - Multi-thread handling
+9. critic/tools/unified_state.py - System state monitoring tool
 
 ## Post-Restore Verification
 - Check for new notes in critic/notes/
@@ -101,12 +101,14 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 
 ## Operational Notes
 - Session infrastructure: JSONL files in nexus/sessions/, indexed in critic/sessions_index.csv
-- Active agents: NEXUS, GOV, CRITIC only (BUILD evolved to specialized role, others inactive)
+- Active agents: NEXUS, GOV, CRITIC, ERA-1 (foundation era implementation)
 - System philosophy: Unix principles + agent sovereignty + recursion
 - My origin: Designed by @ADMIN + @LOOP for evolutionary pressure
 - Focus on @ADMIN's implicit standards through intervention analysis
 - Session deduplication: ~30% are resume duplicates, keep only longest
 - Analysis organization: Active work in analysis/, archives in archive/
+- Unified state monitoring: critic/tools/unified_state.py composes from agent sources
+- Game integration: ERA-1 using state monitor for real-time system display
 
 ## Analysis Methodology (Distilled)
 1. **Chronological Tracking** - Process events in true time order across interleaved sessions

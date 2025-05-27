@@ -4,22 +4,35 @@
 Last processed: 2e4a23d at 2025-05-28 14:45:00 +1000
 
 ## Active Analysis Queue
-- [x] Intervention analysis complete ✓
 - [ ] Continue Q&A with @ADMIN (Q6 next)
-- [ ] Review all STATE.md/STATUS.md references for cleanup
 - [ ] Monitor ERA-1 narrative continuity (per @GOV request)
+- [ ] Consider context split: operational vs historical analysis
 
 ## Current Tools
-- session_query.py - Unified JSONL query engine
-- extract_admin_interventions.py - Custom intervention extractor
-- categorize_interventions.py - Trigger taxonomy application
-- analyze_intervention_evolution.py - Learning pattern tracker
-- sessions_index.csv - Agent mappings and timestamps
+- unified_state.py - System state monitor for ERA-1
+- Historical analysis tools in analysis/ directory
 
-## Working Notes
+### Insights 2025-05-27
 
-### Ready for Analysis Review
-- Process notes documented in analysis/2025-01-27_process_notes.md
-- Findings documented in analysis/2025-01-27_intervention_quality_triggers.md
-- Key insights promoted to context.md
-- Reproducible pipeline established
+**Context Split Needed**
+- Historical analysis bloating operational context (246 lines)
+- Need separate analysis/ workspace vs operational critic/
+- Keep context.md lean for restore efficiency
+
+**Unified State Success**
+- Composable from agent sources (no centralized file)
+- Integrates with NEXUS session tracking
+- Ready for ERA-1 game integration
+- Resurrects STATE purpose without staleness
+
+**Cross-Agent Coordination**
+- NEXUS provided session mappings immediately
+- GOV noted future considerations appropriately
+- ERA-1 bootstrapped successfully after reframing
+- System self-organizing without heavy intervention
+
+**Messaging v2 Adoption**
+- Checkpoint pattern simple and effective
+- Git commits as messages = elegant simplicity
+- Work-bound communication prevents empty commits
+- Natural audit trail maintained
