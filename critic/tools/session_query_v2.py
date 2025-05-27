@@ -26,11 +26,29 @@ class SessionQueryV2:
         if filename in self._agent_cache:
             return self._agent_cache[filename]
             
-        # Pattern-based detection from content
-        for agent in ['NEXUS', 'GOV', 'CRITIC', 'ERA-1', 'ADMIN', 'BUILD', 'CODE']:
-            if f"@{agent}" in content or f"Read {agent}.md" in content:
-                self._agent_cache[filename] = agent
-                return agent
+        # More specific pattern detection - check for agent identity markers
+        agent_patterns = {
+            'NEXUS': [r'@NEXUS:', r'Read NEXUS\.md', r'NEXUS context', r'nexus/context\.md'],
+            'GOV': [r'@GOV:', r'Read GOV\.md', r'GOV context', r'gov/context\.md'],
+            'CRITIC': [r'@CRITIC:', r'Read CRITIC\.md', r'CRITIC context', r'critic/context\.md'],
+            'ERA-1': [r'@ERA-1:', r'Read ERA-1\.md', r'ERA-1 context', r'era-1/context\.md'],
+            'ADMIN': [r'@ADMIN:', r'admin/context\.md'],
+            'BUILD': [r'@BUILD:', r'Read BUILD\.md'],
+            'CODE': [r'@CODE:', r'Read CODE\.md']
+        }
+        
+        # Count matches for each agent
+        agent_scores = {}
+        for agent, patterns in agent_patterns.items():
+            score = sum(1 for pattern in patterns if re.search(pattern, content))
+            if score > 0:
+                agent_scores[agent] = score
+        
+        # Return agent with highest score
+        if agent_scores:
+            best_agent = max(agent_scores.items(), key=lambda x: x[1])[0]
+            self._agent_cache[filename] = best_agent
+            return best_agent
                 
         return None
     

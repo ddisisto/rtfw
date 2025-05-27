@@ -10,6 +10,11 @@
 - ✓ Agent auto-detection (no CSV needed)
 - ✓ Stats mode for analysis
 
+### Known Limitation
+- Agent filtering (--agent) uses pattern detection which may have false positives
+- Works well for single-agent sessions, less reliable for mixed sessions
+- Core search functionality unaffected
+
 ### Tools That Can Be Replaced
 1. **extract_admin_interventions.py** → Use `--interventions --user-type external`
 2. **extract_user_prompts.py** → Use `--type user --user-type external`
