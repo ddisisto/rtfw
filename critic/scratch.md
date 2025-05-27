@@ -125,6 +125,20 @@
 - Created framework for ongoing analysis
 - Reduced cognitive load, increased focus
 
+### New Organization Structure (2025-01-27)
+- ANALYSIS_WORKFLOW.md - Clear process for new analyses
+- ANALYSIS_STATUS.md - Track what's active/complete
+- analysis/TEMPLATE.md - Ensure consistency
+- analysis/outputs/ - Raw data preservation
+- Archive triggers defined (3 months, fully extracted, etc)
+
+### Distillation Integration Note
+During distillation:
+1. Check ANALYSIS_STATUS.md for completed analyses
+2. Move INTEGRATED items to context.md
+3. Archive old IN_PROGRESS that stalled
+4. Update status tracker
+
 ### Tool Consolidation Success
 - Replaced 10 specialized tools with session_query.py
 - Strict indexing requirement prevents confusion
