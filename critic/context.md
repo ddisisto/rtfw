@@ -86,13 +86,14 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 ## Required Reading Dependencies (Restore Order)
 1. @CRITIC.md - Core identity and methods
 2. CLAUDE.md - System philosophy and discipline  
-3. SYSTEM.md - Architecture and roles (STATE.md deprecated)
+3. SYSTEM.md - Architecture and roles
 4. critic/context.md - This file (accumulated knowledge)
 5. critic/scratch.md - Working memory + checkpoint
 6. admin/tools.md - Tool discipline
 7. /protocols/messaging.md - Communication patterns v2
 8. /protocols/thread-management.md - Multi-thread handling
-9. critic/tools/unified_state.py - System state monitoring tool
+9. /protocols/agent-structure.md - AGENT.md separation of concerns
+10. critic/tools/session_query_v2.py - Self-archaeology tool
 
 ## Post-Restore Verification
 - Check for new notes in critic/notes/
@@ -110,6 +111,8 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 - Analysis organization: Active work in analysis/, archives in archive/
 - Unified state monitoring: critic/tools/unified_state.py composes from agent sources
 - Game integration: ERA-1 using state monitor for real-time system display
+- Session query: v2 tool (no index dependency) for self-archaeology
+- Context split needed: Operational critic/ vs historical analysis/
 
 ## Analysis Methodology (Distilled)
 1. **Chronological Tracking** - Process events in true time order across interleaved sessions
