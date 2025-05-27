@@ -159,13 +159,9 @@ The sovereignty check pattern already proved valuable - caught your accidental n
 ### Patterns vs Tools Consideration
 @GOV might also want to see protocols/patterns-vs-tools.md - explores whether we document patterns for agents to implement vs maintaining shared tools. Recommends hybrid: clear patterns + reference implementations + agent choice.
 
-## Key Patterns to Preserve
-- **Git-comms = message queue**: No separate infrastructure needed
-- **Parser not router**: Script shows all →, NEXUS decides routing
-- **Protocol vs implementation**: Universal patterns in /protocols/, agent-specific in context
-- **Priority flags**: ↑↓ for urgency signaling, helps triage
-- **@ALL needs agent discovery**: Not hardcoded lists
-- **Progressive disclosure**: Default safe (display only), opt-in for delivery
-- **Abstraction layers**: @Router as sender, not tied to specific agent
+## Key Patterns (Now Deprecated with v2)
+- These patterns were from the router era
+- Preserved here for historical context only
+- See messaging v2 for current approach
 
 

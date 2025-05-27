@@ -14,7 +14,7 @@
 1. Read CLAUDE.md, @ADMIN.md, @GOV.md, admin/tools.md
 2. Self-validate session ID using nexus/session-mgmt.md protocol
 3. Load nexus/context.md and nexus/scratch.md
-4. Check git-comms for pending messages
+4. Check recent mentions: git log --oneline -20 | grep '@NEXUS'
 5. Assess all agent states and begin orchestration
 
 ## Core Functions
@@ -25,11 +25,11 @@
 - Execute /clear and restore sequences
 - Prevent lossy auto-compaction through proactive management
 
-### Message Routing
-- Git-based async messaging via nexus/git_router.py
-- Progressive automation: view-only default, --deliver for routing
-- Self-routing enabled for true agent equality
-- Priority-based triage (↑↑ urgent through ↓↓ optional)
+### Message Coordination
+- Monitor git commits for @mentions (distributed v2 protocol)
+- Each agent checks own mentions via grep patterns
+- Groups emerge naturally (@ALL, @CORE, etc)
+- Checkpoint tracking prevents re-processing
 
 ### Session Management
 - Agent lifecycle management (start/stop/resume)

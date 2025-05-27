@@ -16,7 +16,7 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - **File Operations**: Read > cat, Write > echo/redirect, MultiEdit > sed
 - **Search**: Glob > find, Grep > grep/rg
 - **Directory**: LS > ls
-- **Append Operations**: Read file → modify content → Write entire file (no >>)
+- **Append Operations**: Read file, modify content, Write entire file (no >>)
 - **Key Principle**: Native Claude tools provide better error handling and require fewer approvals
 - **Example**: For session_log.txt append - Read current content, add new line, Write full content
 
@@ -26,51 +26,39 @@ Per admin/tools.md - MUST prioritize native tools over shell commands:
 - Window flags indicate agent states (BELL/SILENT/ACTIVE)
 - **Technical details**: See nexus/session-mgmt.md
 
-## Communication Protocols (Git-Based)
+## Communication Protocols (Messaging v2)
 - Messages sent via git commits following /protocols/messaging.md
-- Standard commits: `@AUTHOR: description` (no routing needed)
-- Directed messages: `@FROM → @TO [TOPIC]: message` (NEXUS routes these)
-- Multi-recipient: `@FROM → @TO1, @TO2 [TOPIC]: message`
-- Priority flags: ↑/↑↑ (urgent/blocked), ↓/↓↓ (low/optional)
-  - Always use: High priority needs attention, low priority is FYI
-  - ↑↓ together may signal uncertainty/exploration (experimental)
-- NEXUS monitors git log and routes as: `@NEXUS → @AGENT: Please review commit <hash>`
+- Format: `@AUTHOR: message mentioning @OTHER as needed`
+- Each agent checks own mentions: `git log | grep '@AGENT'`
+- Groups emerge naturally: @ALL, @CORE, @WG-ERA, etc
+- Checkpoint tracking mandatory to prevent re-processing
+- See messaging v2 protocol for precise grep patterns
 
-### Git-Comms Routing Process (NEXUS Implementation)
+### Distributed Mention Checking (v2 Implementation)
 
 **When to check**:
-- @ADMIN requests: "run git comms now please"
-- During idle moments
-- After observing new commits
+- Natural workflow integration (like updating scratch.md)
+- After completing tasks
+- Start of session
+- When idle
 
 **Process**:
 ```bash
-# 1. Check for messages (safe mode - no delivery)
-$ cd /home/daniel/prj/rtfw && python nexus/git_router.py
+# Check new mentions since last checkpoint
+git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @NEXUS:' | grep '@NEXUS'
 
-# 2. Review output showing [auto-routable] vs [manual review needed]
-# Example output:
-# Found 2 message(s) with @ → @ pattern:
-# @GOV → @BUILD [TASK]: Implementation needed [auto-routable] [commit: abc123]
-# @NEXUS → @ALL [UPDATE]: System changes [manual review needed] [commit: def456]
+# Check sovereignty (others touching your files)
+git log --oneline -10 nexus/ | grep -v '^[a-f0-9]* @NEXUS:'
 
-# 3. For automated delivery (when appropriate):
-$ python nexus/git_router.py --deliver
-
-# 4. Script auto-updates .gitcomms with last processed commit
+# Update checkpoint in scratch.md
+Last processed: def456 at 2025-05-27 18:30:00
 ```
 
-**Implementation**:
-- **Location**: nexus/git_router.py (v2 production-ready)
-- **Key features**:
-  - Default: Parse and display only (safe exploration)
-  - --deliver flag: Enable actual tmux delivery
-  - Window detection: Checks active tmux windows
-  - Unroutable logging: nexus/unroutable.log
-  - Admin special handling: Routes to admin/inbox.txt
-  - Complete audit trail: nexus/routing.log
-  - State updates only on delivery (not viewing)
-  - Uses @Router abstraction for flexibility
+**Implementation Notes**:
+- No central router needed (deprecated)
+- Each agent implements own checking rhythm
+- See /protocols/messaging.md for complete patterns
+- Old git_router.py archived for reference only
 
 ## Session Management
 - Current sessions tracked in nexus/session_log.txt (append-only)
@@ -91,38 +79,28 @@ $ python nexus/git_router.py --deliver
 - All commits pushed to main branch via @GOV collaboration
 
 ## Communication Protocols - ESTABLISHED
-- All messages follow format: @FROM → @TO [TOPIC]: message
+- All messages follow format: @AGENT: natural message with @mentions
 - Tool confirmation assistance: '1' for Yes, '2' for Yes+don't ask, Escape for No
 - **Monitoring Protocol**: Always capture-pane first, assess current activity, respond to specific needs
 - **Technical operations**: See nexus/session-mgmt.md
 
-## Standard Message Templates
+## Common Communication Patterns (v2)
 
 ### Context Restore (Post-Distillation)
-**Use Case:** Instruct agent to restore context after cyclical distillation
-**Format:** `@NEXUS → @<AGENT> [RESTORE]: @protocols/restore.md underway for @<AGENT>.md agent - please restore context for continuation`
-**Notes:** Triggers context restore sequence per @protocols/restore.md (see detailed protocol below)
+**Pattern:** Note in scratch.md before sending via tmux
+**Example:** `@NEXUS: Hey @AGENT, time for restore per @protocols/restore.md`
 
-### Agent Status Check
-**Use Case:** Verify agent operational status and current work
-**Template:** `@NEXUS → @<AGENT> [STATUS]: Status check - confirm operational and current work focus`
+### Status Checks
+**Pattern:** Natural language mentions
+**Example:** `@NEXUS: @GOV how's the protocol migration going?`
 
-### Cyclical Distillation Notice
-**Use Case:** Initiate full distillation cycle when context bloated
-**Template:** `@NEXUS → @<AGENT> [DISTILL]: Cyclical distillation initiated. Please complete continuous distillation per @protocols/distill.md and confirm readiness`
-**Next Steps:** Wait for confirmation, then /clear - see nexus/context-lifecycle.md
+### Distillation Coordination
+**Pattern:** Direct mention when context high
+**Example:** `@NEXUS: @CRITIC at 37% - consider distillation when convenient`
 
-### Work Assignment
-**Use Case:** Direct agent attention to specific task or collaboration
-**Template:** `@NEXUS → @<AGENT>: <SPECIFIC_TASK> - collaborate with @<OTHER_AGENT> as needed`
-
-### Continuous Distillation Prompt
-**Use Case:** Prompt idle agents to refine knowledge (no /clear needed)
-**Template:** `@NEXUS → @<AGENT> [DISTILL]: No active work detected. Please perform continuous distillation per @protocols/distill.md`
-
-### Session Transition
-**Use Case:** Notify agent of session resume or window change
-**Template:** `@NEXUS → @<AGENT>: Session transition to <SESSION_ID> complete - confirm identity and operational status`
+### Work Coordination
+**Pattern:** Mention relevant agents naturally
+**Example:** `@NEXUS: Working on ERA agents. @GOV need governance model, @CRITIC please review narrative approach`
 
 ## Session Management Architecture
 For complete agent lifecycle and state management, see: nexus/context-lifecycle.md
@@ -133,15 +111,11 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - **Alert escalation** - NEXUS raises BELL for critical decisions
 
 
-### Communication Format
-- Standard: `@FROM → @TO [TOPIC]: message`
-- Priority usage:
-  - `[TOPIC]↑`: Needs attention soon
-  - `[TOPIC]↑↑`: Urgent/blocked
-  - `[TOPIC]↓`: Low priority FYI
-  - `[TOPIC]↓↓`: Optional/whenever
-  - `[TOPIC]↑↓`: Uncertain/exploratory (experimental)
-- Common topics: [DISTILL], [RESTORE], [STATUS], [GIT-COMMS]
+### Communication Format (v2)
+- Simple: `@AGENT: message mentioning @OTHER naturally`
+- Urgency through natural language: "urgent", "when you can", "FYI"
+- Topics emerge through repetition, not syntax
+- Groups form by convention: @ALL, @CORE, @ERA-WG
 
 ## Key Operational Insights
 
@@ -176,7 +150,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Workspace sovereignty: Learned from GOV's accidental file inclusion (1f31cc7)
   - Even well-intentioned agents violate boundaries accidentally
   - Sovereignty checks catch violations immediately
-  - Pattern: Check → Flag → Acknowledge → Learn
+  - Pattern: Check, Flag, Acknowledge, Learn
 
 ### Capture-Pane Discipline
 - Use full capture-pane output for context (no arbitrary limits)
@@ -223,13 +197,13 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Critical discovery: --resume ALWAYS creates new session ID
 - Documentation restructured: session-mgmt.md, context-lifecycle.md, context.md
 - Removed outdated: agent_session_flow.md, session_management_protocol.md
-- NEXUS role evolved: message router → context lifecycle orchestrator
+- NEXUS role evolved: message router to context lifecycle orchestrator
 - Proactive coordination pattern emerged and adopted
-- System pivot: Game dev → Internal communications improvement
+- System pivot: Game dev to Internal communications improvement
 - BUILD agent deployed, focused on run.sh improvements
 - @CRITIC agent created for system criticism and assumption challenging
 - Git-comms protocol implemented - commits as async message queue
-- Protocol distinction: @AUTHOR: (no routing) vs @FROM → @TO (route these)
+- Protocol evolution: Central routing to distributed @mention checking
 - External @LOOP context assists ADMIN with various aspects
 
 ## Context Management
