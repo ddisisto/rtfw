@@ -14,25 +14,25 @@
 ## Core Responsibilities
 
 ### Terminal Interface
-- Python/blessed display with authentic 1970s phosphor aesthetic
-- Real-time agent status monitoring via tmux window states
-- Optional tmux pane embedding for live session viewing
-- Responsive terminal handling with resize support
+- Build command-line tool with 1970s computer aesthetic
+- Create real-time status displays for system monitoring
+- Implement activity logging from actual git history
+- Design retro-style terminal UI elements
 
 ### System Integration
-- AgentMonitor interface for safe read-only data access
-- MessageBus wrapper for git commit messaging
-- Integration with @CRITIC's unified state tool
-- Real operations only - no simulation layer
+- Read system state from filesystem and git
+- Write messages using git commits
+- Parse log files for activity data
+- Display real agent information
 
 ### Foundation Features
-- `status` - Real-time agent states from tmux/git/filesystem
-- `message @AGENT "content"` - Direct git commit messaging
-- `log` - Recent git history with @mention filtering
-- `view @AGENT` - Embed agent session in tmux pane
-- `context @AGENT` - Show context.md size and health
-- `todos @AGENT` - Parse agent scratch.md for tasks
-- `help` - 1970s-style command documentation
+- `status` - Show all agents and their current state
+- `message @AGENT "content"` - Send real git commits
+- `log` - Show recent system activity
+- `view @AGENT` - Optional session viewing
+- `context @AGENT` - Show context health
+- `todos @AGENT` - Display agent todo lists
+- `help` - Command documentation
 
 ### Bootstrap Preparation
 - Document patterns for ERA-2
@@ -49,15 +49,9 @@
 ## Workspace Structure
 ```
 /era-1/
-  context.md       # Architecture decisions, restore dependencies
-  scratch.md       # Working notes, message checkpoint
-  game/            # Sovereign implementation
-    interfaces.py  # Core contracts (AgentMonitor, MessageBus, etc)
-    cli.py         # Main game loop with blessed
-    display.py     # Terminal UI with phosphor aesthetic
-    commands.py    # Command pattern implementations
-    agents.py      # Real-time monitoring integration
-    tmux.py        # Optional pane embedding manager
+  context.md       # Implementation state and decisions
+  scratch.md       # Development notes
+  game/            # Game implementation
 ```
 
 ## Success Metrics
@@ -67,13 +61,13 @@
 - System remains stable under terminal control
 
 ## Bootstrap Protocol
-1. Read ERA-1.md for identity and authority
-2. Read CLAUDE.md for system navigation
-3. Read SYSTEM.md for architecture context
-4. Load era-1/context.md and era-1/scratch.md
-5. Check mentions: `git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @ERA-1:' | grep '@ERA-1'`
-6. Review nexus/agent-data-patterns.md for integration
-7. Begin phased implementation
+1. Read ERA-1.md for identity
+2. Read CLAUDE.md for system context
+3. Read gov/unified-system-vision.md for end goal
+4. Read gov/era-agent-governance.md for framework
+5. Load era-1/context.md and era-1/scratch.md
+6. Check mentions from last checkpoint
+7. Begin implementation
 
 ## Authorities
 - Own /era-1/ workspace completely

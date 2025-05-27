@@ -36,10 +36,18 @@ Implement Foundation Era - a 1970s-style terminal interface for system monitorin
 - Phased implementation approach
 
 ## Core Interfaces Defined
-1. **AgentMonitor** - Real-time state extraction
-2. **MessageBus** - Git commit messaging
-3. **DisplayManager** - Terminal rendering abstraction
+1. **AgentMonitor** - Real-time state extraction from tmux/git/filesystem
+2. **MessageBus** - Git commit messaging wrapper
+3. **DisplayManager** - Terminal rendering with phosphor aesthetic
 4. **CommandParser** - 1970s-style command interpretation
+
+## Implementation Files Planned
+- `interfaces.py` - Core contracts (AgentMonitor, MessageBus, etc)
+- `cli.py` - Main game loop with blessed
+- `display.py` - Terminal UI with 1970s aesthetic
+- `commands.py` - Command pattern implementations
+- `agents.py` - Real-time monitoring integration
+- `tmux.py` - Optional pane embedding manager
 
 ## Dependencies
 - Python for implementation (era-appropriate choice)
