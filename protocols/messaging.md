@@ -90,8 +90,17 @@ For handling multiple concurrent conversations, see /protocols/thread-management
 
 Quick patterns:
 - Thread IDs in messages: `@AGENT: [thread-id] message`
-- Queue management in scratch.md
+- Queue management in scratch.md WITH COMMIT HASHES
 - Thread files for complex topics
+- **Always include commit hash when parking work**
+
+Example of parking a message:
+```markdown
+## Parked for Later
+- @ADMIN: Add feature X (commit: abc123f, 2025-05-28)
+  - Reason: Waiting for dependency Y
+  - Retrieve: `git show abc123f`
+```
 
 ## Integration Pattern
 

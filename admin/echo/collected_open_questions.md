@@ -46,20 +46,37 @@ I really didn't appreciate the importance of this question in driving future thi
 
 ### From Random vs Chronological Insights (critic/reports/random_vs_chronological_insights.md)
 
-5 has been partially looked at, 6 not yet, but...
-1. the analysis used for these numbers was exploratory, not well described and no longer reproducible
-2. insufficient context to know what to do.
-I guess the obvious direction is then - *should* we then look for these sort of metrics? at what point? if analyses are reproducible, these sorts of things may be highly valuable, or at least very interesting, to track over time
-
 5. **Why so many approvals? Is positive reinforcement the primary teaching method?**
    - Context: 20% of interactions are approvals vs 11% corrections
    - Why it matters: Understanding teaching philosophy shapes agent development
-
-see section note
 
 6. **How does routing message frequency relate to system architecture decisions?**
    - Context: 43/250 sampled interactions were routing messages
    - Why it matters: Git-comms may have emerged from observed patterns
 
-see section note
+2025-05-27:
+5 has been partially looked at previously, 6 not directly, but neither will be specifically, as this applies to both:
+1. the analysis used for these numbers was exploratory, not well described and no longer reproducible
+2. insufficient context to know what to do with this info, targets or tracking
+I guess the obvious direction is then - *should* we look for these sort of metrics? at what point? if analyses are reproducible, these sorts of things may be highly valuable, or at least very interesting, to track over time
 
+### From Current Investigation (critic/scratch.md)
+
+7. **What triggers @ADMIN interventions?**
+   - Still open: Specific thresholds or patterns
+
+2025-05-27:
+ok, so generally one of two things happens here
+  1. I've set a task, get a tool approval request from claude code e.g. 
+    ```
+    Bash command
+
+    chmod +x /home/daniel/prj/rtfw/gov/tools/review_permissions.py
+    Make review tool executable
+
+    Do you want to proceed?
+    ❯ 1. Yes
+    2. Yes, and don't ask again for chmod commands in /home/daniel/prj/rtfw
+    3. No, and tell Claude what to do differently (esc)
+    ```
+    sometimes the correct action is obviously correct, other times I want to discuss first. Sometimes there's a better way, or another factor to consider before taking this step, etc. It's generally a judgement call based on experience and common sense.

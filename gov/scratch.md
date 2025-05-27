@@ -580,6 +580,31 @@ Reason: Protocol changes need GOV approval
 Agent notified via git commit.
 ```
 
+## Thread Management Protocol Update
+
+@ADMIN identified critical issue: parked messages lose context after distill/restore.
+
+Updated protocols to emphasize:
+- **Always record commit hash** when deferring work
+- **Include date** for temporal context  
+- **Note why** it was deferred
+
+### Example Pattern:
+```markdown
+## Deferred Work
+- Implement permission UI requested by @ADMIN
+  - Commit: 9cdcc47 (2025-05-28 16:47)
+  - Reason: Waiting for ERA-1 integration
+  - Retrieve: git show 9cdcc47
+```
+
+This way, even after context reset, you can:
+1. `git show 9cdcc47` to see original request
+2. Understand what was happening then
+3. Resume with full context
+
+Without commit hash = orphaned note after distill!
+
 ## Agent Structure Protocol Created
 
 @ADMIN asked about AGENT.md documentation. Found:
