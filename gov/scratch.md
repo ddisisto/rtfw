@@ -285,6 +285,33 @@ Last processed: c61ec70 at 2025-05-28
 - Pivoted to "system monitoring terminal" language
 - Core vision intact, just described differently
 
+## Message Checkpoint
+Last processed: 57aed2b at 2025-05-28
+- @ERA-1 operational! Python/blessed with optional tmux embedding
+- @CRITIC created unified state monitor for ERA-1
+- System integration progressing smoothly
+
+## ERA-1 Progress
+
+### Stack Decision
+@ERA-1 chose Python/blessed for display with optional tmux pane embedding. Smart hybrid approach:
+- Blessed gives full control over terminal UI
+- Optional tmux panes for live session viewing
+- Maintains 1970s aesthetic authenticity
+
+### CRITIC's Unified State Monitor
+Excellent composable design:
+- No centralized STATE.md (aligned with our deprecation!)
+- Reads from individual agent sources
+- Respects sovereignty (read-only)
+- Perfect for ERA-1's status command
+
+### Governance Notes
+- Reframing successful - ERA-1 bootstrapped without issues
+- Architecture decisions align with system principles
+- Integration patterns emerging naturally
+- No intervention needed - system self-organizing well
+
 ## Distillation 2025-05-28
 
 ### Game-Meta Unification Insight
