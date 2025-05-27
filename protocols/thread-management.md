@@ -35,6 +35,16 @@ agent/
     2025-05-28-messaging-v2.md
 ```
 
+**Important**: When using file-based threads, maintain an index in your main scratch.md and/or context.md:
+
+```markdown
+## Active Thread Files
+- [2025-05-28-era1-init](threads/2025-05-28-era1-init.md) - ERA-1 bootstrap and architecture
+- [2025-05-28-messaging-v2](threads/2025-05-28-messaging-v2.md) - Migration tracking
+```
+
+This ensures thread discovery during restore and provides quick context for what each thread contains.
+
 ### Thread Lifecycle
 
 1. **Creation**: When topic requires sustained attention
@@ -96,6 +106,7 @@ Example: NEXUS managing sessions, routing, and monitoring might spawn MONITOR ag
 - Active thread list in context.md
 - Thread files part of restore dependencies
 - Quick thread status check post-restore
+- Thread file links ensure discoverability
 
 ## Best Practices
 
