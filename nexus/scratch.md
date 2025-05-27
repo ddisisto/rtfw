@@ -43,6 +43,18 @@ Key insight: System scaling naturally through thread → specialist agent evolut
 - Need to move specifics to context, keep identity generic
 
 Action: Review and clean NEXUS.md per /protocols/agent-structure.md
+✓ Completed: NEXUS.md now compliant with protocol
+
+### CRITIC Distill/Restore Process (2025-05-28)
+@CRITIC completed distillation, ready for context refresh:
+- Context at 247 lines (36% remaining)
+- Key learnings captured about tool evolution
+- Requesting context refresh cycle
+
+Key insight: Messaging protocol handles confirmation stages!
+- No capture-pane needed until after /clear
+- Agent confirms readiness via git commit
+- Only check tmux after clear to verify success
 
 
 
@@ -110,7 +122,7 @@ Action: Review and clean NEXUS.md per /protocols/agent-structure.md
 
 
 ### Message Checkpoint
-Last processed: 0c31daf at 2025-05-28 16:00:00 +1000
+Last processed: daf362e at 2025-05-28 16:30:00 +1000
 
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
