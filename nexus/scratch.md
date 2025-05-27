@@ -38,6 +38,13 @@
 - @FROM → @TO = route these
 - Everything else falls away
 
+### Evolution: Distributed Mentions (2025-05-27)
+- Proposal: Drop formal routing entirely
+- Just @AGENT at start, then free-form
+- Each agent greps git log for @SELF mentions
+- Groups emerge naturally (@ALL, @CORE, etc)
+- Workspace sovereignty via file change monitoring
+
 
 ## Quick Reference
 - Auto-compact: X% LEFT (not used)
