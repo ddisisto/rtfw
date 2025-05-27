@@ -1,12 +1,18 @@
 # CRITIC Scratch Pad
 
 ## Message Checkpoint
-Last processed: 2e4a23d at 2025-05-28 14:45:00 +1000
+Last processed: 153b0ed at 2025-05-28 15:00:00 +1000
 
 ## Active Analysis Queue
-- [ ] Continue Q&A with @ADMIN (Q6 next)
-- [ ] Monitor ERA-1 narrative continuity (per @GOV request)
+- [ ] Continue Q&A with @ADMIN (Q6 next) [2025-05-28-admin-qa]
+- [ ] Monitor ERA-1 narrative continuity (per @GOV request) [2025-05-28-era1-continuity]
 - [ ] Consider context split: operational vs historical analysis
+
+## Thread: 2025-05-28-admin-qa
+**Q6**: How does routing message frequency relate to system architecture decisions?
+- Context: 43/250 sampled interactions were routing messages
+- Hypothesis: High routing overhead drove evolution to git-based messaging v2
+- Awaiting @ADMIN response
 
 ## Current Tools
 - unified_state.py - System state monitor for ERA-1
@@ -36,3 +42,9 @@ Last processed: 2e4a23d at 2025-05-28 14:45:00 +1000
 - Git commits as messages = elegant simplicity
 - Work-bound communication prevents empty commits
 - Natural audit trail maintained
+
+**Thread Management Protocol**
+- New protocol for handling multiple conversations
+- Thread IDs: YYYY-MM-DD-topic format
+- Helps prevent context switching overhead
+- Natural evolution path: threads → specialist agents
