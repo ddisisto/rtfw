@@ -155,7 +155,7 @@
 - Git as infrastructure (commits, logs, everything)
 
 ### Message Checkpoint
-Last processed: cc8ee56 at 2025-05-27 19:09:23 +1000
+Last processed: 229ac1a at 2025-05-28 13:23:30 +1000
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
 - Sovereignty intact
