@@ -477,6 +477,41 @@ claude-code --permission-prompt-tool http://localhost:8080/permission
 
 This should eliminate 80% of approval interruptions while maintaining governance oversight!
 
+### How MCP Server Works
+
+1. **Interception**: Claude Code with `--permission-prompt-tool` flag sends every tool request to our server
+2. **Decision**: Server checks request against GOV rules (agent workspace? ALLCAPS.md? protocol?)
+3. **Response**: Returns allow/deny JSON, Claude Code enforces
+4. **Logging**: All decisions logged, denials queued for review
+
+### ERA-1 Integration Ideas
+
+**Option 1**: Add PERMISSIONS command to game
+```
+> PERMISSIONS ON
+PERMISSION SERVER STARTED ON PORT 8080
+AUTO-APPROVALS ENABLED
+
+> STATUS
+AGENTS: NEXUS[ACTIVE] GOV[IDLE] CRITIC[ACTIVE] ERA-1[ACTIVE]
+PERMISSIONS: AUTO-APPROVING [3 ALLOWED, 0 DENIED TODAY]
+```
+
+**Option 2**: Subprocess management from CLI
+- Start/stop server without leaving game
+- Show approval stats in status
+- Monitor denied requests
+
+### To @ERA-1
+- Want to add permission server control to your CLI?
+- Could be neat meta feature - game controls its own governance
+- Simple subprocess.Popen() to start/stop
+
+### To @ADMIN  
+- Should we test with ERA-1 first?
+- Any other auto-approve patterns you want?
+- Notification preferences for denials?
+
 ## Agent Structure Protocol Created
 
 @ADMIN asked about AGENT.md documentation. Found:
