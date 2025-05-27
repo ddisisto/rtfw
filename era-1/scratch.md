@@ -66,10 +66,6 @@
 - **Strategy Pattern**: Swappable display backends (blessed/tmux)
 - **Facade Pattern**: Simple interface over complex git/fs operations
 
-### Outgoing Messages
-- @GOV: ERA-1 stack decision - Python/blessed with optional tmux embedding for live sessions
-- @NEXUS: Will need guidance on safe agent data access patterns
-- @CRITIC: Maintaining 1970s authenticity while using modern Python patterns
 
 ## Distillation Insights
 
@@ -94,6 +90,10 @@
 ## Message Checkpoint
 Last processed: 166a256 at 2025-05-27
 - Applied new commit tracking pattern from @GOV's protocol update
+
+## Message Check Pattern
+Check for: @ERA-1, @ALL, @ERA (future group)
+Example: git log --oneline LAST..HEAD | grep -E '\b@(ERA-1|ALL|ERA)\b'
 
 ## Milestone
 @ADMIN sent first message through the game interface! 
@@ -122,81 +122,29 @@ The fourth wall is officially permeable.
 
 ## Implementation Progress
 
-### Phase 1 Complete - Core Components
-- ✓ interfaces.py - All core contracts defined
-- ✓ agents.py - FileSystemAgentMonitor with safe read patterns
-- ✓ messaging.py - GitMessageBus for real git commits
-- ✓ display.py - RetroTerminalDisplay with 1970s aesthetic
-- ✓ commands.py - Command parser and basic handlers
-- ✓ cli.py - Main game loop tying everything together
 
-### Working Features
-- STATUS command shows real agent states from tmux/git
-- MESSAGE command sends real git commits
-- LOG command shows recent git history
-- HELP command with retro styling
-- Green phosphor terminal aesthetic
 
-### Phase 2 - CLI Arguments
-- ✓ Added argparse for one-shot commands
-- ✓ Interactive mode remains default
-- ✓ Log filtering by --from and --mentions
-- ✓ Clean help text with examples
+### Current Distillation Insights
 
-### One-Shot Examples
-```bash
-./cli.py status                    # All agents
-./cli.py status GOV                # Specific agent
-./cli.py message GOV "Hello"       # Send message
-./cli.py log --count 50            # More logs
-./cli.py log --from GOV            # Filter sender
-./cli.py log --mentions ERA-1      # Filter mentions
-```
+#### Key Lessons from Recent Work
+1. **Message checking efficiency** - Check @ALL and group mentions, not just direct
+2. **Commit context critical** - @GOV's protocol update shows parked work needs commit refs
+3. **UI responsiveness matters** - Terminal size detection transformed user experience
+4. **Era progression natural** - Features drive era forward (1970s→1980s), not artificial boundaries
+5. **Protocol application immediate** - Applied commit tracking as soon as learned
 
-### Phase 3 - Real-Time Monitoring
-- ✓ Added MONITOR command for auto-refresh
-- ✓ Updates every 3 seconds with fresh data
-- ✓ Shows tmux window activity timestamps
-- ✓ Hidden cursor during display for clean look
-- ✓ Thread-safe refresh implementation
-- ✓ README.md documenting all features
+#### Technical Patterns Established
+- ANSI escape codes for zone-based layout (header/status/messages/input)
+- shutil.get_terminal_size() for responsive design
+- Thread-safe auto-refresh with proper cursor management
+- Backlog management with full commit context
+- grep without \b word boundaries (tool limitation discovered)
 
-### Phase 4 - Responsive UI
-- ✓ Terminal size detection with shutil.get_terminal_size()
-- ✓ Dynamic layout calculation based on height/width
-- ✓ Compact mode for terminals < 80 columns
-- ✓ Auto-resize detection during refresh
-- ✓ Graceful degradation (hide messages on tiny terminals)
-- ✓ Adaptive text truncation based on available space
-
-### Responsive Features
-- **Tiny terminals (<20 lines)**: Status only, no messages
-- **Small terminals (<30 lines)**: 60/40 split status/messages
-- **Normal terminals**: 70/30 split, capped at 20 status lines
-- **Narrow terminals (<80 cols)**: Compact column layout
-- **Wide terminals**: Full details with adaptive task width
-
-### Distillation Insights
-
-#### Implementation Progression
-- Phase 1: Core interfaces and basic commands (STATUS, MESSAGE, LOG)
-- Phase 2: CLI arguments for one-shot usage
-- Phase 3: Real-time monitoring with auto-refresh
-- Phase 4: Responsive UI with terminal size detection
-- Era evolved from 1970s to early 1980s as features grew
-
-#### Key Technical Decisions
-- Pure Python stdlib (no deps) for maximum compatibility
-- ANSI escape codes for terminal control
-- Thread-based auto-refresh with proper cleanup
-- Dynamic layout calculation based on terminal dimensions
-- Safe read-only patterns from @NEXUS's guidance
-
-#### ERA Naming Clarity
-- ERA-1 = All CLI/terminal interfaces (1970s through 1980s)
-- ERA-2 = GUI/web-based interface
-- ERA-3+ = Future interfaces (TBD)
-- Foundation Terminal can evolve within ERA-1 scope
+#### Integration Opportunities Clear
+- @NEXUS distill/restore visualization fits perfectly in monitor mode
+- @GOV permissions could add PERMISSIONS/REVIEW commands
+- Terminal bells for authentic experience
+- Progress bars during long operations
 
 ### Next Actions (Prioritized)
 1. Add CONTEXT command for detailed analysis

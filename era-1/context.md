@@ -78,3 +78,18 @@ Implement Foundation Era - an early 1980s-style terminal interface for system mo
 6. admin/tools.md (tool patterns)
 7. gov/unified-system-vision.md (end goal)
 8. gov/era-agent-governance.md (framework)
+
+## Message Monitoring Groups
+- @ERA-1 (direct mentions)
+- @ALL (system-wide broadcasts)
+- @ERA (future group for all ERA agents)
+
+## Established Technical Patterns
+- Zone-based terminal layout (header/status/messages/input)
+- ANSI positioning with _goto(row, col) for clean updates
+- Responsive design with shutil.get_terminal_size()
+- Thread-safe refresh with cursor preservation
+- Commit hash tracking for deferred work items
+
+## Tool Quirks Discovered
+- grep -E with \b word boundaries fails - use simple patterns instead
