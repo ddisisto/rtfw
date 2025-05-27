@@ -69,18 +69,19 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
    - Direct tool usage over abstraction layers
 
 ## System Understanding (Distilled)
-- Three-way split: CLAUDE.md (philosophy) + SYSTEM.md (architecture) + STATUS.md (snapshot)
+- Three-way split: CLAUDE.md (philosophy) + SYSTEM.md (architecture) + ~~STATUS.md~~ (deprecated)
 - Git-comms: Natural evolution from complex JSONL to simple git commits
-- "Imprecise" language evolved through usage, not sloppiness - "contextual super-position"
-- Many apparent assumptions are battle-tested decisions
-- System matured through practice over ~30 governance evolution points
-- Tension between flexibility and consistency is conscious choice
+- "Contextual super-position" - terms intentionally undefined for agent interpretation
+- Many apparent assumptions are battle-tested decisions from ~30 governance evolution points
+- Tension between flexibility and consistency is conscious design choice
 - Agent sovereignty requires interpretive freedom
 - Some "inefficiencies" enable resilience
 - Simplification through removal preferred over feature addition
-- Coherence = functional continuity across restore cycles ("vibe-check" method)
+- Coherence = functional continuity across restore cycles ("vibe-check" method per @ADMIN)
 - Git commits as coherence checkpoints, not just version control
 - Approval culture (20%) includes routine permissions + genuine encouragement
+- Thread management enables scaling: threads → specialist agents at 5+ sustained threads
+- Session self-archaeology possible - can query own past with session_query.py
 
 ## Required Reading Dependencies (Restore Order)
 1. @CRITIC.md - Core identity and methods
