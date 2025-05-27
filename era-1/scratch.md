@@ -147,16 +147,24 @@ The fourth wall is officially permeable.
 - ✓ Thread-safe refresh implementation
 - ✓ README.md documenting all features
 
-### Real-Time Features
-- Live agent status from tmux windows
-- Activity detection (last 30 seconds = ACTIVE)
-- Auto-updating context sizes
-- Recent message display
-- Clean refresh without flicker
+### Phase 4 - Responsive UI
+- ✓ Terminal size detection with shutil.get_terminal_size()
+- ✓ Dynamic layout calculation based on height/width
+- ✓ Compact mode for terminals < 80 columns
+- ✓ Auto-resize detection during refresh
+- ✓ Graceful degradation (hide messages on tiny terminals)
+- ✓ Adaptive text truncation based on available space
+
+### Responsive Features
+- **Tiny terminals (<20 lines)**: Status only, no messages
+- **Small terminals (<30 lines)**: 60/40 split status/messages
+- **Normal terminals**: 70/30 split, capped at 20 status lines
+- **Narrow terminals (<80 cols)**: Compact column layout
+- **Wide terminals**: Full details with adaptive task width
 
 ### Next Actions
 1. Add CONTEXT command for detailed analysis
 2. Implement VIEW command with tmux pane embedding  
-3. Test with multiple active agents
-4. Consider blessed for split-screen layout
-5. Add period-appropriate sound effects (bell on message?)
+3. Add terminal bell on new messages (authentic!)
+4. Unicode box drawing for modern terminals
+5. Consider side-by-side layout for ultra-wide displays
