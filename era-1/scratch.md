@@ -2,8 +2,19 @@
 
 ## Current Work Status
 - TUI v2 implementation complete and functional
-- Context health: 33.0% (plenty of room for features)
+- Context health: 46.5% (still good headroom)
 - Active thread: TUI feature additions
+
+## Path Fix Applied
+- Changed sessions path from /nexus/sessions to /_sessions
+- Fixed project_root calculation (was one level too high)
+- UI now starts successfully with correct paths
+
+## Session Discovery Clarification
+- current_sessions.json is LEGACY - not used by engine v2
+- Engine relies on symlinks: *_current.jsonl files
+- Symlinks exist and point to correct session files
+- UI shows agents in mock mode, engine integration next
 
 ## Next Features
 - Git activity integration for real commit history

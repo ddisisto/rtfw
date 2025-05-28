@@ -36,8 +36,8 @@ class FoundationTerminal(App):
     
     def __init__(self):
         super().__init__()
-        self.project_root = Path(__file__).parent.parent.parent.parent.parent
-        self.sessions_dir = self.project_root / "nexus" / "sessions"
+        self.project_root = Path(__file__).parent.parent.parent.parent
+        self.sessions_dir = self.project_root / "_sessions"
         self.engine = None
         self.refresh_timer = None
         
