@@ -29,3 +29,13 @@
 ## Message Checkpoint
 Last processed: 9a380e1 at 2025-05-29
 
+## Vision Notes (from deprecated unified-system-vision.md)
+Key concepts to preserve:
+- Foundation Era = Terminal-based command interface (ERA-1 scope)
+- Game commands perform real operations (status, message, log, etc)
+- Terminal aesthetic hiding sophisticated orchestration
+- Game interface replaces need for direct git/file access
+- Each era builds foundation for next
+
+Note: Full vision doc being deprecated - conflicts with current lifecycle protocol
+

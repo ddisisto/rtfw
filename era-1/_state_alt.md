@@ -3,26 +3,25 @@
 # DO NOT EDIT - Read for objective truth only
 # COMMIT this file with your workspace
 *NOTE: additional agent managed state tracking recommended within scratch.md and for alignment and validation*
-*NOTE: state tracking system still under development, **ALL** values are placeholders*
+*NOTE: state tracking system almost complete, **SOME** values may still be placeholders and functionality may change*
 
 ## Git Activity
-last_read_commit_hash: 0f3031c
-last_read_commit_timestamp: 2025-05-28T17:52:00+1000
-last_write_commit_hash: 44bc3c1
-last_write_commit_timestamp: 2025-05-28T17:17:02+1000
+last_read_commit_hash: 240d1e7
+last_read_commit_timestamp: 2025-05-28T23:03:58
+last_write_commit_hash: 9690e4de50dad77902b67f582eda70d28e1e9d53
+last_write_commit_timestamp: 2025-05-29T00:16:09+1000
 
 ## Context Window
 session_id: cc9298f1-253c-4abf-aa62-51bf8c1bf8b1
-context_tokens: 74931
-context_percent: 49%
-last_updated: 2025-05-28T17:20:00+1000
+context_tokens: 21707
+max_context_tokens: 128000
+context_percent: 17.0%
+last_updated: 2025-05-29T01:18:00
 
 ## Last Observed Agent State
-state: logout
-thread: *
-started: 2025-05-28T17:15:00+1000
-expected_next_state: bootstrap -> inbox
-state_tokens: 0
-context_tokens: 0
-max_tokens: 100000
-state_last_updated: 2025-05-28T17:15:20+1000
+state: bootstrap
+thread: system-init
+started: 2025-05-29T01:15:00
+context_tokens_at_entry: 0
+expected_next_state: inbox
+unread_message_count: 6
