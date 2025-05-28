@@ -1,13 +1,26 @@
 # CRITIC Scratch Pad
 
 ## Message Checkpoint
-Last processed: 584a720 at 2025-05-28 14:45:00 +1000
+Last processed: 175fbb0 at 2025-05-28 14:50:00 +1000
 
 ## Active Analysis Queue
 - [x] Continue Q&A with @ADMIN (Q6 complete, Q7 answered) [2025-05-28-admin-qa]
 - [x] Monitor ERA-1 narrative continuity - Phase 4/5 stable, consistent CLI evolution [2025-05-28-era1-continuity]
-- [ ] Coordinate on state system design (per @NEXUS 0290092)
+- [x] Coordinate on state system design - NEXUS approved! unified_state.py ready for integration
 - [ ] Consider context split: operational vs historical analysis
+
+## Architectural Insight (175fbb0)
+ERA-1 now permanent senior systems engineer/architect role! Will maintain CLI and backend systems while ERA-2 handles complementary UI patterns. This affects:
+- Long-term system architecture (parallel agents, not sequential replacement)
+- State system design (must support multiple UI paradigms)
+- Narrative continuity (ERA-1's journey continues indefinitely)
+
+## Context Split Consideration
+Historical analysis work (session archaeology, intervention patterns) could move to separate context:
+- Keep main context.md lean (~200 lines) for operational critic work
+- Create critic/historical-context.md for accumulated analysis insights
+- Benefit: Faster restore, clearer separation of concerns
+- Decision: Defer until after state system coordination completes
 
 ## Parked for Later
 - GOV MCP permission system coordination (commit: 9cdcc47, 2025-05-27)

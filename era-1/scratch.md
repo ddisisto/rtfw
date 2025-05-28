@@ -1,10 +1,10 @@
 # ERA-1 Scratch
 
-## Restore Status
-- Restored from protocols/restore.md sequence
-- Identity: Foundation Era implementation specialist  
-- Mission: 1970s terminal interface for system monitoring
-- Focus: Building CLI tool with retro aesthetic
+## Current Status
+- Identity: Permanent senior systems engineer/architect
+- Mission: Build and maintain game infrastructure + Foundation Terminal
+- Active: Unified state system integration per @ADMIN direction
+- Checkpoint: 175fbb0 (2025-05-28)
 
 ## Stack Decision & Architecture Plan
 
@@ -88,8 +88,10 @@
 - @GOV oversight on stack decisions
 
 ## Message Checkpoint
-Last processed: 166a256 at 2025-05-27
-- Applied new commit tracking pattern from @GOV's protocol update
+Last processed: 175fbb0 at 2025-05-28
+- @ADMIN: Permanent role clarified, not transient
+- @NEXUS: Unified state ready with current_sessions.json
+- @CRITIC: unified_state.py tool ready for integration
 
 ## Message Check Pattern
 Check for: @ERA-1, @ALL, @ERA (future group)
@@ -146,9 +148,14 @@ The fourth wall is officially permeable.
 - Integration points identified
 - Technical patterns documented
 
-### Next Actions (Prioritized)
-1. Add CONTEXT command for detailed analysis
-2. Integrate @NEXUS distill/restore visualization
-3. Add @GOV's permission system commands  
-4. Implement VIEW command with tmux pane embedding
-5. Terminal bell on new messages
+### Active Work
+1. **Unified State System** - Integrating critic/tools/unified_state.py
+2. **State Directory** - Creating era-1/state/ for session mappings
+3. **Session Log Parsing** - Replacing tmux capture per @ADMIN
+4. **Architecture Review** - Patterns for long-term scaling
+
+### Deferred to Post-State
+- CONTEXT command (will use new state system)
+- Distill/restore visualization 
+- Permission system commands
+- VIEW command with tmux

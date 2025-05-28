@@ -96,28 +96,14 @@ class ERA1Terminal:
         # Create command object
         command = Command(name=cmd_name.upper(), args=args, raw=" ".join([cmd_name] + args))
         
-        # Simple output for one-shot mode
-        if cmd_name == "status" and not args:
-            # Full status - show all agents
-            agents = []
-            for agent_name in self.monitor.get_all_agents():
-                agent = self.monitor.get_agent_status(agent_name)
-                agents.append(agent)
-            
-            # Simple text output
-            print("AGENT      STATUS     CONTEXT    LAST SEEN")
-            print("-" * 50)
-            for agent in agents:
-                print(f"{agent.name:<10} {agent.status.value:<10} {agent.context_percent:>3}%      {agent.last_activity}")
+        # Execute command through handler
+        if command.name in self.handlers:
+            output = self.handlers[command.name].execute(command)
+            if output:
+                print(output)
         else:
-            # Execute normally
-            if command.name in self.handlers:
-                output = self.handlers[command.name].execute(command)
-                if output:
-                    print(output)
-            else:
-                print(f"Unknown command: {cmd_name}")
-                sys.exit(1)
+            print(f"Unknown command: {cmd_name}")
+            sys.exit(1)
     
     def _execute_command(self, command: Command):
         """Execute a parsed command"""

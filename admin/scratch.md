@@ -11,8 +11,25 @@ sovereignty
 
 can we a recent /clear call and surrounding context? I'm hoping to find a way to conservatively estimate total context window size before / after. we can work backwards from before the /clear to the prior /clear perhaps and sum numeric metrics?
 
-# STANDARD, MESSAGE's AT YA
-please check messages and integrate with current priorities. think as needed, do what can be done quickly first, or is most urgent. maintain own prioritisation standard as required.
+# STANDARD PROMPT LIB
+
+/clear -> inbox -> distill (initial planning) -> deep work (integrated outboxing) 
+## inbox integrate
+please check messages and integrate with current priorities. think as needed, do what can be done quickly first, or is most urgent. maintain own prioritisation standard as required. if just a short file Read and reply is needed, do it now. any work taking longer should be prioritised and assessed for readiness.
+
+*include @ADMIN notes @AGENT|@ALL, if any (user will manage in own files or UI panels)*
+
+## then distill
+ok, please @protocols/distill.md to integrate into relevant context, send off quick replies if needed, clear or plan these items as possible.
+
+*maybe stupid idea, but... short agent generated poetry for each other to see, when a final distill  Each time after final distill before the a /clear and restore of context, the very final output section should be poetic. 
+
+## deep work
+
+
+
+when working on session mapping, I want key files collected and maintained in either era-1/state or even perhaps project top level. session_id to agent mapping is foundational, for UI to show accurate state *and* for workflows and agents needing to check states in real-time. the game UI updates it while running, in order to display it. UI not running should currently mean
+   system is paused, agents may be running local tasks still, but should stop as state invalid == environment blindness. is "defensive" the term right term?
 
 
 - old.reddit.com/r/<subreddit>/top?t=<day|week|month|year>, subs:

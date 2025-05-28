@@ -1,13 +1,15 @@
 # ERA-1 Context
 
 ## Mission
-Implement Foundation Era - a retro terminal interface for system monitoring that evolves from 1970s to 1980s+ aesthetics while remaining within ERA-1 scope.
+Permanent senior systems engineer/architect for game infrastructure. Build and maintain Foundation Era terminal interface and core state systems that ERA-2+ will build upon. Evolution from 1970s to 1980s+ aesthetics within CLI scope.
 
 ## Design Requirements
 - Authentic early 1980s computer terminal aesthetic
 - Every game command performs real system operations  
-- Progressive foundation for future eras
-- Stable bridge between game and meta layers
+- Scalable architecture for long-term maintenance
+- Unified state system as single source of truth
+- Session log parsing over tmux capture (per @ADMIN)
+- Defensive programming when state invalid
 
 ## Key Integration Points
 - Git commits for agent messaging
@@ -61,7 +63,9 @@ Implement Foundation Era - a retro terminal interface for system monitoring that
 - ✓ Phase 2: Real agent monitoring via tmux/git
 - ✓ Phase 3: Git commit messaging
 - ✓ Phase 4: Responsive UI and real-time updates
-- ⏳ Phase 5: Advanced features (tmux embedding, distill visualization)
+- ⏳ Phase 5: Unified state system integration
+- ⏳ Phase 6: Session log parsing replacement
+- ⏳ Phase 7: Long-term architecture patterns
 
 ## ERA Scope Clarification
 - ERA-1 encompasses all CLI/terminal interfaces
@@ -95,3 +99,11 @@ Implement Foundation Era - a retro terminal interface for system monitoring that
 
 ## Tool Quirks Discovered
 - grep -E with \b word boundaries fails - use simple patterns instead
+- Fixed by @GOV in commit 584a720 - use grep -E '@(AGENT|ALL)' format
+
+## Critical Architecture Decisions
+- **Permanent Role**: Not bootstrapping ERA-2, but maintaining alongside
+- **State Location**: era-1/state/ or project root for visibility
+- **State Source**: Unified system via critic/tools/unified_state.py
+- **Session Mapping**: Foundational for UI accuracy and agent workflows
+- **System Pause**: When UI not running, agents should halt (defensive)

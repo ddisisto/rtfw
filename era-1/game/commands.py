@@ -3,8 +3,11 @@ Command parsing and implementation for 1970s-style interface
 """
 
 import re
+import subprocess
+import json
 from typing import Dict, List, Optional
 from datetime import datetime
+from pathlib import Path
 
 from interfaces import Command, CommandParser, CommandHandler
 from agents import FileSystemAgentMonitor
@@ -80,27 +83,79 @@ class RetroCommandParser(CommandParser):
 
 
 class StatusCommand(CommandHandler):
-    """Handle STATUS command"""
+    """Handle STATUS command using unified state system"""
     
     def __init__(self, monitor: FileSystemAgentMonitor):
         self.monitor = monitor
+        self.unified_state_path = Path("../../../critic/tools/unified_state.py")
     
     def execute(self, command: Command) -> str:
-        """Execute STATUS [agent]"""
-        if command.args:
-            # Status for specific agent
-            agent_name = command.args[0]
-            try:
-                agent = self.monitor.get_agent_status(agent_name)
-                return self._format_single_status(agent)
-            except Exception as e:
-                return f"ERROR: Cannot retrieve status for {agent_name}"
-        else:
-            # Status for all agents - handled by display manager
-            return ""  # Display manager will show full panel
+        """Execute STATUS [agent] using unified state"""
+        try:
+            # Call unified state tool
+            result = subprocess.run(
+                ["python3", str(self.unified_state_path)],
+                capture_output=True,
+                text=True,
+                cwd=Path(__file__).parent
+            )
+            
+            if result.returncode != 0:
+                return f"ERROR: State system failure - {result.stderr}"
+            
+            # Parse the JSON output (saved to system_state.json)
+            state_file = self.project_root / "system_state.json"
+            if state_file.exists():
+                with open(state_file) as f:
+                    state = json.load(f)
+                
+                if command.args:
+                    # Status for specific agent
+                    agent_name = command.args[0].lower()
+                    if agent_name in state["agents"]:
+                        return self._format_single_status(state["agents"][agent_name])
+                    else:
+                        return f"ERROR: Unknown agent {agent_name}"
+                else:
+                    # Return formatted output for all agents
+                    return result.stdout
+            else:
+                return "ERROR: State data unavailable"
+                
+        except Exception as e:
+            # Fallback to old method if unified state fails
+            if command.args:
+                agent_name = command.args[0]
+                try:
+                    agent = self.monitor.get_agent_status(agent_name)
+                    return self._format_single_status_legacy(agent)
+                except Exception as e:
+                    return f"ERROR: Cannot retrieve status for {agent_name}"
+            else:
+                return ""  # Display manager will show full panel
     
-    def _format_single_status(self, agent) -> str:
-        """Format detailed status for single agent"""
+    def _format_single_status(self, agent_state) -> str:
+        """Format detailed status for single agent from unified state"""
+        status = "ACTIVE" if agent_state["active"] else "INACTIVE"
+        lines = [
+            f"AGENT: {agent_state['name']}",
+            f"STATUS: {status}",
+            f"CONTEXT: {agent_state['context_lines']} lines",
+        ]
+        
+        if agent_state["last_commit"]:
+            lines.append(f"LAST COMMIT: {agent_state['last_commit']['hash'][:7]} - {agent_state['last_commit']['message'][:50]}")
+        
+        if agent_state["checkpoint"]:
+            lines.append(f"CHECKPOINT: {agent_state['checkpoint']}")
+            
+        if agent_state["session_id"]:
+            lines.append(f"SESSION: {agent_state['session_id']}")
+        
+        return "\n".join(lines)
+    
+    def _format_single_status_legacy(self, agent) -> str:
+        """Legacy format for fallback"""
         lines = [
             f"AGENT: {agent.name}",
             f"STATUS: {agent.status.value}",
