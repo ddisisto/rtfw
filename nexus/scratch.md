@@ -93,7 +93,7 @@
 
 
 ### Message Checkpoint
-Last processed: daf362e at 2025-05-28 16:30:00 +1000
+Last processed: b2b327e at 2025-05-28 21:08:00 +1100
 
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
