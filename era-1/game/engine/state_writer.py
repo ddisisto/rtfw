@@ -142,6 +142,8 @@ class StateWriter:
                     # Remove % sign and parse
                     percent_str = value.rstrip('%')
                     state.context_percent = float(percent_str) if percent_str else None
+                elif key == 'max_context_tokens':
+                    state.max_context_tokens = int(value) if value.isdigit() else 128000
                 elif key == 'last_updated':
                     state.last_updated = self._parse_timestamp(value)
                 elif key == 'state':
@@ -161,6 +163,8 @@ class StateWriter:
                     state.state_tokens = int(value) if value.isdigit() else 0
                 elif key == 'max_tokens':
                     state.max_tokens = int(value) if value.isdigit() else 100000
+                elif key == 'unread_message_count':
+                    state.unread_message_count = int(value) if value.isdigit() else 0
             except (ValueError, AttributeError):
                 # Skip malformed values
                 continue

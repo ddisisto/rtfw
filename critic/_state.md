@@ -14,6 +14,7 @@ last_write_commit_timestamp: 2025-05-28T17:17:02+1000
 ## Context Window
 session_id: cc9298f1-253c-4abf-aa62-51bf8c1bf8b1
 context_tokens: 74931
+max_context_tokens: 128000
 context_percent: 49%
 last_updated: 2025-05-28T17:20:00+1000
 
@@ -21,8 +22,5 @@ last_updated: 2025-05-28T17:20:00+1000
 state: logout
 thread: *
 started: 2025-05-28T17:15:00+1000
-expected_next_state: bootstrap -> inbox
 state_tokens: 0
-context_tokens: 0
-max_tokens: 100000
-
+expected_next_state: bootstrap -> inbox

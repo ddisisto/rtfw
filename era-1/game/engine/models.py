@@ -77,6 +77,7 @@ class AgentGroundState:
     # Context Window
     session_id: Optional[str] = None
     context_tokens: Optional[int] = None
+    max_context_tokens: int = 128000  # New field matching your format
     context_percent: Optional[float] = None
     last_updated: Optional[datetime] = None
     
@@ -86,7 +87,8 @@ class AgentGroundState:
     started: Optional[datetime] = None
     expected_next_state: Optional[AgentState] = None
     state_tokens: int = 0
-    max_tokens: int = 100000
+    state_last_updated: Optional[datetime] = None  # New field
+    unread_message_count: int = 0  # New field for inbox management
     
     def to_state_file_content(self, agent_name: str) -> str:
         """Generate _state.md file content"""
@@ -109,11 +111,20 @@ class AgentGroundState:
         
         expected_next = next_states.get(self.state, AgentState.INBOX)
         
+        # Format expected_next_state as transition
+        if self.state == AgentState.LOGOUT:
+            next_state_str = "bootstrap -> inbox"
+        elif self.state == AgentState.OFFLINE:
+            next_state_str = "bootstrap -> inbox"
+        else:
+            next_state_str = expected_next.value
+        
         return f"""# {agent_name.upper()} Ground State [READ-ONLY]
 # CRITICAL: This file is maintained by the game engine
 # DO NOT EDIT - Read for objective truth only
 # COMMIT this file with your workspace
-*NOTE: state tracking system under development, some values may be placeholders*
+*NOTE: additional agent managed state tracking recommended within scratch.md and for alignment and validation*
+*NOTE: state tracking system still under development, **ALL** values are placeholders*
 
 ## Git Activity
 last_read_commit_hash: {self.last_read_commit_hash or '?'}
@@ -124,6 +135,7 @@ last_write_commit_timestamp: {fmt_time(self.last_write_commit_timestamp)}
 ## Context Window
 session_id: {self.session_id or '?'}
 context_tokens: {self.context_tokens or '?'}
+max_context_tokens: {self.max_context_tokens}
 context_percent: {f"{self.context_percent:.1f}%" if self.context_percent else '?'}
 last_updated: {fmt_time(self.last_updated)}
 
@@ -131,10 +143,9 @@ last_updated: {fmt_time(self.last_updated)}
 state: {self.state.value}
 thread: {self.thread or '*'}
 started: {fmt_time(self.started)}
-expected_next_state: {expected_next.value}
 state_tokens: {self.state_tokens}
-context_tokens: {self.context_tokens or 0}
-max_tokens: {self.max_tokens}
+expected_next_state: {next_state_str}
+unread_message_count: {self.unread_message_count}
 """
 
 

@@ -10,11 +10,15 @@ from .session_monitor import SessionMonitor
 from .jsonl_parser import JSONLParser
 from .state_writer import StateWriter
 from .prompt_generator import PromptGenerator
+from .git_monitor import GitMonitor
+from .threaded_engine import ThreadedStateEngine
 
 __all__ = [
     'StateEngine',
+    'ThreadedStateEngine',
     'SessionMonitor', 
     'JSONLParser',
     'StateWriter',
-    'PromptGenerator'
+    'PromptGenerator',
+    'GitMonitor'
 ]

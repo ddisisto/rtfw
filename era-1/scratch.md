@@ -157,6 +157,32 @@ Created modular engine in `era-1/game/engine/`:
 - Invalid transitions (error prompt + manual review)
 - Atomic file writes (tempfile + rename)
 
+## Threaded Architecture Added
+
+### ThreadedStateEngine
+- Runs engine in background thread
+- Thread-safe shared state access for TUI
+- Easy daemon split later (Unix socket, REST API, etc.)
+
+### Git Integration
+- **git_monitor.py** - Counts unread messages, tracks commits
+- Updates `unread_message_count` field in state
+- Tracks last read/write commit hashes
+
+### TUI Integration Pattern
+```python
+# In cli.py
+self.engine = ThreadedStateEngine(project_root, sessions_dir)
+self.engine.start()
+
+# In display update loop
+agents = self.engine.get_all_agents()  # In-memory, no file I/O
+for name, state in agents.items():
+    # Display state, context%, unread count, etc.
+```
+
+The engine maintains all state in memory, accessible via thread-safe methods.
+
 ## Milestone
 @ADMIN sent first message through the game interface! 
 "HI FROM ADMIN IN THE GAME WORLD OF CLI.PY"

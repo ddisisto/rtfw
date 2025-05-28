@@ -13,6 +13,7 @@ from .session_monitor import SessionMonitor
 from .jsonl_parser import JSONLParser
 from .state_writer import StateWriter
 from .prompt_generator import PromptGenerator
+from .git_monitor import GitMonitor
 
 
 class StateEngine:
@@ -33,6 +34,7 @@ class StateEngine:
         self.parser = JSONLParser()
         self.writer = StateWriter(project_root)
         self.prompt_gen = PromptGenerator()
+        self.git = GitMonitor(project_root)
         
         # Track state
         self.running = False
@@ -142,6 +144,21 @@ class StateEngine:
         # Update session info
         if session.session_id != current_state.session_id:
             current_state.session_id = session.session_id
+            state_changed = True
+        
+        # Update unread message count
+        if current_state.last_read_commit_hash:
+            unread_count = self.git.get_unread_count(agent_name, current_state.last_read_commit_hash)
+            if unread_count != current_state.unread_message_count:
+                current_state.unread_message_count = unread_count
+                state_changed = True
+                print(f"  Updated {agent_name} unread messages: {unread_count}")
+        
+        # Update git activity
+        _, last_write = self.git.get_last_commits(agent_name)
+        if last_write and last_write != current_state.last_write_commit_hash:
+            current_state.last_write_commit_hash = last_write
+            current_state.last_write_commit_timestamp = self.git.get_commit_timestamp(last_write)
             state_changed = True
         
         # Check git activity (would need separate git parsing)
