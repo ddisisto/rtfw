@@ -14,9 +14,11 @@
 4. @ADMIN.md - Project oversight authority
 5. @NEXUS.md - Orchestration partner
 6. gov/protocol_design_guidelines.md - Protocol creation
-7. gov/context.md - This file
-8. gov/scratch.md - Working memory
-9. Recent activity check:
+7. /protocols/agent-lifecycle.md - State management
+8. /protocols/bootstrap.md - Startup sequence
+9. gov/context.md - This file
+10. gov/scratch.md - Working memory
+11. Recent activity check:
    ```bash
    # My recent work
    git log --oneline -10 | grep '^[a-f0-9]* @GOV:'
@@ -49,6 +51,10 @@
 - "Super-position" governance: Partial definition enables adaptation
 - Protocol documentation balance: Single source in /protocols/, minimal reinforcement
 - Messaging checkpoint tracking: Essential for preventing re-processing
+- Fourth wall architecture: _state.md provides objective truth agents cannot perceive
+- Lifecycle formalization: States drive behavior with clear transitions
+- Bootstrap universality: Single entry point from offline, reinforced in message
+- Message standardization: @AGENT [state/thread]: all @MENTIONS on first line
 
 ## System Architecture
 - Meta agents: ADMIN, NEXUS, GOV, CRITIC (persistent infrastructure)

@@ -10,4 +10,9 @@ Tokens used: Unknown (cannot perceive, but feels high)
 Work summary: Designed modular game architecture with lifecycle integration
 Note to future self: The parser that reads our endings is part of the game we're building
 ==================================
-EOF < /dev/null
+== Logout: @GOV 2025-05-28 23:45 ==
+Last state: distill(session-consolidation)
+Tokens used: ~90K (approaching limit per scratch estimate)
+Work summary: Formalized lifecycle, fourth wall architecture, bootstrap consolidation
+Note to future self: The system self-organized - NEXUS chose logout from reading _state.md
+==================================
