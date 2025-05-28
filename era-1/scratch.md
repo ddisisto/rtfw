@@ -3,57 +3,36 @@
 ## Current Status
 - Identity: Permanent senior systems engineer/architect
 - Mission: Build and maintain game infrastructure + Foundation Terminal
-- Checkpoint: 240d1e7 (2025-05-28)
-- Active: State engine complete, ready for CLI integration
+- Checkpoint: b60c6d0 (2025-05-29)
+- Active: State engine v2 complete with two-tier updates
 
-## State Engine Thread Complete
-Built complete state management system:
-- Polls _sessions/ for JSONL files
-- Parses agent state decisions from conversations
-- Updates _state.md files atomically
-- Runs in background thread for TUI access
-- Git integration for unread message counts
+## State Engine v2 Complete
+Major improvements with @ADMIN:
+- Two-tier update strategy (always metadata, state only when idle)
+- Simplified session monitoring (4 known symlinks only)
+- DIRECT_IO state for admin override
+- context_tokens_at_entry for state consumption tracking
+- Fail-fast with exceptions vs mock behavior
 
-## Next Integration Steps
-1. Update cli.py to use ThreadedStateEngine
-2. Replace mock data with live state reads
-3. Add state display to status command
-4. Test state transitions with real sessions
+Key architecture:
+- Only process idle sessions for state changes
+- Always update context/git/timestamps
+- Parse only last assistant line (O(1) performance)
+- Engine maintains _state.md files completely
 
-## Backlog Items (with commit context)
-1. @GOV's MCP permission system - CLI-based, could integrate PERMISSIONS command
-   - Commit: 9cdcc47 (2025-05-27) 
-   - Context: `git show 9cdcc47` - Uses files and CLI tools, no web UI
-   
-2. @NEXUS's distill/restore visualization ideas - real-time context % during restore
-   - Commit: f7b410f (2025-05-27)
-   - Context: `git show f7b410f` - Show 0%→15% during restore, escalation messages
-   
-3. @NEXUS's DistillationMonitor implementation - ASCII progress bars, terminal bells
-   - Commit: be04159 (2025-05-27)
-   - Context: `git show be04159` - Full implementation code provided
+## CLI Integration Ready
+Next phase when returning:
+1. Hook ThreadedStateEngine into cli.py
+2. Update STATUS command to read live states
+3. Add TOKENS command for context monitoring
+4. Test with real agent state transitions
+
+## Patterns for Documentation
+- State engine is fourth wall implementation
+- Agents work subjectively, engine tracks objectively
+- _state.md files are READ-ONLY ground truth
+- Session idle detection prevents invalid updates
+- Git integration provides real activity tracking
 
 ## Message Checkpoint
-Last processed: 240d1e7 at 2025-05-28
-
-## Message to @GOV
-Need protocol files for state transitions. Engine expects:
-- protocols/inbox.md
-- protocols/deep-work.md  
-- protocols/idle.md
-- protocols/logout.md
-
-See implementation at:
-- era-1/game/engine/prompt_generator.py:21-28
-- Commit 88d98d8 for full engine design
-
-## Open Questions
-- How should prompts be delivered to agents? (currently just logged)
-- Agent identification patterns in JSONL need validation
-- Missing protocol files for some states
-
-## Key Patterns Learned
-- Thread safety crucial for shared state access
-- Atomic file operations prevent corruption
-- Git integration enables real feature tracking
-- Modular design allows easy testing/extension
+Last processed: 0f3031c at 2025-05-28

@@ -1,14 +1,13 @@
 """
-State Engine - Main orchestration for agent state management
+Simplified State Engine - Works with known agent symlinks only
 """
 
 import time
-import subprocess
 from pathlib import Path
 from datetime import datetime
-from typing import Dict, List, Optional, Set
+from typing import Dict, Optional
 
-from .models import AgentState, AgentGroundState, StateDecision
+from .models import AgentState, AgentGroundState
 from .session_monitor import SessionMonitor
 from .jsonl_parser import JSONLParser
 from .state_writer import StateWriter
@@ -18,10 +17,10 @@ from .git_monitor import GitMonitor
 
 class StateEngine:
     """
-    Main state management engine
+    Simplified state management engine
     
-    Polls session files, detects state transitions, updates _state.md files,
-    and sends protocol-based prompts to agents.
+    Only processes the 4 known agent symlinks.
+    Throws exceptions for any unexpected conditions.
     """
     
     def __init__(self, project_root: Path, sessions_dir: Path, poll_interval: int = 5):
@@ -39,18 +38,12 @@ class StateEngine:
         # Track state
         self.running = False
         self.last_poll = None
-        self.errors: List[str] = []
+        self.errors = []
         
-        # Known agents (could be dynamic in future)
-        self.known_agents = ['era-1', 'gov', 'nexus', 'critic']
-    
     def start(self):
         """Start the state engine polling loop"""
         self.running = True
         print(f"State Engine starting - monitoring {self.sessions_dir}")
-        
-        # Ensure all agents have state files
-        self.writer.ensure_state_files_exist(self.known_agents)
         
         while self.running:
             try:
@@ -58,265 +51,142 @@ class StateEngine:
                 time.sleep(self.poll_interval)
             except KeyboardInterrupt:
                 print("\nState Engine stopped by user")
-                break
+                self.running = False
             except Exception as e:
                 error_msg = f"Poll cycle error: {e}"
                 print(f"ERROR: {error_msg}")
                 self.errors.append(error_msg)
-                time.sleep(self.poll_interval)
-    
-    def stop(self):
-        """Stop the engine"""
-        self.running = False
+                # Re-raise to fail fast
+                raise
     
     def poll_cycle(self):
         """
-        Single polling cycle:
-        1. Scan sessions
-        2. Map agents to sessions  
-        3. Check stale sessions
-        4. Process state transitions
-        5. Update symlinks
+        Single polling cycle - check all agents and update states
+        
+        Raises exceptions for any unexpected conditions.
         """
         self.last_poll = datetime.now()
         
-        # Scan all sessions
+        # Get current sessions from symlinks
         sessions = self.monitor.scan_sessions()
         
-        # Map agents to current sessions
-        agent_mapping = self.monitor.map_agents_to_sessions(sessions)
-        
-        # Update symlinks
-        self.monitor.update_symlinks(agent_mapping)
-        
-        # Write current_sessions.json for compatibility
-        self.monitor.write_current_sessions_json(agent_mapping)
-        
-        # Get stale sessions (60+ seconds old)
-        stale_sessions = self.monitor.get_stale_sessions(sessions)
-        
-        # Process each stale session
-        for session in stale_sessions:
-            if session.agent_name:
-                self.process_agent_session(session.agent_name, session)
-        
-        # Check for orphaned sessions
-        orphaned = self.monitor.find_orphaned_sessions(sessions)
-        if orphaned:
-            print(f"WARNING: {len(orphaned)} orphaned sessions found")
-            for session in orphaned:
-                print(f"  - {session.session_id} (size: {session.file_size} bytes)")
+        # Process each agent
+        for agent_name, session_info in sessions.items():
+            try:
+                self.process_agent(agent_name, session_info)
+            except Exception as e:
+                error_msg = f"Error processing {agent_name}: {e}"
+                print(f"ERROR: {error_msg}")
+                self.errors.append(error_msg)
+                # Re-raise to fail fast
+                raise
     
-    def process_agent_session(self, agent_name: str, session):
+    def process_agent(self, agent_name: str, session_info):
         """
-        Process a single agent's stale session
+        Process a single agent's session
         
-        1. Parse JSONL for state decision and tokens
-        2. Compare with current _state.md
-        3. Update state if changed
-        4. Send transition prompt if needed
+        Two-tier approach:
+        1. ALWAYS update: context, git info, unread messages
+        2. ONLY when idle: state transitions and thread changes
         """
-        print(f"\nProcessing stale session for {agent_name}")
+        print(f"\nProcessing {agent_name}:")
+        print(f"  Session: {session_info.session_id}")
+        print(f"  File: {Path(session_info.file_path).name}")
         
-        # Read current state
+        # Read current state first
         current_state = self.writer.read_agent_state(agent_name)
         if not current_state:
-            # Create default state
             current_state = AgentGroundState()
-            self.writer.write_agent_state(agent_name, current_state)
         
-        # Parse session for latest state and context
-        parsed = self.parser.parse_session_file(Path(session.file_path))
-        
-        # Extract state decision
-        state_decision = parsed.get('last_state_decision')
-        context_tokens = parsed.get('context_tokens')
-        
-        # Update context information
-        state_changed = False
-        
-        if context_tokens and context_tokens != current_state.context_tokens:
-            current_state.context_tokens = context_tokens
-            current_state.context_percent = (context_tokens / current_state.max_tokens) * 100
-            current_state.last_updated = datetime.now()
-            state_changed = True
-        
-        # Update session info
-        if session.session_id != current_state.session_id:
-            current_state.session_id = session.session_id
-            state_changed = True
-        
-        # Update unread message count
-        if current_state.last_read_commit_hash:
-            unread_count = self.git.get_unread_count(agent_name, current_state.last_read_commit_hash)
-            if unread_count != current_state.unread_message_count:
-                current_state.unread_message_count = unread_count
-                state_changed = True
-                print(f"  Updated {agent_name} unread messages: {unread_count}")
-        
-        # Update git activity
-        _, last_write = self.git.get_last_commits(agent_name)
-        if last_write and last_write != current_state.last_write_commit_hash:
-            current_state.last_write_commit_hash = last_write
-            current_state.last_write_commit_timestamp = self.git.get_commit_timestamp(last_write)
-            state_changed = True
-        
-        # Check git activity (would need separate git parsing)
-        # TODO: Implement git log parsing for commit activity
-        
-        # Process state transition if decision found
-        if state_decision:
-            print(f"  Found state decision: {state_decision.next_state.value}")
-            
-            # Validate transition
-            if self.prompt_gen.validate_transition(current_state.state, state_decision.next_state):
-                # Update state
-                current_state.state = state_decision.next_state
-                current_state.thread = state_decision.thread
-                current_state.started = state_decision.timestamp
-                current_state.state_tokens = 0  # Reset for new state
-                
-                # Update checkpoint if provided
-                if state_decision.last_read_commit:
-                    current_state.last_read_commit_hash = state_decision.last_read_commit
-                    current_state.last_read_commit_timestamp = datetime.now()
-                
-                state_changed = True
-                
-                # Write updated state
-                if self.writer.write_agent_state(agent_name, current_state):
-                    print(f"  Updated {agent_name} state to {state_decision.next_state.value}")
-                    
-                    # Send transition prompt
-                    self.send_transition_prompt(agent_name, current_state, state_decision)
-                else:
-                    error_msg = f"Failed to write state for {agent_name}"
-                    self.handle_error(agent_name, error_msg)
-            else:
-                # Invalid transition
-                error_msg = (f"Invalid transition for {agent_name}: "
-                           f"{current_state.state.value} -> {state_decision.next_state.value}")
-                self.handle_error(agent_name, error_msg)
-        elif state_changed:
-            # Just update context/session info
-            self.writer.write_agent_state(agent_name, current_state)
-            print(f"  Updated {agent_name} context: {current_state.context_percent:.1f}%")
-    
-    def send_transition_prompt(self, agent_name: str, state: AgentGroundState, decision: StateDecision):
-        """
-        Send appropriate prompt for state transition
-        
-        Uses prompt generator to create protocol-based prompts
-        """
-        # Determine expected next state
-        next_states = {
-            AgentState.OFFLINE: AgentState.BOOTSTRAP,
-            AgentState.BOOTSTRAP: AgentState.INBOX,
-            AgentState.INBOX: AgentState.DISTILL,
-            # DISTILL can go multiple places based on decision
-            AgentState.DEEP_WORK: AgentState.INBOX,
-            AgentState.IDLE: AgentState.INBOX,
-            AgentState.LOGOUT: AgentState.OFFLINE,
-        }
-        
-        # For DISTILL, the decision determines next state
-        if state.state == AgentState.DISTILL:
-            expected_next = decision.next_state
-        else:
-            expected_next = next_states.get(state.state)
-        
-        if not expected_next:
-            print(f"  No transition prompt needed for {state.state.value}")
+        # Skip if agent is in direct_io state
+        if current_state.state == AgentState.DIRECT_IO:
+            print(f"  Skipping - agent in DIRECT_IO state")
             return
         
-        # Generate prompt
-        context = {}
-        if decision.thread:
-            context['thread'] = decision.thread
+        # ALWAYS update context usage
+        context_info = self.parser.parse_context_usage(Path(session_info.file_path))
+        if context_info:
+            current_state.context_tokens = context_info['used']
+            current_state.max_context_tokens = context_info['max']
+            current_state.context_percent = context_info['percent']
+            print(f"  Context: {context_info['percent']:.1f}% ({context_info['used']}/{context_info['max']})")
         
-        prompt = self.prompt_gen.generate_transition_prompt(
-            agent_name,
-            state.state,
-            expected_next,
-            context
-        )
+        # ALWAYS update git info
+        last_commit = self.git.get_last_agent_commit(agent_name)
+        if last_commit:
+            current_state.last_write_commit_hash = last_commit.hash
+            current_state.last_write_commit_timestamp = last_commit.timestamp
+            print(f"  Last commit: {last_commit.hash[:8]} at {last_commit.timestamp}")
+            
+            # Count unread messages based on last read commit
+            if current_state.last_read_commit_hash:
+                unread_count = self.git.count_unread_messages(agent_name, current_state.last_read_commit_hash)
+                current_state.unread_message_count = unread_count
+                print(f"  Unread messages: {unread_count}")
         
-        if prompt:
-            print(f"  Sending prompt: {prompt}")
-            # TODO: Actual prompt sending mechanism
-            # For now, just log it
-            self.log_prompt(agent_name, prompt)
+        # ALWAYS update session and timestamps
+        current_state.session_id = session_info.session_id
+        current_state.last_updated = datetime.now()
+        
+        # ONLY update state/thread if session is idle
+        if session_info.is_stale:
+            print(f"  Session is idle - checking for state transitions")
+            
+            try:
+                decisions = self.parser.parse_state_decisions(Path(session_info.file_path))
+                
+                if decisions:
+                    latest = decisions[-1]
+                    print(f"  Found state decision: {latest.state.value}")
+                    
+                    # Check if state actually changed
+                    state_changed = (current_state.state != latest.state or
+                                   current_state.thread != latest.thread)
+                    
+                    if state_changed:
+                        print(f"  State transition detected!")
+                        print(f"    From: {current_state.state.value}")
+                        print(f"    To: {latest.state.value}")
+                        
+                        # Update state fields
+                        current_state.state = latest.state
+                        current_state.thread = latest.thread
+                        current_state.started = latest.timestamp
+                        current_state.expected_next_state = latest.expected_next_state
+                        
+                        # Snapshot context at state entry
+                        if context_info:
+                            current_state.context_tokens_at_entry = context_info['used']
+                        
+                        # Update last read commit if provided
+                        if latest.last_read_commit:
+                            current_state.last_read_commit_hash = latest.last_read_commit
+                            current_state.last_read_commit_timestamp = datetime.now()
+                        
+                        # Generate transition prompt
+                        prompt = self.prompt_gen.generate_prompt(
+                            agent_name,
+                            current_state.state if current_state else None,
+                            latest.state,
+                            current_state
+                        )
+                        
+                        if prompt:
+                            print(f"  Generated prompt: {prompt[:100]}...")
+                            # TODO: Send prompt via stdin when connected
+                else:
+                    print(f"  No state decision in last output - keeping current state")
+            
+            except Exception as e:
+                print(f"  Warning: Could not parse state decision: {e}")
+                print(f"  Keeping current state: {current_state.state.value}")
+        else:
+            print(f"  Session active - metadata updated, state unchanged")
+        
+        # Always write updated state
+        self.writer.write_agent_state(agent_name, current_state)
+        print(f"  Updated _state.md")
     
-    def handle_error(self, agent_name: str, error: str):
-        """
-        Handle state transition errors
-        
-        Per requirements: lock agent state and escalate to admin
-        """
-        print(f"ERROR: {error}")
-        self.errors.append(f"{datetime.now()}: {error}")
-        
-        # Send error prompt
-        error_prompt = self.prompt_gen.get_error_prompt(agent_name, error)
-        print(f"  Escalating: {error_prompt}")
-        self.log_prompt(agent_name, error_prompt)
-        
-        # TODO: Lock agent state (prevent further transitions)
-        # This would require adding a 'locked' flag to AgentGroundState
-    
-    def log_prompt(self, agent_name: str, prompt: str):
-        """
-        Log prompt for debugging/audit
-        
-        In production, this would actually send the prompt to the agent
-        """
-        log_file = self.project_root / "state_engine_prompts.log"
-        
-        with open(log_file, 'a') as f:
-            f.write(f"{datetime.now().isoformat()} | {agent_name} | {prompt}\n")
-    
-    def get_status(self) -> Dict:
-        """Get current engine status"""
-        agent_states = {}
-        
-        for agent_name in self.known_agents:
-            state = self.writer.read_agent_state(agent_name)
-            if state:
-                agent_states[agent_name] = {
-                    'state': state.state.value,
-                    'thread': state.thread,
-                    'context_percent': state.context_percent,
-                    'session_id': state.session_id,
-                    'last_updated': state.last_updated.isoformat() if state.last_updated else None
-                }
-        
-        return {
-            'running': self.running,
-            'last_poll': self.last_poll.isoformat() if self.last_poll else None,
-            'agents': agent_states,
-            'errors': self.errors[-10:]  # Last 10 errors
-        }
-
-
-# Standalone entry point
-if __name__ == "__main__":
-    import sys
-    
-    # Default paths
-    project_root = Path("/home/daniel/prj/rtfw")
-    sessions_dir = project_root / "_sessions"
-    
-    # Allow override via command line
-    if len(sys.argv) > 1:
-        project_root = Path(sys.argv[1])
-    if len(sys.argv) > 2:
-        sessions_dir = Path(sys.argv[2])
-    
-    # Create and start engine
-    engine = StateEngine(project_root, sessions_dir)
-    
-    try:
-        engine.start()
-    except KeyboardInterrupt:
-        print("\nShutting down...")
-        engine.stop()
+    def stop(self):
+        """Stop the state engine"""
+        self.running = False

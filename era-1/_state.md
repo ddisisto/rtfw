@@ -8,20 +8,20 @@
 ## Git Activity
 last_read_commit_hash: 240d1e7
 last_read_commit_timestamp: 2025-05-28T23:03:58
-last_write_commit_hash: 372670f
-last_write_commit_timestamp: 2025-05-28T23:03:58
+last_write_commit_hash: 73deff21b83b3ca056e4a7e60cb241f4e2b4fa0b
+last_write_commit_timestamp: 2025-05-28T23:08:58+1000
 
 ## Context Window
 session_id: cc9298f1-253c-4abf-aa62-51bf8c1bf8b1
-context_tokens: 115000
+context_tokens: 98922
 max_context_tokens: 128000
-context_percent: 89.8%
-last_updated: 2025-05-28T23:03:58
+context_percent: 77.3%
+last_updated: 2025-05-29T00:07:03
 
 ## Last Observed Agent State
 state: distill
 thread: cli-integration
 started: 2025-05-28T23:03:58
-state_tokens: 5000
+context_tokens_at_entry: 0
 expected_next_state: deep_work
-unread_message_count: 0
+unread_message_count: 3

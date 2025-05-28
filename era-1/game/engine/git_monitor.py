@@ -6,6 +6,15 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 from typing import Optional, Tuple, List
+from dataclasses import dataclass
+
+
+@dataclass
+class CommitInfo:
+    """Information about a git commit"""
+    hash: str
+    timestamp: datetime
+    message: str
 
 
 class GitMonitor:
@@ -164,3 +173,45 @@ class GitMonitor:
             pass
             
         return None
+    
+    def get_last_agent_commit(self, agent_name: str) -> Optional[CommitInfo]:
+        """
+        Get the last commit made by this agent
+        
+        Returns CommitInfo with hash, timestamp, and message
+        """
+        agent_upper = agent_name.upper()
+        
+        try:
+            # Get last commit by this agent
+            cmd = [
+                'git', 'log', '--format=%H|%cI|%s', '-1', '--grep', f'^@{agent_upper}:'
+            ]
+            
+            result = subprocess.run(
+                cmd,
+                cwd=self.repo_path,
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            
+            if result.stdout.strip():
+                parts = result.stdout.strip().split('|', 2)
+                if len(parts) == 3:
+                    hash_val, timestamp_str, message = parts
+                    timestamp = datetime.fromisoformat(timestamp_str)
+                    return CommitInfo(hash=hash_val, timestamp=timestamp, message=message)
+                    
+        except (subprocess.CalledProcessError, ValueError):
+            pass
+            
+        return None
+    
+    def count_unread_messages(self, agent_name: str, last_read_hash: str) -> int:
+        """
+        Count messages mentioning this agent since last read
+        
+        Same as get_unread_count but with clearer name
+        """
+        return self.get_unread_count(agent_name, last_read_hash)

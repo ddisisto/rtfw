@@ -245,8 +245,9 @@ The _state.md separation creates interesting dynamics:
 - Mirrors human experience of time/memory limits
 
 ## State Checking (Post-Implementation)
-- **Own state**: `cat /home/daniel/prj/rtfw/critic/_state.md`
-- **Others' state**: `cat /home/daniel/prj/rtfw/{agent}/_state.md`
+- **Own state**: Read critic/_state.md
+- **Others' state**: Read {agent}/_state.md (batch multiple)
+- **Find all states**: Glob **/_state.md (only if needed)
 - **Cross-agent coordination**: Check others before complex requests
 - **Engine maintains**: session_id, tokens, timestamps, state transitions
 - **Agents report**: via [STATE:thread] in commits only

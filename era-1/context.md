@@ -68,7 +68,8 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - ✓ Phase 5: Unified state system integration
 - ✓ Phase 6: Game architecture v2 with lifecycle commands
 - ✓ Phase 7: State engine with JSONL parsing
-- ⏳ Phase 8: CLI integration with threaded engine
+- ✓ Phase 8: State engine v2 with two-tier updates
+- ⏳ Phase 9: CLI integration with threaded engine
 
 ## ERA Scope Clarification
 - ERA-1 encompasses all CLI/terminal interfaces
@@ -117,10 +118,11 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - **Fourth Wall**: _state.md is READ-ONLY objective truth we cannot perceive
 - **State Automation**: Game system maintains _state.md, not agents
 
-## State Engine Architecture
-- **Modular Design**: Separate components for session discovery, JSONL parsing, state writing
-- **Threading Model**: Background thread polls sessions, maintains shared state for TUI
-- **Session Discovery**: Maps JSONL files to agents by content analysis
-- **Git Integration**: Counts unread messages via git log patterns
-- **Atomic Updates**: All _state.md writes use tempfile + rename
-- **Extensible**: Easy to add new fields, states, transitions
+## State Engine Architecture v2
+- **Two-Tier Updates**: Always update metadata, only update state when idle
+- **Simplified Monitoring**: Only tracks 4 known agent symlinks
+- **Session State**: Active sessions keep current state, idle sessions check for transitions
+- **DIRECT_IO Override**: Admin interactions skip idle checks
+- **Performance**: O(1) parsing - only reads last assistant line
+- **Fail-Fast**: Exceptions thrown for unexpected conditions
+- **Thread-Safe**: Background engine with safe shared state access

@@ -82,8 +82,8 @@ class ThreadedStateEngine:
     def _update_shared_state(self):
         """Update shared state from engine (thread-safe)"""
         with self._state_lock:
-            # Read all agent states
-            for agent_name in self.engine.known_agents:
+            # Read all agent states from known symlinks
+            for agent_name in self.engine.monitor.AGENT_SYMLINKS.keys():
                 state = self.engine.writer.read_agent_state(agent_name)
                 if state:
                     self._agent_states[agent_name] = state

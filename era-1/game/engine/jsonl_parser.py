@@ -174,15 +174,17 @@ class JSONLParser:
         
         state_name = state_match.group(1).lower()
         
-        # Map to enum
+        # Map to enum (handle both forms)
         state_map = {
             'bootstrap': AgentState.BOOTSTRAP,
             'inbox': AgentState.INBOX,
             'distill': AgentState.DISTILL,
             'deep_work': AgentState.DEEP_WORK,
+            'deep-work': AgentState.DEEP_WORK,  # Handle hyphenated
             'idle': AgentState.IDLE,
             'logout': AgentState.LOGOUT,
             'direct_io': AgentState.DIRECT_IO,
+            'direct-io': AgentState.DIRECT_IO,  # Handle hyphenated
             'offline': AgentState.OFFLINE,
         }
         
@@ -238,3 +240,121 @@ class JSONLParser:
             pass
         
         return None, None
+    
+    def parse_state_decisions(self, file_path: Path) -> List[StateDecision]:
+        """
+        Parse state decision from LAST line only (most recent assistant output)
+        
+        Returns list with single StateDecision if found, empty list otherwise
+        """
+        try:
+            # Read just the last line
+            with open(file_path, 'rb') as f:
+                # Get file size
+                f.seek(0, 2)
+                file_size = f.tell()
+                # Go back 2KB from end or to start if file is smaller
+                seek_pos = max(0, file_size - 2048)
+                f.seek(seek_pos)
+                tail = f.read()
+                
+            # Get last complete line that's an assistant message
+            lines = tail.decode('utf-8', errors='ignore').strip().split('\n')
+            
+            # Look backwards for last assistant message
+            for line in reversed(lines):
+                if not line.strip():
+                    continue
+                    
+                try:
+                    entry = json.loads(line)
+                    
+                    # Skip if not a message or not assistant
+                    message = entry.get('message', {})
+                    if message.get('role') != 'assistant':
+                        continue
+                    
+                    # Extract content
+                    content_list = message.get('content', [])
+                    if not content_list:
+                        continue
+                    
+                    # Join text content
+                    content_parts = []
+                    for item in content_list:
+                        if isinstance(item, dict) and item.get('type') == 'text':
+                            content_parts.append(item.get('text', ''))
+                    
+                    content = '\n'.join(content_parts)
+                    if not content:
+                        continue
+                    
+                    # Try to extract state decision
+                    decision = self._extract_state_decision(content)
+                    if decision:
+                        # Add timestamp from entry
+                        if 'timestamp' in entry:
+                            decision.timestamp = datetime.fromisoformat(
+                                entry['timestamp'].replace('Z', '+00:00')
+                            )
+                        return [decision]
+                        
+                except (json.JSONDecodeError, KeyError):
+                    continue
+            
+            # No state decision found
+            return []
+            
+        except Exception as e:
+            raise RuntimeError(f"Failed to parse last line of {file_path}: {e}")
+    
+    def parse_context_usage(self, file_path: Path) -> Optional[Dict[str, Any]]:
+        """
+        Parse context token usage from last few lines (most recent usage)
+        
+        Returns dict with 'used', 'max', and 'percent' fields
+        """
+        try:
+            # Read last 10KB to find recent usage data
+            with open(file_path, 'rb') as f:
+                f.seek(0, 2)
+                file_size = f.tell()
+                seek_pos = max(0, file_size - 10240)
+                f.seek(seek_pos)
+                tail = f.read()
+            
+            # Parse lines in reverse to find most recent usage
+            lines = tail.decode('utf-8', errors='ignore').strip().split('\n')
+            for line in reversed(lines):
+                try:
+                    entry = json.loads(line)
+                    
+                    # Look for usage in message field (actual JSONL structure)
+                    message = entry.get('message', {})
+                    usage = message.get('usage', {})
+                    
+                    if 'input_tokens' in usage:
+                        # Calculate total from all token types
+                        total = (usage.get('input_tokens', 0) + 
+                                usage.get('cache_creation_input_tokens', 0) +
+                                usage.get('cache_read_input_tokens', 0) +
+                                usage.get('output_tokens', 0))
+                        
+                        # Assume standard context window
+                        max_tokens = 128000  # Could be extracted from model info
+                        
+                        return {
+                            'used': total,
+                            'max': max_tokens,
+                            'percent': (total / max_tokens) * 100
+                        }
+                
+                except (json.JSONDecodeError, KeyError):
+                    continue
+            
+            return None
+            
+        except Exception as e:
+            # Don't throw - context usage is optional
+            print(f"Warning: Could not parse context usage: {e}")
+            return None

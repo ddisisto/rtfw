@@ -1,21 +1,27 @@
-# NEXUS Ground State [RO]
+# NEXUS Ground State [READ-ONLY]
+# CRITICAL: This file is maintained by the game engine
+# DO NOT EDIT - Read for objective truth only
+# COMMIT this file with your workspace
+*NOTE: additional agent managed state tracking recommended within scratch.md and for alignment and validation*
+*NOTE: state tracking system still under development, **ALL** values are placeholders*
 
-last_observed_state: logout
-expected_next: bootstrap
+## Git Activity
+last_read_commit_hash: ?
+last_read_commit_timestamp: ?
+last_write_commit_hash: b9eb419b26991036da1c37e435a6047fd1e64903
+last_write_commit_timestamp: 2025-05-28T19:53:40+1000
 
-current_thread: ?
+## Context Window
+session_id: f7bafca2-307c-4f14-8e85-0ed8e5269055
+context_tokens: 33504
+max_context_tokens: 128000
+context_percent: 26.2%
+last_updated: 2025-05-29T00:07:03
 
-context_tokens: ?
-max_tokens: 130000
-thread_tokens: ?
-
-last_read_hash: ?
-last_read_timestamp: ?
-
-last_write_hash: ?
-last_write_timestamp: ?
-
-session_id: ?
+## Last Observed Agent State
+state: offline
+thread: *
 started: ?
-
-state_updated: <timestamp +/-OFFEST>
+context_tokens_at_entry: 0
+expected_next_state: bootstrap -> inbox
+unread_message_count: 0

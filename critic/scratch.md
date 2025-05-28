@@ -10,11 +10,13 @@ Last processed: 002ee04 at 2025-05-28 17:48:00 +1000
 - [ ] Monitor lifecycle protocol adoption across agents
 
 ## State Learning Notes
-- My _state.md at `/home/daniel/prj/rtfw/critic/_state.md` 
+- My _state.md at critic/_state.md (relative path!)
 - Currently showing logout state (but I'm active - system catching up)
 - Wrong session_id (shows ERA-1's) - engine will fix
 - Key insight: Check others' states before complex requests
-- Pattern: `cat /home/daniel/prj/rtfw/{agent}/_state.md`
+- Pattern: Read {agent}/_state.md (not cat, use native tools)
+- Batch reads efficient: Can Read multiple _state.md files in one call
+- Glob **/_state.md only for discovery, not routine checks
 
 ## Architectural Insight (175fbb0)
 ERA-1 now permanent senior systems engineer/architect role! Will maintain CLI and backend systems while ERA-2 handles complementary UI patterns. This affects:

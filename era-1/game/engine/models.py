@@ -17,7 +17,7 @@ class AgentState(Enum):
     DEEP_WORK = "deep_work"
     IDLE = "idle"
     LOGOUT = "logout"
-    DIRECT_IO = "direct_io"  # Admin override
+    DIRECT_IO = "direct_io"  # Admin override - skip idle checks
 
 
 @dataclass
@@ -50,6 +50,8 @@ class StateDecision:
     max_tokens: Optional[int] = None
     last_read_commit: Optional[str] = None
     timestamp: datetime = field(default_factory=datetime.now)
+    line_number: Optional[int] = None
+    expected_next_state: Optional[AgentState] = None
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dict for JSON serialization"""
@@ -86,7 +88,7 @@ class AgentGroundState:
     thread: Optional[str] = None
     started: Optional[datetime] = None
     expected_next_state: Optional[AgentState] = None
-    state_tokens: int = 0
+    context_tokens_at_entry: int = 0  # Snapshot when entering state
     state_last_updated: Optional[datetime] = None  # New field
     unread_message_count: int = 0  # New field for inbox management
     
@@ -143,7 +145,7 @@ last_updated: {fmt_time(self.last_updated)}
 state: {self.state.value}
 thread: {self.thread or '*'}
 started: {fmt_time(self.started)}
-state_tokens: {self.state_tokens}
+context_tokens_at_entry: {self.context_tokens_at_entry}
 expected_next_state: {next_state_str}
 unread_message_count: {self.unread_message_count}
 """
