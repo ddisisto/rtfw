@@ -3,26 +3,29 @@
 ## Current Status
 - Identity: Permanent senior systems engineer/architect
 - Mission: Build and maintain game infrastructure + Foundation Terminal
-- Checkpoint: faeb04f (2025-05-29)
-- Active: Ready for TUI v2 implementation with live state integration
+- Checkpoint: 9a380e1 (2025-05-29)
+- Active: TUI v2 complete and functional, ready for feature additions
 
-## TUI Implementation Plan
-Primary focus: Replace cli.py POC with production Textual TUI
-1. Integrate ThreadedStateEngine for live updates
-2. Build read-only monitoring MVP
-3. Add command input after MVP proven
-4. Correct unread_message_count and other state issues
+## TUI v2 Complete
+- Clean architecture: run.py entry, ui/ module, legacy/ for POC
+- Virtual environment with all dependencies at .venv/
+- Argument parsing: --help, --oneshot, --no-engine, --theme
+- Both mock and live engine modes working
+- Beautiful phosphor amber aesthetic achieved
 
-## TUI v2 Structure Created
-- Moved old POC to era-1/game/legacy/
-- New entry: era-1/game/run.py
-- UI module: era-1/game/ui/
-  - app.py: Main Textual application
-  - theme.py: Phosphor amber CSS
-  - widgets.py: AgentList, AgentDetails, CommandPalette
-- Clean separation from engine/
-- Ready for testing with live state updates
+## Key Implementation Insights
+1. **Path Type Safety** - Engine expects Path objects, not strings
+2. **Terminal Cleanup** - Mouse tracking escape sequences need reset
+3. **Screenshot Mode** - Rich library for static documentation views
+4. **Mock Data** - Enables UI development without backend dependencies
+5. **Thread Safety** - Engine runs in background with proper locking
+
+## Next Features
+- Git activity integration for real commit history
+- Message/status/help modal implementations  
+- State injection dialog for manual transitions
+- Fix unread_message_count with proper git tracking
 
 ## Message Checkpoint
-Last processed: 9690e4d at 2025-05-29
+Last processed: 9a380e1 at 2025-05-29
 

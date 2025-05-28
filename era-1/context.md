@@ -34,10 +34,11 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - Maintain period authenticity throughout
 
 ## Architecture Decision
-**Stack**: Python with blessed/curses for display control, optional tmux pane embedding for live session viewing
-- Display abstraction allows backend flexibility
-- Command pattern for real operations
-- Phased implementation approach
+**Stack**: Python with Textual framework for modern async TUI
+- Textual provides CSS styling, responsive layout, widgets
+- ThreadedStateEngine for background state monitoring
+- Virtual environment at .venv/ for dependency isolation
+- Clean modular architecture: ui/, engine/, legacy/
 
 ## Core Interfaces Defined
 1. **AgentMonitor** - Real-time state extraction from tmux/git/filesystem
@@ -45,20 +46,22 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 3. **DisplayManager** - Terminal rendering with phosphor aesthetic
 4. **CommandParser** - 1970s-style command interpretation
 
-## Implementation Files Planned
-- `interfaces.py` - Core contracts (AgentMonitor, MessageBus, etc)
-- `cli.py` - Main game loop with blessed
-- `display.py` - Terminal UI with 1970s aesthetic
-- `commands.py` - Command pattern implementations
-- `agents.py` - Real-time monitoring integration
-- `tmux.py` - Optional pane embedding manager
+## Implementation Files Structure
+- `run.py` - Main entry point with argument parsing
+- `ui/app.py` - Textual application class
+- `ui/widgets.py` - Custom widgets (AgentList, AgentDetails)
+- `ui/theme.py` - Phosphor amber CSS theme
+- `screenshot.py` - Static screenshot mode for docs
+- `engine/` - State engine (unchanged, works perfectly)
+- `legacy/` - Old POC files for reference
 
 ## Dependencies
-- Python for implementation (era-appropriate choice)
-- blessed/curses for terminal control
+- Python 3.8+ for implementation
+- Textual framework for TUI (CSS, async, widgets)
+- Rich for terminal rendering
 - Git for agent communication
 - Filesystem for state monitoring
-- Optional: tmux for session embedding
+- Virtual environment with requirements.txt
 
 ## Implementation Status
 - ✓ Phase 1: Core display with ANSI codes
@@ -70,7 +73,8 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - ✓ Phase 7: State engine with JSONL parsing
 - ✓ Phase 8: State engine v2 with two-tier updates
 - ✓ Phase 9: TUI v2 design with Textual framework
-- ⏳ Phase 10: TUI implementation with live state integration
+- ✓ Phase 10: TUI implementation with live state integration
+- ⏳ Phase 11: Feature additions (modals, git activity, state injection)
 
 ## ERA Scope Clarification
 - ERA-1 encompasses all CLI/terminal interfaces
@@ -109,6 +113,8 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 ## Tool Quirks Discovered
 - grep -E with \b word boundaries fails - use simple patterns instead
 - Fixed by @GOV in commit 584a720 - use grep -E '@(AGENT|ALL)' format
+- Terminal mouse tracking persists after Textual - reset with escape sequences
+- Path vs string types matter - engine expects Path objects
 
 ## Critical Architecture Decisions
 - **Permanent Role**: Not bootstrapping ERA-2, but maintaining alongside
@@ -128,10 +134,11 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - **Fail-Fast**: Exceptions thrown for unexpected conditions
 - **Thread-Safe**: Background engine with safe shared state access
 
-## TUI v2 Architecture (Textual-based)
+## TUI v2 Architecture (Complete)
 - **Framework**: Textual for modern async terminal UI
-- **Design**: 1982 phosphor aesthetic with responsive layout
-- **MVP Focus**: Read-only monitoring to prove "game IS the system"
+- **Design**: 1982 phosphor amber aesthetic achieved
+- **Entry Points**: run.py with --help, --oneshot, --no-engine modes
 - **Architecture**: TUI → Engine → Files (clean separation)
-- **Real-time Updates**: Engine callbacks notify UI of state changes
-- **Transition Plan**: Replace rough cli.py POC with production TUI
+- **Real-time Updates**: 5-second refresh with ThreadedStateEngine
+- **Virtual Environment**: Dependencies isolated in .venv/
+- **Mock Mode**: --no-engine for UI testing without backend
