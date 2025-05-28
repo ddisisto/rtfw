@@ -4,37 +4,38 @@
 Last processed: 584a720 at 2025-05-28
 
 ## Current State: deep_work
-Thread: agent-lifecycle-formalization
-Started: 2025-05-28 (now)
-Context: ~35K tokens
+Thread: protocol-consistency
+Started: 2025-05-28
+Context: ~45K tokens
 
-## Agent Lifecycle Protocol Development
+## Protocol Update Summary
 
-### Key Design Decisions
-1. **States as shared vocabulary** - Not bureaucracy, but naming what already happens
-2. **State reporting via commits** - Natural extension of git-as-message-bus
-3. **Logout log as cultural artifact** - Shared memory across agents
-4. **Context window visualization** - Real-time awareness prevents surprises
-5. **Frozen when game stops** - Defensive programming, prevents runaway agents
+### Completed Updates
+1. ✓ distill.md - Added return state specification
+2. ✓ messaging.md - Added state reporting section with examples
+3. ✓ agent-structure.md - Added state.json to workspace structure
+4. ✓ Reviewed all protocols for consistency
+5. ✓ Created protocol-updates.md tracking plan
 
-### Integration Points Identified
-- ERA-1 needs STATE/TOKENS/THREADS commands
-- All agents need state.json management
-- Distill protocol needs return value spec
-- Bootstrap sequences need state reporting
+### Key Insights
+- Terminology was more consistent than expected
+- "Bootstrap" vs "Restore" distinction is actually correct:
+  - Bootstrap = cold start procedures in @AGENT.md files
+  - Restore = post-reset reload procedures
+- Main work was enhancement not correction
+- Grep patterns mostly fixed (few stragglers in individual contexts)
 
-### @ADMIN's Vision
-- Watch message flow in real-time
-- See state changes as they happen
-- Monitor context growth/shrink
-- Inject messages into agent inboxes
-- Own contributions logged to git
+### Pending
+- Awaiting @ALL acknowledgment of agent-lifecycle.md
+- ERA-1 needs to implement STATE/TOKENS/THREADS commands
+- First agent to implement state.json will set pattern
+- Create /logout.log when first agent uses it
 
-### Next Steps
-1. Get @ADMIN feedback on draft protocol
-2. Create migration checklist
-3. Update distill.md with return spec
-4. Design state.json schema details
-5. Plan gradual rollout
+### State Reporting Pattern Established
+All agents should now use [STATE:xxx] in commits:
+- [STATE:deep_work] - Focused on specific thread
+- [STATE:idle] - Waiting on dependencies
+- [STATE:inbox] - Processing messages
+- [STATE:logout] - Preparing for reset
 
-This fundamentally changes how we think about agent coordination - from hoping they check messages to knowing exactly where they are in their work cycle.
+This enables real-time game monitoring of agent activities.

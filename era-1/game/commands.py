@@ -147,6 +147,9 @@ class StatusCommand(CommandHandler):
         if agent_state["last_commit"]:
             lines.append(f"LAST COMMIT: {agent_state['last_commit']['hash'][:7]} - {agent_state['last_commit']['message'][:50]}")
         
+        if agent_state.get("unread_messages", 0) > 0:
+            lines.append(f"UNREAD MESSAGES: {agent_state['unread_messages']}")
+            
         if agent_state["checkpoint"]:
             lines.append(f"CHECKPOINT: {agent_state['checkpoint']}")
             

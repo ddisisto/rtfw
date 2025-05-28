@@ -18,7 +18,8 @@ def get_agent_state(agent_name):
         "context_lines": 0,
         "last_commit": None,
         "checkpoint": None,
-        "session_id": None
+        "session_id": None,
+        "unread_messages": 0
     }
     
     # Check context size
@@ -58,6 +59,32 @@ def get_agent_state(agent_name):
         sessions = json.loads(sessions_file.read_text())
         state["session_id"] = sessions.get(agent_name)
     
+    # Count unread messages (messages after checkpoint)
+    if state["checkpoint"]:
+        # Extract commit hash from checkpoint
+        import re
+        match = re.search(r'([a-f0-9]{7,40})\s+at', state["checkpoint"])
+        if match:
+            checkpoint_hash = match.group(1)
+            try:
+                # Count mentions after checkpoint
+                result = subprocess.run(
+                    ["git", "log", "--oneline", f"{checkpoint_hash}..HEAD"],
+                    capture_output=True, text=True
+                )
+                if result.returncode == 0:
+                    # Count lines mentioning this agent (excluding their own commits)
+                    unread = 0
+                    for line in result.stdout.splitlines():
+                        if f"@{agent_name.upper()}" in line and not line.startswith(f"{line.split()[0]} @{agent_name.upper()}:"):
+                            unread += 1
+                        # Also check for @ALL mentions
+                        if "@ALL" in line and not line.startswith(f"{line.split()[0]} @{agent_name.upper()}:"):
+                            unread += 1
+                    state["unread_messages"] = unread
+            except:
+                pass
+    
     return state
 
 def get_system_state():
@@ -75,7 +102,8 @@ def get_system_state():
     state["metrics"] = {
         "total_agents": len(agents),
         "active_agents": sum(1 for a in state["agents"].values() if a["active"]),
-        "total_context_lines": sum(a["context_lines"] for a in state["agents"].values())
+        "total_context_lines": sum(a["context_lines"] for a in state["agents"].values()),
+        "total_unread": sum(a["unread_messages"] for a in state["agents"].values())
     }
     
     return state
@@ -90,7 +118,8 @@ def format_state_report(state):
     
     for agent_name, agent_state in state["agents"].items():
         status = "ACTIVE" if agent_state["active"] else "INACTIVE"
-        lines.append(f"{agent_state['name']:<10} [{status}]")
+        unread_indicator = f" [{agent_state['unread_messages']} unread]" if agent_state['unread_messages'] > 0 else ""
+        lines.append(f"{agent_state['name']:<10} [{status}]{unread_indicator}")
         lines.append(f"  Context: {agent_state['context_lines']} lines")
         if agent_state["last_commit"]:
             lines.append(f"  Latest: {agent_state['last_commit']['hash'][:7]}")
@@ -101,6 +130,7 @@ def format_state_report(state):
     lines.append("System Metrics:")
     lines.append(f"  Active: {state['metrics']['active_agents']}/{state['metrics']['total_agents']} agents")
     lines.append(f"  Total Context: {state['metrics']['total_context_lines']} lines")
+    lines.append(f"  Total Unread: {state['metrics']['total_unread']} messages")
     
     return "\n".join(lines)
 
