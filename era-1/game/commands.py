@@ -87,17 +87,18 @@ class StatusCommand(CommandHandler):
     
     def __init__(self, monitor: FileSystemAgentMonitor):
         self.monitor = monitor
-        self.unified_state_path = Path("../../../critic/tools/unified_state.py")
+        self.project_root = Path(__file__).parent.parent.parent
+        self.unified_state_path = self.project_root / "critic/tools/unified_state.py"
     
     def execute(self, command: Command) -> str:
         """Execute STATUS [agent] using unified state"""
         try:
-            # Call unified state tool
+            # Call unified state tool from project root
             result = subprocess.run(
                 ["python3", str(self.unified_state_path)],
                 capture_output=True,
                 text=True,
-                cwd=Path(__file__).parent
+                cwd=self.project_root
             )
             
             if result.returncode != 0:
