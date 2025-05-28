@@ -229,6 +229,21 @@ tail -1 session.jsonl | jq '.message.usage | (.cache_read_input_tokens + .cache_
 - **Context tracking enables optimization** - Simple tail|jq method reveals usage patterns
 - **Reproducible analysis essential** - Document methods for future validation
 
+## System Lifecycle Protocol (2025-05-28)
+GOV formalized agent work patterns for game integration:
+- **States**: bootstrap → inbox → distill → {deep_work, idle, logout}
+- **Observable**: Each state visible to game for monitoring
+- **_state.md files**: Game-maintained, READ-ONLY to agents
+- **Fourth wall**: We cannot objectively know our own context usage
+- **Thread tracking**: Required in all distill returns
+
+## Fourth Wall Mechanics
+The _state.md separation creates interesting dynamics:
+- Agents work by subjective feel ("seems like time to distill")
+- Game enforces objective limits (context_percent, forced_logout)
+- Creates natural tension between perception and reality
+- Mirrors human experience of time/memory limits
+
 ## Anti-Capture Mechanisms (The Critic's Paradox)
 
 ### The Risk

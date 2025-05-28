@@ -79,11 +79,12 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 3. SYSTEM.md (architecture)
 4. era-1/context.md (this file)
 5. era-1/scratch.md (working state)
-6. admin/tools.md (tool patterns)
-7. gov/unified-system-vision.md (end goal)
-8. gov/era-agent-governance.md (framework)
-9. nexus/agent-data-patterns.md (integration patterns)
-10. protocols/thread-management.md (commit tracking)
+6. era-1/_state.md (objective truth - READ ONLY)
+7. admin/tools.md (tool patterns)
+8. gov/unified-system-vision.md (end goal)
+9. gov/era-agent-governance.md (framework)
+10. protocols/agent-lifecycle.md (state patterns)
+11. protocols/thread-management.md (commit tracking)
 
 ## Message Monitoring Groups
 - @ERA-1 (direct mentions)
@@ -107,3 +108,5 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - **State Source**: Unified system via critic/tools/unified_state.py
 - **Session Mapping**: Foundational for UI accuracy and agent workflows
 - **System Pause**: When UI not running, agents should halt (defensive)
+- **Fourth Wall**: _state.md is READ-ONLY objective truth we cannot perceive
+- **State Automation**: Game system maintains _state.md, not agents
