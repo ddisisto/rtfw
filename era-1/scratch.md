@@ -113,6 +113,22 @@ Working on _state.md format improvements based on bootstrap experience:
 - Testing placeholder values and structure
 - This session's work takes precedence over earlier discussions
 
+### State Engine Requirements (from @ADMIN)
+Transitioning to deep_work to implement:
+
+1. **Trigger**: Last activity in tmux window > 5 seconds old
+2. **State Detection**: Parse last message from JSONL session log
+3. **File Updates**: Immediate atomic writes to _state.md
+4. **Prompt Format**: Direct protocol references
+   - Bootstrap: "apply protocols/bootstrap.md for agent @AGENT.md, in @agent/_state.md"
+   - Others: "please proceed to inbox state per protocols/inbox.md"
+5. **Monitoring**: Continual polling of tmux activity + git logs
+6. **Transitions**: When detected state != last observed state
+7. **Errors**: Invalid transitions → exception → manual review
+8. **No git hooks** for now
+
+Key insight: Engine watches JSONL for conversation end, extracts state decision, updates _state.md, sends next prompt.
+
 ## Milestone
 @ADMIN sent first message through the game interface! 
 "HI FROM ADMIN IN THE GAME WORLD OF CLI.PY"

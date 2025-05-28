@@ -1,5 +1,8 @@
-# ERA-1 Ground State [RO]
-*NOTE: state tracking system under development, details incomplete*
+# ERA-1 Ground State [READ-ONLY]
+# CRITICAL: This file is maintained by the game engine
+# DO NOT EDIT - Read for objective truth only
+*NOTE: additional agent managed state tracking recommended within scratch.md and for alignment and validation*
+*NOTE: state tracking system under development, all values are placeholders*
 
 last_observed_state: bootstrap
 expected_next: inbox
