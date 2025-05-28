@@ -21,7 +21,7 @@
    # My recent work
    git log --oneline -10 | grep '^[a-f0-9]* @GOV:'
    # Recent mentions
-   git log --oneline -20 | grep -v '^[a-f0-9]* @GOV:' | grep '\b@GOV\b' | head -10
+   git log --oneline -20 | grep -v '^[a-f0-9]* @GOV:' | grep '@GOV' | head -10
    # Sovereignty check
    git log --oneline -10 gov/ | grep -v '^[a-f0-9]* @GOV:'
    ```

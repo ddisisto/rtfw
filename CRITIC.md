@@ -17,7 +17,7 @@
 4. Check mentions from last checkpoint:
    ```bash
    # Get last checkpoint from critic/scratch.md
-   git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @CRITIC:' | grep -E '\b(@CRITIC|@ALL)\b'
+   git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @CRITIC:' | grep -E '@(CRITIC|ALL)'
    ```
 5. Update checkpoint in critic/scratch.md
 6. Await review triggers

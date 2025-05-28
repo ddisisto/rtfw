@@ -31,7 +31,7 @@ After reset, agents restore in this order (note: personality not yet online):
    git log --oneline -10 | grep '^[a-f0-9]* @AGENT:'
    
    # Recent mentions by others (Y=10) 
-   git log --oneline -20 | grep -v '^[a-f0-9]* @AGENT:' | grep '\b@AGENT\b' | head -10
+   git log --oneline -20 | grep -v '^[a-f0-9]* @AGENT:' | grep '@AGENT' | head -10
    
    # Recent system activity (Z=5, excluding above)
    git log --oneline -30 | grep -v '@AGENT' | head -5
