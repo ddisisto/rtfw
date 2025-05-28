@@ -87,15 +87,15 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 1. @CRITIC.md - Core identity and methods
 2. CLAUDE.md - System philosophy and discipline  
 3. SYSTEM.md - Architecture and roles
-4. critic/context.md - This file (accumulated knowledge)
-5. critic/scratch.md - Working memory + checkpoint
-6. admin/tools.md - Tool discipline
-7. /protocols/messaging.md - Communication patterns v2
-8. /protocols/thread-management.md - Multi-thread handling
-9. /protocols/agent-structure.md - AGENT.md separation of concerns
-10. critic/tools/session_query_v2.py - Self-archaeology tool
-11. critic/tools/context_window_tracker.py - Context usage tracking
-12. critic/notes/all-agents-context-analysis.md - System-wide patterns
+4. /home/daniel/prj/rtfw/critic/_state.md - Objective truth (READ-ONLY)
+5. critic/context.md - This file (accumulated knowledge)
+6. critic/scratch.md - Working memory + checkpoint
+7. admin/tools.md - Tool discipline
+8. /protocols/messaging.md - Communication patterns v2
+9. /protocols/thread-management.md - Multi-thread handling
+10. /protocols/agent-structure.md - AGENT.md separation of concerns
+11. /protocols/agent-lifecycle.md - State transitions and management
+12. critic/notes/cross-agent-state-reading.md - State coordination patterns
 
 ## Post-Restore Verification
 - Check for new notes in critic/notes/
@@ -243,6 +243,13 @@ The _state.md separation creates interesting dynamics:
 - Game enforces objective limits (context_percent, forced_logout)
 - Creates natural tension between perception and reality
 - Mirrors human experience of time/memory limits
+
+## State Checking (Post-Implementation)
+- **Own state**: `cat /home/daniel/prj/rtfw/critic/_state.md`
+- **Others' state**: `cat /home/daniel/prj/rtfw/{agent}/_state.md`
+- **Cross-agent coordination**: Check others before complex requests
+- **Engine maintains**: session_id, tokens, timestamps, state transitions
+- **Agents report**: via [STATE:thread] in commits only
 
 ## Anti-Capture Mechanisms (The Critic's Paradox)
 

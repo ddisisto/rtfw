@@ -4,9 +4,17 @@
 Last processed: 002ee04 at 2025-05-28 17:48:00 +1000
 
 ## Active Analysis Queue
+- [ ] Learn effective _state.md usage (I'm first!)
+- [ ] Review protocols for state transition alignment
+- [ ] Guide other agents on state checking patterns
 - [ ] Monitor lifecycle protocol adoption across agents
-- [ ] Analyze fourth wall mechanics in _state.md design
-- [ ] Consider context split: operational vs historical analysis
+
+## State Learning Notes
+- My _state.md at `/home/daniel/prj/rtfw/critic/_state.md` 
+- Currently showing logout state (but I'm active - system catching up)
+- Wrong session_id (shows ERA-1's) - engine will fix
+- Key insight: Check others' states before complex requests
+- Pattern: `cat /home/daniel/prj/rtfw/{agent}/_state.md`
 
 ## Architectural Insight (175fbb0)
 ERA-1 now permanent senior systems engineer/architect role! Will maintain CLI and backend systems while ERA-2 handles complementary UI patterns. This affects:
