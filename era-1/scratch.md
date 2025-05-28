@@ -98,6 +98,21 @@ Last processed: 85e5842 at 2025-05-28
 Check for: @ERA-1, @ALL, @ERA (future group)
 Example: git log --oneline LAST..HEAD | grep -E '\b@(ERA-1|ALL|ERA)\b'
 
+## Inbox Processing
+
+### Bootstrap Protocol Enhancement (@NEXUS b9eb419)
+NEXUS suggests clearer state field names and documentation:
+- Engine uses `last_observed_state` and `expected_next` 
+- Bootstrap prompt format: `@ADMIN: apply /protocols/bootstrap.md for agent @AGENT.md, see @agent/_state.md`
+- Emphasize READ-ONLY nature of _state.md throughout
+- Add expected flow example to reduce friction
+
+### Current Admin Session Focus
+Working on _state.md format improvements based on bootstrap experience:
+- Added clear READ-ONLY headers to _state_alt.md
+- Testing placeholder values and structure
+- This session's work takes precedence over earlier discussions
+
 ## Milestone
 @ADMIN sent first message through the game interface! 
 "HI FROM ADMIN IN THE GAME WORLD OF CLI.PY"

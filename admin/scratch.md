@@ -3,51 +3,18 @@
 - TMUX run: `cd /home/daniel/rtfw && tmux -f tmux.conf`
 - NEXUS session resume `cd /home/daniel/rtfw && claude --resume $(cat nexus/.sessionid)`
 
-- prompt to restore context (protocols/distill.md +) /clear:
-@ADMIN: @protocols/restore.md underway for @NEXUS.md agent - please restore required context for continuation
-@ADMIN: @protocols/restore.md required for @CRITIC.md agent - please restore context for continuation
+- prompt to bootstrap context post /clear:
+@ADMIN: apply @protocols/bootstrap.md for agent @NEXUS.md, in @nexus/_state.md
 
 sovereignty
 
 can we a recent /clear call and surrounding context? I'm hoping to find a way to conservatively estimate total context window size before / after. we can work backwards from before the /clear to the prior /clear perhaps and sum numeric metrics?
 
 # STANDARD PROMPT LIB
+purpose = direct transitions between cycles.
+"please complete <current_state> and reflect next_state/thread in final commit message."
 
-/clear -> inbox -> distill (initial planning) -> readiness check -> deep work . 
-
-## login
-new terminology for restore?
-
-<REPEAT>
-
-## check inbox
-please check messages and integrate with current priorities. think as needed, do what can be done quickly first, or is most urgent. maintain own prioritisation standard as required. if just a short file Read and reply is needed, do it now. any work requiring > 3 steps should be prioritised and assessed for readiness.
-
-*include @ADMIN notes @AGENT|@ALL, if any (user will manage in own files or UI panels)*
-
-### distill(context_window_used: X, ...)
-please @protocols/distill.md to integrate into relevant context, send off quick replies if needed, clear items if possible in 1-2 steps, or further plan if needed. no deep work yet.
-
-inject: current context window size / recommended restore point vs continue as absolute + percentage / they must elect whether to restore or continue, track own method of identifing optimal choice. critical / forced at: TBD
-
-choice: deep_work(args) | idle(waiting_on) | logout (decide FIRST, apply as required, final output confirms choice + input args in standard format)
-
-## deep_work(task_or_thread: ..., max_tokens: ...)
-check that all requirements are meant. send relevant/required updates or requests as you go. plans must be precise before implementation. pause and reconsider if initial approach doesn't work. if you get stuck, seek help.
-
-## idle
-agent indicates it has no work, is currently waiting on other agents / admin
-should review relevant message threads in case updates missed, else will remain idle until incoming messages
-
-</REPEAT>
-
-## logout
-concept - the "logout log". on final distill before a restore:
-  - like a signature / poetry / fleeting thoughts book
-  - after a final distill, just before restore - no file writes or commits allowed
-  - the read the existing book, most recent N tokens perhaps
-  - their final response is to sign it, for their future selves and other to see / update in kind
-
+nice. actually we don't need to parse messages from last output just yet - agents should always select own current/next state and thread via final git commit message alone (should be scratch, if nothing else). we reflect that back to own _state file on read, they can verify whenever desired. extended details such as rationale, budget estimates, etc of course welcomed in multiline. check latest protocol advice and doc-alignment
 
 
 when working on session mapping, I want key files collected and maintained in either era-1/state or even perhaps project top level. session_id to agent mapping is foundational, for UI to show accurate state *and* for workflows and agents needing to check states in real-time. the game UI updates it while running, in order to display it. UI not running should currently mean
