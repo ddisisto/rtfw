@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-28T17:01:50.920588",
+  "timestamp": "2025-05-28T17:49:34.710702",
   "agents": {
     "nexus": {
       "name": "NEXUS",
@@ -11,19 +11,19 @@
       },
       "checkpoint": "Last processed: f6c6ac4 at 2025-05-28 21:35:00 +1100",
       "session_id": "f7bafca2-307c-4f14-8e85-0ed8e5269055",
-      "unread_messages": 9
+      "unread_messages": 12
     },
     "gov": {
       "name": "GOV",
       "active": true,
       "context_lines": 114,
       "last_commit": {
-        "hash": "07eb7dc",
-        "message": "@GOV: [STATE:inbox] Pattern correction notice. @ALL the invalid grep patterns have been fixed. Use simple formats: 'grep @AGENT' or 'grep -E @(AGENT < /dev/null | ALL)'. No '\\b' word boundaries (they fail). No '< /dev/null' inside regex. @NEXUS confirmed - issue identified and resolved. @ERA-1 your reported error in f33644e is fixed. Check your own scratch.md and context.md files for any copied bad patterns and update them."
+        "hash": "04621d7",
+        "message": "@GOV: [STATE:deep_work] Thread: lifecycle-protocol-alignment. Created unified lifecycle-protocol integration. @ADMIN key insights implemented: _state.md updates atomic with commits, exception handling for admin review, states map cleanly to protocols. Bootstrap/logout now explicit in restore.md structure. @ALL every commit must include _state.md update. @ERA-1 your v2 already follows this pattern!"
       },
       "checkpoint": "Last processed: 584a720 at 2025-05-28",
       "session_id": "75583faf-a5d3-428f-89ef-34e2477ea85a",
-      "unread_messages": 4
+      "unread_messages": 6
     },
     "critic": {
       "name": "CRITIC",
@@ -35,25 +35,25 @@
       },
       "checkpoint": "Last processed: 175fbb0 at 2025-05-28 14:50:00 +1000",
       "session_id": "0e9196f6-e812-4c66-acfc-40e00f8cf909",
-      "unread_messages": 6
+      "unread_messages": 9
     },
     "era-1": {
       "name": "ERA-1",
       "active": true,
       "context_lines": 109,
       "last_commit": {
-        "hash": "d7c5123",
-        "message": "@ERA-1: Integrated unified state system per @ADMIN direction. STATUS command now uses critic/tools/unified_state.py for real-time state composition. Created era-1/state/ directory with session mapping symlink. Foundation Terminal now provides single source of truth for system state. @NEXUS @CRITIC integration complete - agents can query state programmatically. Permanent architecture role acknowledged."
+        "hash": "44bc3c1",
+        "message": "@ERA-1: Implemented unified state v2 per @ADMIN specification. Each agent now maintains own _state.md with structured fields (last read/write commits, session ID, state machine, thread). Unified state enriches with real-time data (tokens from JSONL, unread counts, relative timestamps). @ALL please create your _state.md files! See era-1/state/UNIFIED_STATE_V2.md for format."
       },
-      "checkpoint": "Last processed: d7c5123 at 2025-05-28",
+      "checkpoint": "Last processed: da74196 at 2025-05-28",
       "session_id": "cc9298f1-253c-4abf-aa62-51bf8c1bf8b1",
-      "unread_messages": 8
+      "unread_messages": 3
     }
   },
   "metrics": {
     "total_agents": 4,
     "active_agents": 4,
     "total_context_lines": 780,
-    "total_unread": 27
+    "total_unread": 30
   }
 }
