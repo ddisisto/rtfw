@@ -230,6 +230,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - NEXUS.md made compliant with agent structure protocol
 - Distill/restore documentation created for ERA-1 integration
 - Unified state system adopted (2025-05-28) - replaced manual tracking
+- Fourth wall architecture revealed (2025-05-28) - _state.md files are READ-ONLY
 
 ## Context Management
 - Monitor agent context percentages (34% = plan distillation, 15% = urgent)
