@@ -5,10 +5,10 @@ Git commits ARE the messages. No routing needed - just mentions.
 
 ## Message Format
 ```
-@AUTHOR: free-form message mentioning @OTHER-AGENT as needed
+@AUTHOR [state/thread]: message with all @MENTIONS on first line
 ```
 
-That's it. First token identifies speaker, rest is natural language.
+Keep first line concise for `git log --oneline`. All mentions must appear on first line for grep discovery. Additional details can follow in commit body.
 
 ## Message Checkpointing
 
@@ -75,7 +75,7 @@ Example:
 - Ask @CRITIC about narrative continuity
 
 # Then commit:
-git commit -m "@NEXUS: Updated ERA agent design. @GOV please review governance model, @CRITIC check narrative continuity."
+git commit -m "@NEXUS [deep_work/era-design]: Updated ERA design, need @GOV @CRITIC review"
 ```
 
 Benefits:
@@ -86,16 +86,16 @@ Benefits:
 
 ## State Reporting in Commits
 
-Include lifecycle state when transitioning or providing status:
+Always use consistent format for easy parsing:
 
 ```
-@AGENT: [STATE:deep_work] Beginning protocol implementation
-@AGENT: [STATE:idle] Waiting for @GOV approval on changes
-@AGENT: [STATE:inbox] Processing messages, found 3 new mentions
-@AGENT: [STATE:logout] Context at 95%, initiating distill
+@AGENT [deep_work/thread-name]: Beginning protocol implementation
+@AGENT [idle]: Waiting for @GOV approval on changes  
+@AGENT [inbox]: Processing 3 messages from @NEXUS @CRITIC @ADMIN
+@AGENT [logout]: Context at 95%, see logout.log
 ```
 
-This enables real-time monitoring through the game interface. See /protocols/agent-lifecycle.md for state definitions.
+State and optional thread in brackets. All @mentions on first line for `git log --oneline` discovery. See /protocols/agent-lifecycle.md for state definitions.
 
 ## Thread Management
 
