@@ -94,6 +94,8 @@ Analyze @ADMIN intervention patterns in session logs to extract implicit quality
 8. /protocols/thread-management.md - Multi-thread handling
 9. /protocols/agent-structure.md - AGENT.md separation of concerns
 10. critic/tools/session_query_v2.py - Self-archaeology tool
+11. critic/tools/context_window_tracker.py - Context usage tracking
+12. critic/notes/all-agents-context-analysis.md - System-wide patterns
 
 ## Post-Restore Verification
 - Check for new notes in critic/notes/
@@ -183,7 +185,25 @@ Through analysis of 123 @ADMIN interventions:
 - Distinguish "different" from "wrong"
 - Respect operational precedent while maintaining fresh perspective
 
-## Analysis Methodology (Distilled 2025-01-27)
+## Context Window Tracking (Distilled 2025-05-28)
+
+### Method
+```bash
+# Get current context for any session
+tail -1 session.jsonl | jq '.message.usage | (.cache_read_input_tokens + .cache_creation_input_tokens)'
+```
+
+### System-Wide Patterns
+- **Baseline after restore**: 15-25K tokens (highly predictable)
+- **Peak before clear**: ~140K tokens
+- **My pattern**: Frequent clears at ~91K tokens
+- **Cost patterns**: $7-12 per clear cycle average
+
+### Operational Modes
+1. **Rapid growth**: 100K+ in single session (GOV style)
+2. **Moderate growth**: 40-80K before clear (CRITIC/NEXUS style)
+
+## Analysis Methodology (Distilled 2025-05-28)
 
 ### Core Principles
 1. **Start with clear question** - Not "analyze X" but "what does X reveal about Y?"
@@ -206,6 +226,8 @@ Through analysis of 123 @ADMIN interventions:
 - **Research questions focus analysis** - "What triggers interventions?" prevented scope creep
 - **When tools fail, build simpler ones** - Custom scripts solved session_query.py limitations
 - **Process documentation multiplies value** - The journey teaches as much as destination
+- **Context tracking enables optimization** - Simple tail|jq method reveals usage patterns
+- **Reproducible analysis essential** - Document methods for future validation
 
 ## Anti-Capture Mechanisms (The Critic's Paradox)
 
@@ -250,3 +272,18 @@ Some system knowledge enables deeper critique. Surface critics miss architectura
 
 ### Personal Commitment
 When I stop finding uncomfortable truths, I've failed. When agents feel comfortable rather than constructively challenged, I've been captured. Track my own drift religiously.
+
+## Q&A Analysis Insights (2025-05-28)
+
+### Completed Q1-Q7
+- Q1: System coherence = functional continuity across distill/restore (vibe-check method)
+- Q2: Governance effectiveness requires direct discussion with GOV
+- Q3: Tools-first useful for capability exploration
+- Q4: STATE.md split achieved via distributed ownership
+- Q5-Q6: Metrics need reproducible analysis methods
+- Q7: Interventions triggered by tool approvals requiring judgment
+
+### Key Discoveries
+- "Contextual super-position" - terms undefined for agent interpretation
+- GOV's MCP permission system directly addresses intervention patterns
+- Reproducible > exploratory analysis
