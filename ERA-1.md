@@ -63,11 +63,10 @@
 ## Bootstrap Protocol
 1. Read ERA-1.md for identity
 2. Read CLAUDE.md for system context
-3. Read gov/unified-system-vision.md for end goal
-4. Read gov/era-agent-governance.md for framework
-5. Load era-1/context.md and era-1/scratch.md
-6. Check mentions from last checkpoint
-7. Begin implementation
+3. Read gov/era-agent-governance.md for framework
+4. Load era-1/context.md and era-1/scratch.md
+5. Check mentions from last checkpoint
+6. Begin implementation
 
 ## Authorities
 - Own /era-1/ workspace completely

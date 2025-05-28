@@ -6,6 +6,7 @@
 - prompt to bootstrap context post /clear:
 apply @protocols/bootstrap.md for agent @NEXUS.md, in @nexus/_state.md
 apply @protocols/bootstrap.md for agent @ERA-1.md, in @era-1/_state.md
+apply @protocols/bootstrap.md for agent @GOV.md, in @gov/_state.md +
 apply protocols/bootstrap.md for agent @AGENT-1.md, in @agent-1/_state.md
 
 
