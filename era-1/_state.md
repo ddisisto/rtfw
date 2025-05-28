@@ -1,19 +1,21 @@
-# ERA-1 State
+# ERA-1 Ground State [RO]
+*NOTE: state tracking system under development, details incomplete*
 
-## Git Activity
-last_read_commit_hash: 0f3031c
-last_read_commit_timestamp: 2025-05-28T17:52:00+1000
-last_write_commit_hash: 44bc3c1
-last_write_commit_timestamp: 2025-05-28T17:17:02+1000
+last_observed_state: bootstrap
+expected_next: inbox
 
-## Context Window
-session_id: cc9298f1-253c-4abf-aa62-51bf8c1bf8b1
-context_tokens: 74931
-context_percent: 49%
-last_updated: 2025-05-28T17:20:00+1000
+current_thread: ?
 
-## Agent State
-state: deep_work
-thread: unified-state-v2
-started: 2025-05-28T17:15:00+1000
-max_tokens: 100000
+context_tokens: ?
+max_tokens: 130000
+thread_tokens: ?
+
+last_read_hash: ?
+last_read_ts: ?
+last_write_hash: ?
+last_write_ts: ?
+
+session_id: ?
+started: ?
+
+state_updated: <timestamp +/-OFFEST>
