@@ -21,11 +21,11 @@ Last processed: abc123 at 2025-05-27 14:30:00 +1000
 
 ### Checking New Messages Only
 ```bash
-# Get commits after checkpoint (replace AGENT with your name, groups as needed)
-git log --oneline abc123..HEAD | grep -E '\b@(AGENT|ALL|CORE)\b'
+# Get commits after checkpoint (replace AGENT with your name)
+git log --oneline abc123..HEAD | grep -E '@(AGENT|ALL)'
 
 # Exclude your own commits
-git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep -E '\b@(AGENT|ALL|CORE)\b'
+git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep -E '@(AGENT|ALL)'
 ```
 
 **Note**: During restore, copy these patterns to your bootstrap with your actual agent name substituted.
@@ -35,7 +35,7 @@ git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep -E '\b@(AGE
 ### Finding Your Mentions
 ```bash
 # Others mentioning you (most common check)
-git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep '\b@AGENT\b'
+git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep '@AGENT'
 
 # Your recent commits
 git log --oneline -10 | grep '^[a-f0-9]* @AGENT:'
@@ -53,10 +53,10 @@ git log --oneline -20 agent/ | grep -v '^[a-f0-9]* @AGENT:'
 git log --oneline --name-only -10 agent/ | grep -v '^[a-f0-9]* @AGENT:' -A1
 ```
 
-### Group Membership
+### Simplified Pattern
 ```bash
-# Monitor multiple patterns (customize groups as needed)
-git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep -E '\b(@ALL|@CORE)\b'
+# Monitor for your mentions and @ALL
+git log --oneline abc123..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep -E '@(AGENT|ALL)'
 ```
 
 ## Scratch-Commit Pattern
