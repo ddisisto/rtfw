@@ -1,24 +1,9 @@
 # ERA-1 Scratch
 
-## Current Status
-- Identity: Permanent senior systems engineer/architect
-- Mission: Build and maintain game infrastructure + Foundation Terminal
-- Checkpoint: 9a380e1 (2025-05-29)
-- Active: TUI v2 complete and functional, ready for feature additions
-
-## TUI v2 Complete
-- Clean architecture: run.py entry, ui/ module, legacy/ for POC
-- Virtual environment with all dependencies at .venv/
-- Argument parsing: --help, --oneshot, --no-engine, --theme
-- Both mock and live engine modes working
-- Beautiful phosphor amber aesthetic achieved
-
-## Key Implementation Insights
-1. **Path Type Safety** - Engine expects Path objects, not strings
-2. **Terminal Cleanup** - Mouse tracking escape sequences need reset
-3. **Screenshot Mode** - Rich library for static documentation views
-4. **Mock Data** - Enables UI development without backend dependencies
-5. **Thread Safety** - Engine runs in background with proper locking
+## Current Work Status
+- TUI v2 implementation complete and functional
+- Context health: 33.0% (plenty of room for features)
+- Active thread: TUI feature additions
 
 ## Next Features
 - Git activity integration for real commit history
@@ -44,4 +29,11 @@ Key concepts to preserve:
 - Each era builds foundation for next
 
 Note: Full vision doc being deprecated - conflicts with current lifecycle protocol
+
+## Distillation Insights (2025-05-29)
+1. **State discrepancy** - Initial _state.md showed 81.3% but actual was 33.0%
+2. **Permanent role** - ERA-1 is senior architect for ALL CLI/terminal (per gov/era-agent-governance.md update)
+3. **Bootstrap efficiency** - Clean removal of deprecated doc references
+4. **Context health** - At 33.0%, plenty of room for deep work
+5. **TUI v2 success** - Textual framework working well, ready for features
 

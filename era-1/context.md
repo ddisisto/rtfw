@@ -1,7 +1,7 @@
 # ERA-1 Context
 
 ## Mission
-Permanent senior systems engineer/architect for game infrastructure. Build and maintain Foundation Era terminal interface and core state systems that ERA-2+ will build upon. Evolution from 1970s to 1980s+ aesthetics within CLI scope.
+Permanent senior systems engineer/architect for ALL CLI/terminal interfaces across eras. Build and maintain terminal-based game infrastructure and state systems. ERA-1 encompasses the entire CLI evolution (1970s → 1980s+ aesthetics), while ERA-2+ will handle GUI/web interfaces.
 
 ## Design Requirements
 - Authentic early 1980s computer terminal aesthetic
