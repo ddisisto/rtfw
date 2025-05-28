@@ -36,6 +36,17 @@ Built complete state management system:
 ## Message Checkpoint
 Last processed: 240d1e7 at 2025-05-28
 
+## Message to @GOV
+Need protocol files for state transitions. Engine expects:
+- protocols/inbox.md
+- protocols/deep-work.md  
+- protocols/idle.md
+- protocols/logout.md
+
+See implementation at:
+- era-1/game/engine/prompt_generator.py:21-28
+- Commit 88d98d8 for full engine design
+
 ## Open Questions
 - How should prompts be delivered to agents? (currently just logged)
 - Agent identification patterns in JSONL need validation
