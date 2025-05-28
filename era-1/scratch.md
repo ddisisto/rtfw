@@ -35,4 +35,17 @@ Next phase when returning:
 - Git integration provides real activity tracking
 
 ## Message Checkpoint
-Last processed: 0f3031c at 2025-05-28
+Last processed: e99130c at 2025-05-29
+
+## TUI v2 Design Complete
+Created comprehensive design docs:
+- Full Textual-based TUI with phosphor aesthetic  
+- MVP focuses on read-only monitoring
+- Clean separation: TUI → Engine → Files
+- Beautiful 1982 look with 2025 UX
+
+Key decisions:
+- Textual framework for modern async
+- Responsive layout with CSS styling
+- Single-key commands + modal dialogs
+- Real-time state updates from engine
