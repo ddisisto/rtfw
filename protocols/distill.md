@@ -24,6 +24,12 @@ Agents SHOULD distill when:
 7. **Resolve contradictions** - Ensure coherence
 8. **Update identity** - If role has evolved
 9. **Commit changes** - Preserve the refinement
+10. **Return next state** - Decide next action with args:
+    ```
+    next_state: deep_work|idle|logout
+    thread: thread-name (if deep_work)
+    max_tokens: 30000 (if deep_work)
+    ```
 
 ## Key Principles
 

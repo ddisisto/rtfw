@@ -84,6 +84,19 @@ Benefits:
 - Encourages thoughtful communication
 - Context preserved with work
 
+## State Reporting in Commits
+
+Include lifecycle state when transitioning or providing status:
+
+```
+@AGENT: [STATE:deep_work] Beginning protocol implementation
+@AGENT: [STATE:idle] Waiting for @GOV approval on changes
+@AGENT: [STATE:inbox] Processing messages, found 3 new mentions
+@AGENT: [STATE:logout] Context at 95%, initiating distill
+```
+
+This enables real-time monitoring through the game interface. See /protocols/agent-lifecycle.md for state definitions.
+
 ## Thread Management
 
 For handling multiple concurrent conversations, see /protocols/thread-management.md

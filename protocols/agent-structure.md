@@ -70,6 +70,7 @@ Each agent has a corresponding workspace directory:
 /agent-name/
   context.md    # Stable knowledge, restore dependencies
   scratch.md    # Working memory, message checkpoints
+  state.json    # Current lifecycle state (see agent-lifecycle.md)
   notes/        # Optional documentation
   tools/        # Optional agent-specific tools
   threads/      # Optional thread files
