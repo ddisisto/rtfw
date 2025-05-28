@@ -1,5 +1,10 @@
 """
 Data models for state engine
+
+TODO: Consider versioning strategy for _state.md files
+      - Version field in AgentGroundState?
+      - Migration support for format changes?
+      - Backward compatibility requirements?
 """
 
 from dataclasses import dataclass, field
@@ -126,7 +131,7 @@ class AgentGroundState:
 # DO NOT EDIT - Read for objective truth only
 # COMMIT this file with your workspace
 *NOTE: additional agent managed state tracking recommended within scratch.md and for alignment and validation*
-*NOTE: state tracking system still under development, **ALL** values are placeholders*
+*NOTE: state tracking system almost complete, **SOME** values may still be placeholders and functionality may change*
 
 ## Git Activity
 last_read_commit_hash: {self.last_read_commit_hash or '?'}
