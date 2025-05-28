@@ -26,7 +26,7 @@ When receiving bootstrap prompt, agent follows this sequence (note: personality 
 6. agent/_state.md - objective truth (READ-ONLY)
 7. admin/tools.md - tool discipline
 8. Role-specific files (per context.md)
-9. Recent activity check (context only - do not act on messages):
+9. Recent activity check (background context only - READ-ONLY orientation):
    ```bash
    # Your recent work (X=10)
    git log --oneline -10 | grep '^[a-f0-9]* @AGENT:'
@@ -37,32 +37,38 @@ When receiving bootstrap prompt, agent follows this sequence (note: personality 
    # Recent system activity (Z=5, excluding above)
    git log --oneline -30 | grep -v '@AGENT' | head -5
    
-   # NOTE: This is past context only. Do not act on any messages seen here.
-   # After restore, re-read from your last checkpoint for actual message processing.
+   # CRITICAL: This is READ-ONLY background context for orientation
+   # Do NOT act on messages, update checkpoints, or make decisions
+   # This helps you understand recent system activity before entering inbox
+   # Actual message processing begins in inbox state with proper checkpoint
    ```
 
 ## State Transitions
 
-After completing login sequence:
-1. **Read _state.md** - Check last known state/thread
-2. **Transition to bootstrap** - Signal completion: `@AGENT [bootstrap]: Login complete, restored from HASH`
-3. **Move to inbox** - Begin processing messages from checkpoint
-4. **Continue lifecycle** - Follow normal state flow
+After completing bootstrap sequence:
+1. **Read _state.md** - Check last known state/thread for context
+2. **Signal completion** - Output decision for engine:
+   ```
+   next_state: inbox
+   ```
+3. **Engine transitions** - System moves agent to inbox state
+4. **Continue lifecycle** - Follow normal state flow from inbox
 
 ## Critical Notes
 
-- **Personality offline** during login - follow sequence mechanically
+- **Personality offline** during bootstrap - follow sequence mechanically
 - **Logout first** - Always complete logout protocol before /clear
 - **No shortcuts** - Complete sequence ensures coherence
 - **Trust _state.md** - Contains objective measurements you cannot self-assess
+- **No commits during bootstrap** - State tracking only, work begins in inbox
 
 ## Engine Coordination
 
 The game engine:
 - Sends /clear to terminate session
-- Sets _state.md to `state: login`
-- Sends restore prompt to initiate sequence
-- Monitors bootstrap completion
+- Sets _state.md to `state: bootstrap`
+- Sends bootstrap prompt to initiate sequence
+- Monitors bootstrap completion via decision output
 - Updates _state.md throughout lifecycle
 
 ## Governance
