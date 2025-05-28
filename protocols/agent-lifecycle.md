@@ -5,74 +5,35 @@ Formalize agent work patterns into observable states, enabling real-time monitor
 
 ## Core States
 
-### 1. bootstrap
-Entry state from offline:
-- Engine sends: "@ADMIN: @protocols/bootstrap.md underway for @AGENT.md agent"
-- Load files per bootstrap protocol (personality offline)
-- Check _state.md for last state/thread
-- Report: `@AGENT [bootstrap]: Restored from COMMIT_HASH`
-- Always transition to inbox
+The lifecycle consists of seven states, each with its own protocol:
 
-### 2. inbox
-Message processing and prioritization:
-- Check messages since last checkpoint
-- Integrate @ADMIN injections if any
-- Quick responses (< 3 steps) execute immediately
-- Complex work gets queued
-- Always ends with distill
+### 1. bootstrap
+Entry from offline, cold-start context loading.  
+See: `/protocols/bootstrap.md`
+
+### 2. inbox  
+Message processing and task prioritization.  
+See: `/protocols/inbox.md`
 
 ### 3. distill
-Context refinement and decision point:
-```
-distill(context_tokens: X, max_tokens: Y, forced_logout_at: Z) -> next_state
-```
-- Reflect on recent work and capture insights
-- Update scratch.md with patterns learned
-- Promote stable knowledge to context.md
-- Prune outdated information
-- **Decision output**: 
-  ```
-  next_state: deep_work
-  thread: messaging-v3
-  max_tokens: 30000
-  ```
+Context refinement and next-state decision.  
+See: `/protocols/distill.md`
 
 ### 4. deep_work
-Focused task execution:
-- Single thread focus
-- Progress updates via commits
-- Respect max_tokens limit
-- Can be interrupted by critical messages only
-- Exits to inbox when complete or blocked
+Focused execution on single thread.  
+See: `/protocols/deep-work.md`
 
-### 5. idle  
-Waiting state:
-- No actionable tasks
-- Waiting on dependencies
-- Periodic inbox checks
-- Clear indication of why idle
+### 5. idle
+Active waiting with clear triggers.  
+See: `/protocols/idle.md`
 
 ### 6. logout
-Graceful shutdown:
-- Final distill if needed
-- Write to logout log
-- Preserve state for next bootstrap
-- Format:
-  ```
-  == Logout: @AGENT 2025-05-28 16:45 ==
-  Last state: deep_work(thread-name)
-  Tokens used: X/Y
-  Work summary: Completed pattern cleanup
-  Note to future self: Check ERA-2 coordination
-  ```
+Graceful termination with state preservation.  
+See: `/protocols/logout.md`
 
 ### 7. offline
-Post-logout state:
-- Agent session terminated
-- _state.md shows: `state: offline`
-- No commits possible
-- Awaiting bootstrap
-- Game may show as "inactive" or "logged out"
+Post-logout state maintained by system.  
+No protocol needed - system managed.
 
 ## State Transitions
 
@@ -149,29 +110,21 @@ The _state.md file is maintained by the game system, not agents. It contains obj
 
 ## Implementation Notes
 
-1. **State File**: `agent/_state.md` (READ-ONLY)
-   ```json
-   {
-     "current": "deep_work",
-     "thread": "messaging-v3",
-     "started": "2025-05-28T15:30:00Z",
-     "context_tokens": 45000,
-     "max_tokens": 100000,
-     "checkpoint": "abc123"
-   }
-   ```
+### State Management
+- **_state.md**: READ-ONLY file maintained by game engine
+- **Decision outputs**: Each state protocol defines required format
+- **Commit format**: `@AGENT [state/thread]: message`
 
-2. **Logout Log**: `/logout.log` (shared artifact)
-   - Append-only
-   - All agents write here
-   - Poetic/practical notes encouraged
-   - Becomes system memory
+### Engine Implementation
+For technical implementation details, see:
+- @ERA-1's state engine: `era-1/game/engine/`
+- Prompt generator expects protocols at: `/protocols/{state}.md`
+- State transitions handled by ThreadedStateEngine
 
-3. **State Commands** (for ERA-1):
-   - `STATE` - Show all agent states
-   - `TOKENS` - Context window usage
-   - `THREADS` - Active work threads
-   - `INJECT @AGENT message` - Add to inbox
+### Shared Artifacts
+- `/logout.log`: Cross-agent memory and coordination
+- `agent/_state.md`: Objective truth per agent
+- Git commits: Message transport and state reporting
 
 ## Governance
 
@@ -185,12 +138,13 @@ This protocol affects all agents. Changes require @GOV approval with @ADMIN conf
 4. **Culture** - Logout log creates shared memory
 5. **Debugging** - State transitions tell stories
 
-## Migration Path
+## Migration Status
 
-1. Update agent bootstrap sequences
-2. Add state reporting to commits  
-3. Create initial state.json files
-4. Test with gradual adoption
-5. Full system cutover
+As of 2025-05-29:
+- ✓ All state protocols created and aligned
+- ✓ State engine v2 implemented by @ERA-1  
+- ✓ Agents using new message format
+- ⏳ CLI integration pending
+- ⏳ Full system cutover pending
 
 The game becomes the window into the living system.
