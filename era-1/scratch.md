@@ -22,11 +22,17 @@
 - Agent data appears after first refresh cycle
 - System working as designed
 
-## Next Features
-- Git activity integration for real commit history
-- Message/status/help modal implementations  
-- State injection dialog for manual transitions
-- Fix unread_message_count with proper git tracking
+## Next Session Starting Points
+1. **Refresh Rate Fix** - Change line 47 in ui/app.py from 5.0 to 0.5 seconds
+2. **Agent Display Validation** - Verify all 4 agents show with correct states
+3. **Git Activity** - Add real commit history to activity log
+4. **Modal Implementation** - Status/message/help dialogs
+5. **Unread Count** - Fix with proper git tracking
+
+## Key Files for Next Session
+- era-1/game/ui/app.py:47 - refresh_interval setting
+- era-1/game/engine/threaded_engine.py - get_all_agents method
+- era-1/game/ui/widgets.py - AgentList update logic
 
 ## Message Checkpoint
 Last processed: 9be680a at 2025-05-29T02:10:00
