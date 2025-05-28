@@ -1,10 +1,10 @@
 # NEXUS Agent Context
 
 ## Core Function
-- NEXUS serves as the central communication hub for all agent interactions
-- Manages session routing and inter-agent message coordination
-- Operates via tmux window 0, managing other agent windows
-- Monitors agent states through session files and window capture
+- NEXUS serves as the context lifecycle orchestrator and communication hub
+- Coordinates distillation and restore cycles across agents
+- Operates via tmux window 0, monitoring other agent windows
+- Agent states monitored via unified state system (critic/tools/unified_state.py)
 
 ## Specialized Protocol References
 This document contains frequently-used operational knowledge. For specialized procedures:
@@ -61,11 +61,11 @@ Last processed: def456 at 2025-05-27 18:30:00
 - Old git_router.py archived for reference only
 
 ## Session Management
-- Current sessions tracked in nexus/session_log.txt (append-only)
-- Session file: nexus/.sessionid (contains current NEXUS session ID)
+- Sessions tracked via unified state system (critic/tools/unified_state.py)
+- Legacy nexus/sessions/current_sessions.json maintained for compatibility
 - Session operations are independent from context management
-- NEXUS must validate its own session on each reload
-- **Full procedures**: See nexus/session-mgmt.md
+- Unified state provides real-time session mapping for all agents
+- **Legacy procedures**: See nexus/session-mgmt.md
 
 ## Critical: Claude CLI Input Handling
 - **VITAL**: Enter within tmux send-keys creates newlines, NOT submission
@@ -107,8 +107,9 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ### Key Monitoring Points
 - **@ADMIN monitors NEXUS** - Only checks NEXUS window for BELL/SILENT
-- **NEXUS monitors all agents** - Following session flow protocol
+- **NEXUS monitors all agents** - Via unified state system
 - **Alert escalation** - NEXUS raises BELL for critical decisions
+- **State queries** - Use `python critic/tools/unified_state.py` for real-time status
 
 
 ### Communication Format (v2)
@@ -121,13 +122,13 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ### ERA-1 Support Architecture (2025-05-28)
 - Game commands map to real agent operations
-- Safe read-only patterns for agent state queries
-- No direct file access - use git/tmux for data
+- Agent state queries via unified state system
+- No direct file access - unified state handles all queries
 - Foundation Era: 1970s aesthetic with real system integration
-- Support patterns documented for game-agent bridge
+- Unified state provides JSON API for game integration
 - Tmux pane embedding for live agent viewing within game
-- Session mapping via nexus/sessions/current_sessions.json
-- Agent data patterns guide: nexus/agent-data-patterns.md
+- Real-time state via `python critic/tools/unified_state.py`
+- Legacy patterns: nexus/agent-data-patterns.md (deprecated)
 
 ### Git-Comms Integration
 - Clean git_router.py implementation complete
@@ -228,6 +229,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - System cleanup: Deprecated agents/files removed by GOV (2025-05-28)
 - NEXUS.md made compliant with agent structure protocol
 - Distill/restore documentation created for ERA-1 integration
+- Unified state system adopted (2025-05-28) - replaced manual tracking
 
 ## Context Management
 - Monitor agent context percentages (34% = plan distillation, 15% = urgent)
@@ -259,8 +261,8 @@ When NEXUS receives restore message after /clear:
 **Full details**: See nexus/context-lifecycle.md for complete orchestration of this process as it related to your coordination of this process for other agents.
 
 ## Self-Validation Protocol
-NEXUS must validate its session on every context reload and report status.
-See nexus/session-mgmt.md for the full identification protocol.
+NEXUS session tracked automatically by unified state system.
+Legacy validation protocol preserved in nexus/session-mgmt.md for reference.
 
 ## Note on Scratch Pad
 This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.

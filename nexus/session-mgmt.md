@@ -1,4 +1,6 @@
-# NEXUS Session Management
+# NEXUS Session Management (Legacy)
+
+**Note**: This document is preserved for historical reference. Session tracking now handled by unified state system (critic/tools/unified_state.py).
 
 **Purpose**: Technical reference for managing Claude sessions, JSONL files, and tmux windows. This document covers process-level operations only. For context lifecycle and work states, see context-lifecycle.md.
 
@@ -8,8 +10,8 @@
 - **Claude process**: Running instance of `claude` CLI in tmux window
 - **Session ID**: UUID identifying a Claude conversation
 - **JSONL file**: `/nexus/sessions/<session_id>.jsonl` containing conversation history
-- **session_log.txt**: Append-only log tracking current session per agent
-- **nexus/.sessionid**: File containing NEXUS's current session ID
+- **Unified State**: Real-time session mapping via `python critic/tools/unified_state.py`
+- **Legacy files**: session_log.txt, nexus/.sessionid (deprecated)
 
 ### Key Principle
 Session management (starting/stopping processes) is completely independent from context management (distill/restore). You can:
@@ -42,12 +44,7 @@ After any session start/resume, identify the session:
    Grep pattern=<AGENT>_SESSION_MARKER_... path=/home/daniel/prj/rtfw/nexus/sessions
    ```
 5. Extract session ID from matching filename
-6. Update nexus/session_log.txt:
-   ```
-   Read session_log.txt
-   Append: <agent_name> <session_id> <timestamp>
-   Write session_log.txt
-   ```
+6. Update nexus/sessions/current_sessions.json (for legacy compatibility)
 
 #### For NEXUS Self-Validation
 When @ADMIN requests validation:
@@ -55,12 +52,9 @@ When @ADMIN requests validation:
 1. Generate marker: `NEXUS_SESSION_VALIDATION_$(date +%s)_$$`
 2. Echo marker in conversation
 3. Wait: `sleep 2`
-4. Read nexus/.sessionid
-5. Grep for marker in sessions/, should find prior session + new one if applicable
-6. If session changed:
-   - Update nexus/.sessionid
-   - Append to session_log.txt
-7. Report validation status
+4. Grep for marker in sessions/
+5. Session now tracked by unified state automatically
+6. Report validation status
 
 ## Fresh Agent Start
 Used only when starting an entirely new agent / session that did not previously exist. Otherwise must use Resume process below
@@ -75,8 +69,8 @@ Then run identification protocol immediately to capture session_id, followed by 
 
 ### Pre-Resume Validation
 Always validate before resuming:
-1. Read last known session from session_log.txt
-2. Check JSONL file exists and has recent activity
+1. Check unified state: `python critic/tools/unified_state.py`
+2. Verify JSONL file exists and has recent activity
 3. If stale/missing, consult @ADMIN before proceeding
 
 ### Clean Exit and Resume
@@ -115,3 +109,4 @@ tmux capture-pane -t <agent> -p
 - **Resume = New Session**: Always run identification after `--resume` 
 - **One Session at a Time**: Complete identification before starting another
 - **Tool Discipline**: Use native tools (Read/Write/Grep) not shell commands
+- **Unified State**: Primary source of truth is now critic/tools/unified_state.py
