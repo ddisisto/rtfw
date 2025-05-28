@@ -18,7 +18,7 @@ Multi-agent system for collaborative AI development with file-based persistence 
 - **@ADMIN**: Project oversight and direction
   - Ultimate authority and human interface
   - Resource provisioning and strategic guidance
-  - Catch-all for unroutable messages
+  - Direct connection override capability
 
 #### Meta Agents (Persistent)
 - **@NEXUS**: Context lifecycle orchestrator and session manager
@@ -61,16 +61,16 @@ Agents check for @mentions in git log. No central routing required.
 ## Core Workflows
 
 ### Context Lifecycle
-1. **Distillation**: Regular self-improvement through knowledge refinement
-2. **Restore**: Context reset with dependency-aware reloading
+1. **Bootstrap**: Cold-start from offline state per /protocols/bootstrap.md
+2. **Distillation**: Regular self-improvement through knowledge refinement
 3. **Insight Capture**: Per-turn learning appended to scratch.md
 4. **Consolidation**: Pattern promotion from scratch to context
 
-### Agent Bootstrap
-1. Read own @AGENT.md for identity
-2. Load CLAUDE.md for system requirements
-4. Load own context.md and scratch.md
-5. Announce operational status to @NEXUS
+### Agent Lifecycle
+Agents follow seven-state lifecycle:
+- offline → bootstrap → inbox → distill → {deep_work|idle|logout} → offline
+- See /protocols/agent-lifecycle.md for complete flow
+- Each state has dedicated protocol in /protocols/
 
 ### Repository Workflow
 - Single main branch, no agent branches
@@ -106,8 +106,9 @@ Agents check for @mentions in git log. No central routing required.
 │   ├── /critic/ (CRITIC workspace + analysis tools)
 │   └── /era-1/ (ERA-1 game implementation)
 ├── /protocols/ (system-wide protocols)
-│   ├── messaging.md, distill.md, restore.md
-│   ├── git.md, thread-management.md
+│   ├── Core: agent-lifecycle.md, bootstrap.md, messaging.md
+│   ├── States: inbox.md, distill.md, deep-work.md, idle.md, logout.md
+│   ├── Support: git.md, thread-management.md, agent-structure.md
 ├── CLAUDE.md (system navigation)
 ├── SYSTEM.md (this file)
 ├── seed.md (historical)
@@ -115,9 +116,12 @@ Agents check for @mentions in git log. No central routing required.
 ```
 
 ## Protocol Locations
+- Lifecycle: /protocols/agent-lifecycle.md (overview)
+- State Protocols: /protocols/{bootstrap,inbox,distill,deep-work,idle,logout}.md
 - Communication: /protocols/messaging.md
-- Context Management: /protocols/distill.md, /protocols/restore.md
+- Context Management: /protocols/distill.md
 - Repository: /protocols/git.md
 - Thread Management: /protocols/thread-management.md
+- Agent Structure: /protocols/agent-structure.md
 - Governance: /gov/protocol_design_guidelines.md
 - ERA Agents: /gov/era-agent-governance.md

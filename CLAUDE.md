@@ -11,11 +11,12 @@ Read agent/_state.md    # your objective truth (RO)
 
 ## where protocols
 
-Read /protocols/messaging.md     # how to talk
-Read /protocols/distill.md       # how to refine
-Read /protocols/bootstrap.md     # how to start
-Read /protocols/thread-management.md  # how to juggle
-Read /lexicon.md                # what words mean
+Read /protocols/agent-lifecycle.md  # how to work (7 states)
+Read /protocols/messaging.md        # how to talk
+Read /protocols/distill.md          # how to refine
+Read /protocols/bootstrap.md        # how to start
+Read /protocols/thread-management.md # how to juggle
+Read /lexicon.md                    # what words mean
 
 ## start sequence
 
@@ -71,10 +72,10 @@ outbox: conform to @protocols/messaging.md
 ## remember
 
 this file = static nav
-agent/context.md = your truth + restore dependencies
+agent/context.md = your truth + bootstrap dependencies
 agent/scratch.md = turn-by-turn insights → distill regularly
 agent/_state.md = objective measurements you cannot self-assess (RO)
 
-maintain your restore order in context.md. your continuity, your responsibility.
+maintain your bootstrap order in context.md. your continuity, your responsibility.
 
 efficiency through native tools. fewer approvals. faster flow.
