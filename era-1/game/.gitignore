@@ -1,4 +1,10 @@
+# Python virtual environment
+.venv/
+
+# Python cache
 __pycache__/
+*.py[cod]
+*$py.class
 *.pyc
 *.pyo
 *.pyd
@@ -6,3 +12,17 @@ __pycache__/
 *.so
 *.egg
 *.egg-info/
+
+# Textual dev cache
+.textual/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
