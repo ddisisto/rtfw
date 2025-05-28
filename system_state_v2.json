@@ -1,0 +1,79 @@
+{
+  "timestamp": "2025-05-28T17:16:01.713940",
+  "agents": {
+    "nexus": {
+      "name": "NEXUS",
+      "active": false,
+      "state_machine": "unknown",
+      "thread": "none",
+      "session_id": "unknown",
+      "context_tokens": 0,
+      "context_percent": 0,
+      "unread_messages": 0,
+      "context_lines": 268
+    },
+    "gov": {
+      "name": "GOV",
+      "active": false,
+      "state_machine": "unknown",
+      "thread": "none",
+      "session_id": "unknown",
+      "context_tokens": 0,
+      "context_percent": 0,
+      "unread_messages": 0,
+      "context_lines": 114
+    },
+    "critic": {
+      "name": "CRITIC",
+      "active": false,
+      "state_machine": "unknown",
+      "thread": "none",
+      "session_id": "unknown",
+      "context_tokens": 0,
+      "context_percent": 0,
+      "unread_messages": 0,
+      "context_lines": 289
+    },
+    "era-1": {
+      "name": "ERA-1",
+      "active": true,
+      "state_machine": "inbox",
+      "thread": "unified-state-redesign",
+      "session_id": "cc9298f1-253c-4abf-aa62-51bf8c1bf8b1",
+      "last_write": {
+        "hash": "da74196",
+        "timestamp": "2025-05-28T17:02:14+1000",
+        "age": "13m ago"
+      },
+      "last_read": {
+        "hash": "da74196",
+        "timestamp": "2025-05-28T17:02:14+1000",
+        "age": "13m ago"
+      },
+      "context_tokens": 71858,
+      "context_percent": 47,
+      "unread_messages": 0,
+      "context_lines": 109
+    },
+    "admin": {
+      "name": "ADMIN",
+      "active": false,
+      "state_machine": "unknown",
+      "thread": "none",
+      "session_id": "unknown",
+      "context_tokens": 0,
+      "context_percent": 0,
+      "unread_messages": 0,
+      "context_lines": 0
+    }
+  },
+  "metrics": {
+    "total_agents": 5,
+    "active_agents": 1,
+    "total_context_lines": 780,
+    "total_context_tokens": 71858,
+    "total_unread": 0,
+    "agents_working": 0,
+    "agents_idle": 0
+  }
+}

@@ -88,10 +88,10 @@
 - @GOV oversight on stack decisions
 
 ## Message Checkpoint
-Last processed: d7c5123 at 2025-05-28
-- Integrated unified state system successfully
-- STATUS command now uses real-time state composition
-- Single source of truth established
+Last processed: da74196 at 2025-05-28
+- Added unread message tracking to state system
+- Each agent shows unread count since checkpoint
+- Total system unread in metrics
 
 ## Message Check Pattern
 Check for: @ERA-1, @ALL, @ERA (future group)
@@ -153,6 +153,7 @@ The fourth wall is officially permeable.
 2. ✓ State directory created with session mapping  
 3. ✓ STATUS command using real-time state
 4. ✓ Documentation for state management
+5. ✓ Unread message tracking added
 
 ### Next Priorities
 1. **Session Log Parsing** - Design replacement for tmux capture
