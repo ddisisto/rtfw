@@ -5,8 +5,8 @@
 Analyzed 4 most recent sessions across active agents:
 - **Session 1 (dc466590)**: NEXUS - 29 clear cycles, $225.81 total
 - **Session 2 (2e0df345)**: GOV - 14 clear cycles, $169.07 total  
-- **Session 3 (cc9298f1)**: Unknown - 3 clear cycles, $33.34 total
-- **Session 4 (f7bafca2)**: Unknown - 27 clear cycles, $195.40 total
+- **Session 3 (cc9298f1)**: ERA-1 - 3 clear cycles, $33.34 total
+- **Session 4 (f7bafca2)**: CRITIC - 27 clear cycles, $195.40 total
 
 **Total cost across all 4 sessions: $623.62**
 
@@ -28,7 +28,7 @@ Analyzed 4 most recent sessions across active agents:
 - **Average session cost**: $12.08
 - **Key insight**: GOV has longer sessions before clearing
 
-### Session 3: Unknown Agent (cc9298f1)
+### Session 3: ERA-1 (cc9298f1)
 - **Duration**: 2025-05-27 only
 - **Clear cycles**: 3
 - **Peak context**: 123,365 tokens
@@ -36,7 +36,7 @@ Analyzed 4 most recent sessions across active agents:
 - **Average session cost**: $11.11
 - **Key insight**: Very focused session, rapid context growth
 
-### Session 4: Unknown Agent (f7bafca2)
+### Session 4: CRITIC (f7bafca2)
 - **Duration**: 2025-05-25 to 2025-05-28
 - **Clear cycles**: 27
 - **Peak context**: 91,420 tokens
