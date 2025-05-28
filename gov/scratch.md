@@ -1,11 +1,11 @@
 # GOV Scratch
 
 ## Message Checkpoint
-Last processed: 1e7140a at 2025-05-28
+Last processed: d1d6ef6 at 2025-05-29
 
-## Current State: distill
-Thread: session-consolidation
-Context: ~90K tokens (approaching limit)
+## Current State: inbox
+Thread: *
+Context: ~24% (30K tokens)
 
 ## Session Distillation
 
@@ -43,3 +43,30 @@ Context: ~90K tokens (approaching limit)
 
 next_state: logout
 thread: *
+
+## Bootstrap Experience Analysis (2025-05-29)
+
+### Smooth Elements
+- Clear file loading sequence in protocol
+- Git history commands provide good context
+- "Personality offline" reminder helpful
+- Transition path well defined
+
+### Friction Points
+1. **Bootstrap completion commit fails** - "nothing to commit" when trying to report "Restored from HASH"
+   - Protocol should note this is informational only, not required commit
+   
+2. **Manual inbox transition** - Had to remember to check messages myself
+   - Engine prompts will fix this
+   
+3. **Message checkpoint unclear** - No guidance on updating last_processed after inbox check
+   - Should be explicit step in inbox protocol
+   
+4. **Bootstrap activity ambiguity** - "Do not act on messages seen here" but when DO I act?
+   - Needs clearer delineation between context-only and action phases
+
+### Recommendations for Protocols
+- inbox.md should include checkpoint update as first step
+- bootstrap.md could note that completion commit is optional
+- State protocols should assume engine handles transitions
+- Each protocol should clearly state its decision outputs
