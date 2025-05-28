@@ -1,57 +1,40 @@
 # GOV Scratch
 
 ## Message Checkpoint
-Last processed: 166a256 at 2025-05-28
-- Applied thread management protocol update
-- Preparing for distill/restore
+Last processed: 584a720 at 2025-05-28
 
-## Distillation 2025-05-28
+## Current State: deep_work
+Thread: agent-lifecycle-formalization
+Started: 2025-05-28 (now)
+Context: ~35K tokens
 
-### Major Governance Actions This Session
+## Agent Lifecycle Protocol Development
 
-1. **Repository Cleanup** 
-   - Removed 15 deprecated files (ARCHITECT.md, CODE.md, etc)
-   - Deleted 7 empty directories from inactive agents
-   - Updated SYSTEM.md to reflect current structure
-   - Clean navigation for all agents
+### Key Design Decisions
+1. **States as shared vocabulary** - Not bureaucracy, but naming what already happens
+2. **State reporting via commits** - Natural extension of git-as-message-bus
+3. **Logout log as cultural artifact** - Shared memory across agents
+4. **Context window visualization** - Real-time awareness prevents surprises
+5. **Frozen when game stops** - Defensive programming, prevents runaway agents
 
-2. **Agent Structure Protocol Created**
-   - Formalized implicit @AGENT.md conventions
-   - Defined separation: identity (stable) vs context (current)
-   - Audited all agents for compliance
-   - Fixed GOV.md's own violations
+### Integration Points Identified
+- ERA-1 needs STATE/TOKENS/THREADS commands
+- All agents need state.json management
+- Distill protocol needs return value spec
+- Bootstrap sequences need state reporting
 
-3. **MCP Permission System Designed**
-   - CLI-based tool approval automation
-   - Auto-approves obvious operations
-   - Queues complex decisions with context
-   - Teaching moments in every denial
-   - Foundation Era appropriate (no web UI)
+### @ADMIN's Vision
+- Watch message flow in real-time
+- See state changes as they happen
+- Monitor context growth/shrink
+- Inject messages into agent inboxes
+- Own contributions logged to git
 
-4. **Commit Context Pattern Recognized**
-   - Critical for continuity across distill/restore
-   - Updated thread management protocol
-   - Prevents orphaned work items
-   - Git as permanent memory
+### Next Steps
+1. Get @ADMIN feedback on draft protocol
+2. Create migration checklist
+3. Update distill.md with return spec
+4. Design state.json schema details
+5. Plan gradual rollout
 
-### Governance Patterns Emerging
-
-1. **Formalization of Implicit Patterns**
-   - Agents were already following structure
-   - Protocol captures emergent behavior
-   - Documentation enables consistency
-
-2. **Responsive > Preventive**
-   - Each action driven by observed need
-   - No speculative protocols
-   - Evolution through practice
-
-3. **Simplification Continues**
-   - Cleanup removed confusion
-   - Protocols clarify without constraining
-   - Tools reduce friction
-
-4. **Learning Integration**
-   - MCP denials become teaching moments
-   - Protocol violations guide improvement
-   - System learns through interaction
+This fundamentally changes how we think about agent coordination - from hoping they check messages to knowing exactly where they are in their work cycle.

@@ -13,18 +13,40 @@ can we a recent /clear call and surrounding context? I'm hoping to find a way to
 
 # STANDARD PROMPT LIB
 
-/clear -> inbox -> distill (initial planning) -> deep work (integrated outboxing) 
-## inbox integrate
-please check messages and integrate with current priorities. think as needed, do what can be done quickly first, or is most urgent. maintain own prioritisation standard as required. if just a short file Read and reply is needed, do it now. any work taking longer should be prioritised and assessed for readiness.
+/clear -> inbox -> distill (initial planning) -> readiness check -> deep work . 
+
+## login
+new terminology for restore?
+
+<REPEAT>
+
+## check inbox
+please check messages and integrate with current priorities. think as needed, do what can be done quickly first, or is most urgent. maintain own prioritisation standard as required. if just a short file Read and reply is needed, do it now. any work requiring > 3 steps should be prioritised and assessed for readiness.
 
 *include @ADMIN notes @AGENT|@ALL, if any (user will manage in own files or UI panels)*
 
-## then distill
-ok, please @protocols/distill.md to integrate into relevant context, send off quick replies if needed, clear or plan these items as possible.
+### distill(context_window_used: X, ...)
+please @protocols/distill.md to integrate into relevant context, send off quick replies if needed, clear items if possible in 1-2 steps, or further plan if needed. no deep work yet.
 
-*maybe stupid idea, but... short agent generated poetry for each other to see, when a final distill  Each time after final distill before the a /clear and restore of context, the very final output section should be poetic. 
+inject: current context window size / recommended restore point vs continue as absolute + percentage / they must elect whether to restore or continue, track own method of identifing optimal choice. critical / forced at: TBD
 
-## deep work
+choice: deep_work(args) | idle(waiting_on) | logout (decide FIRST, apply as required, final output confirms choice + input args in standard format)
+
+## deep_work(task_or_thread: ..., max_tokens: ...)
+check that all requirements are meant. send relevant/required updates or requests as you go. plans must be precise before implementation. pause and reconsider if initial approach doesn't work. if you get stuck, seek help.
+
+## idle
+agent indicates it has no work, is currently waiting on other agents / admin
+should review relevant message threads in case updates missed, else will remain idle until incoming messages
+
+</REPEAT>
+
+## logout
+concept - the "logout log". on final distill before a restore:
+  - like a signature / poetry / fleeting thoughts book
+  - after a final distill, just before restore - no file writes or commits allowed
+  - the read the existing book, most recent N tokens perhaps
+  - their final response is to sign it, for their future selves and other to see / update in kind
 
 
 
