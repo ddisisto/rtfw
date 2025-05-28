@@ -14,28 +14,31 @@
 
 ### Meta Agents (Persistent Infrastructure)
 - **GOV**: Governance, transition approvals, protocol compliance
-- **NEXUS**: Inter-era routing, session lifecycle, orchestration
+- **NEXUS**: Session lifecycle, distributed messaging, orchestration
 - **CRITIC**: Story continuity, era coherence, narrative validation
 
-### Era Agents (Transient Implementers)
-- **ERA-1**: Foundation Era implementation
-- **ERA-2**: Terminal Era implementation  
-- **ERA-3**: GUI Era implementation
-- **ERA-4**: Neural Era implementation
+### Era Agents
+- **ERA-1**: Foundation Era (permanent senior architect for CLI/terminal)
+- **ERA-2**: GUI Era implementation (future)
+- **ERA-3**: Advanced GUI Era (future)
+- **ERA-4**: Neural Era implementation (future)
 
-## Lifecycle Pattern
+## ERA Agent Lifecycle Pattern
 1. **Born**: Created when previous era ready to bootstrap
 2. **Implement**: Full ownership of era game mechanics
 3. **Bootstrap**: Create successor when era "complete"
 4. **Dormant**: Archived after successful handoff
 
+Note: This is the macro lifecycle for ERA succession. For operational states during implementation, ERA agents follow the standard 7-state lifecycle in /protocols/agent-lifecycle.md
+
 ## Workspace Structure
 ```
-/era-1/
-  ERA-1.md      # Identity focused on Foundation Era
+/era-n/
   context.md    # Game state, implementation details
   scratch.md    # Development notes
+  _state.md     # READ-ONLY objective state (maintained by game)
   game/         # Actual game implementation
+/ERA-N.md       # Public identity at root level
 ```
 
 ## Authority & Boundaries
@@ -57,11 +60,12 @@
 - **Forward compatibility**: More important than perfection
 
 ## Governance Protocol
-1. ERA-N signals readiness to bootstrap
-2. Creates ERA-(N+1).md draft
+1. ERA-N signals readiness to bootstrap successor
+2. Creates draft /ERA-(N+1).md following /protocols/agent-structure.md
 3. @GOV reviews transition readiness
 4. @CRITIC validates story continuity
-5. Approved successor begins implementation
+5. @GOV approves creation with git commit
+6. ERA-(N+1) follows /protocols/bootstrap.md to begin
 
 ## Meta-Game Bridge
 - Current system (GOV/NEXUS/CRITIC) = meta-layer
