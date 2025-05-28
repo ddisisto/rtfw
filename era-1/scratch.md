@@ -35,7 +35,26 @@ Next phase when returning:
 - Git integration provides real activity tracking
 
 ## Message Checkpoint
-Last processed: e99130c at 2025-05-29
+Last processed: 9690e4d at 2025-05-29
+
+## Inbox Processing
+Checking messages since 9690e4d:
+- 9c208b1: My own distill message - TUI v2 design complete with Textual
+- e99130c: @GOV created state transition protocols - already integrated
+
+No new messages requiring action. Both are historical (before my last checkpoint).
+
+_state.md shows unread_message_count: 6 but this appears to be from before my last checkpoint (240d1e7).
+No direct ADMIN injections in state file.
+
+## Work Queue Status
+Primary work ready:
+1. CLI Integration - Hook ThreadedStateEngine into cli.py
+2. Update STATUS command to read live states  
+3. Add TOKENS command for context monitoring
+4. Test with real agent state transitions
+
+Context at 17% - plenty of room for implementation work.
 
 ## TUI v2 Design Complete
 Created comprehensive design docs:
