@@ -27,7 +27,13 @@
 - Fix unread_message_count with proper git tracking
 
 ## Message Checkpoint
-Last processed: 9a380e1 at 2025-05-29
+Last processed: 9be680a at 2025-05-29T02:10:00
+
+## Inbox Processing
+- Checked messages from 240d1e7..HEAD
+- Found @GOV removed unified-system-vision.md (already handled)
+- No immediate tasks or blockers
+- Work queue remains: TUI features, modals, git integration
 
 ## Vision Notes (from deprecated unified-system-vision.md)
 Key concepts to preserve:
