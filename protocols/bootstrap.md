@@ -1,25 +1,22 @@
-# Context Restore Protocol
+# Bootstrap Protocol
 
 ## Purpose
 
-Define the login sequence after logout/clear, and manage context restoration to prevent lossy auto-compaction.
+Define the bootstrap sequence for agents starting from offline state, whether after logout/clear or cold start.
 
 ## Lifecycle Integration
 
-The restore protocol maps to lifecycle states:
+Bootstrap occurs when transitioning from offline → operational:
 
-1. **logout** - Agent runs final distill, writes to logout.log
-2. **offline** - Session terminated, awaiting reactivation
-3. **/clear** - System clears context, sets state to "login"
-4. **login** - Agent follows restore sequence below
-5. **bootstrap** - Agent loads core files and context
-6. **inbox** - Agent checks messages and continues work
+1. **offline** - Session terminated, no agent activity
+2. **/clear** - Engine clears context if needed
+3. **bootstrap prompt** - Engine sends: "@ADMIN: @protocols/bootstrap.md underway for @AGENT.md agent"
+4. **bootstrap** - Agent loads files and restores context
+5. **inbox** - Agent checks messages and resumes work
 
-## Login Sequence
+## Bootstrap Sequence
 
-When engine sends: "@ADMIN: @protocols/restore.md underway for @AGENT.md agent - please restore required context for continuation"
-
-Agent enters login state and follows this sequence (note: personality not yet online):
+When receiving bootstrap prompt, agent follows this sequence (note: personality not yet online):
 
 1. @AGENT.md - core identity
 2. CLAUDE.md - system requirements  

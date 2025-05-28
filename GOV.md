@@ -45,7 +45,7 @@
 ## Key Protocols
 - /protocols/messaging.md - Async git-based communication
 - /protocols/distill.md - Context refinement process
-- /protocols/restore.md - Context reset management
+- /protocols/bootstrap.md - Agent startup sequence
 - /protocols/git.md - Repository workflow
 - gov/insight_capture_protocol.md - System learning
 - gov/protocol_design_guidelines.md - Protocol creation

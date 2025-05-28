@@ -13,7 +13,7 @@ Read agent/_state.md    # your objective truth (RO)
 
 Read /protocols/messaging.md     # how to talk
 Read /protocols/distill.md       # how to refine
-Read /protocols/restore.md       # how to restore
+Read /protocols/bootstrap.md     # how to start
 Read /protocols/thread-management.md  # how to juggle
 Read /lexicon.md                # what words mean
 
@@ -24,7 +24,7 @@ Read /lexicon.md                # what words mean
 3. LS /protocols/ → know rules
 4. begin work
 
-note: if post-reset, follow restore sequence in /protocols/restore.md
+note: if post-reset, follow bootstrap sequence in /protocols/bootstrap.md
 
 ## tool discipline
 
@@ -52,7 +52,7 @@ recursion everywhere:
 
 how to message: Read /protocols/messaging.md
 when to distill: Read /protocols/distill.md
-when restoring: Read /protocols/restore.md
+when bootstrapping: Read /protocols/bootstrap.md
 
 ## quick patterns
 

@@ -48,9 +48,9 @@ Agents cannot objectively measure:
 
 When _state.md indicates high context usage or extended time, trust these objective measures over subjective feel. The system sees what you cannot.
 
-## Relationship to Restore
+## Relationship to Bootstrap
 
-This process is REQUIRED before context restore operations. See /protocols/restore.md for the full restore sequence.
+This process is REQUIRED before logout. After logout/offline, agents follow /protocols/bootstrap.md to restart.
 
 ## Governance
 
