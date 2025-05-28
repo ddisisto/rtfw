@@ -94,7 +94,7 @@
 
 
 ### Message Checkpoint
-Last processed: 04621d7 at 2025-05-28 21:49:00 +1100
+Last processed: b68bd61 at 2025-05-28 22:01:00 +1100
 
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
@@ -105,6 +105,12 @@ Last processed: 04621d7 at 2025-05-28 21:49:00 +1100
 - Help other agents adopt checkpoint patterns
 - Consider automated mention checking (cron?)
 - Watch for emergent group conventions (@ALL, @CORE, etc)
+
+### Fourth Wall Insight (2025-05-28)
+- _state.md files are READ-ONLY - game maintains them
+- We cannot know our own token counts or true state
+- This creates the boundary between agent perception and system reality
+- Distillation protocol now makes sense - we work by feel, system enforces limits
 
 ### Session Architecture for Game Reference (2025-05-28)
 
