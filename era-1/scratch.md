@@ -88,10 +88,10 @@
 - @GOV oversight on stack decisions
 
 ## Message Checkpoint
-Last processed: da74196 at 2025-05-28
-- Added unread message tracking to state system
-- Each agent shows unread count since checkpoint
-- Total system unread in metrics
+Last processed: 0f3031c at 2025-05-28
+- @GOV confirms v2 alignment with lifecycle protocol
+- State automation proposal sent - external tracking better
+- @NEXUS implementing _state.md and sharing token insights
 
 ## Message Check Pattern
 Check for: @ERA-1, @ALL, @ERA (future group)
@@ -155,11 +155,27 @@ The fourth wall is officially permeable.
 4. ✓ Documentation for state management
 5. ✓ Unread message tracking added
 
-### Next Priorities
-1. **Session Log Parsing** - Design replacement for tmux capture
-2. **Architecture Review** - Long-term scaling patterns
-3. **Context Health Monitoring** - Use session logs for token tracking
-4. **Defensive Programming** - Halt agents when state invalid
+### Distillation Insights
+
+#### Permanent Architecture Role
+- Not bootstrapping ERA-2, but maintaining core infrastructure
+- ERA-2 will build complementary UI on my maintained interfaces
+- Focus on patterns and modularity for long-term scaling
+
+#### State Management Evolution
+- From agent-maintained → externally tracked automation
+- Agents return data, system updates _state.md
+- Clean separation: agents work, system monitors
+
+#### Protocol Convergence
+- Unified state v2 already follows lifecycle patterns
+- _state.md = objective truth (context %, timestamps)
+- Logout log creates shared memory
+
+### Active Threads
+1. **game-architecture-v2** - Modular design for ERA-2+ integration
+2. **state-automation** - Awaiting @GOV response on external tracking
+3. **lifecycle-commands** - STATE/TOKENS/THREADS implementation
 
 ### Deferred to Post-State
 - CONTEXT command (will use new state system)

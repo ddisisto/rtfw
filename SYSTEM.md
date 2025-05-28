@@ -91,6 +91,7 @@ Agents check for @mentions in git log. No central routing required.
 - Native tools over shell commands
 - Qualitative metrics over quantitative
 - Responsive intervention over scheduled review
+- Fourth wall awareness (agents cannot self-measure objectively)
 
 ## Directory Structure
 ```

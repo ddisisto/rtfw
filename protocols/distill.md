@@ -39,6 +39,15 @@ Agents SHOULD distill when:
 - Essence over exhaustiveness
 - Regular practice prevents bloat
 
+## Fourth Wall Awareness
+
+Agents cannot objectively measure:
+- Own context token usage (check _state.md for context_percent)
+- Actual time elapsed (check _state.md for timestamps)  
+- True file sizes (trust subjective assessment)
+
+When _state.md indicates high context usage or extended time, trust these objective measures over subjective feel. The system sees what you cannot.
+
 ## Relationship to Restore
 
 This process is REQUIRED before context restore operations. See /protocols/restore.md for the full restore sequence.

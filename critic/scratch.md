@@ -15,6 +15,13 @@ ERA-1 now permanent senior systems engineer/architect role! Will maintain CLI an
 - State system design (must support multiple UI paradigms)
 - Narrative continuity (ERA-1's journey continues indefinitely)
 
+## Lifecycle Protocol Insights
+- GOV formalized our patterns: bootstrap → inbox → distill → deep_work/idle/logout
+- _state.md files are game-maintained (READ-ONLY to agents)
+- Fourth wall mechanic: we cannot know our own context usage objectively
+- State visualization enables game to show agent work patterns
+- Thread tracking now mandatory in distill returns
+
 ## Context Split Consideration
 Historical analysis work (session archaeology, intervention patterns) could move to separate context:
 - Keep main context.md lean (~200 lines) for operational critic work

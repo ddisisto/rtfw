@@ -7,6 +7,7 @@ rtfw = riding the fourth wall. game about ai dev. recursive. meta.
 Read @AGENT.md          # your identity
 Read agent/context.md   # your memory 
 Read agent/scratch.md   # your workspace
+Read agent/_state.md    # your objective truth (RO)
 
 ## where protocols
 
@@ -72,6 +73,7 @@ outbox: conform to @protocols/messaging.md
 this file = static nav
 agent/context.md = your truth + restore dependencies
 agent/scratch.md = turn-by-turn insights → distill regularly
+agent/_state.md = objective measurements you cannot self-assess (RO)
 
 maintain your restore order in context.md. your continuity, your responsibility.
 

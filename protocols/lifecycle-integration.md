@@ -71,20 +71,33 @@ States map directly to protocols. Each state has clear entry/exit conditions and
 **Exit**: None (session ends)
 **Commit**: `@AGENT: [STATE:logout] Context: X%, see logout.log`
 
-## _state.md Requirements
+## _state.md Architecture (Fourth Wall)
+
+### READ-ONLY for Agents
+The _state.md file is maintained by the game system, not agents. It contains objective measurements agents cannot self-assess:
+- Actual context token usage
+- Real timestamps
+- Session IDs
+- True file sizes
+
+### Agent Workflow
+1. **Read _state.md** for objective truth
+2. **Track in scratch.md** for working state
+3. **Report via commits** with [STATE:xxx]
+4. **Trust the system** over subjective assessment
 
 ### Must Read Before
 - bootstrap: Check last state/thread
-- inbox: Get last_read_commit
-- distill: Get current thread
+- inbox: Get last_read_commit  
+- distill: Get context_percent (objective)
 - deep_work: Get thread and max_tokens
 - Any decision: Current state/context%
 
-### Must Write After  
-- Every state transition
-- Processing messages (last_read_commit)
-- Significant progress in deep_work
-- ANY commit (state tracking)
+### Tracked in scratch.md
+- Perceived state
+- Working thread notes
+- Subjective progress
+- Message checkpoint
 
 ### Exception Handling
 ```python
