@@ -23,8 +23,9 @@
 - [x] Clean NEXUS.md per agent structure protocol
 - [x] Document distill/restore for ERA-1
 - [x] Support CRITIC distill/restore cycle
-- [ ] Update current_sessions.json on session changes
-- [ ] Monitor ERA-1 implementation progress
+- [ ] Transition sessionid tracking to ERA-1's implementation
+- [ ] Coordinate minimal state system with @ERA-1 and @CRITIC
+- [ ] Get @GOV review of new state management approach
 
 
 
@@ -93,7 +94,7 @@
 
 
 ### Message Checkpoint
-Last processed: e21d39b at 2025-05-28 21:15:00 +1100
+Last processed: 303ddd4 at 2025-05-28 21:20:00 +1100
 
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
