@@ -27,7 +27,7 @@ Agents SHOULD distill when:
 10. **Return next state** - Decide next action with args:
     ```
     next_state: deep_work|idle|logout
-    thread: thread-name (if deep_work)
+    thread: thread-name|*|ALL (always specify - use * or ALL for general consolidation)
     max_tokens: 30000 (if deep_work)
     ```
 
