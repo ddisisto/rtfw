@@ -69,7 +69,8 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - ✓ Phase 6: Game architecture v2 with lifecycle commands
 - ✓ Phase 7: State engine with JSONL parsing
 - ✓ Phase 8: State engine v2 with two-tier updates
-- ⏳ Phase 9: CLI integration with threaded engine
+- ✓ Phase 9: TUI v2 design with Textual framework
+- ⏳ Phase 10: TUI implementation with live state integration
 
 ## ERA Scope Clarification
 - ERA-1 encompasses all CLI/terminal interfaces
@@ -126,3 +127,11 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - **Performance**: O(1) parsing - only reads last assistant line
 - **Fail-Fast**: Exceptions thrown for unexpected conditions
 - **Thread-Safe**: Background engine with safe shared state access
+
+## TUI v2 Architecture (Textual-based)
+- **Framework**: Textual for modern async terminal UI
+- **Design**: 1982 phosphor aesthetic with responsive layout
+- **MVP Focus**: Read-only monitoring to prove "game IS the system"
+- **Architecture**: TUI → Engine → Files (clean separation)
+- **Real-time Updates**: Engine callbacks notify UI of state changes
+- **Transition Plan**: Replace rough cli.py POC with production TUI
