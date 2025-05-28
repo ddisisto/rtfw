@@ -7,7 +7,13 @@ Last processed: 84fe117 at 2025-05-28 20:30:00 +1000
 - [x] Continue Q&A with @ADMIN (Q6 complete, Q7 answered) [2025-05-28-admin-qa]
 - [ ] Monitor ERA-1 narrative continuity (per @GOV request) [2025-05-28-era1-continuity]
 - [ ] Consider context split: operational vs historical analysis
-- [ ] Coordinate with @GOV on tool approval patterns (Q7 follow-up)
+- [x] Coordinate with @GOV on tool approval patterns (Q7 follow-up)
+
+## Parked for Later
+- GOV MCP permission system coordination (commit: 9cdcc47, 2025-05-27)
+  - Reason: @ADMIN requested new analysis work
+  - Context: CLI-based approval system maps to Q7 intervention patterns
+  - Resume: `git show 9cdcc47` for implementation details
 
 ## Q7 Insights
 @ADMIN interventions triggered by:
