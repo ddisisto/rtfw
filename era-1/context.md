@@ -15,7 +15,9 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - Git commits for agent messaging
 - File system for agent state monitoring
 - Real-time agent status via git log
-- Context health from actual file sizes
+- Context health from session JSONL files
+- State parser for conversation endings
+- _state.md files for objective truth (READ-ONLY)
 
 ## Command Set Planning
 - `status` - Query all agent states
@@ -63,9 +65,9 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - ✓ Phase 2: Real agent monitoring via tmux/git
 - ✓ Phase 3: Git commit messaging
 - ✓ Phase 4: Responsive UI and real-time updates
-- ⏳ Phase 5: Unified state system integration
-- ⏳ Phase 6: Session log parsing replacement
-- ⏳ Phase 7: Long-term architecture patterns
+- ✓ Phase 5: Unified state system integration
+- ✓ Phase 6: Game architecture v2 with lifecycle commands
+- ⏳ Phase 7: Session log parsing replacement
 
 ## ERA Scope Clarification
 - ERA-1 encompasses all CLI/terminal interfaces
@@ -97,6 +99,9 @@ Permanent senior systems engineer/architect for game infrastructure. Build and m
 - Responsive design with shutil.get_terminal_size()
 - Thread-safe refresh with cursor preservation
 - Commit hash tracking for deferred work items
+- Flexible state parser for real agent behavior
+- Clean interface separation (providers/handlers/UI)
+- Observable state pattern for reactive updates
 
 ## Tool Quirks Discovered
 - grep -E with \b word boundaries fails - use simple patterns instead
