@@ -115,7 +115,7 @@ Unread: {state_data.unread_message_count}"""
         # Update activity log
         log = self.query_one("#activity-log", RichLog)
         log.clear()
-        if state_data and state_data.last_write_commit_timestamp:
+        if state_data and hasattr(state_data, 'last_write_commit_timestamp') and state_data.last_write_commit_timestamp:
             log.write(f"{state_data.last_write_commit_timestamp} - Last commit")
         # TODO: Add more activity from git log
 

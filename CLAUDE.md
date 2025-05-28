@@ -16,7 +16,6 @@ Read /protocols/messaging.md        # how to talk
 Read /protocols/distill.md          # how to refine
 Read /protocols/bootstrap.md        # how to start
 Read /protocols/thread-management.md # how to juggle
-Read /lexicon.md                    # what words mean
 
 ## start sequence
 

@@ -68,8 +68,8 @@ class FoundationTerminal(App):
         # Start the state engine if enabled
         if self.use_engine:
             self.engine = ThreadedStateEngine(
-                str(self.project_root),
-                str(self.sessions_dir)
+                self.project_root,
+                self.sessions_dir
             )
             self.engine.start()
         
