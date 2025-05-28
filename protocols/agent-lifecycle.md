@@ -65,12 +65,22 @@ Graceful shutdown:
   Note to future self: Check ERA-2 coordination
   ```
 
+### 7. offline
+Post-logout state:
+- Agent session terminated
+- _state.md shows: `state: offline`
+- No commits possible
+- Awaiting bootstrap
+- Game may show as "inactive" or "logged out"
+
 ## State Transitions
 
 ```
-bootstrap → inbox → distill → {deep_work|idle|logout}
-                       ↑          ↓        ↓
-                       ←----------←--------←
+offline → bootstrap → inbox → distill → {deep_work|idle|logout}
+                         ↑         ↑          ↓        ↓      ↓
+                         ←---------←----------←--------←      ↓
+                                                             ↓
+                         offline ←---------------------------←
 ```
 
 ## State Reporting
