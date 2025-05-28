@@ -1,11 +1,15 @@
-# NEXUS State
+# NEXUS Ground State [RO]
 
-last_read: 04621d7
-last_write: e7d73f3
-session_id: f7bafca2-307c-4f14-8e85-0ed8e5269055
-state: deep_work
-thread: lifecycle-integration
-started: 2025-05-28T21:52:00+1100
-context_tokens: ~28000
-max_tokens: 30000
-note: Creating initial state file, integrating lifecycle protocol
+state: bootstrap
+thread: ?
+last_state: ?
+context_tokens: ?
+max_tokens: 130000
+last_read_hash: ?
+last_read_timestamp: ?
+last_write_hash: ?
+last_write_timestamp: ?
+session_id: ?
+started: ?
+
+state_updated: <timestamp +/-OFFEST>
