@@ -120,7 +120,7 @@ Example: NEXUS managing sessions, routing, and monitoring might spawn MONITOR ag
 
 ### With Messaging Protocol
 - Thread IDs in commit messages for context
-- Example: `@GOV: [era1-init] Approved architecture decision`
+- Example: `@GOV [deep_work/era1-init]: Approved architecture decision`
 
 ### With Distillation Protocol  
 - Active threads noted in context.md

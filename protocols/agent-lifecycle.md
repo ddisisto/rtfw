@@ -87,9 +87,9 @@ offline → bootstrap → inbox → distill → {deep_work|idle|logout}
 
 Agents report state via git commits:
 ```
-@AGENT: [STATE:deep_work] Beginning messaging protocol update
-@AGENT: [STATE:idle] Waiting for @NEXUS session data format
-@AGENT: [STATE:logout] Context at 95%, scheduling distill/restore
+@AGENT [deep_work]: Beginning messaging protocol update
+@AGENT [idle]: Waiting for @NEXUS session data format
+@AGENT [logout]: Context at 95%, scheduling distill/restore
 ```
 
 ## Context Window Management

@@ -14,7 +14,7 @@ States map directly to protocols. Each state has clear entry/exit conditions and
 - Check git log for context (no actions)
 - Update _state.md: `state: inbox`
 **Exit**: Always to inbox
-**Commit**: `@AGENT: [STATE:bootstrap] Restored from COMMIT_HASH`
+**Commit**: `@AGENT [bootstrap]: Restored from COMMIT_HASH`
 
 ### 2. inbox (Protocol: messaging.md)
 **Entry**: From bootstrap, deep_work completion, or idle timeout
@@ -25,7 +25,7 @@ States map directly to protocols. Each state has clear entry/exit conditions and
 - Update _state.md: `last_read_commit: NEW_HASH`
 - Queue complex work
 **Exit**: Always to distill
-**Commit**: `@AGENT: [STATE:inbox] Processed N messages, M queued`
+**Commit**: `@AGENT [inbox]: Processed N messages, M queued`
 
 ### 3. distill (Protocol: distill.md)
 **Entry**: From inbox only
@@ -37,7 +37,7 @@ States map directly to protocols. Each state has clear entry/exit conditions and
 - Decide next state AND thread
 - Update _state.md: `state: NEXT_STATE, thread: THREAD_NAME`
 **Exit**: To deep_work, idle, or logout
-**Commit**: `@AGENT: [STATE:distill] Thread: THREAD, next: STATE`
+**Commit**: `@AGENT [distill/THREAD]: Completed, next: STATE`
 
 ### 4. deep_work (No specific protocol - focused execution)
 **Entry**: From distill only
@@ -48,7 +48,7 @@ States map directly to protocols. Each state has clear entry/exit conditions and
 - Can check critical messages only
 - Update _state.md on significant progress
 **Exit**: To inbox (on completion/block/token limit)
-**Commit**: `@AGENT: [STATE:deep_work] THREAD: specific work done`
+**Commit**: `@AGENT [deep_work/THREAD]: specific work done`
 
 ### 5. idle (Protocol: periodic messaging.md checks)
 **Entry**: From distill only
@@ -58,7 +58,7 @@ States map directly to protocols. Each state has clear entry/exit conditions and
 - Update _state.md: `idle_since: TIMESTAMP`
 - Clear reason for idle in commits
 **Exit**: To inbox (on new relevant message)
-**Commit**: `@AGENT: [STATE:idle] Waiting for DEPENDENCY`
+**Commit**: `@AGENT [idle]: Waiting for DEPENDENCY`
 
 ### 6. logout (New protocol section in restore.md)
 **Entry**: From distill only
@@ -69,7 +69,7 @@ States map directly to protocols. Each state has clear entry/exit conditions and
 - Update _state.md: `state: offline`
 - Final commit
 **Exit**: None (session ends)
-**Commit**: `@AGENT: [STATE:logout] Context: X%, see logout.log`
+**Commit**: `@AGENT [logout]: Context: X%, see logout.log`
 
 ## _state.md Architecture (Fourth Wall)
 
@@ -126,7 +126,7 @@ git add mywork.py && git commit -m "Updated feature"
 git add _state.md && git commit -m "Updated state"
 
 # GOOD - atomic commit
-git add mywork.py _state.md && git commit -m "@AGENT: [STATE:deep_work] Feature: completed X"
+git add mywork.py _state.md && git commit -m "@AGENT [deep_work/feature]: completed X"
 ```
 
 ## Protocol Consolidation
