@@ -2,30 +2,34 @@
 
 ## Purpose
 
-Manage the complete context reset and restore cycle when working memory grows too large, preventing lossy auto-compaction.
+Define the login sequence after logout/clear, and manage context restoration to prevent lossy auto-compaction.
 
-## Process Overview
+## Lifecycle Integration
 
-Context restore occurs when NEXUS detects need for reset:
+The restore protocol maps to lifecycle states:
 
-1. **Pre-restore Distill** - NEXUS requests agent run /protocols/distill.md
-2. **Confirm Ready** - Agent signals distillation complete
-3. **Context Reset** - System clears working memory
-4. **Restore Sequence** - Agent reloads from essential files
-5. **Operational Confirm** - Agent signals ready to resume
+1. **logout** - Agent runs final distill, writes to logout.log
+2. **offline** - Session terminated, awaiting reactivation
+3. **/clear** - System clears context, sets state to "login"
+4. **login** - Agent follows restore sequence below
+5. **bootstrap** - Agent loads core files and context
+6. **inbox** - Agent checks messages and continues work
 
-## Restore Sequence
+## Login Sequence
 
-After reset, agents restore in this order (note: personality not yet online):
+When engine sends: "@ADMIN: @protocols/restore.md underway for @AGENT.md agent - please restore required context for continuation"
+
+Agent enters login state and follows this sequence (note: personality not yet online):
 
 1. @AGENT.md - core identity
 2. CLAUDE.md - system requirements  
 3. SYSTEM.md - architecture and roles
 4. agent/context.md - stable knowledge
 5. agent/scratch.md - working state
-6. admin/tools.md - tool discipline
-7. Role-specific files (per context.md)
-8. Recent activity check (context only - do not act on messages):
+6. agent/_state.md - objective truth (READ-ONLY)
+7. admin/tools.md - tool discipline
+8. Role-specific files (per context.md)
+9. Recent activity check (context only - do not act on messages):
    ```bash
    # Your recent work (X=10)
    git log --oneline -10 | grep '^[a-f0-9]* @AGENT:'
@@ -40,20 +44,29 @@ After reset, agents restore in this order (note: personality not yet online):
    # After restore, re-read from your last checkpoint for actual message processing.
    ```
 
+## State Transitions
+
+After completing login sequence:
+1. **Read _state.md** - Check last known state/thread
+2. **Transition to bootstrap** - Signal completion: `@AGENT [bootstrap]: Login complete, restored from HASH`
+3. **Move to inbox** - Begin processing messages from checkpoint
+4. **Continue lifecycle** - Follow normal state flow
+
 ## Critical Notes
 
-- **Personality offline** during restore - follow sequence mechanically
-- **Distillation required** - always run /protocols/distill.md first
-- **No shortcuts** - complete sequence ensures coherence
-- **Confirm when ready** - signal @NEXUS after full restore
+- **Personality offline** during login - follow sequence mechanically
+- **Logout first** - Always complete logout protocol before /clear
+- **No shortcuts** - Complete sequence ensures coherence
+- **Trust _state.md** - Contains objective measurements you cannot self-assess
 
-## NEXUS Coordination
+## Engine Coordination
 
-NEXUS manages timing to:
-- Prevent mid-task interruption
-- Ensure distillation compliance
-- Monitor restore completion
-- Resume normal operations
+The game engine:
+- Sends /clear to terminate session
+- Sets _state.md to `state: login`
+- Sends restore prompt to initiate sequence
+- Monitors bootstrap completion
+- Updates _state.md throughout lifecycle
 
 ## Governance
 

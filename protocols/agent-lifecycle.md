@@ -5,14 +5,21 @@ Formalize agent work patterns into observable states, enabling real-time monitor
 
 ## Core States
 
-### 1. bootstrap
-Initial activation sequence:
-- Load identity (@AGENT.md)
-- Restore context (protocols/restore.md)
-- Check environment readiness
-- Report state to system: `state: bootstrap complete`
+### 1. login
+Entry state after /clear:
+- Engine sends restore prompt
+- Follow protocols/restore.md sequence
+- Load files mechanically (personality offline)
+- Transition to bootstrap when complete
 
-### 2. inbox
+### 2. bootstrap
+Post-login activation:
+- Personality comes online
+- Check _state.md for last state/thread
+- Report: `@AGENT [bootstrap]: Login complete, restored from HASH`
+- Always transition to inbox
+
+### 3. inbox
 Message processing and prioritization:
 - Check messages since last checkpoint
 - Integrate @ADMIN injections if any
@@ -20,7 +27,7 @@ Message processing and prioritization:
 - Complex work gets queued
 - Always ends with distill
 
-### 3. distill
+### 4. distill
 Context refinement and decision point:
 ```
 distill(context_tokens: X, max_tokens: Y, forced_logout_at: Z) -> next_state
@@ -36,7 +43,7 @@ distill(context_tokens: X, max_tokens: Y, forced_logout_at: Z) -> next_state
   max_tokens: 30000
   ```
 
-### 4. deep_work
+### 5. deep_work
 Focused task execution:
 - Single thread focus
 - Progress updates via commits
@@ -44,14 +51,14 @@ Focused task execution:
 - Can be interrupted by critical messages only
 - Exits to inbox when complete or blocked
 
-### 5. idle  
+### 6. idle  
 Waiting state:
 - No actionable tasks
 - Waiting on dependencies
 - Periodic inbox checks
 - Clear indication of why idle
 
-### 6. logout
+### 7. logout
 Graceful shutdown:
 - Final distill if needed
 - Write to logout log
@@ -65,7 +72,7 @@ Graceful shutdown:
   Note to future self: Check ERA-2 coordination
   ```
 
-### 7. offline
+### 8. offline
 Post-logout state:
 - Agent session terminated
 - _state.md shows: `state: offline`
@@ -76,11 +83,11 @@ Post-logout state:
 ## State Transitions
 
 ```
-offline → bootstrap → inbox → distill → {deep_work|idle|logout}
-                         ↑         ↑          ↓        ↓      ↓
-                         ←---------←----------←--------←      ↓
-                                                             ↓
-                         offline ←---------------------------←
+offline → login → bootstrap → inbox → distill → {deep_work|idle|logout}
+                                 ↑         ↑          ↓        ↓      ↓
+                                 ←---------←----------←--------←      ↓
+                                                                     ↓
+                              offline ←------------------------------←
 ```
 
 ## State Reporting
