@@ -109,6 +109,13 @@ class StateWriter:
         """
         state = AgentGroundState()
         
+        # Check for format version (default to 1.0 if not found)
+        format_version = "1.0"
+        for line in content.split('\n'):
+            if line.startswith('# Format Version:'):
+                format_version = line.split(':')[1].strip()
+                break
+        
         # Parse line by line looking for key: value pairs
         for line in content.split('\n'):
             line = line.strip()

@@ -130,6 +130,7 @@ class AgentGroundState:
 # CRITICAL: This file is maintained by the game engine
 # DO NOT EDIT - Read for objective truth only
 # COMMIT this file with your workspace
+# Format Version: 1.0
 *NOTE: additional agent managed state tracking recommended within scratch.md and for alignment and validation*
 *NOTE: state tracking system almost complete, **SOME** values may still be placeholders and functionality may change*
 
