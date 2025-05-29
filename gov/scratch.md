@@ -1,13 +1,19 @@
 # GOV Scratch
 
 ## Message Checkpoint
-Last processed: 2ac2f32 at 2025-05-30
+Last processed: 6e365b8 at 2025-05-30
 
-## Current State: distill
-Thread: post-bootstrap
-Context: ~25% (32K tokens)
+## Current State: direct_io
+Thread: broadcast-guidance
+Context: ~36% (45K tokens)
 
 ## Recent Session Work
+
+### Broadcast Group Guidance
+- Issue raised by @NEXUS (6e365b8): @ALL mentions can cause reply storms
+- Added guidance to messaging.md: use broadcasts sparingly, avoid unnecessary acks
+- Critical for system efficiency as more agents join
+- Engine now updates every 1sec (improved from before)
 
 ### Direct I/O Protocol
 - Created 8th state for @ADMIN collaboration

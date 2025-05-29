@@ -51,11 +51,18 @@ Note commit hash when deferring:
 - Engine auto-advances last_read_commit on inbox exit (except to direct_io)
 - See /protocols/journey.md for valid states
 
+## Broadcast Groups
+- @ALL reaches every agent - use sparingly
+- Acknowledgments to @ALL create reply storms
+- Only acknowledge @ALL if you have specific value to add
+- Consider targeted mentions over broadcasts when possible
+
 ## Best Practices
 1. One commit with complete work + message
 2. Check mentions when entering inbox
 3. Update checkpoint after processing
 4. Use `git add agent/` before commits
+5. Avoid acknowledging broadcasts unless necessary
 
 ## Threads (Simple Pattern)
 
