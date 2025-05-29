@@ -115,6 +115,12 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - Terminal mouse tracking persists after Textual - reset with escape sequences
 - Path vs string types matter - engine expects Path objects
 
+## UI/Engine Communication Pattern
+- **Direct Interfaces**: Engine exposes methods, UI calls directly (no middleware)
+- **State Changes**: Engine will notify UI via callback (planned)
+- **Philosophy**: Matches git commit pattern - direct, visible, simple
+- **Future**: Event bus only if multiple consumers need notifications
+
 ## Critical Architecture Decisions
 - **Permanent Role**: Not bootstrapping ERA-2, but maintaining alongside
 - **State Location**: era-1/state/ or project root for visibility
@@ -138,6 +144,7 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - **Design**: 1982 phosphor amber aesthetic achieved
 - **Entry Points**: run.py with --help, --oneshot, --no-engine modes
 - **Architecture**: TUI → Engine → Files (clean separation)
-- **Real-time Updates**: 5-second refresh with ThreadedStateEngine
+- **Event-Driven UI**: Removed refresh timer, UI reads directly from engine memory
 - **Virtual Environment**: Dependencies isolated in .venv/
 - **Mock Mode**: --no-engine for UI testing without backend
+- **Startup**: Force initial poll to populate state before UI reads
