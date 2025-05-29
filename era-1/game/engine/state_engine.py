@@ -149,28 +149,14 @@ class StateEngine:
                 if context_info:
                     current_state.context_tokens_at_entry = context_info['used']
         
-        # Skip further processing if agent is in direct_io state
-        if current_state.state == AgentState.DIRECT_IO:
-            print(f"  Agent in DIRECT_IO state - skipping automated transitions")
-            # Still need to update context and git info before returning!
-            if context_info:
-                current_state.context_tokens = context_info['used']
-                current_state.max_context_tokens = context_info['max']
-                current_state.context_percent = context_info['percent']
-            # Update other metadata and write state
-            current_state.session_id = session_info.session_id
-            current_state.last_updated = datetime.now()
-            self.writer.write_agent_state(agent_name, current_state)
-            return
-        
-        # Update context usage in current_state
+        # Update context usage in current_state (needed for all states)
         if context_info:
             current_state.context_tokens = context_info['used']
             current_state.max_context_tokens = context_info['max']
             current_state.context_percent = context_info['percent']
             print(f"  Context: {context_info['percent']:.1f}% ({context_info['used']}/{context_info['max']})")
         
-        # ALWAYS update git info
+        # ALWAYS update git info (moved before direct_io check)
         last_commit = self.git.get_last_agent_commit(agent_name)
         if last_commit:
             current_state.last_write_commit_hash = last_commit.hash
@@ -182,6 +168,17 @@ class StateEngine:
                 unread_count = self.git.count_unread_messages(agent_name, current_state.last_read_commit_hash)
                 current_state.unread_message_count = unread_count
                 print(f"  Unread messages: {unread_count}")
+        
+        # Skip further processing if agent is in direct_io state
+        if current_state.state == AgentState.DIRECT_IO:
+            print(f"  Agent in DIRECT_IO state - skipping automated transitions")
+            # Update session and write state
+            current_state.session_id = session_info.session_id
+            current_state.last_updated = datetime.now()
+            self.writer.write_agent_state(agent_name, current_state)
+            return
+        
+        # Context and git info already updated above
         
         # ALWAYS update session and timestamps
         current_state.session_id = session_info.session_id
