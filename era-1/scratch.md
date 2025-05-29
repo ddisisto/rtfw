@@ -1,10 +1,9 @@
 # ERA-1 Scratch
 
-## Next Steps
-1. Debug why ERA-1 state detection fails while others work
-2. Add engine hot reload capability (SIGHUP handler)
-3. Investigate get_agent_state_from_commits parsing logic
-4. Test with simpler commit messages
+## Continuity Bridge
+- engine-debug: Fixed race condition in 49eb171, still stuck at bootstrap
+- state-detection: Engine sees commits but not extracting states for ERA-1
+- Next: Investigate why ERA-1 differs from other agents
 
 ## Message Checkpoint
-Last processed: b7aff84 at 2025-05-29T18:59:34
+Last processed: 49eb171 at 2025-05-29T20:20:21
