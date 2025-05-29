@@ -17,3 +17,9 @@ Last processed: 7c07686 at 2025-05-30T01:22:45
 - Removed ERA-2 references per @ADMIN guidance
 - @GOV approved the evolution - reflects actual work focus
 - Document now properly emphasizes engine/state work over UI
+
+### Logout→Bootstrap Refactor (2025-05-30)
+- Created general TmuxHandler class for all state transitions
+- Fixed LogoutHandler to handle claude CLI quirks (separate Enter key)
+- Updated _wait_for_new_session to handle random session IDs (just *.jsonl)
+- Next: Create dummy agent to test automation!
