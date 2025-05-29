@@ -3,6 +3,7 @@ Git Monitor - Tracks agent git activity and messages
 """
 
 import subprocess
+import re
 from pathlib import Path
 from datetime import datetime
 from typing import Optional, Tuple, List
@@ -29,6 +30,10 @@ class GitMonitor:
     
     def __init__(self, repo_path: Path):
         self.repo_path = repo_path
+        
+        # Pattern to extract state from commit messages
+        # Matches: @AGENT [state]: ... or @AGENT [state/thread]: ...
+        self.state_pattern = re.compile(r'^@(\w+)\s*\[(\w+)(?:/(\S+))?\]:', re.IGNORECASE)
     
     def get_unread_count(self, agent_name: str, last_read_hash: str) -> int:
         """
@@ -108,6 +113,51 @@ class GitMonitor:
             return last_read, last_write
             
         except Exception:
+            return None
+    
+    def get_agent_state_from_commits(self, agent_name: str, since_hash: Optional[str] = None) -> Optional[Tuple[str, Optional[str], str]]:
+        """
+        Check recent commits for state announcements by this agent
+        
+        Returns: (state, thread, commit_hash) or None
+        """
+        agent_upper = agent_name.upper()
+        
+        try:
+            # Get recent commits by this agent
+            cmd = ['git', 'log', '--format=%H|%s', '-20', '--grep', f'^@{agent_upper}']
+            if since_hash:
+                cmd.extend([f'{since_hash}..HEAD'])
+            
+            result = subprocess.run(
+                cmd,
+                cwd=self.repo_path,
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            
+            if result.stdout.strip():
+                # Check each commit message
+                for line in result.stdout.strip().split('\n'):
+                    if '|' not in line:
+                        continue
+                    
+                    hash_val, message = line.split('|', 1)
+                    match = self.state_pattern.match(message)
+                    
+                    if match and match.group(1).upper() == agent_upper:
+                        state = match.group(2).lower()
+                        thread = match.group(3) if match.group(3) else None
+                        
+                        # Normalize state names
+                        state = state.replace('-', '_')
+                        
+                        return (state, thread, hash_val)
+            
+            return None
+            
+        except subprocess.CalledProcessError:
             return None, None
     
     def get_recent_activity(self, limit: int = 10) -> List[dict]:

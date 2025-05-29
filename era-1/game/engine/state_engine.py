@@ -98,9 +98,44 @@ class StateEngine:
         if not current_state:
             current_state = AgentGroundState()
         
-        # Skip if agent is in direct_io state
+        # Check for state changes in git commits FIRST
+        # This captures states announced via commit messages
+        git_state = self.git.get_agent_state_from_commits(
+            agent_name,
+            current_state.last_write_commit_hash if current_state else None
+        )
+        
+        if git_state:
+            state_str, thread, commit_hash = git_state
+            print(f"  Found state in git commit: {state_str} (commit: {commit_hash[:8]})")
+            
+            # Map string to enum
+            state_map = {
+                'bootstrap': AgentState.BOOTSTRAP,
+                'inbox': AgentState.INBOX,
+                'distill': AgentState.DISTILL,
+                'deep_work': AgentState.DEEP_WORK,
+                'idle': AgentState.IDLE,
+                'logout': AgentState.LOGOUT,
+                'direct_io': AgentState.DIRECT_IO,
+                'offline': AgentState.OFFLINE,
+            }
+            
+            new_state = state_map.get(state_str)
+            if new_state and new_state != current_state.state:
+                print(f"  Git-based state transition: {current_state.state.value} -> {new_state.value}")
+                current_state.state = new_state
+                current_state.thread = thread
+                current_state.started = datetime.now()
+                # Context snapshot
+                if context_info:
+                    current_state.context_tokens_at_entry = context_info['used']
+        
+        # Skip further processing if agent is in direct_io state
         if current_state.state == AgentState.DIRECT_IO:
-            print(f"  Skipping - agent in DIRECT_IO state")
+            print(f"  Agent in DIRECT_IO state - skipping automated transitions")
+            # Still need to write the updated state!
+            self.writer.write_agent_state(agent_name, current_state)
             return
         
         # ALWAYS update context usage
