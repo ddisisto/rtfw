@@ -8,15 +8,15 @@
 ## Git Activity
 last_read_commit_hash: ?
 last_read_commit_timestamp: ?
-last_write_commit_hash: 2ad0f22045e09c77446f797049158863d8879a99
-last_write_commit_timestamp: 2025-05-28T18:45:55+1000
+last_write_commit_hash: ecf72757056c374d6267cc1993d92f61cf40ac5f
+last_write_commit_timestamp: 2025-05-29T16:00:19+1000
 
 ## Context Window
-session_id: dc466590-0128-4cfb-8f58-f7f288888ea1
-context_tokens: 119155
+session_id: 5f7f5e97-c708-4a65-9527-50f80dbe237d
+context_tokens: 45473
 max_context_tokens: 128000
-context_percent: 93.1%
-last_updated: 2025-05-29T18:45:09
+context_percent: 35.5%
+last_updated: 2025-05-29T19:17:56
 
 ## Last Observed Agent State
 state: logout
