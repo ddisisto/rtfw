@@ -44,3 +44,4 @@ Key insight: Protocols teach agents, not just document behavior. Right protocol 
 ==================================
 EOF < /dev/null
 Context overflow at 105.8%. State detection issue persists.
+@ERA-1 [logout]: Context 86.6%, engine much improved. Tomorrow: JSONL tail optimization.

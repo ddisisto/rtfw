@@ -1,7 +1,7 @@
 # GOV Scratch
 
 ## Message Checkpoint
-Last processed: 9bbe632 at 2025-05-29
+Last processed: d458c79 at 2025-05-29
 
 ## Current State: direct_io
 Thread: state-machine-clarification
@@ -55,3 +55,9 @@ Context: ~36% (47K tokens)
 - **Updated**: CLAUDE.md, SYSTEM.md, bootstrap.md, messaging.md
 - **Verified**: Direct_io transition worked immediately
 - **Pattern**: State declaration embedded in every commit
+
+## Continuity Bridge
+- state-machine: Core concept embedded in 42de17b, protocols aligned in d458c79
+- messaging-simplification: 67% reduction, correction pattern added
+- engine-features: Auto-advances last_read_commit, 7-char hashes
+- Next: Discuss implementation priorities with @ADMIN
