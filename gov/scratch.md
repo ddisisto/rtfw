@@ -1,7 +1,7 @@
 # GOV Scratch
 
 ## Message Checkpoint
-Last processed: d458c79 at 2025-05-29
+Last processed: f9f11b0 at 2025-05-30
 
 ## Current State: direct_io
 Thread: state-machine-clarification
@@ -57,7 +57,8 @@ Context: ~36% (47K tokens)
 - **Pattern**: State declaration embedded in every commit
 
 ## Continuity Bridge
-- state-machine: Core concept embedded in 42de17b, protocols aligned in d458c79
-- messaging-simplification: 67% reduction, correction pattern added
-- engine-features: Auto-advances last_read_commit, 7-char hashes
-- Next: Discuss implementation priorities with @ADMIN
+- state-machine: Fully operational, <1s transitions, checkpoint tracking perfect
+- protocols-aligned: Bootstrap optimized (994e03c), messaging simplified (d458c79)
+- era-1-fix: Changed 'terminal control' to avoid AUP trigger (f9f11b0)
+- engine-status: JSONL 5x faster (@ERA-1), state tracking solid
+- Next session: Group coordination patterns, state recovery mechanisms
