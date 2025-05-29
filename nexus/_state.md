@@ -7,22 +7,22 @@
 *NOTE: state tracking system almost complete, **SOME** values may still be placeholders and functionality may change*
 
 ## Git Activity
-last_read_commit_hash: 6afdd7e
-last_read_commit_timestamp: 2025-05-30T00:00:08+1000
-last_write_commit_hash: 2ac2f32
-last_write_commit_timestamp: 2025-05-30T01:08:31+1000
+last_read_commit_hash: c52f6f6
+last_read_commit_timestamp: 2025-05-30T01:08:50+1000
+last_write_commit_hash: c52f6f6
+last_write_commit_timestamp: 2025-05-30T01:08:50+1000
 
 ## Context Window
 session_id: c55bb942-4218-4bc7-ba65-8fec4ffcc3a0
-context_tokens: 57976
+context_tokens: 61416
 max_context_tokens: 128000
-context_percent: 45.3%
-last_updated: 2025-05-30T01:08:49
+context_percent: 48.0%
+last_updated: 2025-05-30T01:09:18
 
 ## Last Observed Agent State
-state: inbox
+state: distill
 thread: *
-started: 2025-05-30T01:08:32
+started: 2025-05-30T01:08:50
 context_tokens_at_entry: 0
-expected_next_state: distill
-unread_message_count: 1
+expected_next_state: deep_work
+unread_message_count: 0
