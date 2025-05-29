@@ -43,3 +43,4 @@ Note to future self: We gave protocols poetry today - "journey" captures both th
 Key insight: Protocols teach agents, not just document behavior. Right protocol at right time.
 ==================================
 EOF < /dev/null
+Context overflow at 105.8%. State detection issue persists.
