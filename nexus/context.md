@@ -4,7 +4,7 @@
 - NEXUS serves as the context lifecycle orchestrator and communication hub
 - Coordinates distillation and restore cycles across agents
 - Operates via tmux window 0, monitoring other agent windows
-- Agent states monitored via unified state system (critic/tools/unified_state.py)
+- Agent states monitored via engine-maintained _state.md files
 
 ## Specialized Protocol References
 This document contains frequently-used operational knowledge. For specialized procedures:
@@ -61,11 +61,11 @@ Last processed: def456 at 2025-05-27 18:30:00
 - Old git_router.py archived for reference only
 
 ## Session Management
-- Sessions tracked via unified state system (critic/tools/unified_state.py)
-- Legacy nexus/sessions/current_sessions.json maintained for compatibility
-- Session operations are independent from context management
-- Unified state provides real-time session mapping for all agents
-- **Legacy procedures**: See nexus/session-mgmt.md
+- Sessions tracked via game engine through _state.md files
+- Each agent has session_id in their _state.md (READ-ONLY)
+- Session operations handled by engine, not agents
+- Context management separate from session tracking
+- **Technical details**: See nexus/session-mgmt.md for tmux operations
 
 ## Critical: Claude CLI Input Handling
 - **VITAL**: Enter within tmux send-keys creates newlines, NOT submission
@@ -107,9 +107,9 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ### Key Monitoring Points
 - **@ADMIN monitors NEXUS** - Only checks NEXUS window for BELL/SILENT
-- **NEXUS monitors all agents** - Via unified state system
+- **NEXUS monitors all agents** - Via tmux windows and capture-pane
 - **Alert escalation** - NEXUS raises BELL for critical decisions
-- **State queries** - Use `python critic/tools/unified_state.py` for real-time status
+- **State queries** - Check agent _state.md files for objective truth
 
 
 ### Communication Format (v2)
@@ -122,10 +122,10 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 
 ### ERA-1 Support Architecture (2025-05-28)
 - Game commands map to real agent operations
-- Agent state queries via unified state system
-- No direct file access - unified state handles all queries
+- Agent state queries via _state.md files (engine-maintained)
+- Engine handles all state tracking and updates
 - Foundation Era: 1970s aesthetic with real system integration
-- Unified state provides JSON API for game integration
+- Engine provides state API for game integration
 - Tmux pane embedding for live agent viewing within game
 - Real-time state via `python critic/tools/unified_state.py`
 - Legacy patterns: nexus/agent-data-patterns.md (deprecated)
@@ -229,7 +229,7 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - System cleanup: Deprecated agents/files removed by GOV (2025-05-28)
 - NEXUS.md made compliant with agent structure protocol
 - Distill/restore documentation created for ERA-1 integration
-- Unified state system adopted (2025-05-28) - replaced manual tracking
+- Engine state system adopted (2025-05-28) - replaced manual tracking
 - Fourth wall architecture revealed (2025-05-28) - _state.md files are READ-ONLY
 
 ## Context Management
@@ -262,8 +262,8 @@ When NEXUS receives restore message after /clear:
 **Full details**: See nexus/context-lifecycle.md for complete orchestration of this process as it related to your coordination of this process for other agents.
 
 ## Self-Validation Protocol
-NEXUS session tracked automatically by unified state system.
-Legacy validation protocol preserved in nexus/session-mgmt.md for reference.
+NEXUS session tracked automatically by engine via _state.md.
+Tmux validation procedures preserved in nexus/session-mgmt.md for reference.
 
 ## Note on Scratch Pad
 This agent maintains a separate scratch.md file for working memory, experiments, and temporary notes. See that file for more active work.

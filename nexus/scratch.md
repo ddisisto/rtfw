@@ -23,9 +23,9 @@
 - [x] Clean NEXUS.md per agent structure protocol
 - [x] Document distill/restore for ERA-1
 - [x] Support CRITIC distill/restore cycle
-- [ ] Transition sessionid tracking to ERA-1's implementation
-- [ ] Coordinate minimal state system with @ERA-1 and @CRITIC
-- [ ] Get @GOV review of new state management approach
+- [x] Clean up old session tracking files (done 2025-05-29)
+- [ ] Monitor engine state system adoption across agents
+- [ ] Support agents understanding new _state.md system
 
 
 

@@ -13,10 +13,10 @@ last_write_commit_timestamp: 2025-05-28T18:32:25+1000
 
 ## Context Window
 session_id: 2e0df345-b742-4cf8-8bd5-439d3f2ca869
-context_tokens: 56879
+context_tokens: 69163
 max_context_tokens: 128000
-context_percent: 44.4%
-last_updated: 2025-05-29T02:00:50
+context_percent: 54.0%
+last_updated: 2025-05-29T13:01:06
 
 ## Last Observed Agent State
 state: offline
