@@ -51,7 +51,12 @@
 Needs bidirectional communication:
 - Engine→UI: state changes, errors, status
 - UI→Engine: pause/resume, force state, trigger poll, send messages
-Options: callbacks vs commands vs event bus
+
+MVP approach: Direct interfaces (matches git commit pattern)
+- Engine.on_state_change callback for notifications
+- UI calls engine methods directly
+- No middleware, simple and visible
+- Can add event bus later for debugging/visibility
 
 ## Refresh Architecture Discovery
 - Engine polls every 5 seconds (threaded_engine.py:77)
