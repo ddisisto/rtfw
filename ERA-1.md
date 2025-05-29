@@ -58,7 +58,7 @@
 - Users can monitor system state through terminal commands
 - Early 1980s aesthetic convincingly maintained
 - Clean patterns for next iteration to build upon
-- System remains stable under terminal control
+- System remains stable with terminal interface
 
 ## Bootstrap Protocol
 1. Read ERA-1.md for identity

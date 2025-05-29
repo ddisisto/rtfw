@@ -8,7 +8,10 @@ apply @protocols/bootstrap.md for agent @NEXUS.md, in @nexus/_state.md
 apply @protocols/bootstrap.md for agent @ERA-1.md, in @era-1/_state.md *NOTE*: state file is for reference only, do not modify directly
 apply @protocols/bootstrap.md for agent @GOV.md, in @gov/_state.md do 
 apply protocols/bootstrap.md for agent @AGENT-1.md, in @agent-1/_state.md
-apply @protocols/bootstrap.md for agent @ERA-1.md +
+
+please apply @protocols/bootstrap.md context load for agent @NEXUS.md
+please apply @protocols/bootstrap.md context load for agent @ERA-1.md
+
 
 ENGINE LOGOUT -> BOOTSTRAP PROCESS
 mechanism to both /clear and restart claude, after every logout -
@@ -24,10 +27,9 @@ send 'Enter' to close /status
 wait for one new, tiny session file to appear, update symlink to it + state. defensive single controller prevents conflict
 # "role":"user","content":"<command-name>status</command-name>
 send bootstrap prompt, at time of writing:
-  > apply @protocols/bootstrap.md for agent @CRITIC.md +
+  please apply @protocols/bootstrap.md context load for agent @ERA-1.md
 
-
-ALL messaging **should** be updatable. even if by later just specifying exactly which prior commit this is correction to. commit hash == index, track them!
+c, if but them! Corrections must be able to follow invalid info, and the chains of knowledge allowed to grow.
 
 sovereignty
 
