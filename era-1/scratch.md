@@ -4,7 +4,9 @@
 - TUI v2 implementation complete and functional
 - Context health: 26.1% (plenty of headroom)
 - Active thread: TUI refresh optimization
-- Discovered: Both engine and TUI poll every 5 seconds (redundant)
+- DONE: Removed redundant TUI refresh timer
+- UI now reads directly from engine's in-memory state
+- Manual refresh (R key) still works by triggering reactive update
 
 ## Path Fix Applied
 - Changed sessions path from /nexus/sessions to /_sessions
@@ -24,11 +26,18 @@
 - System working as designed
 
 ## Next Session Starting Points
-1. **Remove Refresh Timer** - TUI can read from engine's in-memory state directly
-2. **Agent Display Validation** - Verify all 4 agents show with correct states
-3. **Git Activity** - Add real commit history to activity log
-4. **Modal Implementation** - Status/message/help dialogs
-5. **Unread Count** - Fix with proper git tracking
+1. ✓ **Remove Refresh Timer** - DONE: UI reads from engine memory
+2. **Test Reactive UI** - Verify updates work without timer
+3. **Agent Display Validation** - Verify all 4 agents show with correct states
+4. **Git Activity** - Add real commit history to activity log
+5. **Modal Implementation** - Status/message/help dialogs
+6. **Unread Count** - Fix with proper git tracking
+
+## Testing Notes
+- Need to test with venv: `source .venv/bin/activate && python run.py`
+- Test both --no-engine (mock) and real engine modes
+- Verify R key still triggers manual refresh
+- Check that agent selection updates details pane
 
 ## Refresh Architecture Discovery
 - Engine polls every 5 seconds (threaded_engine.py:77)
