@@ -37,6 +37,24 @@
 - Could make TUI event-driven or remove timer entirely
 - Textual framework is reactive - could trigger updates on state change
 
+## Engine Performance Analysis
+Current poll cycle for 4 agents:
+- 4 full JSONL file reads (parse_session_file reads entire file!)
+- 8 partial file reads (context + state per agent)
+- 8+ git subprocess calls (no caching)
+- Total time: probably 100-500ms depending on file sizes
+
+Bottlenecks:
+1. parse_session_file reads entire file for metadata
+2. Git commands spawn new processes each time
+3. No caching between polls
+
+With optimizations could handle 1-2 second polling:
+- Cache git results (commits don't change that fast)
+- Only read file tails for context/state
+- Batch git operations
+- Track file mtimes to skip unchanged files
+
 ## Key Files for Next Session
 - era-1/game/ui/app.py:47 - refresh_interval setting
 - era-1/game/engine/threaded_engine.py - get_all_agents method
