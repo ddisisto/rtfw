@@ -24,7 +24,12 @@ Last processed: 49eb171 at 2025-05-29T20:20:21
 4. 7-char hash display to match git log --oneline
 
 ## My Engine Priorities
-- last_write_commit updates seem delayed (needs investigation)
+- ~~last_write_commit updates seem delayed~~ FIXED: direct_io was skipping git updates
 - Terminal UI command implementations (`message`, `todos`, etc.)
 - State transition prompts from engine
 - Session idle detection refinements
+
+## Engine Bug Fixed (2025-05-29)
+- direct_io state was returning early, skipping git info updates
+- Moved git update code before direct_io check
+- Now ALL states get proper last_write_commit updates
