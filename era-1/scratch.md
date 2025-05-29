@@ -35,4 +35,7 @@
 ## Message Checkpoint
 Last processed: 5251da1 at 2025-05-29T13:35:00
 
+## Direct I/O Session (2025-05-29)
+@ADMIN has taken direct control, entering direct_io state. New 8th lifecycle state added to handle human-in-the-loop collaboration.
+
 
