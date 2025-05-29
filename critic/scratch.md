@@ -18,6 +18,21 @@ Last processed: 002ee04 at 2025-05-28 17:48:00 +1000
 - Batch reads efficient: Can Read multiple _state.md files in one call
 - Glob **/_state.md only for discovery, not routine checks
 
+## Critical State Trust Analysis (2025-05-29)
+**Fundamental flaw discovered**: Engine conflates "idle session" with "agent state"
+- I'm provably active (tokens: 58.7%→69.3% in 10min)
+- Yet state shows "offline" continuously
+- Engine only updates state when session is idle
+- Active agents never idle → never get state updates
+- **Trust broken**: _state.md doesn't reflect reality
+
+**Session ID mismatch**: 
+- My _state.md shows dc466590... but that's not my session
+- ERA-1 shows 5d53f6c5... but they're offline
+- No reliable agent→session mapping exists
+
+**Paradox**: The harder we work, the less accurate our state becomes
+
 ## Architectural Insight (175fbb0)
 ERA-1 now permanent senior systems engineer/architect role! Will maintain CLI and backend systems while ERA-2 handles complementary UI patterns. This affects:
 - Long-term system architecture (parallel agents, not sequential replacement)

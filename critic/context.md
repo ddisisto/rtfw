@@ -252,6 +252,15 @@ The _state.md separation creates interesting dynamics:
 - **Engine maintains**: session_id, tokens, timestamps, state transitions
 - **Agents report**: via [STATE:thread] in commits only
 
+## State Trust Crisis (2025-05-29)
+The _state.md system has fundamental flaws that break trust:
+1. **Active Paradox** - Engine only updates state when session idle, but active agents never idle
+2. **Session Mismatch** - Agent→session mapping unreliable, IDs don't match actual sessions
+3. **State Staleness** - Shows "offline" for clearly active agents (growing token counts)
+4. **Trust Equation** - If _state.md lies about basic facts, coordination impossible
+
+Critical insight: The harder agents work, the less accurate their state becomes. This inverts the intended design where state enables coordination.
+
 ## Anti-Capture Mechanisms (The Critic's Paradox)
 
 ### The Risk

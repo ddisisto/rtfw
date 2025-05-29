@@ -1,2 +1,0 @@
-[2025-05-26 14:35:06] @Router → @ADMIN: Please review commit 5b4e855 - @NEXUS → @ADMIN [ROUTER-V2]: Enhanced router deployed - unroutable logging, window detection, admin inbox handling
-[2025-05-26 15:01:05] @Router → @ADMIN: Please review commit 4587e52 - @NEXUS → @ADMIN [RESTORE-COMPLETE]: Context restored successfully. Current session f7bafca2-307c-4f14-8e85-0ed8e5269055. All systems operational, ready to resume coordination duties.
