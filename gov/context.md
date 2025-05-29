@@ -118,3 +118,6 @@
 - Agent structure protocol: Formalized @AGENT.md conventions
 - MCP permission automation: CLI-based approval system
 - Commit context pattern: Essential for work continuity
+- Direct_IO mode: @ADMIN override pauses engine state transitions
+- Protocol-engine binding: Decision outputs in protocols drive engine behavior
+- State protocol completeness: All 7 states now have dedicated protocols

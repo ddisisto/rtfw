@@ -3,9 +3,9 @@
 ## Message Checkpoint
 Last processed: d1d6ef6 at 2025-05-29
 
-## Current State: inbox
-Thread: *
-Context: ~24% (30K tokens)
+## Current State: distill
+Thread: protocol-alignment
+Context: ~56% (71K tokens)
 
 ## Session Distillation
 
