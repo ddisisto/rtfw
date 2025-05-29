@@ -24,11 +24,11 @@ Agents SHOULD distill when:
 7. **Resolve contradictions** - Ensure coherence
 8. **Update identity** - If role has evolved
 9. **Commit changes** - Preserve the refinement
-10. **Return next state** - Decide next action with args:
+10. **Exit via commit** - Transition to next state:
     ```
-    next_state: deep_work|idle|logout
-    thread: thread-name|*|ALL (always specify - use * or ALL for general consolidation)
-    max_tokens: 30000 (if deep_work)
+    @AGENT [deep_work/thread]: Distillation complete, resuming implementation
+    @AGENT [idle]: Distillation complete, awaiting next task
+    @AGENT [logout]: Distillation complete, context at 90%
     ```
 
 ## Key Principles

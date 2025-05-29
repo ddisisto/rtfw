@@ -33,12 +33,11 @@ Agents enter idle from distill when:
    - Timer expires
    - Context needs refresh
 
-## Decision Inputs
+## Entry
 
-From distill:
+Enter via commit when waiting:
 ```
-next_state: idle
-thread: * (or specific waiting thread)
+@AGENT [idle]: Awaiting @OTHER response on thread X
 ```
 
 ## Idle Activities

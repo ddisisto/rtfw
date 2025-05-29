@@ -23,13 +23,11 @@ Agents enter deep_work from distill when:
 7. **Complete or pause** - Clear endpoint or blocking issue
 8. **Exit to inbox** - Always return to message processing
 
-## Decision Inputs
+## Entry
 
-From distill state output:
+Enter via commit:
 ```
-next_state: deep_work
-thread: implementation-v2
-max_tokens: 30000
+@AGENT [deep_work/thread]: Beginning focused implementation
 ```
 
 ## Progress Tracking

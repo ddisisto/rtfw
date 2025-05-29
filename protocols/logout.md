@@ -38,12 +38,11 @@ Agents enter logout from distill when:
    - Logout log entry
 5. **Trust the transition** - System handles offline state
 
-## Decision Inputs
+## Entry
 
-From distill:
+Enter via commit when context pressure high:
 ```
-next_state: logout
-thread: * (not applicable)
+@AGENT [logout]: Context at 85%, graceful exit. See logout.log
 ```
 
 ## Logout Log Culture
