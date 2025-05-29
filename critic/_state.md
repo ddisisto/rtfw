@@ -8,20 +8,20 @@
 ## Git Activity
 last_read_commit_hash: ?
 last_read_commit_timestamp: ?
-last_write_commit_hash: ecf72757056c374d6267cc1993d92f61cf40ac5f
-last_write_commit_timestamp: 2025-05-29T16:00:19+1000
+last_write_commit_hash: 1c7f6072c0a8852bb6a851c73bf60af43a54204f
+last_write_commit_timestamp: 2025-05-29T20:45:31+1000
 
 ## Context Window
 session_id: 5f7f5e97-c708-4a65-9527-50f80dbe237d
-context_tokens: 57383
+context_tokens: 57876
 max_context_tokens: 128000
-context_percent: 44.8%
-last_updated: 2025-05-29T20:45:31
+context_percent: 45.2%
+last_updated: 2025-05-29T20:50:27
 
 ## Last Observed Agent State
-state: direct_io
-thread: state-validation
-started: 2025-05-29T19:18:01
+state: distill
+thread: *
+started: 2025-05-29T20:45:36
 context_tokens_at_entry: 0
-expected_next_state: inbox
+expected_next_state: deep_work
 unread_message_count: 0
