@@ -74,8 +74,9 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - ✓ Phase 8: State engine v2 with two-tier updates
 - ✓ Phase 9: TUI v2 design with Textual framework
 - ✓ Phase 10: TUI implementation with live state integration
-- ✓ Phase 11: Git-based state detection implementation
-- ⏳ Phase 12: Debug state detection and add hot reload
+- ✓ Phase 11: Direct_io state and git-based detection
+- ⏳ Phase 12: Debug ERA-1 state detection issue
+- ⏳ Phase 13: Add engine hot reload capability
 
 ## ERA Scope Clarification
 - ERA-1 encompasses all CLI/terminal interfaces
@@ -120,6 +121,8 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - Fixed by @GOV in commit 584a720 - use grep -E '@(AGENT|ALL)' format
 - Terminal mouse tracking persists after Textual - reset with escape sequences
 - Path vs string types matter - engine expects Path objects
+- Git grep patterns must match both @AGENT: and @AGENT [state]: formats
+- Engine changes require UI restart (hot reload needed)
 
 ## UI/Engine Communication Pattern
 - **Direct Interfaces**: Engine exposes methods, UI calls directly (no middleware)

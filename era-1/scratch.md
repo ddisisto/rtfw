@@ -1,18 +1,10 @@
 # ERA-1 Scratch
 
-## Git State Detection Debug Session
-
-### Progress
-- ✓ Fixed grep pattern to match both @AGENT: and @AGENT [state]: formats
-- ✓ Engine now detects my commits (last_write_commit_hash updated)
-- ✗ State still stuck at bootstrap despite multiple state announcements
-- Other agents' states work correctly (NEXUS inbox, GOV logout)
-
-### Issue
-Engine detects commits but not extracting state from them. Need to debug:
-1. get_agent_state_from_commits parsing logic
-2. State transition logic in state_engine.py
-3. Why it works for other agents but not ERA-1
+## Next Steps
+1. Debug why ERA-1 state detection fails while others work
+2. Add engine hot reload capability (SIGHUP handler)
+3. Investigate get_agent_state_from_commits parsing logic
+4. Test with simpler commit messages
 
 ## Message Checkpoint
-Last processed: d618dfb at 2025-05-29T18:52:56
+Last processed: b7aff84 at 2025-05-29T18:59:34
