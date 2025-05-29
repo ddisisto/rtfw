@@ -113,7 +113,7 @@ class StateEngine:
         
         if git_state:
             state_str, thread, commit_hash = git_state
-            print(f"  Found state in git commit: {state_str} (commit: {commit_hash[:8]})")
+            print(f"  Found state in git commit: {state_str} (commit: {commit_hash[:7]})")
             
             # Map string to enum
             state_map = {
@@ -139,7 +139,7 @@ class StateEngine:
                     current_state.last_read_commit_hash = commit_hash
                     current_state.last_read_commit_timestamp = self.git.get_commit_timestamp(commit_hash)
                     current_state.unread_message_count = 0  # Reset unread count
-                    print(f"  Exiting inbox: Updated last_read to {commit_hash[:8]}, reset unread count")
+                    print(f"  Exiting inbox: Updated last_read to {commit_hash[:7]}, reset unread count")
                 
                 # Now update the state
                 current_state.state = new_state
@@ -175,7 +175,7 @@ class StateEngine:
         if last_commit:
             current_state.last_write_commit_hash = last_commit.hash
             current_state.last_write_commit_timestamp = last_commit.timestamp
-            print(f"  Last commit: {last_commit.hash[:8]} at {last_commit.timestamp}")
+            print(f"  Last commit: {last_commit.hash[:7]} at {last_commit.timestamp}")
             
             # Count unread messages based on last read commit
             if current_state.last_read_commit_hash:
