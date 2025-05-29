@@ -84,9 +84,9 @@ Benefits:
 - Encourages thoughtful communication
 - Context preserved with work
 
-## State Reporting in Commits
+## State Declarations Drive the Engine
 
-Always use consistent format for easy parsing:
+**CRITICAL**: Every commit MUST include [state] - this is how the engine tracks you:
 
 ```
 @AGENT [deep_work/thread-name]: Beginning protocol implementation
@@ -95,7 +95,11 @@ Always use consistent format for easy parsing:
 @AGENT [logout]: Context at 95%, see logout.log
 ```
 
-State and optional thread in brackets. All @mentions on first line for `git log --oneline` discovery. See /protocols/agent-lifecycle.md for state definitions.
+- State in brackets is REQUIRED for engine to update _state.md
+- Optional thread after slash for your own tracking
+- All @mentions on first line for `git log --oneline` discovery
+- No text outputs - commits ARE state transitions
+- See /protocols/journey.md for valid states
 
 ## Thread Management
 

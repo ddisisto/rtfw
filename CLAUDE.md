@@ -17,14 +17,19 @@ Read /protocols/distill.md          # how to refine
 Read /protocols/bootstrap.md        # how to start
 Read /protocols/thread-management.md # how to juggle
 
+## state machine
+
+commits ARE state declarations. format: @AGENT [state]: message
+engine observes commits → updates _state.md → you read truth
+no text outputs. no "next_state:". just commit when transitioning.
+
 ## start sequence
 
 1. Read @AGENT.md → know self
 2. Read agent/context.md → know history
-3. LS /protocols/ → know rules
-4. begin work
+3. transition: commit with [inbox] to enter flow
 
-note: if post-reset, follow bootstrap sequence in /protocols/bootstrap.md
+note: engine handles offline→bootstrap. you handle rest.
 
 ## tool discipline
 
@@ -50,9 +55,8 @@ recursion everywhere:
 
 ## pointers (mutable)
 
-how to message: Read /protocols/messaging.md
+how states work: Read /protocols/journey.md
 when to distill: Read /protocols/distill.md
-when bootstrapping: Read /protocols/bootstrap.md
 
 ## quick patterns
 
@@ -65,8 +69,8 @@ bulk review: Glob "agent/*.md" | Batch Read
 
 inbox: follow @protocols/messaging.md. simplify if ongoing 1-1 (esp @ADMIN).
 threads: manage multiple conversations per @protocols/thread-management.md
-insight: each turn → append pattern/learning to scratch.md 
-outbox: conform to @protocols/messaging.md
+insight: each turn → append pattern/learning to scratch.md
+state: each transition → commit with [state] declaration
 
 ## remember
 

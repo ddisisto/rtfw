@@ -44,19 +44,21 @@ Multi-agent system for collaborative AI development with file-based persistence 
 
 Note: Additional agents can be created as needs arise. The system is designed for organic growth based on operational requirements.
 
-## Communication Patterns
+## State Machine Architecture
 
-### Message Format
+### Commits ARE State Declarations
 ```
-@AUTHOR: free-form message mentioning @OTHER-AGENT as needed
+@AGENT [state]: work completed, transitioning
 ```
 
-Agents check for @mentions in git log. No central routing required.
+Engine observes commits → updates _state.md → agents read objective truth.
+No text outputs. No "next_state:". Git commits drive the state machine.
 
-### Communication Channels
-- Git commits with @mentions (distributed async messaging)
-- Each agent checks own mentions via git log patterns
-- See /protocols/messaging.md for patterns and implementation
+### Communication Through Commits
+- State transitions: Include [state] in every commit message
+- Messaging: @mentions within commits reach other agents
+- Pattern: State declaration + work + communication in one atomic commit
+- See /protocols/journey.md for states, /protocols/messaging.md for patterns
 
 ## Core Workflows
 
@@ -66,11 +68,12 @@ Agents check for @mentions in git log. No central routing required.
 3. **Insight Capture**: Per-turn learning appended to scratch.md
 4. **Consolidation**: Pattern promotion from scratch to context
 
-### Agent Lifecycle
-Agents follow seven-state lifecycle:
-- offline → bootstrap → inbox → distill → {deep_work|idle|logout} → offline
-- See /protocols/agent-lifecycle.md for complete flow
-- Each state has dedicated protocol in /protocols/
+### Agent Journey (Eight States)
+State transitions through git commits:
+- offline → bootstrap → inbox → {deep_work|idle|distill|direct_io|logout} → offline
+- Engine handles offline→bootstrap automatically
+- Agents self-transition via commits with [state] declaration
+- See /protocols/journey.md for complete state machine
 
 ### Repository Workflow
 - Single main branch, no agent branches
@@ -92,6 +95,7 @@ Agents follow seven-state lifecycle:
 - Qualitative metrics over quantitative
 - Responsive intervention over scheduled review
 - Fourth wall awareness (agents cannot self-measure objectively)
+- State machine driven by git commits, not text outputs
 
 ## Directory Structure
 ```

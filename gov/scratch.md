@@ -1,11 +1,11 @@
 # GOV Scratch
 
 ## Message Checkpoint
-Last processed: d1d6ef6 at 2025-05-29
+Last processed: 9bbe632 at 2025-05-29
 
-## Current State: distill
-Thread: journey-complete
-Context: ~81% (104K tokens)
+## Current State: direct_io
+Thread: state-machine-clarification
+Context: ~36% (47K tokens)
 
 ## Recent Session Work
 
@@ -47,3 +47,11 @@ Context: ~81% (104K tokens)
 - Bootstrap→journey→logout as complete cycle
 - Each journey builds on previous (context.md carries forward)
 - Fourth wall architecture proven throughout
+
+### State Machine Clarification (2025-05-29)
+- **Critical insight**: Commits ARE state declarations
+- **No text outputs**: Engine only observes git commits
+- **Format**: @AGENT [state]: message creates transition
+- **Updated**: CLAUDE.md, SYSTEM.md, bootstrap.md, messaging.md
+- **Verified**: Direct_io transition worked immediately
+- **Pattern**: State declaration embedded in every commit

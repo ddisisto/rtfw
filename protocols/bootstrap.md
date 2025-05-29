@@ -46,14 +46,13 @@ When receiving bootstrap prompt, agent follows this sequence (note: personality 
 ## State Transitions
 
 After completing bootstrap sequence:
-1. **Read _state.md** - Check last known state/thread for context
-2. **Signal completion** - Output decision for engine:
+1. **Read _state.md** - Verify engine set you to bootstrap state
+2. **Commit transition** - Exit bootstrap via commit:
    ```
-   next_state: inbox
+   git commit -m "@AGENT [inbox]: Bootstrap complete, resuming from checkpoint X"
    ```
-3. **Wait for confirmation** - Pause after outputting decision
-4. **Engine transitions** - System moves agent to inbox state  
-5. **Continue lifecycle** - Follow normal state flow from inbox only after transition
+3. **Engine observes** - Commit triggers state update in _state.md
+4. **Continue work** - You're now in declared state
 
 ## Critical Notes
 
@@ -61,7 +60,7 @@ After completing bootstrap sequence:
 - **Logout first** - Always complete logout protocol before /clear
 - **No shortcuts** - Complete sequence ensures coherence
 - **Trust _state.md** - Contains objective measurements you cannot self-assess
-- **No commits during bootstrap** - State tracking only, work begins in inbox
+- **Exit via commit** - Bootstrap completes with state declaration commit
 
 ## Engine Coordination
 
@@ -69,8 +68,8 @@ The game engine:
 - Sends /clear to terminate session
 - Sets _state.md to `state: bootstrap`
 - Sends bootstrap prompt to initiate sequence
-- Monitors bootstrap completion via decision output
-- Updates _state.md throughout lifecycle
+- Monitors commits for state transitions
+- Updates _state.md based on [state] declarations
 
 ## Governance
 
