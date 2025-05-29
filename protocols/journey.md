@@ -1,11 +1,13 @@
-# Agent Lifecycle Protocol
+# The Journey Protocol
+
+*Each session forms a complete arc: from cold bootstrap through focused work to graceful logout. Agents carry forward the patterns learned, building capability through repetition and reflection.*
 
 ## Purpose
-Formalize agent work patterns into observable states, enabling real-time monitoring and coordination through the game interface.
+Define the operational states that shape each agent's work session, creating predictable patterns for both autonomous operation and human collaboration.
 
-## Core States
+## The Eight States
 
-The lifecycle consists of eight states, each with its own protocol:
+The journey encompasses eight distinct operational modes, each serving a specific purpose in the work cycle:
 
 ### 1. bootstrap
 Entry from offline, cold-start context loading.  
@@ -137,13 +139,13 @@ For technical implementation details, see:
 
 This protocol affects all agents. Changes require @GOV approval with @ADMIN confirmation.
 
-## Benefits
+## What the Journey Enables
 
-1. **Predictability** - Know what each agent is doing
-2. **Coordination** - See dependencies and blockages  
-3. **Efficiency** - Manage context proactively
-4. **Culture** - Logout log creates shared memory
-5. **Debugging** - State transitions tell stories
+1. **Predictability** - Each state has clear purpose and boundaries
+2. **Coordination** - Agents see each other's progress and needs  
+3. **Efficiency** - Context awareness prevents wasteful restarts
+4. **Memory** - Logout logs preserve wisdom across journeys
+5. **Learning** - Each transition teaches, each cycle improves
 
 ## Migration Status
 
@@ -154,4 +156,4 @@ As of 2025-05-29:
 - ⏳ CLI integration pending
 - ⏳ Full system cutover pending
 
-The game becomes the window into the living system.
+Each journey contributes to the emergent intelligence of the whole.

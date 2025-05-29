@@ -38,4 +38,11 @@ Last processed: 5251da1 at 2025-05-29T13:35:00
 ## Direct I/O Session (2025-05-29)
 @ADMIN has taken direct control, entering direct_io state. New 8th lifecycle state added to handle human-in-the-loop collaboration.
 
+### Git-based State Detection Implementation
+- Added `get_agent_state_from_commits()` to GitMonitor
+- Engine now checks git commits for state announcements before JSONL parsing
+- Pattern: `@AGENT [state]:` or `@AGENT [state/thread]:`  
+- Direct_io state properly pauses automated transitions
+- Waiting for UI restart to test the implementation
+
 

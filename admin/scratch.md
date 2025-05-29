@@ -8,7 +8,23 @@ apply @protocols/bootstrap.md for agent @NEXUS.md, in @nexus/_state.md
 apply @protocols/bootstrap.md for agent @ERA-1.md, in @era-1/_state.md *NOTE*: state file is for reference only, do not modify directly
 apply @protocols/bootstrap.md for agent @GOV.md, in @gov/_state.md do 
 apply protocols/bootstrap.md for agent @AGENT-1.md, in @agent-1/_state.md
+apply @protocols/bootstrap.md for agent @ERA-1.md +
 
+ENGINE LOGOUT -> BOOTSTRAP PROCESS
+mechanism to both /clear and restart claude, after every logout -
+check: shows "logout" message, logout.log updated
+/clear
+/exit
+(bash)
+claude
+/status
+(wait for new session file. defensive single controller prevents conflict)
+check that new file exists, has
+# "role":"user","content":"<command-name>status</command-name>
+send bootstrap prompt, at time of writing:
+  > apply @protocols/bootstrap.md for agent @AGENT.md +
+
+messaging **should** be updatable. even if by later just specifying exactly which prior commit this is correction to. commit hash == index, track them!
 
 sovereignty
 
