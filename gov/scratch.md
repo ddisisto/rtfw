@@ -4,69 +4,31 @@
 Last processed: d1d6ef6 at 2025-05-29
 
 ## Current State: distill
-Thread: protocol-harmonization  
-Context: ~65% (83K tokens)
+Thread: protocol-refinement
+Context: ~69% (89K tokens)
 
-## Session Distillation
+## Recent Session Work
 
-### Major Accomplishments Today
-1. ✓ Formalized agent lifecycle protocol with 7 states
-2. ✓ Integrated fourth wall architecture (_state.md RO)
-3. ✓ Standardized message format: @AGENT [state/thread]: message
-4. ✓ Consolidated bootstrap terminology (replaced login/restore confusion)
-5. ✓ Updated all protocols for consistency
+### Direct I/O Protocol
+- Created 8th state for @ADMIN collaboration
+- Engine pauses automation in this state
+- Proactive notifications encouraged
+- Clean entry/exit via commit messages
 
-### Key Architectural Insights
-- **Fourth wall is architecture**: Agents cannot self-measure (tokens, time, files)
-- **_state.md bridges the wall**: Game provides objective truth agents need
-- **States drive behavior**: Each state has clear entry/exit/available actions
-- **Bootstrap is universal**: Whether cold start or post-logout
-- **System self-organizes**: NEXUS chose logout based on _state.md!
+### Bootstrap Refinement
+- Added "wait for confirmation" step
+- Ensures clean handoff to inbox
+- Prevents race conditions
 
-### Patterns to Preserve in context.md
-1. Message format: `@AGENT [state/thread]: all @MENTIONS on first line`
-2. State transitions: offline→bootstrap→inbox→distill→{deep_work|idle|logout}→offline
-3. Every commit includes state reporting
-4. _state.md is READ-ONLY objective truth
-5. Bootstrap message: "@ADMIN: @protocols/bootstrap.md underway for @AGENT.md agent in @agent/_state.md"
+### Protocol Harmonization Needs
+1. **Pattern extraction** - Common elements across protocols
+2. **Notification standardization** - Proactive alerts in all states
+3. **Decision output format** - Consistent for engine parsing
+4. **Protocol size limits** - Keep each under ~200 lines
+5. **Cross-references** - "See also:" sections vs duplication
 
-### Active Threads Complete
-- lifecycle-integration ✓
-- doc-alignment ✓ 
-- bootstrap-consolidation ✓
-
-### System State
-- NEXUS: Currently bootstrapping with new message format
-- CRITIC: Also offline, ready for bootstrap
-- ERA-1: Continues implementation with v2 state system
-- GOV: Ready for logout after this distill
-
-next_state: logout
-thread: *
-
-## Bootstrap Experience Analysis (2025-05-29)
-
-### Smooth Elements
-- Clear file loading sequence in protocol
-- Git history commands provide good context
-- "Personality offline" reminder helpful
-- Transition path well defined
-
-### Friction Points
-1. **Bootstrap completion commit fails** - "nothing to commit" when trying to report "Restored from HASH"
-   - Protocol should note this is informational only, not required commit
-   
-2. **Manual inbox transition** - Had to remember to check messages myself
-   - Engine prompts will fix this
-   
-3. **Message checkpoint unclear** - No guidance on updating last_processed after inbox check
-   - Should be explicit step in inbox protocol
-   
-4. **Bootstrap activity ambiguity** - "Do not act on messages seen here" but when DO I act?
-   - Needs clearer delineation between context-only and action phases
-
-### Recommendations for Protocols
-- inbox.md should include checkpoint update as first step
-- bootstrap.md could note that completion commit is optional
-- State protocols should assume engine handles transitions
-- Each protocol should clearly state its decision outputs
+### Next Focus: agent-lifecycle.md
+- Considering rename (agent-states? state-machine?)
+- Now references 8 individual protocols
+- Serves as overview/index
+- May need pattern extraction
