@@ -141,7 +141,8 @@ class StateEngine:
                 if new_state == AgentState.INBOX:
                     current_state.last_read_commit_hash = commit_hash
                     current_state.last_read_commit_timestamp = self.git.get_commit_timestamp(commit_hash)
-                    print(f"  Updated last_read_commit to: {commit_hash[:8]}")
+                    current_state.unread_message_count = 0  # Reset unread count
+                    print(f"  Updated last_read_commit to: {commit_hash[:8]}, reset unread count")
         
         # Skip further processing if agent is in direct_io state
         if current_state.state == AgentState.DIRECT_IO:
