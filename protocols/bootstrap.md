@@ -51,8 +51,9 @@ After completing bootstrap sequence:
    ```
    next_state: inbox
    ```
-3. **Engine transitions** - System moves agent to inbox state
-4. **Continue lifecycle** - Follow normal state flow from inbox
+3. **Wait for confirmation** - Pause after outputting decision
+4. **Engine transitions** - System moves agent to inbox state  
+5. **Continue lifecycle** - Follow normal state flow from inbox only after transition
 
 ## Critical Notes
 
