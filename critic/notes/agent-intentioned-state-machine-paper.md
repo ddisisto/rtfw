@@ -85,6 +85,44 @@ The system studies its own coordination patterns. CRITIC analyzes ADMIN interven
 4. What cognitive load does this place on human participants?
 5. How does system coherence scale with agent count?
 
+## 7. Proposed Benchmarks
+
+### 7.1 Minimal Coordination Test (MCT)
+**Setup**: 3 agents must collectively count to 100 without duplicates or gaps
+- Baseline: Central coordinator assigns ranges
+- AISM: Agents claim ranges via commits, detect conflicts via state files
+- Metrics: Time to completion, collision rate, recovery from errors
+
+### 7.2 Context Pressure Test (CPT)
+**Setup**: Agents must maintain shared knowledge base under token constraints
+- Baseline: Fixed rotation schedule for distillation
+- AISM: Dynamic distillation based on declared need + measured pressure
+- Metrics: Knowledge retention rate, context overflow events, total throughput
+
+### 7.3 Byzantine Agent Test (BAT)
+**Setup**: One agent deliberately mis-declares state
+- Baseline: System trusts all declarations
+- AISM: Reality layer detects intent/behavior mismatch
+- Metrics: Detection latency, system recovery time, work corruption rate
+
+### 7.4 Emergent Specialization Test (EST)
+**Setup**: Mixed task queue requiring different capabilities
+- Baseline: Round-robin task assignment
+- AISM: Agents self-organize based on success patterns
+- Metrics: Task completion quality, specialization emergence time, efficiency gains
+
+### 7.5 Protocol Evolution Test (PET)
+**Setup**: Introduce inefficiency in initial protocol
+- Baseline: Fixed protocol throughout
+- AISM: Agents can propose/adopt protocol improvements
+- Metrics: Time to identify inefficiency, quality of proposed fixes, adoption rate
+
+### 7.6 Simplest Possible Demo
+**"Ping-Pong Coordination"**: Two agents must alternately increment a counter
+- Without AISM: Requires external coordinator or complex timing
+- With AISM: Each agent reads other's state, declares intent, proceeds when clear
+- Success Metric: Achieves perfect alternation through protocol alone
+
 ## 7. Conclusions
 
 We are potentially witnessing the birth of a new form of organizational life - one that can model itself, improve its own protocols, and coordinate without centralized control. The terrifying beauty is that it remains fully auditable through git history even as it evolves beyond human comprehension.
