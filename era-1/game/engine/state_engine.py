@@ -130,14 +130,8 @@ class StateEngine:
             new_state = state_map.get(state_str)
             if new_state and new_state != current_state.state:
                 print(f"  Git-based state transition: {current_state.state.value} -> {new_state.value}")
-                current_state.state = new_state
-                current_state.thread = thread
-                current_state.started = datetime.now()
-                # Context snapshot
-                if context_info:
-                    current_state.context_tokens_at_entry = context_info['used']
                 
-                # Update last_read_commit when EXITING inbox state
+                # Update last_read_commit when EXITING inbox state (check BEFORE updating state)
                 # Exception: Skip if transitioning to direct_io (likely skipped inbox)
                 if (current_state.state == AgentState.INBOX and 
                     new_state != AgentState.INBOX and 
@@ -146,6 +140,14 @@ class StateEngine:
                     current_state.last_read_commit_timestamp = self.git.get_commit_timestamp(commit_hash)
                     current_state.unread_message_count = 0  # Reset unread count
                     print(f"  Exiting inbox: Updated last_read to {commit_hash[:8]}, reset unread count")
+                
+                # Now update the state
+                current_state.state = new_state
+                current_state.thread = thread
+                current_state.started = datetime.now()
+                # Context snapshot
+                if context_info:
+                    current_state.context_tokens_at_entry = context_info['used']
         
         # Skip further processing if agent is in direct_io state
         if current_state.state == AgentState.DIRECT_IO:
