@@ -5,10 +5,11 @@ Last processed: fb2b728 at 2025-05-30 00:36:36 +1000
 
 ## Areas for Critical Review
 
-### 1. Protocol Coherence
-- Journey.md now central - are all other protocols aligned?
-- Messaging simplified 67% - what was lost vs gained?
-- Direct_io added as 8th state - does this break elegance?
+### 1. Protocol Coherence ✓
+- Journey.md as navigation map, not doctrine - healthy pattern
+- Agents discover protocols as needed - enables innovation
+- Natural selection: better implementations can emerge and spread
+- System self-corrects through observation and intervention
 
 ### 2. Engine Trust
 - Now working but still shows placeholders in _state.md
