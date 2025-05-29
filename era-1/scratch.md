@@ -2,11 +2,13 @@
 
 ## Current Work Status
 - TUI v2 implementation complete and functional
-- Context health: 26.1% (plenty of headroom)
-- Active thread: TUI refresh optimization
+- Context health: 47.2% (good headroom)
+- Active thread: TUI startup fix
 - DONE: Removed redundant TUI refresh timer
+- DONE: Fixed empty agent list on startup
 - UI now reads directly from engine's in-memory state
-- Manual refresh (R key) still works by triggering reactive update
+- Manual refresh (R key) still works
+- Agent navigation is now instant!
 
 ## Path Fix Applied
 - Changed sessions path from /nexus/sessions to /_sessions

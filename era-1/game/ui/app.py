@@ -74,9 +74,10 @@ class FoundationTerminal(App):
             )
             self.engine.start()
         
-        # Load initial agent data (UI pulls directly from engine memory)
-        # No refresh timer needed - engine maintains state in background
-        self.refresh_agents()
+        # Load initial agent data directly (reactive might not fire on mount)
+        agents = self.get_agent_data()
+        agent_list = self.query_one("#agent-list", AgentList)
+        agent_list.update_agents(agents)
         
         # In oneshot mode, capture and exit after first render
         if self.oneshot_mode:
