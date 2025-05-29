@@ -29,7 +29,14 @@ Last processed: 49eb171 at 2025-05-29T20:20:21
 - State transition prompts from engine
 - Session idle detection refinements
 
-## Engine Bug Fixed (2025-05-29)
-- direct_io state was returning early, skipping git info updates
-- Moved git update code before direct_io check
-- Now ALL states get proper last_write_commit updates
+## Engine Bugs Fixed (2025-05-29)
+1. ERA-1 hyphen handling in state detection
+2. direct_io state was returning early, skipping git info updates
+3. Unread count was including own state transition commits
+4. Hash display now 7 chars throughout
+
+## Next Engine Work: JSONL Optimization
+- Review JSONL parsing for state detection
+- Optimize polling towards real-time response
+- Current: 5 second poll interval
+- Target: Sub-second state updates?
