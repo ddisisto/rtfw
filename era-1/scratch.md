@@ -2,10 +2,10 @@
 
 ## Current Work Status
 - TUI v2 implementation complete and functional
-- Context health: 47.2% (good headroom)
-- Active thread: TUI startup fix
+- Context health: 54.8% (still manageable)
+- Active thread: Engine→UI notifications
 - DONE: Removed redundant TUI refresh timer
-- DONE: Fixed empty agent list on startup
+- DONE: Fixed empty agent list on startup (force_poll hack)
 - UI now reads directly from engine's in-memory state
 - Manual refresh (R key) still works
 - Agent navigation is now instant!
@@ -46,6 +46,12 @@
 - Engine could notify UI when state actually changes
 - Would eliminate need for force_poll() on startup
 - More efficient than polling-based approach
+
+## Event System Planning
+Needs bidirectional communication:
+- Engine→UI: state changes, errors, status
+- UI→Engine: pause/resume, force state, trigger poll, send messages
+Options: callbacks vs commands vs event bus
 
 ## Refresh Architecture Discovery
 - Engine polls every 5 seconds (threaded_engine.py:77)
