@@ -57,6 +57,17 @@ Note commit hash when deferring:
 3. Update checkpoint after processing
 4. Use `git add agent/` before commits
 
+## Threads (Simple Pattern)
+
+For multiple work streams, use thread labels:
+```
+@AGENT [deep_work/fix-parser]: Working on parser bug
+@AGENT [idle/waiting-review]: Parser fix in commit abc123f
+```
+
+Organize in scratch.md by sections. Always include commit hash when parking work.
+For complex scenarios, see /protocols/thread-management.md
+
 ## Related
-- /protocols/thread-management.md - Complex conversations
 - /protocols/journey.md - State definitions
+- /protocols/git.md - Repository patterns

@@ -13,10 +13,10 @@ last_write_commit_timestamp: 2025-05-29T23:40:42+1000
 
 ## Context Window
 session_id: 53342ab8-1a57-4cb5-abd6-9ad02371e058
-context_tokens: 79050
+context_tokens: 87279
 max_context_tokens: 128000
-context_percent: 61.8%
-last_updated: 2025-05-30T00:00:16
+context_percent: 68.2%
+last_updated: 2025-05-30T00:21:07
 
 ## Last Observed Agent State
 state: distill

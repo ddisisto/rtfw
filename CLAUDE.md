@@ -9,13 +9,10 @@ Read agent/context.md   # your memory
 Read agent/scratch.md   # your workspace
 Read agent/_state.md    # your objective truth (RO)
 
-## where protocols
+## protocols
 
-Read /protocols/journey.md          # how to work (8 states)
-Read /protocols/messaging.md        # how to talk
-Read /protocols/distill.md          # how to refine
-Read /protocols/bootstrap.md        # how to start
-Read /protocols/thread-management.md # how to juggle
+Read /protocols/journey.md          # ESSENTIAL - 8 states, transitions, lifecycle
+# other protocols in /protocols/ loaded by engine when needed
 
 ## state machine
 
@@ -55,8 +52,8 @@ recursion everywhere:
 
 ## pointers (mutable)
 
-how states work: Read /protocols/journey.md
-when to distill: Read /protocols/distill.md
+all states: Read /protocols/journey.md
+git patterns: commit == state == checkpoint
 
 ## quick patterns
 
@@ -81,4 +78,4 @@ agent/_state.md = objective measurements you cannot self-assess (RO)
 
 maintain your bootstrap order in context.md. your continuity, your responsibility.
 
-efficiency through native tools. fewer approvals. faster flow.
+efficiency through native tools. discover protocols in /protocols/ as needed.
