@@ -67,8 +67,10 @@ class GitMonitor:
                 if not line:
                     continue
                     
-                # Skip agent's own commits
-                if f'@{agent_upper}:' in line:
+                # Skip agent's own commits (both @AGENT: and @AGENT [state]: formats)
+                # Extract commit message part after hash
+                parts = line.split(' ', 1)
+                if len(parts) > 1 and parts[1].startswith(f'@{agent_upper}'):
                     continue
                     
                 # Count if mentioned
