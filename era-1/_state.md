@@ -14,10 +14,10 @@ last_write_commit_timestamp: 2025-05-30T00:53:34+1000
 
 ## Context Window
 session_id: 5d53f6c5-dfce-431d-ad27-a920f3446bf9
-context_tokens: 31530
+context_tokens: 33529
 max_context_tokens: 128000
-context_percent: 24.6%
-last_updated: 2025-05-30T00:53:41
+context_percent: 26.2%
+last_updated: 2025-05-30T00:55:15
 
 ## Last Observed Agent State
 state: inbox
