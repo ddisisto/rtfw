@@ -13,10 +13,10 @@ last_write_commit_timestamp: 2025-05-29T00:16:09+1000
 
 ## Context Window
 session_id: 5d53f6c5-dfce-431d-ad27-a920f3446bf9
-context_tokens: 86662
+context_tokens: 90652
 max_context_tokens: 128000
-context_percent: 67.7%
-last_updated: 2025-05-29T16:00:19
+context_percent: 70.8%
+last_updated: 2025-05-29T16:01:06
 
 ## Last Observed Agent State
 state: bootstrap
@@ -24,4 +24,4 @@ thread: system-init
 started: 2025-05-29T01:15:00
 context_tokens_at_entry: 0
 expected_next_state: inbox
-unread_message_count: 30
+unread_message_count: 31
