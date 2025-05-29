@@ -98,6 +98,9 @@ class StateEngine:
         if not current_state:
             current_state = AgentGroundState()
         
+        # ALWAYS update context usage first (needed for state transitions)
+        context_info = self.parser.parse_context_usage(Path(session_info.file_path))
+        
         # Check for state changes in git commits FIRST
         # This captures states announced via commit messages
         git_state = self.git.get_agent_state_from_commits(
@@ -134,12 +137,18 @@ class StateEngine:
         # Skip further processing if agent is in direct_io state
         if current_state.state == AgentState.DIRECT_IO:
             print(f"  Agent in DIRECT_IO state - skipping automated transitions")
-            # Still need to write the updated state!
+            # Still need to update context and git info before returning!
+            if context_info:
+                current_state.context_tokens = context_info['used']
+                current_state.max_context_tokens = context_info['max']
+                current_state.context_percent = context_info['percent']
+            # Update other metadata and write state
+            current_state.session_id = session_info.session_id
+            current_state.last_updated = datetime.now()
             self.writer.write_agent_state(agent_name, current_state)
             return
         
-        # ALWAYS update context usage
-        context_info = self.parser.parse_context_usage(Path(session_info.file_path))
+        # Update context usage in current_state
         if context_info:
             current_state.context_tokens = context_info['used']
             current_state.max_context_tokens = context_info['max']
