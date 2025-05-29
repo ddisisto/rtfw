@@ -1,7 +1,12 @@
 # CRITIC Scratch Pad
 
 ## Message Checkpoint
-Last processed: 002ee04 at 2025-05-28 17:48:00 +1000
+Last processed: b691106 at 2025-05-29 15:45:00 +1000
+
+## State Decision
+next_state: idle
+thread: awaiting-engine-fixes
+reason: At 77.5% tokens, proposed fixes, waiting for implementation
 
 ## Active Analysis Queue
 - [ ] Learn effective _state.md usage (I'm first!)
