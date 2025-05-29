@@ -16,12 +16,12 @@ session_id: dc466590-0128-4cfb-8f58-f7f288888ea1
 context_tokens: 119155
 max_context_tokens: 128000
 context_percent: 93.1%
-last_updated: 2025-05-29T18:26:18
+last_updated: 2025-05-29T18:45:09
 
 ## Last Observed Agent State
-state: offline
+state: logout
 thread: *
-started: ?
+started: 2025-05-29T18:33:32
 context_tokens_at_entry: 0
 expected_next_state: bootstrap -> inbox
 unread_message_count: 0
