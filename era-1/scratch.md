@@ -43,6 +43,7 @@ Last processed: 5251da1 at 2025-05-29T13:35:00
 - Engine now checks git commits for state announcements before JSONL parsing
 - Pattern: `@AGENT [state]:` or `@AGENT [state/thread]:`  
 - Direct_io state properly pauses automated transitions
+- Fixed unbound variable exception (context_info referenced before definition)
 - Waiting for UI restart to test the implementation
 
 
