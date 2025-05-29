@@ -36,7 +36,8 @@ Last processed: 49eb171 at 2025-05-29T20:20:21
 4. Hash display now 7 chars throughout
 
 ## Next Engine Work: JSONL Optimization
-- Review JSONL parsing for state detection
-- Optimize polling towards real-time response
-- Current: 5 second poll interval
-- Target: Sub-second state updates?
+- CONFIRMED: Still doing full file reads with readlines()
+- Need tail optimization (only last N lines for state)
+- Current: 5 second poll interval + full file reads
+- Target: Sub-second updates + tail reads only
+- Session files can be large - this is a real perf issue
