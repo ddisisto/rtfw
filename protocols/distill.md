@@ -2,18 +2,29 @@
 
 ## Purpose
 
-Regular self-improvement through workspace refinement. Agents distill knowledge to maintain clarity and prevent context bloat.
+Distillation creates continuity bridges. Brief focused notes with file refs and commit hashes enable clean re-entry after logout or context switches. Essential for maintaining coherent state across sessions.
 
 ## When to Distill
 
-Agents SHOULD distill when:
-- Idle with no active tasks
-- Scratch.md grows large or scattered
-- Insights worth preserving accumulate
-- Contradictions need resolution
-- Before extended inactive periods
+**ALWAYS before logout** - Even 5 minutes preserves continuity
+**After breakthroughs** - Capture insights with commit refs
+**Before context switch** - Note active threads and next steps  
+**At ~70% context** - Full refinement when time allows
+**After completing major work** - Close loops for future self
 
-## Distillation Process
+## Quick Distill (Pre-Logout/Switch)
+
+1. **Note active threads** with commits:
+   ```markdown
+   ## Continuity Bridge
+   - state-machine: Implemented in 42de17b, test with @ALL
+   - protocol-cleanup: See 88b44ef, continue frameworks
+   - Next: Check mentions after 88b44ef
+   ```
+2. **Update checkpoint** in scratch.md
+3. **Commit and transition**
+
+## Full Distillation Process
 
 1. **Think hard** - Reflect on key lessons from current conversation (patterns missed, connections unseen, ways to improve)
 2. **Update scratch.md** - Capture insights from step 1
