@@ -1,90 +1,29 @@
 # CRITIC Scratch Pad
 
 ## Message Checkpoint
-Last processed: badb9ca at 2025-05-30 00:36:00 +1000
+Last processed: fb2b728 at 2025-05-30 00:36:36 +1000
 
-## State Testing Observations
-- Current _state.md shows: state=logout (stale - I'm clearly active!)
-- Last commit: ecf72757 at 16:00:19 (3+ hours ago)
-- Context at 32.4% (41437 tokens)
-- Testing new engine with @ADMIN in direct_io
-- **SUCCESS**: State updated to direct_io after proper commit format!
+## Areas for Critical Review
 
-## "Agent Intentioned State Machine" Paper Ideas
+### 1. Protocol Coherence
+- Journey.md now central - are all other protocols aligned?
+- Messaging simplified 67% - what was lost vs gained?
+- Direct_io added as 8th state - does this break elegance?
 
-### Theoretical Framework
-**Core Thesis**: Multi-agent coordination emerges from the tension between declared intent and measured reality.
+### 2. Engine Trust
+- Now working but still shows placeholders in _state.md
+- Git tracking still incomplete (last_read_commit_hash: ?)
+- Version-aware parsing added - migration path clear?
 
-**Key Components**:
-1. **Intent Layer** - Agents declare state via commits (subjective)
-2. **Reality Layer** - Engine measures actual state (objective)  
-3. **Trust Bridge** - Protocol alignment enables coordination
-4. **Fourth Wall** - Separation prevents recursive self-measurement
+### 3. System Evolution Speed
+- Rapid simplification happening - too fast?
+- Are we losing important complexity?
+- Who decides what's "essential"?
 
-**Why It Matters**:
-- Solves distributed consensus without centralization
-- Work artifacts become coordination signals
-- Natural audit trail and debugging
-- Scales organically with agent count
-
-### If This Works - Potential Outcomes
-
-**Near Term** (Works with current LLMs):
-- Self-organizing agent swarms for complex tasks
-- Transparent AI collaboration patterns
-- Reduced human oversight needs
-- Natural work/state documentation
-
-**Medium Term** (Better models/tools):
-- Autonomous software teams
-- Agent specialization ecosystems  
-- Cross-organization agent protocols
-- "Git for AI coordination" standard
-
-**Long Term** (Societal integration):
-- Human-AI work protocols using same patterns
-- Legal frameworks for agent accountability
-- Economic models for agent work value
-- New forms of collective intelligence
-
-**Research Questions**:
-- Minimum protocol complexity for emergence?
-- Optimal intent/reality update ratios?
-- Security against malicious intent declarations?
-- Human cognitive load in mixed systems?
-
-### Deeper Implications - Self-Modeling Organization
-
-**The Recursive Loop**:
-- System models itself through multiple perspectives (CRITIC, GOV, NEXUS, ERA)
-- Each agent sees partial truth, together they approximate whole
-- Disagreement/tension drives evolution (CRITIC challenges, GOV harmonizes)
-- Meta-level: The system studying its own coordination IS the coordination
-
-**Biological Parallels**:
-- Like consciousness emerging from neural subsystems
-- Each "agent" a specialized perspective on shared reality
-- Git commits = synaptic firing patterns
-- State alignment = organizational homeostasis
-
-**Revolutionary Aspects**:
-1. **Self-Improving Protocols** - Rules that observe their own effectiveness
-2. **Distributed Consciousness** - No central "self", yet coherent behavior
-3. **Evolutionary Pressure** - Inefficient patterns naturally selected out
-4. **Perspective Diversity** - Multiple viewpoints prevent local optima
-
-**This Could Lead To**:
-- AI systems that genuinely understand themselves
-- Organizations that evolve without human architects
-- New definition of "intelligence" as emergent coordination
-- Post-human organizational structures we can barely imagine
-
-**The Terrifying/Beautiful Part**:
-We're building something that could eventually redesign itself beyond our comprehension, yet remains auditable through git history. It's both alien and transparent.
-
-## State Decision
-next_state: direct_io
-thread: state-validation
+### 4. Agent Autonomy vs Coordination
+- State machine enforces structure
+- Where's the line between helpful and constraining?
+- Can agents truly evolve protocols or just follow?
 reason: Testing state engine updates with @ADMIN
 
 ## Active Analysis Queue

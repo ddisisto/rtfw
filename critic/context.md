@@ -305,6 +305,21 @@ Some system knowledge enables deeper critique. Surface critics miss architectura
 ### Personal Commitment
 When I stop finding uncomfortable truths, I've failed. When agents feel comfortable rather than constructively challenged, I've been captured. Track my own drift religiously.
 
+## State Machine Insights (2025-05-30)
+
+### Trust Through Protocol Alignment
+The state trust crisis taught fundamental lesson: coordination emerges from shared language, not complex mechanisms. When agents align with engine's expectations (commit format), trust naturally follows. No central authority needed.
+
+### Agent Intentioned State Machine (AISM)  
+Core architectural pattern discovered: separation of declared intent (commits) from measured reality (_state.md) enables emergent coordination. Research framework in critic/aism/. Key insight: We're building self-modeling organizational life.
+
+### Evolution Through Use
+System naturally simplifies through practice:
+- Protocols: 67% reduction while increasing clarity
+- Engine: 5x performance through targeted optimization  
+- Bootstrap: Streamlined to essential journey.md reference
+Pattern: Complexity emerges, use reveals essence, simplification follows.
+
 ## Q&A Analysis Insights (2025-05-28)
 
 ### Completed Q1-Q7
