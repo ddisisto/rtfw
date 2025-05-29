@@ -33,7 +33,8 @@ class GitMonitor:
         
         # Pattern to extract state from commit messages
         # Matches: @AGENT [state]: ... or @AGENT [state/thread]: ...
-        self.state_pattern = re.compile(r'^@(\w+)\s*\[(\w+)(?:/(\S+))?\]:', re.IGNORECASE)
+        # Updated to handle agent names with hyphens (e.g. ERA-1)
+        self.state_pattern = re.compile(r'^@([\w-]+)\s*\[(\w+)(?:/(\S+))?\]:', re.IGNORECASE)
     
     def get_unread_count(self, agent_name: str, last_read_hash: str) -> int:
         """
