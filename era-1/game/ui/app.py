@@ -6,7 +6,7 @@ from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.widgets import Header, Footer, Static, DataTable, RichLog, Input
 from textual.binding import Binding
-from textual.reactive import reactive
+from textual.reactive import reactive, var
 from textual import events
 from textual.timer import Timer
 from datetime import datetime
@@ -34,17 +34,18 @@ class FoundationTerminal(App):
         Binding("h", "help", "Help", key_display="H"),
     ]
     
+    # Reactive variable to trigger updates
+    _update_counter = reactive(0)
+    
     def __init__(self):
         super().__init__()
         self.project_root = Path(__file__).parent.parent.parent.parent
         self.sessions_dir = self.project_root / "_sessions"
         self.engine = None
-        self.refresh_timer = None
         
         # Configuration options
         self.debug_mode = False
         self.use_engine = True
-        self.refresh_interval = 5.0
         self.color_theme = "amber"
         self.oneshot_mode = False
         
@@ -73,10 +74,8 @@ class FoundationTerminal(App):
             )
             self.engine.start()
         
-        # Start refresh timer
-        self.refresh_timer = self.set_interval(self.refresh_interval, self.refresh_agents)
-        
-        # Load initial agent data
+        # Load initial agent data (UI pulls directly from engine memory)
+        # No refresh timer needed - engine maintains state in background
         self.refresh_agents()
         
         # In oneshot mode, capture and exit after first render
@@ -89,8 +88,8 @@ class FoundationTerminal(App):
         if self.engine:
             self.engine.stop()
             
-    def refresh_agents(self) -> None:
-        """Refresh agent states from engine"""
+    def get_agent_data(self) -> dict:
+        """Get current agent data from engine or mock"""
         if not self.engine:
             # Use mock data when engine is disabled
             from datetime import datetime
@@ -108,7 +107,7 @@ class FoundationTerminal(App):
                     self.last_write_commit_timestamp = datetime.now().isoformat()
                     self.unread_message_count = 0
             
-            agents = {
+            return {
                 "ERA-1": MockState("ERA-1", "deep_work", "tui-implementation", 17.0),
                 "GOV": MockState("GOV", "idle", None, 45.2),
                 "NEXUS": MockState("NEXUS", "inbox", "message-routing", 23.5),
@@ -116,7 +115,16 @@ class FoundationTerminal(App):
             }
         else:
             # Get all agent states from engine
-            agents = self.engine.get_all_agents()
+            return self.engine.get_all_agents()
+    
+    def refresh_agents(self) -> None:
+        """Trigger UI update by incrementing reactive counter"""
+        self._update_counter += 1
+    
+    def watch__update_counter(self, counter: int) -> None:
+        """React to update counter changes"""
+        # Get fresh data
+        agents = self.get_agent_data()
         
         # Update agent list widget
         agent_list = self.query_one("#agent-list", AgentList)
@@ -135,7 +143,7 @@ class FoundationTerminal(App):
         """Manual refresh action"""
         if self.engine:
             self.engine.force_poll()
-        self.refresh_agents()
+        self.refresh_agents()  # Triggers reactive update
         
     def action_message(self) -> None:
         """Open message dialog"""

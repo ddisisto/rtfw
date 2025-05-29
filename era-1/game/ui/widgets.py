@@ -64,6 +64,15 @@ class AgentList(Static):
         """Handle agent selection"""
         if event.row_key:
             self.selected_agent = str(event.row_key.value)
+            
+            # Get fresh data and update details
+            from .app import FoundationTerminal
+            app = self.app
+            if isinstance(app, FoundationTerminal):
+                agents = app.get_agent_data()
+                if self.selected_agent in agents:
+                    details = app.query_one("#agent-details", AgentDetails)
+                    details.update_agent(self.selected_agent, agents[self.selected_agent])
 
 
 class AgentDetails(Static):

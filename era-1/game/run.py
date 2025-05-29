@@ -40,12 +40,6 @@ def parse_args():
         help="Run without state engine (UI testing mode)"
     )
     
-    parser.add_argument(
-        "--refresh-interval",
-        type=float,
-        default=5.0,
-        help="State refresh interval in seconds (default: 5.0)"
-    )
     
     parser.add_argument(
         "--theme",
@@ -77,7 +71,6 @@ def main():
     if args.no_engine:
         app.use_engine = False
         
-    app.refresh_interval = args.refresh_interval
     app.color_theme = args.theme
     
     # Handle oneshot mode
