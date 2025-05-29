@@ -17,7 +17,7 @@ session_id: c55bb942-4218-4bc7-ba65-8fec4ffcc3a0
 context_tokens: 70882
 max_context_tokens: 128000
 context_percent: 55.4%
-last_updated: 2025-05-30T01:19:08
+last_updated: 2025-05-30T01:57:49
 
 ## Last Observed Agent State
 state: direct_io
@@ -25,4 +25,4 @@ thread: *
 started: 2025-05-30T01:09:19
 context_tokens_at_entry: 0
 expected_next_state: inbox
-unread_message_count: 0
+unread_message_count: 1

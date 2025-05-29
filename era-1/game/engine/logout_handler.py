@@ -8,11 +8,12 @@ Handles:
 4. Sending bootstrap prompt
 """
 
-import subprocess
 import time
 from pathlib import Path
 from typing import Optional
 from datetime import datetime
+
+from .tmux_handler import TmuxHandler
 
 
 class LogoutHandler:
@@ -35,6 +36,7 @@ class LogoutHandler:
         self.project_root = project_root
         self.sessions_dir = sessions_dir
         self.logout_log = project_root / "logout.log"
+        self.tmux = TmuxHandler()
     
     def handle_logout(self, agent_name: str, tmux_session: str) -> bool:
         """
@@ -55,30 +57,26 @@ class LogoutHandler:
             
             # 2. Send /exit to Claude
             print("Sending /exit command...")
-            self._send_tmux_command(tmux_session, "/exit")
-            time.sleep(2)  # Wait for exit to process
+            self.tmux.send_claude_command(tmux_session, "/exit", wait_after=2.0)
             
             # 3. Context tokens already reset by state engine
             print("Context tokens reset to 0 by engine")
             
             # 4. Start new Claude session
             print("Starting new Claude session...")
-            self._send_tmux_command(tmux_session, "claude")
-            time.sleep(3)  # Wait for Claude to start
+            self.tmux.start_claude_session(tmux_session)
             
             # 5. Send /clear
             print("Sending /clear command...")
-            self._send_tmux_command(tmux_session, "/clear")
-            time.sleep(1)
+            self.tmux.send_claude_command(tmux_session, "/clear", wait_after=1.0)
             
             # 6. Send /status and wait
             print("Sending /status command...")
-            self._send_tmux_command(tmux_session, "/status")
-            time.sleep(2)  # Wait for status display
+            self.tmux.send_claude_command(tmux_session, "/status", wait_after=2.0)
             
             # 7. Close status display
             print("Closing status display...")
-            self._send_tmux_key(tmux_session, "Enter")
+            self.tmux.send_key(tmux_session, "Enter")
             time.sleep(1)
             
             # 8. Wait for new session file
@@ -96,7 +94,7 @@ class LogoutHandler:
             print("Sending bootstrap prompt...")
             agent_upper = agent_name.upper()
             bootstrap_prompt = f"please apply @protocols/bootstrap.md context load for agent @{agent_upper}.md"
-            self._send_tmux_command(tmux_session, bootstrap_prompt)
+            self.tmux.send_prompt(tmux_session, bootstrap_prompt)
             
             print(f"=== LOGOUT HANDLER COMPLETE for {agent_name} ===\n")
             return True
@@ -109,36 +107,24 @@ class LogoutHandler:
         """Append logout event to logout.log"""
         timestamp = datetime.now().isoformat()
         with open(self.logout_log, 'a') as f:
-            f.write(f"{timestamp} - {agent_name} logout processed\n")
-    
-    def _send_tmux_command(self, session: str, command: str):
-        """Send a command to tmux session"""
-        # Escape special characters
-        escaped = command.replace('"', '\\"')
-        cmd = ['tmux', 'send-keys', '-t', session, escaped, 'Enter']
-        subprocess.run(cmd, check=True)
-    
-    def _send_tmux_key(self, session: str, key: str):
-        """Send a key to tmux session"""
-        cmd = ['tmux', 'send-keys', '-t', session, key]
-        subprocess.run(cmd, check=True)
+            f.write(f"ENGINE: {timestamp} - {agent_name} logout processed\n")
     
     def _wait_for_new_session(self, agent_name: str, timeout: int = 30) -> Optional[Path]:
         """
         Wait for a new session file to appear
         
+        Claude creates session files with random IDs, so we just look
+        for any new .jsonl file in the sessions directory.
+        
         Returns path to new session file or None if timeout
         """
-        agent_upper = agent_name.upper()
-        pattern = f"{agent_upper}_*.jsonl"
-        
-        # Get current files
-        before = set(self.sessions_dir.glob(pattern))
+        # Get all current .jsonl files
+        before = set(self.sessions_dir.glob("*.jsonl"))
         
         # Wait for new file
         start_time = time.time()
         while time.time() - start_time < timeout:
-            current = set(self.sessions_dir.glob(pattern))
+            current = set(self.sessions_dir.glob("*.jsonl"))
             new_files = current - before
             
             if new_files:
@@ -164,11 +150,4 @@ class LogoutHandler:
     
     def check_tmux_session_exists(self, session: str) -> bool:
         """Check if tmux session exists"""
-        try:
-            result = subprocess.run(
-                ['tmux', 'has-session', '-t', session],
-                capture_output=True
-            )
-            return result.returncode == 0
-        except:
-            return False
+        return self.tmux.check_session_exists(session)

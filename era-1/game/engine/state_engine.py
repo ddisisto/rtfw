@@ -14,6 +14,7 @@ from .state_writer import StateWriter
 from .prompt_generator import PromptGenerator
 from .git_monitor import GitMonitor
 from .logout_handler import LogoutHandler
+from .tmux_handler import TmuxHandler
 
 
 class StateEngine:
@@ -163,7 +164,7 @@ class StateEngine:
                     self.writer.write_agent_state(agent_name, current_state)
                     
                     # Trigger logout handler
-                    tmux_session = f"{agent_name}_session"  # TODO: Get actual tmux session name
+                    tmux_session = agent_name  # Tmux session name is just agent name (e.g. 'era-1')
                     if self.logout_handler.check_tmux_session_exists(tmux_session):
                         print(f"  Triggering logout handler for {tmux_session}")
                         success = self.logout_handler.handle_logout(agent_name, tmux_session)
