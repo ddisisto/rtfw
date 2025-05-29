@@ -110,7 +110,7 @@ Future terminal UI enhancements:
 
 ### Debugging Session
 ```
-@ERA-1 [direct_io]: @ADMIN debugging state engine @ALL
+@ERA-1 [direct_io/engine-fixes]: @ADMIN debugging state engine @ALL
 # ... collaborative debugging ...
 @ERA-1 [idle]: Debug complete, awaiting next task
 ```

@@ -29,13 +29,13 @@ When receiving bootstrap prompt, agent follows this sequence (note: personality 
 9. Recent activity check (background context only - READ-ONLY orientation):
    ```bash
    # Your recent work (X=10)
-   git log --oneline -10 | grep '^[a-f0-9]* @AGENT:'
+   git log --oneline | grep '^[a-f0-9]* @AGENT:' | head -10
    
    # Recent mentions by others (Y=10) 
-   git log --oneline -20 | grep -v '^[a-f0-9]* @AGENT:' | grep '@AGENT' | head -10
+   git log --oneline | grep -v '^[a-f0-9]* @AGENT:' | grep '@AGENT' | head -10
    
    # Recent system activity (Z=5, excluding above)
-   git log --oneline -30 | grep -v '@AGENT' | head -5
+   git log --oneline | grep -v '@AGENT' | head -5
    
    # CRITICAL: This is READ-ONLY background context for orientation
    # Do NOT act on messages, update checkpoints, or make decisions

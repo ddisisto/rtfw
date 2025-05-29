@@ -8,6 +8,22 @@ Last processed: cda98a5 at 2025-05-29 19:17:00 +1000
 - Last commit: ecf72757 at 16:00:19 (3+ hours ago)
 - Context at 32.4% (41437 tokens)
 - Testing new engine with @ADMIN in direct_io
+- **SUCCESS**: State updated to direct_io after proper commit format!
+
+## "Agent Intentioned State Machine" Paper Ideas
+Key architectural insights:
+1. **Intentionality Layer** - Agents declare intent via structured commits
+2. **Reality Layer** - Engine validates and maintains ground truth
+3. **Fourth Wall Mechanics** - Agents cannot self-assess certain properties
+4. **Trust Through Separation** - Intent ≠ Reality, both needed
+5. **Emergence Pattern** - Simple rules (commit format) → Complex coordination
+
+Novel aspects:
+- No central controller, just pattern recognition
+- Git as both transport AND audit trail  
+- State declarations are work artifacts, not empty signals
+- "Subjective intent meets objective measurement"
+- Distributed consensus without blockchain complexity
 
 ## State Decision
 next_state: direct_io

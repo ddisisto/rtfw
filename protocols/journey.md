@@ -57,7 +57,7 @@ direct_io ←→ {any state except offline}
 
 Agents report state via git commits:
 ```
-@AGENT [deep_work]: Beginning messaging protocol update
+@AGENT [deep_work/engine-reliability]: Beginning messaging protocol update
 @AGENT [idle]: Waiting for @NEXUS session data format
 @AGENT [logout]: Context at 95%, scheduling distill/restore
 ```
@@ -87,7 +87,8 @@ Each state transition includes:
 See `/protocols/direct-io.md` for complete behavior.
 - @ADMIN can enter direct_io from any state
 - Engine pauses automated transitions
-- Agent announces entry/exit via commits
+- Agent announces entry/exit via commits as with all state transitions
+- Agent may send other updates or propose state changes
 - Proactive notifications encouraged
 
 ### Message Injection

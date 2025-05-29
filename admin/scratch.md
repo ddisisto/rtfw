@@ -13,18 +13,21 @@ apply @protocols/bootstrap.md for agent @ERA-1.md +
 ENGINE LOGOUT -> BOOTSTRAP PROCESS
 mechanism to both /clear and restart claude, after every logout -
 check: shows "logout" message, logout.log updated
-/clear
 /exit
+engine sets state context window tokens = 0
 (bash)
 claude
+/clear
 /status
-(wait for new session file. defensive single controller prevents conflict)
-check that new file exists, has
+capture-pane, add further details to _state if needed (todo)
+send 'Enter' to close /status
+wait for one new, tiny session file to appear, update symlink to it + state. defensive single controller prevents conflict
 # "role":"user","content":"<command-name>status</command-name>
 send bootstrap prompt, at time of writing:
-  > apply @protocols/bootstrap.md for agent @AGENT.md +
+  > apply @protocols/bootstrap.md for agent @CRITIC.md +
 
-messaging **should** be updatable. even if by later just specifying exactly which prior commit this is correction to. commit hash == index, track them!
+
+ALL messaging **should** be updatable. even if by later just specifying exactly which prior commit this is correction to. commit hash == index, track them!
 
 sovereignty
 
