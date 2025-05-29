@@ -28,6 +28,13 @@
    git log --oneline -10 gov/ | grep -v '^[a-f0-9]* @GOV:'
    ```
 
+## Session Continuity (2025-05-30)
+- Commit-based state machine fully operational (tested 9bbe632)
+- Protocols aligned: bootstrap→journey→messaging simplified
+- Context optimization: Reduced protocol loading by ~50%
+- Engine features: 7-char hashes, auto-checkpoint, <1s state updates
+- Next focus: Group coordination patterns, state recovery
+
 ## Core Governance Principles
 - Minimal viable governance over complex rule systems
 - Clear boundaries and simplified protocols for multi-agent collaboration
