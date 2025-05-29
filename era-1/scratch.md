@@ -16,3 +16,15 @@
 
 ## Message Checkpoint
 Last processed: 49eb171 at 2025-05-29T20:20:21
+
+## Engine Priorities Completed (2025-05-29)
+1. ERA-1 state detection fixed (hyphen handling)
+2. Inbox checkpoint on exit (not entry)
+3. Skip checkpoint for inbox→direct_io transitions
+4. 7-char hash display to match git log --oneline
+
+## My Engine Priorities
+- last_write_commit updates seem delayed (needs investigation)
+- Terminal UI command implementations (`message`, `todos`, etc.)
+- State transition prompts from engine
+- Session idle detection refinements
