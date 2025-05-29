@@ -234,8 +234,9 @@ class GitMonitor:
         
         try:
             # Get last commit by this agent
+            # Match both @AGENT: and @AGENT [state]: formats
             cmd = [
-                'git', 'log', '--format=%H|%cI|%s', '-1', '--grep', f'^@{agent_upper}:'
+                'git', 'log', '--format=%H|%cI|%s', '-1', '--grep', f'^@{agent_upper}'
             ]
             
             result = subprocess.run(
