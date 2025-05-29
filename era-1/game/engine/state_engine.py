@@ -13,6 +13,7 @@ from .jsonl_parser import JSONLParser
 from .state_writer import StateWriter
 from .prompt_generator import PromptGenerator
 from .git_monitor import GitMonitor
+from .logout_handler import LogoutHandler
 
 
 class StateEngine:
@@ -34,6 +35,7 @@ class StateEngine:
         self.writer = StateWriter(project_root)
         self.prompt_gen = PromptGenerator()
         self.git = GitMonitor(project_root)
+        self.logout_handler = LogoutHandler(project_root, sessions_dir)
         
         # Track state
         self.running = False
@@ -148,6 +150,30 @@ class StateEngine:
                 # Context snapshot
                 if context_info:
                     current_state.context_tokens_at_entry = context_info['used']
+                
+                # Handle logout → bootstrap automation
+                if new_state == AgentState.LOGOUT:
+                    print(f"  LOGOUT detected for {agent_name}")
+                    # Reset context tokens to 0
+                    current_state.context_tokens = 0
+                    current_state.context_percent = 0.0
+                    # Set offline as expected next state
+                    current_state.expected_next_state = AgentState.OFFLINE
+                    # Write state immediately before triggering logout
+                    self.writer.write_agent_state(agent_name, current_state)
+                    
+                    # Trigger logout handler
+                    tmux_session = f"{agent_name}_session"  # TODO: Get actual tmux session name
+                    if self.logout_handler.check_tmux_session_exists(tmux_session):
+                        print(f"  Triggering logout handler for {tmux_session}")
+                        success = self.logout_handler.handle_logout(agent_name, tmux_session)
+                        if success:
+                            # Update state to offline → bootstrap
+                            current_state.state = AgentState.OFFLINE
+                            current_state.expected_next_state = AgentState.BOOTSTRAP
+                            current_state.session_id = None  # Will be updated on next poll
+                    else:
+                        print(f"  WARNING: No tmux session '{tmux_session}' found")
         
         # Update context usage in current_state (needed for all states)
         if context_info:

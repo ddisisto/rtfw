@@ -84,7 +84,7 @@ class PromptGenerator:
         # Convert agent name to proper format (era-1 -> ERA-1)
         agent_upper = agent_name.upper()
         
-        return f"@ADMIN: apply protocols/bootstrap.md for agent @{agent_upper}.md, in @{agent_name}/_state.md"
+        return f"please apply @protocols/bootstrap.md context load for agent @{agent_upper}.md"
     
     def validate_transition(self, from_state: AgentState, to_state: AgentState) -> bool:
         """
