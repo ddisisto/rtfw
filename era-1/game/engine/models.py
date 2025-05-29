@@ -134,9 +134,9 @@ class AgentGroundState:
 *NOTE: state tracking system almost complete, **SOME** values may still be placeholders and functionality may change*
 
 ## Git Activity
-last_read_commit_hash: {self.last_read_commit_hash or '?'}
+last_read_commit_hash: {self.last_read_commit_hash[:7] if self.last_read_commit_hash else '?'}
 last_read_commit_timestamp: {fmt_time(self.last_read_commit_timestamp)}
-last_write_commit_hash: {self.last_write_commit_hash or '?'}
+last_write_commit_hash: {self.last_write_commit_hash[:7] if self.last_write_commit_hash else '?'}
 last_write_commit_timestamp: {fmt_time(self.last_write_commit_timestamp)}
 
 ## Context Window
