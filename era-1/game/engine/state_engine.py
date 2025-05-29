@@ -101,11 +101,14 @@ class StateEngine:
         # ALWAYS update context usage first (needed for state transitions)
         context_info = self.parser.parse_context_usage(Path(session_info.file_path))
         
-        # Check for state changes in git commits FIRST
+        # Store the OLD commit hash before updating
+        old_commit_hash = current_state.last_write_commit_hash if current_state else None
+        
+        # Check for state changes in git commits using OLD hash
         # This captures states announced via commit messages
         git_state = self.git.get_agent_state_from_commits(
             agent_name,
-            current_state.last_write_commit_hash if current_state else None
+            old_commit_hash
         )
         
         if git_state:
