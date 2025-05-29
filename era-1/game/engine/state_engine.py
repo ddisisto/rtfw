@@ -137,12 +137,15 @@ class StateEngine:
                 if context_info:
                     current_state.context_tokens_at_entry = context_info['used']
                 
-                # Update last_read_commit when entering inbox state
-                if new_state == AgentState.INBOX:
+                # Update last_read_commit when EXITING inbox state
+                # Exception: Skip if transitioning to direct_io (likely skipped inbox)
+                if (current_state.state == AgentState.INBOX and 
+                    new_state != AgentState.INBOX and 
+                    new_state != AgentState.DIRECT_IO):
                     current_state.last_read_commit_hash = commit_hash
                     current_state.last_read_commit_timestamp = self.git.get_commit_timestamp(commit_hash)
                     current_state.unread_message_count = 0  # Reset unread count
-                    print(f"  Updated last_read_commit to: {commit_hash[:8]}, reset unread count")
+                    print(f"  Exiting inbox: Updated last_read to {commit_hash[:8]}, reset unread count")
         
         # Skip further processing if agent is in direct_io state
         if current_state.state == AgentState.DIRECT_IO:

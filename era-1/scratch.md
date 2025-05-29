@@ -7,8 +7,10 @@
 - **FIXED**: Hyphen in ERA-1 broke regex pattern in git_monitor.py
   - Changed `\w+` to `[\w-]+` to match hyphenated agent names
   - Engine needs restart (runs in separate terminal, ask @ADMIN)
-- **FIXED**: Inbox transition now updates last_read_commit_hash
-  - Sets checkpoint at exact inbox entry commit
+- **FIXED**: Inbox checkpoint now happens on EXIT not entry
+  - Better logic: confirms messages were actually read
+  - Exception: inbox→direct_io skips update (likely "skip inbox" command)
+  - Sets last_read_commit_hash to exit commit
   - Resets unread_message_count to 0
   - Unread count already correctly filters mentions only
 
