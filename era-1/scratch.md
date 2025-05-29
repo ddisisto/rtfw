@@ -2,8 +2,9 @@
 
 ## Current Work Status
 - TUI v2 implementation complete and functional
-- Context health: 46.5% (still good headroom)
-- Active thread: TUI feature additions
+- Context health: 26.1% (plenty of headroom)
+- Active thread: TUI refresh optimization
+- Discovered: Both engine and TUI poll every 5 seconds (redundant)
 
 ## Path Fix Applied
 - Changed sessions path from /nexus/sessions to /_sessions
@@ -23,11 +24,18 @@
 - System working as designed
 
 ## Next Session Starting Points
-1. **Refresh Rate Fix** - Change line 47 in ui/app.py from 5.0 to 0.5 seconds
+1. **Remove Refresh Timer** - TUI can read from engine's in-memory state directly
 2. **Agent Display Validation** - Verify all 4 agents show with correct states
 3. **Git Activity** - Add real commit history to activity log
 4. **Modal Implementation** - Status/message/help dialogs
 5. **Unread Count** - Fix with proper git tracking
+
+## Refresh Architecture Discovery
+- Engine polls every 5 seconds (threaded_engine.py:77)
+- TUI refreshes every 5 seconds (app.py:47)
+- This is redundant - TUI just copies from engine's memory
+- Could make TUI event-driven or remove timer entirely
+- Textual framework is reactive - could trigger updates on state change
 
 ## Key Files for Next Session
 - era-1/game/ui/app.py:47 - refresh_interval setting
@@ -35,7 +43,7 @@
 - era-1/game/ui/widgets.py - AgentList update logic
 
 ## Message Checkpoint
-Last processed: 9be680a at 2025-05-29T02:10:00
+Last processed: 5251da1 at 2025-05-29T13:35:00
 
 ## Inbox Processing
 - Checked messages from 240d1e7..HEAD

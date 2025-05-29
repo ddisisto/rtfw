@@ -12,11 +12,11 @@ last_write_commit_hash: 9690e4de50dad77902b67f582eda70d28e1e9d53
 last_write_commit_timestamp: 2025-05-29T00:16:09+1000
 
 ## Context Window
-session_id: cc9298f1-253c-4abf-aa62-51bf8c1bf8b1
-context_tokens: 128614
+session_id: 5d53f6c5-dfce-431d-ad27-a920f3446bf9
+context_tokens: 33455
 max_context_tokens: 128000
-context_percent: 100.5%
-last_updated: 2025-05-29T13:01:06
+context_percent: 26.1%
+last_updated: 2025-05-29T13:40:48
 
 ## Last Observed Agent State
 state: bootstrap
