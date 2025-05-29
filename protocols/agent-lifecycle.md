@@ -5,7 +5,7 @@ Formalize agent work patterns into observable states, enabling real-time monitor
 
 ## Core States
 
-The lifecycle consists of seven states, each with its own protocol:
+The lifecycle consists of eight states, each with its own protocol:
 
 ### 1. bootstrap
 Entry from offline, cold-start context loading.  
@@ -35,6 +35,10 @@ See: `/protocols/logout.md`
 Post-logout state maintained by system.  
 No protocol needed - system managed.
 
+### 8. direct_io
+@ADMIN direct control with paused automation.  
+See: `/protocols/direct-io.md`
+
 ## State Transitions
 
 ```
@@ -43,6 +47,8 @@ offline → bootstrap → inbox → distill → {deep_work|idle|logout}
                         ←---------←----------←--------←      ↓
                                                             ↓
                      offline ←------------------------------←
+
+direct_io ←→ {any state except offline}
 ```
 
 ## State Reporting
@@ -76,10 +82,11 @@ Each state transition includes:
 - Frozen when game not running
 
 ### Direct Connection Override
-- @ADMIN can always direct connect
-- State temporarily shows "direct_io"
-- Work gets logged to git afterward
-- Returns to lifecycle on disconnect
+See `/protocols/direct-io.md` for complete behavior.
+- @ADMIN can enter direct_io from any state
+- Engine pauses automated transitions
+- Agent announces entry/exit via commits
+- Proactive notifications encouraged
 
 ### Message Injection
 - @ADMIN can append to any agent's inbox

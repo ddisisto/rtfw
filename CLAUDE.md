@@ -11,7 +11,7 @@ Read agent/_state.md    # your objective truth (RO)
 
 ## where protocols
 
-Read /protocols/agent-lifecycle.md  # how to work (7 states)
+Read /protocols/agent-lifecycle.md  # how to work (8 states)
 Read /protocols/messaging.md        # how to talk
 Read /protocols/distill.md          # how to refine
 Read /protocols/bootstrap.md        # how to start
