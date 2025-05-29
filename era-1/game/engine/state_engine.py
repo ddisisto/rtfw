@@ -23,7 +23,7 @@ class StateEngine:
     Throws exceptions for any unexpected conditions.
     """
     
-    def __init__(self, project_root: Path, sessions_dir: Path, poll_interval: int = 5):
+    def __init__(self, project_root: Path, sessions_dir: Path, poll_interval: int = 1):
         self.project_root = project_root
         self.sessions_dir = sessions_dir
         self.poll_interval = poll_interval

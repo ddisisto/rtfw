@@ -35,9 +35,11 @@ Last processed: 49eb171 at 2025-05-29T20:20:21
 3. Unread count was including own state transition commits
 4. Hash display now 7 chars throughout
 
-## Next Engine Work: JSONL Optimization
-- CONFIRMED: Still doing full file reads with readlines()
-- Need tail optimization (only last N lines for state)
-- Current: 5 second poll interval + full file reads
-- Target: Sub-second updates + tail reads only
-- Session files can be large - this is a real perf issue
+## JSONL Optimization Complete (2025-05-30)
+- FIXED: Removed full file read in session_monitor.py
+  - Was calling parse_session_file() which uses readlines()
+  - Now uses extract_last_activity() - only reads last 10KB
+- FIXED: Poll interval reduced from 5s to 1s
+  - Updated defaults in both StateEngine and ThreadedStateEngine
+- Result: 5x faster updates + tail-only reads
+- Note: Engine restart required to pick up changes

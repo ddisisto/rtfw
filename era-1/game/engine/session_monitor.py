@@ -78,8 +78,8 @@ class SessionMonitor:
             target_mtime = target_path.stat().st_mtime
             newest_symlink_target_mtime = max(newest_symlink_target_mtime, target_mtime)
             
-            # Parse the session file
-            parsed = self.parser.parse_session_file(target_path)
+            # Get just the last activity (optimized - reads only tail)
+            last_ts, _ = self.parser.extract_last_activity(target_path)
             
             # Create SessionInfo
             info = SessionInfo(
@@ -88,9 +88,9 @@ class SessionMonitor:
                 last_modified=datetime.fromtimestamp(target_mtime),
                 file_size=target_path.stat().st_size,
                 agent_name=agent_name,  # Use our known mapping
-                first_timestamp=parsed.get('first_timestamp'),
-                last_timestamp=parsed.get('last_timestamp'),
-                line_count=parsed.get('line_count', 0)
+                first_timestamp=None,  # Not needed for state monitoring
+                last_timestamp=last_ts,
+                line_count=0  # Not used by engine
             )
             
             sessions[agent_name] = info

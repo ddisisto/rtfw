@@ -20,7 +20,7 @@ class ThreadedStateEngine:
     Easy to later split into separate daemon process
     """
     
-    def __init__(self, project_root: Path, sessions_dir: Path, poll_interval: int = 5):
+    def __init__(self, project_root: Path, sessions_dir: Path, poll_interval: int = 1):
         # Core engine
         self.engine = StateEngine(project_root, sessions_dir, poll_interval)
         
