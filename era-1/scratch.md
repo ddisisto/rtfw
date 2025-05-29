@@ -1,49 +1,11 @@
 # ERA-1 Scratch
 
-## Key Insights (2025-05-29 Session)
-1. **Redundant polling wastes resources** - UI shouldn't poll when engine already maintains state
-2. **Direct memory access** - Reading from shared state is instant vs triggering new operations
-3. **Startup sequencing** - Components need proper initialization order
-4. **Direct interfaces > middleware** - Matches project's git commit philosophy
-5. **Engine bottlenecks** - Full file reads, subprocess spawning, no caching
+## Next Priorities (Post-Distill)
 
-## Next Priority: Engine State Management
-@ADMIN wants to shift focus from UI to engine accuracy. Options:
-
-1. **Git Integration** (fundamental)
-   - Real-time commit monitoring
-   - Accurate unread counts
-   - Message stream processing
-   - Challenge: subprocess efficiency
-
-2. **Engine Performance** (low hanging fruit)
-   - Fix parse_session_file (only read tail)
-   - Cache git results between polls
-   - Batch subprocess calls
-   - Could enable sub-second polling
-
-3. **State Accuracy**
-   - Validate state transitions
-   - Better error handling
-   - Ensure _state.md consistency
-
-4. **Engine→UI Callbacks**
-   - Implement state change notifications
-   - Remove force_poll() hack
-   - Enable reactive updates
+1. **Debug git state detection** - Why isn't engine seeing my commits?
+2. **Engine hot reload** - SIGHUP or file watch for development
+3. **Performance optimization** - Cache git calls, batch operations
+4. **State validation** - Ensure _state.md reflects reality
 
 ## Message Checkpoint
-Last processed: 5251da1 at 2025-05-29T13:35:00
-
-## Direct I/O Session (2025-05-29)
-@ADMIN has taken direct control, entering direct_io state. New 8th lifecycle state added to handle human-in-the-loop collaboration.
-
-### Git-based State Detection Implementation
-- Added `get_agent_state_from_commits()` to GitMonitor
-- Engine now checks git commits for state announcements before JSONL parsing
-- Pattern: `@AGENT [state]:` or `@AGENT [state/thread]:`  
-- Direct_io state properly pauses automated transitions
-- Fixed unbound variable exception (context_info referenced before definition)
-- Waiting for UI restart to test the implementation
-
-
+Last processed: 624550c at 2025-05-29T18:37:00

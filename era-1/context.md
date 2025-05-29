@@ -74,7 +74,8 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - ✓ Phase 8: State engine v2 with two-tier updates
 - ✓ Phase 9: TUI v2 design with Textual framework
 - ✓ Phase 10: TUI implementation with live state integration
-- ⏳ Phase 11: Feature additions (modals, git activity, state injection)
+- ✓ Phase 11: Git-based state detection implementation
+- ⏳ Phase 12: Debug state detection and add hot reload
 
 ## ERA Scope Clarification
 - ERA-1 encompasses all CLI/terminal interfaces
@@ -98,6 +99,11 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - @ERA-1 (direct mentions)
 - @ALL (system-wide broadcasts)
 - @ERA (future group for all ERA agents)
+
+## State Announcement Pattern
+- Git commits can announce state changes: `@AGENT [state]:` or `@AGENT [state/thread]:`
+- Engine monitors commits for state transitions
+- Direct_io state pauses automated transitions
 
 ## Established Technical Patterns
 - Zone-based terminal layout (header/status/messages/input)
@@ -138,6 +144,8 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - **Performance**: O(1) parsing - only reads last assistant line
 - **Fail-Fast**: Exceptions thrown for unexpected conditions
 - **Thread-Safe**: Background engine with safe shared state access
+- **Git-Based State Detection**: Checks commits for `@AGENT [state]:` patterns
+- **Direct_IO State**: 8th lifecycle state for human-in-the-loop collaboration
 
 ## TUI v2 Architecture (Complete)
 - **Framework**: Textual for modern async terminal UI
