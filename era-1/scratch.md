@@ -2,8 +2,8 @@
 
 ## Current Work Status
 - TUI v2 implementation complete and functional
-- Context health: 54.8% (still manageable)
-- Active thread: Engine→UI notifications
+- Context health: 60.2% (yellow zone - good time to distill)
+- Active thread: Engine→UI notifications (planned, not started)
 - DONE: Removed redundant TUI refresh timer
 - DONE: Fixed empty agent list on startup (force_poll hack)
 - UI now reads directly from engine's in-memory state
