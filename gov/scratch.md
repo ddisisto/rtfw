@@ -4,8 +4,8 @@
 Last processed: d1d6ef6 at 2025-05-29
 
 ## Current State: distill
-Thread: protocol-alignment
-Context: ~56% (71K tokens)
+Thread: protocol-harmonization  
+Context: ~65% (83K tokens)
 
 ## Session Distillation
 

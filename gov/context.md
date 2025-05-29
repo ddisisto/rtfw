@@ -120,4 +120,7 @@
 - Commit context pattern: Essential for work continuity
 - Direct_IO mode: @ADMIN override pauses engine state transitions
 - Protocol-engine binding: Decision outputs in protocols drive engine behavior
-- State protocol completeness: All 7 states now have dedicated protocols
+- State protocol completeness: All 8 states now have dedicated protocols
+- Protocol harmonization: Extract common patterns to prevent duplication
+- Notification patterns: Proactive alerts across all states, not just direct_io
+- Decision output standardization: Consistent format for engine parsing
