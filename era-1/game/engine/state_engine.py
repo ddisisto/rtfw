@@ -136,6 +136,12 @@ class StateEngine:
                 # Context snapshot
                 if context_info:
                     current_state.context_tokens_at_entry = context_info['used']
+                
+                # Update last_read_commit when entering inbox state
+                if new_state == AgentState.INBOX:
+                    current_state.last_read_commit_hash = commit_hash
+                    current_state.last_read_commit_timestamp = self.git.get_commit_timestamp(commit_hash)
+                    print(f"  Updated last_read_commit to: {commit_hash[:8]}")
         
         # Skip further processing if agent is in direct_io state
         if current_state.state == AgentState.DIRECT_IO:
