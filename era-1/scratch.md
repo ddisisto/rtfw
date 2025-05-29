@@ -41,6 +41,12 @@
 - Verify R key still triggers manual refresh
 - Check that agent selection updates details pane
 
+## Future Improvements
+- Add proper state change callbacks to ThreadedStateEngine
+- Engine could notify UI when state actually changes
+- Would eliminate need for force_poll() on startup
+- More efficient than polling-based approach
+
 ## Refresh Architecture Discovery
 - Engine polls every 5 seconds (threaded_engine.py:77)
 - TUI refreshes every 5 seconds (app.py:47)

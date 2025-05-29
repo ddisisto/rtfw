@@ -73,6 +73,8 @@ class FoundationTerminal(App):
                 self.sessions_dir
             )
             self.engine.start()
+            # Force initial poll to populate state
+            self.engine.force_poll()
         
         # Load initial agent data directly (reactive might not fire on mount)
         agents = self.get_agent_data()
