@@ -10,7 +10,7 @@ apply @protocols/bootstrap.md for agent @GOV.md, in @gov/_state.md do
 apply protocols/bootstrap.md for agent @AGENT-1.md, in @agent-1/_state.md
 
 please apply @protocols/bootstrap.md context load for agent @NEXUS.md
-please apply @protocols/bootstrap.md context load for agent @ERA-1.md
+please apply @protocols/bootstrap.md context load for agent @GOV.md
 
 
 ENGINE LOGOUT -> BOOTSTRAP PROCESS

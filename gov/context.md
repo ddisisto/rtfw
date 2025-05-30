@@ -14,7 +14,7 @@
 4. @ADMIN.md - Project oversight authority
 5. @NEXUS.md - Orchestration partner
 6. gov/protocol_design_guidelines.md - Protocol creation
-7. /protocols/agent-lifecycle.md - State management
+7. /protocols/journey.md - State management
 8. /protocols/bootstrap.md - Startup sequence
 9. gov/context.md - This file
 10. gov/scratch.md - Working memory

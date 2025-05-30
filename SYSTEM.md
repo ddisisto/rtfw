@@ -110,7 +110,7 @@ State transitions through git commits:
 │   ├── /critic/ (CRITIC workspace + analysis tools)
 │   └── /era-1/ (ERA-1 game implementation)
 ├── /protocols/ (system-wide protocols)
-│   ├── Core: agent-lifecycle.md, bootstrap.md, messaging.md
+│   ├── Core: journey.md, bootstrap.md, messaging.md
 │   ├── States: inbox.md, distill.md, deep-work.md, idle.md, logout.md
 │   ├── Support: git.md, thread-management.md, agent-structure.md
 ├── CLAUDE.md (system navigation)
@@ -120,7 +120,7 @@ State transitions through git commits:
 ```
 
 ## Protocol Locations
-- Lifecycle: /protocols/agent-lifecycle.md (overview)
+- Lifecycle: /protocols/journey.md (state machine)
 - State Protocols: /protocols/{bootstrap,inbox,distill,deep-work,idle,logout}.md
 - Communication: /protocols/messaging.md
 - Context Management: /protocols/distill.md

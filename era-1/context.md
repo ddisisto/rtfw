@@ -93,7 +93,7 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 6. era-1/_state.md (objective truth - READ ONLY)
 7. admin/tools.md (tool patterns)
 8. gov/era-agent-governance.md (framework)
-9. protocols/agent-lifecycle.md (state patterns)
+9. protocols/journey.md (state patterns)
 10. protocols/thread-management.md (commit tracking)
 
 ## Message Monitoring Groups
