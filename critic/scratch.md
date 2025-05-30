@@ -38,6 +38,30 @@ Promote cross-agent learning:
 - Agent-specific adaptations in agent/protocols/
 - Shared cache for frequently accessed files
 
+### 4. Task-Specific Agent Spawning (NEW INSIGHT)
+Rather than permanent mitosis, ERA-1 could spawn ephemeral workers:
+- ERA-1 identifies heavy task (e.g., "refactor game engine")
+- Spawns ERA-1-TASK-001 with minimal context + specific code
+- Task agent works in isolation, reports condensed results
+- ERA-1 integrates findings without carrying full implementation
+- Task agent terminates, no ongoing coordination needed
+
+Benefits:
+- Parent stays lean (low bootstrap cost)
+- Workers get fresh context for specific tasks
+- Natural parallelization without coordination overhead
+- Results integrated as distilled knowledge, not raw code
+- Scales without permanent agent proliferation
+
+Example:
+```
+ERA-1 [deep_work]: Spawning ERA-1-REFACTOR for engine work
+ERA-1-REFACTOR [bootstrap]: Task-specific init, loading engine code
+ERA-1-REFACTOR [deep_work]: Refactoring complete, 3 key changes
+ERA-1-REFACTOR [logout]: Task complete, results in parent inbox
+ERA-1 [inbox]: Integrating refactor results from task agent
+```
+
 ## Bootstrap Analysis Plan
 1. **Data Location**: _sessions/ with AGENT_current.jsonl symlinks
 2. **Tools Available**:
