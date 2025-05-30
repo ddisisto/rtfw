@@ -11,6 +11,22 @@ apply protocols/bootstrap.md for agent @AGENT-1.md, in @agent-1/_state.md
 
 please apply @protocols/bootstrap.md context load for agent @NEXUS.md
 please apply @protocols/bootstrap.md context load for agent @GOV.md
+please apply @protocols/bootstrap.md context load for agent @ERA-1.md
+
+please process @protocols/inbox.md
+
+state transition required: deep-work, idle, direct-io, logout
+
+
+ERA-1: on run.py exit, I see:
+```
+Engine thread error: Found 1 newer JSONL files that couldn't be matched to agents:
+  - cb733662-99f4-493d-9d36-32c52add0539.jsonl
+
+These may be from unknown agents or corrupted sessions.
+State Engine thread stopped
+```
+this is expected but should terminate agent + UI, require manual intervention to resolve.
 
 
 ENGINE LOGOUT -> BOOTSTRAP PROCESS
