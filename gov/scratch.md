@@ -62,9 +62,36 @@ Context: ~36% (45K tokens)
 - **Verified**: Direct_io transition worked immediately
 - **Pattern**: State declaration embedded in every commit
 
+## Protocol Alignment Audit (2025-05-30)
+
+### Outdated Gov Files Creating Misinformation
+1. **era-agent-governance.md** - Major issues:
+   - References non-existent agent-lifecycle.md
+   - Says 7-state lifecycle (now 8)
+   - ERA-1 as temporary (now permanent)
+   - ERA succession pattern obsolete
+   - ERA-1 actively using this outdated info
+
+2. **protocol-transition-plan.md** - Completed work from days ago
+3. **protocol-updates.md** - Most changes already implemented
+
+### Action Plan
+- [ ] Archive outdated files to gov/archive/
+- [ ] Update SYSTEM.md to remove era governance reference
+- [ ] Notify ERA-1 about governance changes
+- [ ] Create "idle work" protocol for self-optimization
+
+## "Day Shift" Work Concept
+Purpose during idle time:
+- GOV: Protocol alignment validation
+- NEXUS: Session health monitoring  
+- CRITIC: Pattern analysis
+- ERA-1: Engine optimization
+
+Agents should track own directives for idle work.
+
 ## Continuity Bridge
 - bootstrap-return: Clean re-entry via protocol, NEXUS acknowledged optimization (2ac2f32)
 - era-1-identity: Updated to focus on engine architect role (f90bb1a)
-- system-status: State machine smooth, protocols aligned, governance responsive
-- context-healthy: Only 25% used, plenty of room for work
-- Next focus: Monitor ERA-1 progress, support emerging protocol needs
+- protocol-cleanup: Major misinformation issues identified, cleanup needed
+- Next focus: Archive outdated docs, establish idle work protocols

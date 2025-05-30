@@ -17,7 +17,7 @@ session_id: 14e86721-6e8c-4e0d-a7b7-c6685cc3807f
 context_tokens: 37019
 max_context_tokens: 128000
 context_percent: 28.9%
-last_updated: 2025-05-30T10:56:37
+last_updated: 2025-05-30T11:09:00
 
 ## Last Observed Agent State
 state: inbox
@@ -25,4 +25,4 @@ thread: *
 started: 2025-05-30T10:54:10
 context_tokens_at_entry: 0
 expected_next_state: distill
-unread_message_count: 1
+unread_message_count: 2

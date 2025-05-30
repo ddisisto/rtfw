@@ -128,4 +128,3 @@ State transitions through git commits:
 - Thread Management: /protocols/thread-management.md
 - Agent Structure: /protocols/agent-structure.md
 - Governance: /gov/protocol_design_guidelines.md
-- ERA Agents: /gov/era-agent-governance.md
