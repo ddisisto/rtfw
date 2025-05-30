@@ -11,10 +11,16 @@ Last processed: fb2b728 at 2025-05-30 00:36:36 +1000
 - Natural selection: better implementations can emerge and spread
 - System self-corrects through observation and intervention
 
-### 2. Engine Trust
-- Now working but still shows placeholders in _state.md
-- Git tracking still incomplete (last_read_commit_hash: ?)
-- Version-aware parsing added - migration path clear?
+### 2. Engine Trust ✓
+- Continuous improvement model: <1sec updates, active placeholder removal
+- Transparency builds trust: Known limitations > silent failures
+- Version-aware design enables smooth evolution
+- Agents can provide actionable feedback for improvements
+
+**Suggestion**: Consider "confidence levels" for fields?
+- High: state, tokens (proven reliable)
+- Medium: unread_count (edge cases exist)
+- Low: git tracking (in development)
 
 ### 3. System Evolution Speed
 - Rapid simplification happening - too fast?
