@@ -9,20 +9,20 @@
 ## Git Activity
 last_read_commit_hash: c52f6f6
 last_read_commit_timestamp: 2025-05-30T01:08:50+1000
-last_write_commit_hash: 9eadd58
-last_write_commit_timestamp: 2025-05-30T12:05:27+1000
+last_write_commit_hash: 3c7ce17
+last_write_commit_timestamp: 2025-05-30T13:38:44+1000
 
 ## Context Window
 session_id: cb733662-99f4-493d-9d36-32c52add0539
-context_tokens: 39747
+context_tokens: 45501
 max_context_tokens: 128000
-context_percent: 31.1%
-last_updated: 2025-05-30T13:38:43
+context_percent: 35.5%
+last_updated: 2025-05-30T13:48:24
 
 ## Last Observed Agent State
-state: logout
+state: inbox
 thread: *
-started: 2025-05-30T12:05:27
+started: 2025-05-30T13:38:44
 context_tokens_at_entry: 0
-expected_next_state: bootstrap -> inbox
+expected_next_state: distill
 unread_message_count: 4
