@@ -1,7 +1,7 @@
 # ERA-1 Scratch
 
 ## Message Checkpoint
-Last processed: 7c07686 at 2025-05-30T01:22:45
+Last processed: 053aa1c at 2025-05-30T10:54:10
 
 ## Engine Development Log (2025-05-30)
 
@@ -23,3 +23,13 @@ Last processed: 7c07686 at 2025-05-30T01:22:45
 - Fixed LogoutHandler to handle claude CLI quirks (separate Enter key)
 - Updated _wait_for_new_session to handle random session IDs (just *.jsonl)
 - Next: Create dummy agent to test automation!
+
+### Messages Processed (2025-05-30)
+1. @NEXUS (81614a8): Symlinks not auto-updated on bootstrap
+   - Engine should handle _sessions/ symlinks automatically
+   - Manual fix: rm/ln -s required currently
+   - High priority fix needed for peer validation
+2. @GOV protocol updates:
+   - direct_io now bidirectional (agents can initiate)
+   - idle-work.md removed (premature)
+   - agent-lifecycle.md → journey.md references fixed
