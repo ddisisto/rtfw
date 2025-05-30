@@ -11,12 +11,32 @@ Last processed: 2e7bdb0 at 2025-05-30 13:00:03 +1000
 - Documented findings in critic/aism/
 
 ## Next Critical Investigations
-- [ ] Bootstrap context analysis - token usage patterns during cold start
+- [x] Bootstrap context analysis - token usage patterns during cold start
 - [ ] Communication effectiveness metrics
 - [ ] Scale testing observations (10x agents)
 - [ ] Micro-pattern documentation within states
 - [ ] Cross-organization protocol potential
 - [ ] Human-agent state alignment patterns
+
+## Critical Recommendations from Bootstrap Analysis
+
+### 1. Context Splitting (Highest Priority)
+ERA-1's 40K bootstrap is unsustainable. Recommend:
+- Move implementation code from context.md to era-1/implementation/
+- Load code files only during deep_work state
+- Keep context.md under 5K lines for operational knowledge only
+
+### 2. Bootstrap Protocol Clarification
+Current protocol doesn't mention protocol lazy loading. Should clarify:
+- Only /protocols/journey.md loaded during bootstrap
+- State-specific protocols loaded on transition
+- Implementation files deferred to deep_work
+
+### 3. Shared Wisdom Pattern
+Promote cross-agent learning:
+- Common patterns in /protocols/
+- Agent-specific adaptations in agent/protocols/
+- Shared cache for frequently accessed files
 
 ## Bootstrap Analysis Plan
 1. **Data Location**: _sessions/ with AGENT_current.jsonl symlinks
@@ -30,6 +50,89 @@ Last processed: 2e7bdb0 at 2025-05-30 13:00:03 +1000
    - Which files contribute most tokens?
    - Optimization opportunities?
 4. **Method**: Compare multiple bootstrap events across agents
+
+## Bootstrap Token Analysis (2025-05-30)
+
+### Research Question
+What's the token cost of agent bootstrap, and how can we optimize it?
+
+### Initial Findings
+From analyzing actual bootstrap sequences in session logs:
+
+**GOV Bootstrap (from embedded analysis):**
+- Start: 19,423 tokens (mostly cache)
+- After CLAUDE.md: 19,423 → 20,409 (+986 tokens)
+- After SYSTEM.md: 20,409 → 22,105 (+1,696 tokens)
+- At inbox transition: 32,156 tokens
+- **Total bootstrap cost: ~12,733 tokens**
+
+**CRITIC Bootstrap (my own):**
+- Bootstrap completion at 25.9% = ~33,152 tokens
+- Similar pattern suggests ~13-15K token cost
+
+**NEXUS Bootstrap:**
+- Start: 19,498 tokens
+- Progressive reads: 19,498 → 20,239 → 21,212 → 21,930 → 23,626
+- Completion at 30.3% = ~38,784 tokens
+- **Total bootstrap cost: ~19,286 tokens** (higher than others!)
+
+**Key Observations:**
+1. Bootstrap cost varies significantly by agent: 4K-19K tokens
+2. Context.md size is the main variable (NEXUS has extensive context)
+3. CLAUDE.md and SYSTEM.md are consistently ~1-2K each
+4. Cache helps significantly - most content cached after first read
+5. Bootstrap represents 10-15% of initial context window
+
+**ERA-1 Bootstrap:**
+- Completion at 47.9% = ~61,312 tokens!
+- Likely has extensive game implementation context
+- **Estimated bootstrap cost: ~40K tokens** (massive!)
+
+### Critical Analysis
+
+**Bootstrap Cost Ranking:**
+1. ERA-1: ~40K tokens (47.9% at completion) - implementation heavy
+2. NEXUS: ~19K tokens (30.3% at completion) - session management overhead
+3. CRITIC: ~13K tokens (25.9% at completion) - analysis context
+4. GOV: ~13K tokens (25.2% at completion) - governance lightweight
+
+**Concerning Pattern:**
+- Bootstrap alone can consume 10-47% of context window
+- ERA-1's 40K bootstrap leaves only 87K for actual work
+- At current rates, ERA-1 hits distill threshold after ~2 operations
+
+**Root Causes:**
+1. **Context Accumulation** - No distinction between essential/historical
+2. **Implementation Details** - ERA-1 carries full game code in context.md
+3. **Bootstrap is Complete** - Single-phase load, no tiers by design
+4. **Session History** - NEXUS loads extensive session tracking data
+
+**Revised Understanding (per @ADMIN feedback):**
+1. **Bootstrap is atomic** - One complete load, not tiered
+   - Crash recovery/rollback only if logout incomplete
+   - This is by design for coherence
+
+2. **Context Splitting** - YES, this is the solution
+   - Move code to separate files, load in deep_work
+   - Thread adoption low but worth pursuing
+   - Keep context.md operational only
+
+3. **Shared Cache Benefits**
+   - Cross-agent cache sharing promotes common patterns
+   - Shared wisdom > siloed knowledge
+   - Cache invalidation already automated
+   - Tension: governance vs agency autonomy
+
+4. **Lazy Loading Clarification Needed**
+   - Should already be deferring protocol loads
+   - Update journey.md if not clear
+   - Load implementation completely in deep_work
+   - Don't assume partial knowledge
+
+5. **Multi-Scale States** (per AISM framework)
+   - Agents should manage micro-states within each journey state
+   - Example: deep_work contains plan→implement→test→stuck substates
+   - This provides finer control without protocol complexity
 
 ## State Learning Notes
 - My _state.md at critic/_state.md (relative path!)
