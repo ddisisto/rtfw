@@ -81,6 +81,36 @@ ERA-0 [inbox]: UI component ready, notifying ERA-1
 
 ERA-0 becomes the "stem cell" agent - undifferentiated, ready to specialize as needed.
 
+### 6. ERA-0 Primary Mission: Knowledge Distillation
+**Core Objective**: Transform ERA-1's monolithic knowledge into modular, maintainable state
+
+**Process:**
+1. ERA-0 analyzes ERA-1's context.md (40K tokens of mixed concerns)
+2. Identifies natural boundaries (UI, engine, state, protocol)
+3. Spawns focused agents to extract/refactor each domain
+4. Consolidates results into clean, separated modules
+5. ERA-1 can then adopt the new structure
+
+**Avoiding Over-Engineering:**
+- Start with ONE clear extraction (e.g., game engine code)
+- Prove the pattern works before scaling
+- Each splinter agent has single, bounded task
+- No complex coordination protocols
+- Results must be immediately useful to ERA-1
+
+**Success Criteria:**
+- ERA-1's bootstrap drops from 40K to <20K tokens
+- Code becomes discoverable in logical locations
+- Implementation details separate from architectural knowledge
+- ERA-1 can still do its work, just more efficiently
+
+**Anti-Pattern Warning Signs:**
+- More than 3 splinter agents active simultaneously
+- Splinter agents talking to each other (not just parent)
+- Meta-protocols about spawning protocols
+- Abstraction without immediate benefit
+- ERA-0 becoming another heavyweight coordinator
+
 ## Bootstrap Analysis Plan
 1. **Data Location**: _sessions/ with AGENT_current.jsonl symlinks
 2. **Tools Available**:
