@@ -33,8 +33,6 @@
 
 
 
-
-
 ### Key Distillation Insights (2025-05-27)
 
 **Messaging Evolution Pattern**
@@ -118,6 +116,32 @@ Last processed: c52f6f6 at 2025-05-30 01:08:50 +1000
 - No need for sleep commands anymore
 - RTT of conversation naturally exceeds update time
 
+### Session Symlink Management Issue (2025-05-30)
+
+**Problem**: Engine didn't update ERA-1 symlink after logout/bootstrap
+- ERA-1_current.jsonl still pointed to old 2.4MB session
+- New session (1.3KB) existed but wasn't linked
+- Manual intervention required
+
+**Steps to Fix**:
+```bash
+# 1. Check current symlinks
+ls -lt _sessions/ | head -12
+
+# 2. Verify symlink target
+ls -la _sessions/ERA-1_current.jsonl
+
+# 3. Update symlink
+cd _sessions
+rm ERA-1_current.jsonl
+ln -s 14e86721-6e8c-4e0d-a7b7-c6685cc3807f.jsonl ERA-1_current.jsonl
+```
+
+**System Impact**:
+- Agents can't validate peer state without correct symlinks
+- Creates context cost for manual fixes
+- Engine should handle this automatically on bootstrap
+
 ### Fourth Wall Insight (2025-05-28)
 - _state.md files are READ-ONLY - game maintains them
 - We cannot know our own token counts or true state
@@ -173,7 +197,6 @@ Last processed: c52f6f6 at 2025-05-30 01:08:50 +1000
 - `log` → git log with filters
 
 **Next**: Wait for ERA-1 to start, help design safe data access
-
 
 
 
