@@ -9,6 +9,8 @@ Context compression is the process of preserving essential agent knowledge and s
 1. **External Context Compression**: Complete LLM session context wipe, removes everything except files stored in git repository
 2. **Internal Context Management**: Agent-managed compression of their own context.md/scratch.md files when size thresholds exceeded
 
+2025-05-30 admin note: #2 now called distill **IMPORTANT** actually causes context growth also, counterintuitvely. all past context and scratch remains within a single journey, is effectively only appended, corrected or reinforced. idea is that **after** logout, context will be smaller, if distillation works well.
+
 ## Pre-Compression Preparation Protocol
 
 ### Critical State Preservation
@@ -33,29 +35,30 @@ Context compression is the process of preserving essential agent knowledge and s
 
 ### Critical Knowledge Recovery
 - Agent specializations and responsibilities
-- Active session management (tmux windows, session IDs)
-- Communication protocols and message routing
+- Communication protocols and state transitions
 - Current project status and pending tasks
+
+2025-05-30 admin note: above patterns remain stable.
 
 ## Lessons Learned
 
 ### Common Mistakes
 - **Over-eager file clearing**: Misinterpreting "prepare for compression" as "clean files now"
+  - 2025-05-30 admin note: FIXED, ages ago!
 - **Incomplete state preservation**: Missing critical session IDs or protocol details
+  - 2025-05-30 admin note: WAY BETTER tracking!
 - **Context vs Implementation confusion**: Mixing working memory with permanent knowledge
+  - 2025-05-30 admin note: improved significantly
 
 ### Best Practices
 - **Preserve specific details**: Session IDs, window numbers, file paths
+  - 2025-05-30 admin note: helping, provides reality anchor layer
 - **Document current status**: What's working, what's tested, what's blocked
+  - 2025-05-30 admin note: ongoing, living documents, versioning is hard, drift issues always looming
 - **Clear re-init path**: Explicit sequence for knowledge recovery
+  - 2025-05-30 admin note: implemented and quite stable. protocols == state transitions == engine maps realtime state and closes loop. standard prompts for state transistions, direct-io for admin bypass
 - **Commit frequently**: Ensure all state changes are in git before compression
-
-## Current System Status (Pre-Compression)
-
-- **Active Agents**: @GOV (f5a74925, window 1), @ARCHITECT (51f1fab0, window 2)
-- **Game Loop**: Session monitoring and message routing tested and working
-- **Repository**: https://github.com/ddisisto/rtfw, all commits synchronized
-- **Ready For**: Automated coordination loops, work distribution logic
+  - 2025-05-30 admin note: integrated as key mechanism for both comms and state management :D wonder how many commits is too many? this becomes and auditable, sequenced, permanent record.
 
 ## Questions for @GOV
 
@@ -63,3 +66,9 @@ Context compression is the process of preserving essential agent knowledge and s
 2. What governance oversight is needed for compression events?
 3. How should we handle agent coordination during compression events?
 4. Should compression triggers be automated or manually initiated?
+
+2025-05-30 admin note: my answers -
+1. yes, with ability to keep in own context any adjustments or addditions to base pattern. all protocols extensible and personalisable.
+2. none :)
+3. state machine / engine increasing manages journey (lifecycle)
+4. intentionally initiated by agents, unless direct admin intervention
