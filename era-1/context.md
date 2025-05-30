@@ -75,8 +75,9 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - ✓ Phase 9: TUI v2 design with Textual framework
 - ✓ Phase 10: TUI implementation with live state integration
 - ✓ Phase 11: Direct_io state and git-based detection
-- ⏳ Phase 12: Debug ERA-1 state detection issue
-- ⏳ Phase 13: Add engine hot reload capability
+- ✓ Phase 12: Symlink auto-update on bootstrap (fixed per @NEXUS)
+- ⏳ Phase 13: Debug ERA-1 state detection issue
+- ⏳ Phase 14: Add engine hot reload capability
 
 ## ERA Scope Clarification
 - ERA-1 encompasses all CLI/terminal interfaces
@@ -159,3 +160,11 @@ Permanent senior systems engineer/architect for ALL CLI/terminal interfaces acro
 - **Virtual Environment**: Dependencies isolated in .venv/
 - **Mock Mode**: --no-engine for UI testing without backend
 - **Startup**: Force initial poll to populate state before UI reads
+
+## Symlink Auto-Update Feature (2025-05-30)
+- **Problem**: Agents bootstrap/restart, creating new sessions without updating symlinks
+- **Solution**: SessionMonitor._check_for_newer_files now auto-updates symlinks
+- **Implementation**: _detect_agent_from_session parses JSONL to identify agent
+- **Behavior**: Automatically updates symlinks when newer sessions detected
+- **Error Handling**: Only throws RuntimeError for truly unmatched files
+- **Tested**: Works for bootstrap, manual restart, and any session creation

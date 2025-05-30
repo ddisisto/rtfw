@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional
+import json
 
 from .models import SessionInfo
 from .jsonl_parser import JSONLParser
@@ -191,24 +192,44 @@ class SessionMonitor:
                     lines_read += 1
                     bytes_read += len(line.encode())
                     
-                    # Look for agent mentions in assistant messages
-                    if '"role":"assistant"' in line:
-                        # Check for our known agents
-                        for agent_lower, agent_upper in [
-                            ('critic', 'CRITIC'),
-                            ('era-1', 'ERA-1'),
-                            ('gov', 'GOV'),
-                            ('nexus', 'NEXUS')
-                        ]:
-                            # Check various patterns
-                            if any(pattern in line for pattern in [
-                                f'@{agent_upper}',
-                                f'I am {agent_upper}',
-                                f"I'm {agent_upper}",
-                                f'{agent_upper}.md',
-                                f'agent/{agent_lower}/',
-                            ]):
-                                return agent_lower
+                    # Try to parse as JSON and look for assistant messages
+                    try:
+                        data = json.loads(line)
+                        
+                        # Check if this is an assistant message
+                        if data.get('message', {}).get('role') == 'assistant':
+                            # Get the content - could be in different formats
+                            content = ''
+                            msg_content = data.get('message', {}).get('content', [])
+                            
+                            if isinstance(msg_content, str):
+                                content = msg_content
+                            elif isinstance(msg_content, list):
+                                # Extract text content from list format
+                                for item in msg_content:
+                                    if isinstance(item, dict) and item.get('type') == 'text':
+                                        content += item.get('text', '')
+                            
+                            # Check for our known agents in the content
+                            for agent_lower, agent_upper in [
+                                ('critic', 'CRITIC'),
+                                ('era-1', 'ERA-1'),
+                                ('gov', 'GOV'),
+                                ('nexus', 'NEXUS')
+                            ]:
+                                # Check various patterns
+                                if any(pattern in content for pattern in [
+                                    f'@{agent_upper}',
+                                    f'I am {agent_upper}',
+                                    f"I'm {agent_upper}",
+                                    f'{agent_upper}.md',
+                                    f'agent/{agent_lower}/',
+                                    f'bootstrap protocol for @{agent_upper}',
+                                ]):
+                                    return agent_lower
+                    except:
+                        # If JSON parsing fails, continue to next line
+                        pass
             
             return None
             
