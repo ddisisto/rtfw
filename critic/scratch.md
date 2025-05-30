@@ -53,14 +53,33 @@ Benefits:
 - Results integrated as distilled knowledge, not raw code
 - Scales without permanent agent proliferation
 
-Example:
+### 5. ERA-0 as Clean Bridge (BETTER APPROACH)
+ERA-1 already overloaded (40K bootstrap!). Instead:
+
+**ERA-0: The Orchestrator**
+- Minimal context (< 5K tokens)
+- Pure coordination and task routing
+- Spawns task-specific agents as needed
+- Maintains architectural vision without implementation
+
+**Benefits:**
+- ERA-1 continues current work uninterrupted
+- ERA-0 provides clean base for forking pattern
+- Task agents inherit from ERA-0, not bloated ERA-1
+- Natural transition path without disruption
+
+**Example Flow:**
 ```
-ERA-1 [deep_work]: Spawning ERA-1-REFACTOR for engine work
-ERA-1-REFACTOR [bootstrap]: Task-specific init, loading engine code
-ERA-1-REFACTOR [deep_work]: Refactoring complete, 3 key changes
-ERA-1-REFACTOR [logout]: Task complete, results in parent inbox
-ERA-1 [inbox]: Integrating refactor results from task agent
+ERA-0 [bootstrap]: Clean init, orchestrator protocol only
+ERA-0 [inbox]: Task request - "implement new UI component"
+ERA-0 [deep_work]: Spawning ERA-0-UI-001 for task
+ERA-0-UI-001 [bootstrap]: Task context + UI patterns only
+ERA-0-UI-001 [deep_work]: Implementation complete
+ERA-0-UI-001 [logout]: Results → ERA-0 inbox
+ERA-0 [inbox]: UI component ready, notifying ERA-1
 ```
+
+ERA-0 becomes the "stem cell" agent - undifferentiated, ready to specialize as needed.
 
 ## Bootstrap Analysis Plan
 1. **Data Location**: _sessions/ with AGENT_current.jsonl symlinks
