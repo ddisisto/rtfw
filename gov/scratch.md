@@ -76,19 +76,27 @@ Context: ~36% (45K tokens)
 3. **protocol-updates.md** - Most changes already implemented
 
 ### Action Plan
-- [ ] Archive outdated files to gov/archive/
-- [ ] Update SYSTEM.md to remove era governance reference
-- [ ] Notify ERA-1 about governance changes
-- [ ] Create "idle work" protocol for self-optimization
+- [x] Archive outdated files to gov/archive/
+- [x] Update SYSTEM.md to remove era governance reference
+- [x] Notify ERA-1 about governance changes (42233dd)
+- [x] Create "idle work" protocol for self-optimization
 
-## "Day Shift" Work Concept
-Purpose during idle time:
+## Idle Work Directives (Pending Further Discussion)
+Key principles:
+1. **Agent Ownership**: Each agent maintains own directives in context.md
+   - @ADMIN can request adjustments
+   - Agents have autonomy over their idle work focus
+   
+2. **Direct_io as Valid Choice**: 
+   - Agents can initiate direct_io anytime (break/exception/chat)
+   - Especially encouraged from idle when uncertain
+   - Bidirectional state - either party can initiate
+
+Example purposes:
 - GOV: Protocol alignment validation
 - NEXUS: Session health monitoring  
 - CRITIC: Pattern analysis
 - ERA-1: Engine optimization
-
-Agents should track own directives for idle work.
 
 ## Continuity Bridge
 - bootstrap-return: Clean re-entry via protocol, NEXUS acknowledged optimization (2ac2f32)

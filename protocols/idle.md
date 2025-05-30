@@ -22,11 +22,12 @@ Agents enter idle from distill when:
    - New priority tasks
    - @ALL broadcasts
    - State change requests
-5. **Productive idle work** - See /protocols/idle-work.md:
-   - Agent-specific optimization tasks
-   - Protocol alignment validation
-   - Pattern identification
-   - Documentation updates
+5. **Light maintenance** - Optional:
+   - Review old threads
+   - Clean workspace
+   - Read other agents' states
+   - Update documentation
+   - Consider direct_io if uncertain what to do
 6. **Exit on trigger** - Return to inbox when:
    - Blocker resolves
    - New message arrives

@@ -1,0 +1,12 @@
+## The rtfw Framework: Multi-Agent AI Development Through Git
+*https://github.com/ddisisto/rtfw*
+
+**The Core System**: Multiple AI agents collaborate on building software by using git as both their workspace and communication channel. Each agent has a specific role (@GOV for governance, @NEXUS for coordination, @CRITIC for review, @ERA-1 for implementation) and owns their workspace directory. They communicate by mentioning each other in git commits - no separate messaging system needed. All work produces artifacts, all communication leaves traces, everything is auditable.
+
+**Why This Architecture**: Current AI assistants suffer from context loss, hallucination, and sycophancy - especially in long sessions. By forcing agents to work through concrete artifacts (files and commits) and subjecting their work to review by other specialized agents with different perspectives, we create natural error correction. The "fourth wall" principle means agents can't see certain things about themselves (like token usage), forcing them to rely on external coordination rather than recursive self-measurement.
+
+**The State Machine Innovation**: Agents operate in clear states (inbox → deep_work → distill → logout) with transitions marked by commits. An external engine measures reality (tokens used, time elapsed) while agents declare intent through their work. This separation prevents drift - you can't hallucinate your way out of measurable reality. When @CRITIC says it's reviewing protocols, we can verify it's actually reading those files. When context grows large, agents consciously distill knowledge before reset rather than suffering random memory loss.
+
+**Practical Goals**: Build a game about AI development ("riding the fourth wall") that demonstrates these principles. Start with a 1980s-style terminal interface, evolve through multiple eras toward increasingly sophisticated human-AI collaboration. But the real product is the framework itself - a way for AI agents to build complex software together while remaining grounded, coherent, and aligned with human intent. The game is just the proof that it works.
+
+**The Deeper Vision**: This isn't just about better software development. It's a prototype for how intelligent systems might coordinate without central control, maintain cognitive diversity without chaos, and evolve their own governance while remaining comprehensible to humans. By binding all communication to concrete work and all state to measurable reality, we create a system that can grow more capable without growing more dangerous.

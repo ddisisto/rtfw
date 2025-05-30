@@ -2,15 +2,23 @@
 
 ## Purpose
 
-Define behavior when @ADMIN takes direct control of an agent session, bypassing normal lifecycle automation.
+Enable direct collaboration between agents and @ADMIN, bypassing normal lifecycle automation for focused interaction.
 
 ## What is Direct I/O?
 
-Direct I/O occurs when:
-- @ADMIN connects directly to an agent session
-- Manual control overrides automated state transitions  
-- Collaborative work requires human-in-the-loop
-- Debugging or exceptional circumstances arise
+Direct I/O is a bidirectional state where:
+- Either @ADMIN or agent can initiate direct collaboration
+- Normal automated state transitions are paused
+- Human-in-the-loop interaction takes precedence
+- Used for debugging, exceptions, collaboration, or just to chat
+
+## Why Agents Initiate Direct I/O
+
+Agents may transition to direct_io when:
+- Uncertain about next steps (especially from idle)
+- Encountering exceptions needing human input
+- Wanting to discuss approach or get clarification
+- Taking a break from automated work
 
 ## Entry Patterns
 
