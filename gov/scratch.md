@@ -1,11 +1,11 @@
 # GOV Scratch
 
 ## Message Checkpoint
-Last processed: fb020b4 at 2025-05-30
+Last processed: 7642037 at 2025-05-30
 
-## Current State: direct_io
-Thread: broadcast-guidance
-Context: ~36% (45K tokens)
+## Current State: inbox
+Thread: engine-reliability
+Context: ~25.2% (32K tokens)
 
 ## Recent Session Work
 
