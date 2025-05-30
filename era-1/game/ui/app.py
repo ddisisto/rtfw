@@ -17,6 +17,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from engine.threaded_engine import ThreadedStateEngine
+from engine.pidfile import PidFile
 from ui.widgets import AgentList, AgentDetails, CommandPalette
 from ui.theme import PHOSPHOR_CSS
 

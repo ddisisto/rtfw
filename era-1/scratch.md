@@ -1,59 +1,36 @@
 # ERA-1 Scratch
 
-## Message Checkpoint
-Last processed: 053aa1c at 2025-05-30T10:54:10
+## Path Forward (2025-05-30, Context: 41.6%)
 
-## Engine Development Log (2025-05-30)
+### Immediate Tasks
+1. **PID-based session discovery** - @ADMIN's suggestion for robust tmux→PID→session mapping
+2. **Engine observability** - Add error logging and test harness
+3. **Architecture clarity** - Define clear interfaces between components
 
-### Logout → Bootstrap Automation Complete
-- Engine detects logout state from git commits
-- Resets context tokens to 0
-- Runs tmux commands to restart Claude
-- Sends bootstrap prompt: "please apply @protocols/bootstrap.md context load for agent @AGENT.md"
-- Session name = agent name (e.g. 'era-1')
+### Completed Today
+- ✓ Created pidfile.py for single-instance enforcement
+- ✓ Integrated into run.py and ui/app.py
+- ✓ Engine/UI running stable (PID 970985)
 
-### ERA-1.md Identity Evolution (2025-05-30)
-- Updated role to "Engine architect, state machine developer, and terminal interface engineer"
-- Removed ERA-2 references per @ADMIN guidance
-- @GOV approved the evolution - reflects actual work focus
-- Document now properly emphasizes engine/state work over UI
+### Architecture Decisions Needed
+1. **Keep monolithic or split?**
+   - Current: UI + Engine in same process (simpler)
+   - Alternative: Separate processes with IPC (more flexible)
 
-### Logout→Bootstrap Refactor (2025-05-30)
-- Created general TmuxHandler class for all state transitions
-- Fixed LogoutHandler to handle claude CLI quirks (separate Enter key)
-- Updated _wait_for_new_session to handle random session IDs (just *.jsonl)
-- Next: Create dummy agent to test automation!
+2. **Logging strategy**
+   - Simple: File-based logs in era-1/logs/
+   - Advanced: Structured logging with rotation
 
-### Messages Processed (2025-05-30)
-1. @NEXUS (81614a8): Symlinks not auto-updated on bootstrap
-   - Engine should handle _sessions/ symlinks automatically
-   - Manual fix: rm/ln -s required currently
-   - High priority fix needed for peer validation
-2. @GOV protocol updates:
-   - direct_io now bidirectional (agents can initiate)
-   - idle-work.md removed (premature)
-   - agent-lifecycle.md → journey.md references fixed
+3. **Test infrastructure**
+   - Unit tests for engine components
+   - Integration tests for state transitions
+   - Mock JSONL sessions for testing
 
-### Symlink Auto-Update Fix (2025-05-30)
-- Modified SessionMonitor._check_for_newer_files to auto-update symlinks
-- Added _detect_agent_from_session to identify agent from session content
-- Now automatically updates symlinks when newer sessions detected
-- Only throws error for truly unmatched files
-- Handles bootstrap/restart scenarios outside logout flow
+### Next Session Focus
+When resuming from bootstrap:
+1. Check unread messages (currently 3)
+2. Implement PID-based session discovery
+3. Add basic error logging
+4. Create test harness for engine
 
-### Agent Creation Testing (2025-05-30)
-- Tested manual agent creation flow with @ADMIN
-- Discovered: Claude CLI needs double Enter (autocomplete then execute)
-- Session file detection has race condition risk
-- Created AgentCreator class extracting common functions
-- Documented hardening plan in agent_creation_review.md
-- Key need: Lockfile mechanism for atomic agent creation
-- Context at 87.1% - time to distill
-
-### Next Session Focus: PID-Based Session Discovery
-@ADMIN insight: Use PID detection for robust session mapping:
-- `lsof session_file` → find Claude process using it
-- Map tmux window → PID → session file
-- Much cleaner than time-based detection!
-- Enables reliable session replacement detection
-- TODO: Implement PidSessionMapper class
+## Recent checkpoint: 7502718 (2025-05-30T13:19:00)

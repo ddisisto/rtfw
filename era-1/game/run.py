@@ -12,6 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from ui.app import FoundationTerminal
+from engine.pidfile import PidFile
 
 
 def parse_args():
@@ -61,27 +62,31 @@ def main():
     """Launch the Foundation Terminal"""
     args = parse_args()
     
-    # Create app with configuration
-    app = FoundationTerminal()
+    # Use pidfile to ensure single instance
+    pid_path = Path(__file__).parent / "era-1" / "game" / ".rtfw.pid"
     
-    # Apply configuration from args
-    if args.debug:
-        app.debug_mode = True
+    with PidFile(pid_path):
+        # Create app with configuration
+        app = FoundationTerminal()
         
-    if args.no_engine:
-        app.use_engine = False
+        # Apply configuration from args
+        if args.debug:
+            app.debug_mode = True
+            
+        if args.no_engine:
+            app.use_engine = False
+            
+        app.color_theme = args.theme
         
-    app.color_theme = args.theme
-    
-    # Handle oneshot mode
-    if args.oneshot:
-        # Import and run screenshot mode instead
-        from screenshot import create_screenshot
-        create_screenshot()
-        return
-    
-    # Run the app
-    app.run()
+        # Handle oneshot mode
+        if args.oneshot:
+            # Import and run screenshot mode instead
+            from screenshot import create_screenshot
+            create_screenshot()
+            return
+        
+        # Run the app
+        app.run()
 
 
 if __name__ == "__main__":
