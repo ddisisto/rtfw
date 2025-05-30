@@ -12,14 +12,19 @@ sys.path.insert(0, str(Path(__file__).parent))
 from engine.state_engine import StateEngine
 
 
-def test_engine():
-    """Run engine once and report any errors"""
+def test_engine(dry_run=True):
+    """Run engine once and report any errors
+    
+    Args:
+        dry_run: If True, don't write state files (safe to run alongside main engine)
+    """
     project_root = Path(__file__).parent.parent.parent
     sessions_dir = project_root / "_sessions"
     
     print(f"Project root: {project_root}")
     print(f"Sessions dir: {sessions_dir}")
     print(f"Sessions exist: {sessions_dir.exists()}")
+    print(f"Mode: {'DRY RUN (read-only)' if dry_run else 'LIVE (will write files)'}")
     
     try:
         print("\nCreating engine...")

@@ -1,6 +1,14 @@
 # ERA-1 Scratch
 
-## Path Forward (2025-05-30, Context: 41.6%)
+## Tools Created (2025-05-30)
+- `pidfile.py` - Single-instance enforcement for engine
+- `test_engine.py` - Test engine in isolation (requires stopping main)
+- `validate_state.py` - Check state consistency (safe with running engine)
+- `models_v2.py` - Structured state model matching _state.md template
+- `state_parser_v2.py` - Structure-aware parser for _state.md
+- `test_state_v2.py` - Test v2 models and round-trip serialization
+
+## Path Forward (2025-05-30, Context: 68.1% - distilling)
 
 ### Immediate Tasks
 1. **PID-based session discovery** - @ADMIN's suggestion for robust tmux→PID→session mapping
