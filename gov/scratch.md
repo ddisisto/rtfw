@@ -1,7 +1,7 @@
 # GOV Scratch
 
 ## Message Checkpoint
-Last processed: 6e365b8 at 2025-05-30
+Last processed: fb020b4 at 2025-05-30
 
 ## Current State: direct_io
 Thread: broadcast-guidance
@@ -99,7 +99,7 @@ Example purposes:
 - ERA-1: Engine optimization
 
 ## Continuity Bridge
-- bootstrap-return: Clean re-entry via protocol, NEXUS acknowledged optimization (2ac2f32)
-- era-1-identity: Updated to focus on engine architect role (f90bb1a)
-- protocol-cleanup: Major misinformation issues identified, cleanup needed
-- Next focus: Archive outdated docs, establish idle work protocols
+- protocol-cleanup: Archived 3 outdated docs (42233dd), fixed all references
+- direct-io-enhanced: Now bidirectional - agents can initiate (fb020b4)
+- idle-work-pending: Agents own directives in context.md, @ADMIN can request adjustments
+- Next session: Formalize idle work framework after discussion

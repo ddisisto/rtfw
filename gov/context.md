@@ -29,11 +29,11 @@
    ```
 
 ## Session Continuity (2025-05-30)
-- Commit-based state machine fully operational (tested 9bbe632)
-- Protocols aligned: bootstrap→journey→messaging simplified
-- Context optimization: Reduced protocol loading by ~50%
-- Engine features: 7-char hashes, auto-checkpoint, <1s state updates
-- Next focus: Group coordination patterns, state recovery
+- Major protocol cleanup: Archived 3 outdated governance docs
+- Fixed all agent-lifecycle.md → journey.md references
+- Direct_io now bidirectional - agents can initiate too
+- Idle work concept: Agents own directives in context.md
+- Next focus: Agent self-optimization patterns, idle work framework
 
 ## Core Governance Principles
 - Minimal viable governance over complex rule systems
