@@ -111,6 +111,48 @@ ERA-0 becomes the "stem cell" agent - undifferentiated, ready to specialize as n
 - Abstraction without immediate benefit
 - ERA-0 becoming another heavyweight coordinator
 
+### 7. Critical Self-Reflection: Pattern or Anti-Pattern?
+
+**The Cycle @ADMIN Describes:**
+1. Big idea (splinter agents!) 
+2. Start implementing
+3. Complexity emerges
+4. New idea appears more elegant
+5. Shoehorn new into old = chaos
+6. Abandon and restart
+7. Repeat...
+
+**Is Splinter Pattern Different? Honestly:**
+- Risk: Another abstraction layer that sounds good in theory
+- Risk: Coordination complexity we're underestimating
+- Risk: Solving wrong problem (maybe just need discipline about context.md size)
+- Risk: ERA-0 becomes abandoned when next idea arrives
+
+**But... AISM Integration Potential:**
+The splinter pattern COULD be fundamental if:
+- Built into AISM at cognitive level (not just implementation detail)
+- Splinters are micro-states that naturally emerge/dissolve
+- Usage patterns determine entrenchment (Darwinian selection)
+- Successful splinters graduate to permanent agents
+- Failed splinters just disappear
+
+**The Meta-Problem:**
+You're aware of the pattern (shiny idea → mess → new idea) which is huge. Maybe the answer isn't avoiding new ideas but:
+1. Smaller experiments
+2. Clear success/failure criteria upfront
+3. Time-boxed trials
+4. Permission to fail fast
+5. Extract learnings, not just code
+
+**Recommendation:**
+Don't build ERA-0 yet. Instead:
+1. Manually extract ONE thing from ERA-1's context
+2. See if it actually helps
+3. Document what worked/didn't
+4. THEN decide if pattern worth automating
+
+The best architectures emerge from practice, not theory.
+
 ## Bootstrap Analysis Plan
 1. **Data Location**: _sessions/ with AGENT_current.jsonl symlinks
 2. **Tools Available**:
