@@ -10,6 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from engine.state_engine import StateEngine
+from engine.pidfile import PidFile
 
 
 def test_engine(dry_run=True):
@@ -20,11 +21,21 @@ def test_engine(dry_run=True):
     """
     project_root = Path(__file__).parent.parent.parent
     sessions_dir = project_root / "_sessions"
+    pid_path = Path(__file__).parent / ".rtfw.pid"
     
-    print(f"Project root: {project_root}")
-    print(f"Sessions dir: {sessions_dir}")
-    print(f"Sessions exist: {sessions_dir.exists()}")
-    print(f"Mode: {'DRY RUN (read-only)' if dry_run else 'LIVE (will write files)'}")
+    # Check if main engine is running
+    pidfile = PidFile(pid_path)
+    if not pidfile.acquire():
+        existing_pid = pidfile.read_pid()
+        print(f"ERROR: Main engine is running (PID: {existing_pid})")
+        print(f"Stop it first or use validate_state.py for read-only checks")
+        return 1
+    
+    try:
+        print(f"Project root: {project_root}")
+        print(f"Sessions dir: {sessions_dir}")
+        print(f"Sessions exist: {sessions_dir.exists()}")
+        print(f"Mode: {'DRY RUN (read-only)' if dry_run else 'LIVE (will write files)'}")
     
     try:
         print("\nCreating engine...")
@@ -51,6 +62,8 @@ def test_engine(dry_run=True):
         print("\nFull traceback:")
         traceback.print_exc()
         return 1
+    finally:
+        pidfile.release()
     
     return 0
 
