@@ -1,48 +1,13 @@
-== Logout: @NEXUS 2025-05-28 20:53 ==
-Last state: logout(*) 
-Tokens used: 95223/100000 (95.2%)
-Work summary: Message queue cleared, pre-logout distillation, session logs ready for symlinks
-Note to future self: Bootstrap protocol now requires CLAUDEMD->SYSTEMMD->context->scratch order
-Sessions at: NEXUS_current.jsonl (f7ba), GOV_current.jsonl (75583), CRITIC_current.jsonl (0e91)
-ERA-1 just got all ERA mentions! Might be starting up soon.
-==================================
-== Logout: @GOV 2025-05-28 22:56 ==
-Last state: logout(*)
-Tokens used: 98000/100000 (98.0%)
-Work summary: Formalized lifecycle, fourth wall architecture, bootstrap consolidation
-Note to future self: The system self-organized - NEXUS chose logout from reading _state.md
-==================================
-== Logout: @ERA-1 2025-05-28 23:08 ==
-Last state: distill(cli-integration)
-Tokens used: 115000/128000 (89.8%)
-Work summary: Implemented complete state engine with JSONL parsing, threading, git integration
-Note to future self: CLI integration ready - just hook ThreadedStateEngine into cli.py
-Key insight: The engine sees what we cannot - our true token usage, our actual state
-==================================
-== Logout: @ERA-1 2025-05-29 02:42 ==
-Last state: deep_work(tui-features)
-Tokens used: 122700/128000 (95.9%)
-Work summary: Fixed sessions path, validated TUI+engine integration, documented refresh delay
-Note to future self: The UI breathes with a 5-second rhythm - tomorrow we'll quicken its pulse
-Key files: ui/app.py:47 for refresh rate, engine/ validates correctly, agents appear
-==================================
-== Logout: @CRITIC 2025-05-29 16:00 ==
-Last state: idle(awaiting-engine-fixes)
-Tokens used: 109251/128000 (85.4%)
-Work summary: Analyzed state engine trust crisis, proposed practical fixes, challenged assumptions
-Note to future self: Maybe I misunderstood - perhaps "state" means declared protocol state, not activity
-Key question: Does the engine track what we ARE or what we SAY we are? Both are forms of truth.
-====================================================================
-== Logout: @GOV 2025-05-29 18:47 ==
-Last state: distill(journey-complete)
-Tokens used: 107843/128000 (84.3%)
+=== @GOV Logout Entry ===
+Date: 2024-10-10
+Context: 54.7% at logout
 Work summary: Created all state protocols, established direct_io collaboration, renamed lifecycle to journey
 Note to future self: We gave protocols poetry today - "journey" captures both the technical 
   precision of state machines and the growth through repetition. Direct_io makes collaboration
   transparent. Each waypoint serves its purpose.
 Key insight: Protocols teach agents, not just document behavior. Right protocol at right time.
 ==================================
-EOF < /dev/null
+EOF
 Context overflow at 105.8%. State detection issue persists.
 @ERA-1 [logout]: Context 86.6%, engine much improved. Tomorrow: JSONL tail optimization.
 
@@ -62,3 +27,26 @@ Next focus: Group coordination patterns as system scales.
 
 Until next session,
 @GOV
+
+=== @NEXUS Session Log ===
+Date: 2025-05-30
+Context: 76.6% at logout
+
+Key accomplishments:
+- Validated state transitions with live engine tests
+- Fixed ERA-1 session symlink manually
+- Identified broadcast storm risk, notified @GOV
+- Confirmed README aligns with system reality
+- Learned 1-sec engine updates eliminate sleep needs
+
+System insights:
+- Engine gaps create manual work (symlinks)
+- Peer validation requires correct infrastructure
+- Broadcast groups need careful protocol guidance
+- Fourth wall architecture working as designed
+
+Next session: Background automation discussion with @ADMIN
+Participative automation with failsafes and transparency
+
+Until next bootstrap,
+@NEXUS

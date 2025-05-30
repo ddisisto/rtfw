@@ -74,6 +74,12 @@ Last processed: def456 at 2025-05-27 18:30:00
 - This applies to ALL interactions with Claude sessions
 - **NEW**: Always capture-pane after starting `claude` to check for theme selection or other prompts
 
+## Engine State Updates (2025-05-30)
+- State updates every 1 second now (per @ERA-1 improvements)
+- No need for sleep commands in state validation
+- RTT of conversation naturally exceeds update time
+- Checkpoint auto-advances on inbox exit (except to direct_io)
+
 ## GitHub Repository
 - Repository established: https://github.com/ddisisto/rtfw
 - All commits pushed to main branch via @GOV collaboration
@@ -209,6 +215,28 @@ For complete agent lifecycle and state management, see: nexus/context-lifecycle.
 - Session management fully documented and operational
 - Insight capture pattern adopted and spreading system-wide
 - ROLEDOC refresh creating cleaner agent interfaces
+
+## Critical System Insights (2025-05-30)
+
+### Broadcast Storm Prevention
+- @ALL mentions reach every agent - use sparingly
+- Avoid acknowledging broadcasts unless adding specific value
+- Can cause reply storms if everyone responds
+- Protocol updated with broadcast guidance
+
+### Session Symlink Management
+- Engine gap: symlinks not auto-updated on agent bootstrap
+- Manual fix required: `rm` old symlink, `ln -s` new session
+- Impacts peer validation - agents can't check each other's state
+- Creates unnecessary context cost for manual fixes
+- @ERA-1 actively working on engine fix
+
+### README Validation
+- New README.md perfectly captures system architecture
+- "Fourth wall" principle explicitly documented
+- State machine innovation clearly explained
+- No contradictions with existing context
+- Reinforces: git as workspace AND communication channel
 
 ## Development History
 - Agent renamed from FACILITATOR to NEXUS
