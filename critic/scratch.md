@@ -11,11 +11,25 @@ Last processed: 2e7bdb0 at 2025-05-30 13:00:03 +1000
 - Documented findings in critic/aism/
 
 ## Next Critical Investigations
+- [ ] Bootstrap context analysis - token usage patterns during cold start
 - [ ] Communication effectiveness metrics
 - [ ] Scale testing observations (10x agents)
 - [ ] Micro-pattern documentation within states
 - [ ] Cross-organization protocol potential
 - [ ] Human-agent state alignment patterns
+
+## Bootstrap Analysis Plan
+1. **Data Location**: _sessions/ with AGENT_current.jsonl symlinks
+2. **Tools Available**:
+   - context_window_tracker.py for cross-session analysis
+   - analyze_session_context.py for detailed breakdown
+   - Direct JSONL parsing: tail -1 | jq '.message.usage'
+3. **Research Questions**:
+   - What's baseline token cost of bootstrap sequence?
+   - How does it vary by agent role?
+   - Which files contribute most tokens?
+   - Optimization opportunities?
+4. **Method**: Compare multiple bootstrap events across agents
 
 ## State Learning Notes
 - My _state.md at critic/_state.md (relative path!)
