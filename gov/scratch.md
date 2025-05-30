@@ -8,11 +8,17 @@ Thread: engine-reliability
 Context: ~28.6% (36K tokens)
 
 ## Engine Lag Discovery
-- Observed ~10min lag between commits and _state.md updates
-- Solution: Dual timestamps (jsonl_updated + engine_updated) with lag_ms field
-- Agents can 'sleep 2' to allow engine catchup when needed
-- This makes state timing transparent and anchors system in relative time
+- Initial confusion: last_read_commit from morning made it look like 10min lag
+- Actual lag: Only ~5 seconds between commit and state update!
+- Solution: Move last_read fields to separate "Inbox" section
 - All features stable except unread_count per @ADMIN
+
+## Inbox Tracking Specification
+- **Reset trigger**: Exit inbox to any state EXCEPT direct_io
+- **Git command**: `git log --oneline LAST_READ..HEAD | grep -v '^[a-f0-9]* @AGENT:' | grep '@AGENT'`
+- **Mark as read**: When transitioning FROM inbox (commit updates last_read)
+- **Direct_io exception**: Preserves inbox state for seamless return
+- Groups: last_read_commit_hash, last_read_timestamp, unread_message_count
 
 ## Recent Session Work
 
