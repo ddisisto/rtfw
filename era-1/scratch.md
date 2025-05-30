@@ -40,3 +40,12 @@ Last processed: 053aa1c at 2025-05-30T10:54:10
 - Now automatically updates symlinks when newer sessions detected
 - Only throws error for truly unmatched files
 - Handles bootstrap/restart scenarios outside logout flow
+
+### Agent Creation Testing (2025-05-30)
+- Tested manual agent creation flow with @ADMIN
+- Discovered: Claude CLI needs double Enter (autocomplete then execute)
+- Session file detection has race condition risk
+- Created AgentCreator class extracting common functions
+- Documented hardening plan in agent_creation_review.md
+- Key need: Lockfile mechanism for atomic agent creation
+- Context at 87.1% - time to distill

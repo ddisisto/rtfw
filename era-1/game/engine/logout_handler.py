@@ -14,6 +14,7 @@ from typing import Optional
 from datetime import datetime
 
 from .tmux_handler import TmuxHandler
+from .agent_creator import AgentCreator
 
 
 class LogoutHandler:
@@ -37,6 +38,7 @@ class LogoutHandler:
         self.sessions_dir = sessions_dir
         self.logout_log = project_root / "logout.log"
         self.tmux = TmuxHandler()
+        self.creator = AgentCreator(project_root, sessions_dir)
     
     def handle_logout(self, agent_name: str, tmux_session: str) -> bool:
         """
@@ -79,16 +81,18 @@ class LogoutHandler:
             self.tmux.send_key(tmux_session, "Enter")
             time.sleep(1)
             
-            # 8. Wait for new session file
+            # 8. Find new session file using common function
             print("Waiting for new session file...")
-            new_session = self._wait_for_new_session(agent_name)
+            before_files = set()  # Empty since we just exited
+            new_session = self.creator.find_new_session(before_files)
             if not new_session:
                 print("ERROR: No new session file appeared")
                 return False
             
-            # 9. Update symlink
-            print(f"Updating symlink to {new_session.name}")
-            self._update_symlink(agent_name, new_session)
+            # 9. Create symlink using common function
+            if not self.creator.create_symlink(agent_name, new_session):
+                print("ERROR: Failed to create symlink")
+                return False
             
             # 10. Send bootstrap prompt
             print("Sending bootstrap prompt...")
@@ -109,44 +113,7 @@ class LogoutHandler:
         with open(self.logout_log, 'a') as f:
             f.write(f"ENGINE: {timestamp} - {agent_name} logout processed\n")
     
-    def _wait_for_new_session(self, agent_name: str, timeout: int = 30) -> Optional[Path]:
-        """
-        Wait for a new session file to appear
-        
-        Claude creates session files with random IDs, so we just look
-        for any new .jsonl file in the sessions directory.
-        
-        Returns path to new session file or None if timeout
-        """
-        # Get all current .jsonl files
-        before = set(self.sessions_dir.glob("*.jsonl"))
-        
-        # Wait for new file
-        start_time = time.time()
-        while time.time() - start_time < timeout:
-            current = set(self.sessions_dir.glob("*.jsonl"))
-            new_files = current - before
-            
-            if new_files:
-                # Return the newest file
-                return max(new_files, key=lambda p: p.stat().st_mtime)
-            
-            time.sleep(0.5)
-        
-        return None
-    
-    def _update_symlink(self, agent_name: str, target: Path):
-        """Update agent's current session symlink"""
-        agent_upper = agent_name.upper()
-        symlink_name = f"{agent_upper}_current.jsonl"
-        symlink_path = self.sessions_dir / symlink_name
-        
-        # Remove old symlink if exists
-        if symlink_path.exists():
-            symlink_path.unlink()
-        
-        # Create new symlink
-        symlink_path.symlink_to(target.name)
+    # Methods moved to AgentCreator for reuse
     
     def check_tmux_session_exists(self, session: str) -> bool:
         """Check if tmux session exists"""
