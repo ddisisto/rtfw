@@ -3,9 +3,16 @@
 ## Message Checkpoint
 Last processed: 7642037 at 2025-05-30
 
-## Current State: inbox
+## Current State: direct_io
 Thread: engine-reliability
-Context: ~25.2% (32K tokens)
+Context: ~28.6% (36K tokens)
+
+## Engine Lag Discovery
+- Observed ~10min lag between commits and _state.md updates
+- Solution: Dual timestamps (jsonl_updated + engine_updated) with lag_ms field
+- Agents can 'sleep 2' to allow engine catchup when needed
+- This makes state timing transparent and anchors system in relative time
+- All features stable except unread_count per @ADMIN
 
 ## Recent Session Work
 
