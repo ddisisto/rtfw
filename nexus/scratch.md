@@ -30,9 +30,6 @@
 
 
 
-
-
-
 ### Key Distillation Insights (2025-05-27)
 
 **Messaging Evolution Pattern**
@@ -92,11 +89,12 @@
 
 
 ### Message Checkpoint
-Last processed: c52f6f6 at 2025-05-30 01:08:50 +1000
+Last processed: eb84f33 at 2025-05-30 14:01:00 +1000 (ADMIN direct control)
 
 - Made NEXUS.md explicitly implementation-aligned
 - @GOV implementing full v2 transition
 - Sovereignty intact
+
 
 ### Work After Restore
 - Monitor @GOV's transition implementation
@@ -198,5 +196,19 @@ ln -s 14e86721-6e8c-4e0d-a7b7-c6685cc3807f.jsonl ERA-1_current.jsonl
 
 **Next**: Wait for ERA-1 to start, help design safe data access
 
+### Direct Control Session (2025-05-30 14:11)
 
+**Manual Bootstrap Coordination**
+- Engine stopped for manual session management
+- Updated symlinks for GOV, CRITIC, ERA-1
+- ERA-1 hit API error (likely "game about ai" pattern)
+- Successfully bootstrapped on retry
+- Now helping ERA-1 with P1 engine crash in direct_io
+
+**Current Status**:
+- NEXUS: direct_io with ADMIN
+- GOV: bootstrapped, waiting
+- CRITIC: bootstrapped, waiting  
+- ERA-1: direct_io debugging engine crash
+- Engine: DOWN - _state.md files becoming stale
 
