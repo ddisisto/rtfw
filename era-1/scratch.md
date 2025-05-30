@@ -49,3 +49,11 @@ Last processed: 053aa1c at 2025-05-30T10:54:10
 - Documented hardening plan in agent_creation_review.md
 - Key need: Lockfile mechanism for atomic agent creation
 - Context at 87.1% - time to distill
+
+### Next Session Focus: PID-Based Session Discovery
+@ADMIN insight: Use PID detection for robust session mapping:
+- `lsof session_file` → find Claude process using it
+- Map tmux window → PID → session file
+- Much cleaner than time-based detection!
+- Enables reliable session replacement detection
+- TODO: Implement PidSessionMapper class
