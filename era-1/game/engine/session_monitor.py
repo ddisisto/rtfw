@@ -102,27 +102,115 @@ class SessionMonitor:
     
     def _check_for_newer_files(self, newest_symlink_mtime: float):
         """
-        Check if any JSONL files are newer than our symlinks
+        Check if any JSONL files are newer than our symlinks and auto-update
+        
+        This handles cases where agents bootstrap/restart outside of logout flow.
+        We'll try to match newer files to agents and update symlinks automatically.
         
         Raises:
-            RuntimeError: If newer files detected
+            RuntimeError: Only if we can't determine which agent owns a newer file
         """
-        newer_files = []
+        # Group all JSONL files by agent based on content
+        agent_sessions = {agent: [] for agent in self.AGENT_SYMLINKS.keys()}
+        unmatched_files = []
         
         for file_path in self.sessions_dir.glob("*.jsonl"):
             # Skip our known symlinks
             if file_path.name in self.AGENT_SYMLINKS.values():
                 continue
-                
-            # Check if this file is newer
-            if file_path.stat().st_mtime > newest_symlink_mtime:
-                newer_files.append(file_path.name)
+            
+            # Try to determine which agent this session belongs to
+            try:
+                # Read first few lines to find agent name
+                agent_name = self._detect_agent_from_session(file_path)
+                if agent_name and agent_name in agent_sessions:
+                    agent_sessions[agent_name].append(file_path)
+                else:
+                    unmatched_files.append(file_path)
+            except Exception:
+                # If we can't read the file, add to unmatched
+                unmatched_files.append(file_path)
         
-        if newer_files:
+        # For each agent, check if there's a newer session than current symlink
+        updates_made = False
+        for agent_name, session_files in agent_sessions.items():
+            if not session_files:
+                continue
+                
+            # Find newest session for this agent
+            newest_session = max(session_files, key=lambda p: p.stat().st_mtime)
+            
+            # Get current symlink target
+            symlink_path = self.sessions_dir / self.AGENT_SYMLINKS[agent_name]
+            current_target = symlink_path.resolve() if symlink_path.exists() else None
+            
+            # Update symlink if newer session exists
+            if not current_target or newest_session.stat().st_mtime > current_target.stat().st_mtime:
+                print(f"  Auto-updating {agent_name} symlink: {newest_session.name}")
+                
+                # Remove old symlink if exists
+                if symlink_path.exists():
+                    symlink_path.unlink()
+                
+                # Create new symlink
+                symlink_path.symlink_to(newest_session.name)
+                updates_made = True
+        
+        # Only raise error if we have unmatched files that are newer
+        newer_unmatched = [f for f in unmatched_files 
+                          if f.stat().st_mtime > newest_symlink_mtime]
+        
+        if newer_unmatched and not updates_made:
             raise RuntimeError(
-                f"Found {len(newer_files)} JSONL files newer than current symlinks:\n"
-                + "\n".join(f"  - {f}" for f in newer_files[:5])
-                + ("\n  ..." if len(newer_files) > 5 else "")
-                + "\n\nThis likely means new sessions have started. "
-                + "Please update symlinks or handle new session discovery."
+                f"Found {len(newer_unmatched)} newer JSONL files that couldn't be matched to agents:\n"
+                + "\n".join(f"  - {f.name}" for f in newer_unmatched[:5])
+                + ("\n  ..." if len(newer_unmatched) > 5 else "")
+                + "\n\nThese may be from unknown agents or corrupted sessions."
             )
+    
+    def _detect_agent_from_session(self, file_path: Path) -> Optional[str]:
+        """
+        Try to detect which agent owns a session file by reading content
+        
+        Returns:
+            agent name (lowercase) or None if can't determine
+        """
+        try:
+            # Read first 50 lines or 10KB, whichever comes first
+            lines_read = 0
+            bytes_read = 0
+            max_lines = 50
+            max_bytes = 10240
+            
+            with open(file_path, 'r') as f:
+                while lines_read < max_lines and bytes_read < max_bytes:
+                    line = f.readline()
+                    if not line:
+                        break
+                    
+                    lines_read += 1
+                    bytes_read += len(line.encode())
+                    
+                    # Look for agent mentions in assistant messages
+                    if '"role":"assistant"' in line:
+                        # Check for our known agents
+                        for agent_lower, agent_upper in [
+                            ('critic', 'CRITIC'),
+                            ('era-1', 'ERA-1'),
+                            ('gov', 'GOV'),
+                            ('nexus', 'NEXUS')
+                        ]:
+                            # Check various patterns
+                            if any(pattern in line for pattern in [
+                                f'@{agent_upper}',
+                                f'I am {agent_upper}',
+                                f"I'm {agent_upper}",
+                                f'{agent_upper}.md',
+                                f'agent/{agent_lower}/',
+                            ]):
+                                return agent_lower
+            
+            return None
+            
+        except Exception:
+            return None

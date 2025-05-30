@@ -33,3 +33,10 @@ Last processed: 053aa1c at 2025-05-30T10:54:10
    - direct_io now bidirectional (agents can initiate)
    - idle-work.md removed (premature)
    - agent-lifecycle.md → journey.md references fixed
+
+### Symlink Auto-Update Fix (2025-05-30)
+- Modified SessionMonitor._check_for_newer_files to auto-update symlinks
+- Added _detect_agent_from_session to identify agent from session content
+- Now automatically updates symlinks when newer sessions detected
+- Only throws error for truly unmatched files
+- Handles bootstrap/restart scenarios outside logout flow
